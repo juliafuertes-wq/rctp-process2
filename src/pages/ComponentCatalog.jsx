@@ -117,6 +117,16 @@ const PROPS = {
     { name: 'onPageSizeChange', type: '(size: number) => void', default: null, description: 'Called when the user changes the page size.' },
     { name: 'pageSizeOptions', type: 'number[]', default: '[20, 50, 100]', description: 'Options available in the page size selector.' },
   ],
+  tag: [
+    { name: 'label', type: 'string', default: null, required: true, description: 'Text shown inside the tag.' },
+    { name: 'onRemove', type: '() => void', default: 'undefined', description: 'When provided, renders a × button that triggers removal.' },
+  ],
+  tooltip: [
+    { name: 'content', type: 'string', default: null, required: true, description: 'Text shown in the tooltip bubble.' },
+    { name: 'children', type: 'ReactNode', default: null, required: true, description: 'Trigger element — tooltip appears on hover.' },
+    { name: 'position', type: "'top' | 'bottom' | 'left' | 'right'", default: "'top'", description: 'Which side of the trigger the bubble appears on.' },
+    { name: 'width', type: 'number', default: 'undefined', description: 'Fixed pixel width of the bubble (auto-wraps when set).' },
+  ],
 };
 
 const STATUS_ENTRIES = [
@@ -136,6 +146,8 @@ const SIDEBAR_SECTIONS = [
       { label: 'Button', id: 'button' },
       { label: 'Badge', id: 'badge' },
       { label: 'Chip', id: 'chip' },
+      { label: 'Tag', id: 'tag' },
+      { label: 'Tooltip', id: 'tooltip' },
     ],
   },
   {
@@ -279,6 +291,7 @@ const PATTERNS_SECTIONS = [
   { label: 'Tables',           id: 'pattern-tables' },
   { label: 'Cards',            id: 'pattern-cards' },
   { label: 'Navigation',       id: 'pattern-navigation' },
+  { label: 'Profile Sidenav',  id: 'pattern-sidenav' },
   { label: 'Alerts & Banners', id: 'pattern-alerts' },
   { label: 'Accordion',        id: 'pattern-accordion' },
   { label: 'Side Panel',       id: 'pattern-sidepanel' },
@@ -322,7 +335,6 @@ export default function ComponentCatalog() {
   const [cbChecked, setCbChecked] = useState(true);
   const [radioSel, setRadioSel] = useState(0);
   const [tfValue, setTfValue] = useState('');
-  const [tfError, setTfError] = useState(false);
   const [selValue, setSelValue] = useState('');
   const [comboValue, setComboValue] = useState('');
   const [toggleOn, setToggleOn] = useState(true);
@@ -331,6 +343,7 @@ export default function ComponentCatalog() {
 
   /* interactive demo state — Patterns tab */
   const [patternTab, setPatternTab] = useState('Overview');
+  const [tableVariant, setTableVariant] = useState('Enterprise');
   const [tableShowEmpty, setTableShowEmpty] = useState(false);
   const [tablePage, setTablePage] = useState(1);
   const [selectedType, setSelectedType] = useState('entity');
@@ -525,6 +538,53 @@ export default function ComponentCatalog() {
                 props={PROPS.chip}
               />
 
+              <Entry
+                id="tag"
+                title="Tag"
+                description="Compact label pill used to categorise third parties. Appears in the ThirdParties table and the onboarding Summary section. Optional × button for removable chips."
+                demo={
+                  <div className={styles.demoStage} style={{ flexWrap: 'wrap' }}>
+                    <span style={{ display:'inline-flex', alignItems:'center', padding:'2px 8px', borderRadius:3, background:'var(--neutral-100)', color:'var(--text-normal)', fontSize:11, fontWeight:500, whiteSpace:'nowrap' }}>Paper</span>
+                    <span style={{ display:'inline-flex', alignItems:'center', padding:'2px 8px', borderRadius:3, background:'var(--neutral-100)', color:'var(--text-normal)', fontSize:11, fontWeight:500, whiteSpace:'nowrap' }}>Regional</span>
+                    <span style={{ display:'inline-flex', alignItems:'center', padding:'2px 8px', borderRadius:3, background:'var(--neutral-100)', color:'var(--text-normal)', fontSize:11, fontWeight:500, whiteSpace:'nowrap' }}>Scranton</span>
+                    <span style={{ display:'inline-flex', alignItems:'center', background:'var(--text-light)', border:'1px solid var(--neutral-800)', borderRadius:4, height:24, overflow:'hidden', padding:'0 4px 0 8px', gap:8, fontSize:14, fontWeight:400, color:'var(--neutral-00)', whiteSpace:'nowrap' }}>
+                      Finance
+                      <button style={{ background:'none', border:'none', color:'var(--neutral-00)', cursor:'pointer', fontSize:14, lineHeight:1, padding:0, opacity:0.8, display:'flex', alignItems:'center' }}>×</button>
+                    </span>
+                    <span style={{ display:'inline-flex', alignItems:'center', background:'var(--text-light)', border:'1px solid var(--neutral-800)', borderRadius:4, height:24, overflow:'hidden', padding:'0 4px 0 8px', gap:8, fontSize:14, fontWeight:400, color:'var(--neutral-00)', whiteSpace:'nowrap' }}>
+                      Compliance
+                      <button style={{ background:'none', border:'none', color:'var(--neutral-00)', cursor:'pointer', fontSize:14, lineHeight:1, padding:0, opacity:0.8, display:'flex', alignItems:'center' }}>×</button>
+                    </span>
+                  </div>
+                }
+                props={PROPS.tag}
+              />
+
+              <Entry
+                id="tooltip"
+                title="Tooltip"
+                description="CSS-only hover tooltip. Two variants used in the app: a compact single-line dot tooltip (sidebar progress dots) and a wider multi-line info tooltip (risk table info icons)."
+                demo={
+                  <div className={styles.demoStage} style={{ gap: 48, alignItems: 'flex-end', paddingBottom: 16 }}>
+                    <div style={{ position:'relative', display:'inline-flex', alignItems:'center', flexDirection:'column', gap:8 }}>
+                      <span style={{ fontSize:11, color:'var(--text-light)', textTransform:'uppercase', letterSpacing:'0.05em' }}>Dot tooltip</span>
+                      <div style={{ position:'relative', display:'inline-flex', alignItems:'center' }} className={styles.tooltipTrigger}>
+                        <div style={{ width:16, height:16, borderRadius:'50%', background:'var(--success-500)', cursor:'default' }} />
+                        <div className={styles.tooltipBubbleSm}>Approved</div>
+                      </div>
+                    </div>
+                    <div style={{ position:'relative', display:'inline-flex', alignItems:'center', flexDirection:'column', gap:8 }}>
+                      <span style={{ fontSize:11, color:'var(--text-light)', textTransform:'uppercase', letterSpacing:'0.05em' }}>Info tooltip</span>
+                      <div style={{ position:'relative', display:'inline-flex', alignItems:'center' }} className={styles.tooltipTrigger}>
+                        <span className="material-icons-outlined" style={{ fontSize:18, color:'var(--text-light)', cursor:'default' }}>info_outline</span>
+                        <div className={styles.tooltipBubbleLg}>Monitored associations being continuously monitored against Risk and Compliance Database</div>
+                      </div>
+                    </div>
+                  </div>
+                }
+                props={PROPS.tooltip}
+              />
+
             </section>
 
             {/* ══ Form Controls ══ */}
@@ -597,7 +657,7 @@ export default function ComponentCatalog() {
                     </div>
                     <div className={styles.demoRow}>
                       <TextField label="With helper" value={tfValue} onChange={e => setTfValue(e.target.value)} placeholder="Legal name" helperText="Enter the full registered legal name" style={{ width: 220 }} />
-                      <TextField label="Error state" value={tfValue} onChange={e => { setTfValue(e.target.value); setTfError(e.target.value.length > 0 && e.target.value.length < 3); }} placeholder="Min 3 chars" error={tfError} errorText="Must be at least 3 characters" style={{ width: 220 }} />
+                      <TextField label="Error state" value="" onChange={() => {}} placeholder="Required field" error={true} errorText="This field is required" style={{ width: 220 }} />
                     </div>
                     <div className={styles.demoRow}>
                       <TextField label="Disabled" value="Locked value" disabled style={{ width: 220 }} />
@@ -614,7 +674,7 @@ export default function ComponentCatalog() {
                 demo={
                   <div className={styles.demoStageColumn}>
                     <div className={styles.demoRow}>
-                      <NativeSelect label="Default" value={selValue} onChange={e => setSelValue(e.target.value)} placeholder="Choose a country…" options={COUNTRIES} style={{ width: 220 }} />
+                      <NativeSelect label="Default" value={selValue} onChange={v => setSelValue(v)} placeholder="Choose a country…" options={COUNTRIES} style={{ width: 220 }} />
                       <NativeSelect label="With value" value="France" onChange={() => {}} options={COUNTRIES} style={{ width: 220 }} />
                     </div>
                     <div className={styles.demoRow}>
@@ -654,8 +714,6 @@ export default function ComponentCatalog() {
                 demo={
                   <div className={styles.demoStage}>
                     <Toggle value={toggleOn} onChange={setToggleOn} />
-                    <Toggle value={false} onChange={() => {}} />
-                    <Toggle value={true} labelOn="Enabled" labelOff="Disabled" onChange={() => {}} />
                     <Toggle value={true} disabled />
                     <Toggle value={false} disabled />
                   </div>
@@ -945,38 +1003,33 @@ export default function ComponentCatalog() {
               <h2 className={styles.categoryTitle}>Tables</h2>
               <div className={styles.entryCard}>
                 <div className={styles.entryHeader}>
-                  <h3 className={styles.entryTitle}>Data Table</h3>
-                  <p className={styles.entryDesc}>Standard table pattern: card with shadow, title row, divider, toolbar with search and actions, striped rows, sortable header, cell links, status badge, tag list, pagination.</p>
+                  <h3 className={styles.entryTitle}>Table Variants</h3>
+                  <p className={styles.entryDesc}>Six distinct table patterns used across the app. All share the same CSS foundation (neutral-25 header, primary-08/neutral-00 striping, hover state) but differ in structure and purpose.</p>
                 </div>
                 <div className={styles.demoShell}>
                   <div className={styles.demoLabel}>Live Demo</div>
                   <div style={{ padding: '16px 16px 20px' }}>
-                    <div className={styles.tableCard}>
-                      {/* Title row */}
-                      <div className={styles.tableCardHeader}>
-                        <h3 className={styles.tableCardTitle}>Third Parties</h3>
-                        <div className={styles.tableCardActions}>
-                          <Button variant="outline" onClick={() => setTableShowEmpty(v => !v)}>
-                            {tableShowEmpty ? 'Show rows' : 'Show empty state'}
-                          </Button>
-                          <Button variant="outline" icon="download">Export</Button>
+                    {/* Tab bar */}
+                    <div className={styles.tableVariantTabs}>
+                      {['Enterprise', 'Permission Matrix', 'Relationship', 'Audit Log', 'Properties', 'Admin List'].map(v => (
+                        <div
+                          key={v}
+                          className={`${styles.tableVariantTab} ${tableVariant === v ? styles.tableVariantTabActive : ''}`}
+                          onClick={() => setTableVariant(v)}
+                          style={{ position: 'relative' }}
+                        >
+                          {v}
+                          {tableVariant === v && (
+                            <motion.div layoutId="table-variant-indicator" className={styles.tableVariantIndicator} transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }} />
+                          )}
                         </div>
-                      </div>
-                      <div className={styles.tableDivider} />
-                      {/* Toolbar */}
-                      <div className={styles.tableToolbar}>
-                        <div className={styles.toolbarLeft}>
-                          <div className={styles.searchWrap}>
-                            <span className="material-icons-outlined" style={{ position: 'absolute', left: 8, fontSize: 16, color: 'var(--neutral-300)', pointerEvents: 'none' }}>search</span>
-                            <input className={styles.searchInput} style={{ paddingLeft: 30 }} placeholder="Search third parties…" readOnly />
-                          </div>
-                        </div>
-                        <div className={styles.toolbarRight}>
-                          <Button variant="outline" icon="filter_list">Filter</Button>
-                        </div>
-                      </div>
-                      {/* Table */}
-                      <div className={styles.tableWrap}>
+                      ))}
+                    </div>
+
+                    {/* ── Variant 1: Enterprise Data Table ── */}
+                    {tableVariant === 'Enterprise' && (
+                      <div>
+                        <p className={styles.variantDesc}>Used in: ThirdParties, ProfileDocuments, Catalog demo. Card wrapper, striped rows, sortable headers, cell links, status badges, tag lists.</p>
                         <table className={styles.specimenTable} style={{ minWidth: 0 }}>
                           <thead>
                             <tr>
@@ -989,16 +1042,7 @@ export default function ComponentCatalog() {
                             </tr>
                           </thead>
                           <tbody>
-                            {tableShowEmpty ? (
-                              <tr>
-                                <td colSpan={6}>
-                                  <div className={styles.emptyState}>
-                                    <span className={`material-icons-outlined ${styles.emptyStateIcon}`}>inbox</span>
-                                    No records found matching your search criteria.
-                                  </div>
-                                </td>
-                              </tr>
-                            ) : SAMPLE_ROWS.map((r, i) => (
+                            {SAMPLE_ROWS.map((r, i) => (
                               <tr key={i}>
                                 <td><span className={styles.cellLink}>{r.name}</span></td>
                                 <td>{r.owner}</td>
@@ -1009,15 +1053,10 @@ export default function ComponentCatalog() {
                                   </div>
                                 </td>
                                 <td>
-                                  <span
-                                    className={styles.statusBadge}
-                                    style={{
-                                      background: r.status === 'Approved' ? 'var(--success-100)' : r.status === 'Not Approved' ? 'var(--alert-100)' : 'var(--neutral-50)',
-                                      color: r.status === 'Approved' ? 'var(--success-900)' : r.status === 'Not Approved' ? 'var(--alert-700)' : 'var(--text-normal)',
-                                    }}
-                                  >
-                                    {r.status}
-                                  </span>
+                                  <span className={styles.statusBadge} style={{
+                                    background: r.status === 'Approved' ? 'var(--success-100)' : r.status === 'Not Approved' ? 'var(--alert-100)' : 'var(--neutral-50)',
+                                    color: r.status === 'Approved' ? 'var(--success-900)' : r.status === 'Not Approved' ? 'var(--alert-700)' : 'var(--text-normal)',
+                                  }}>{r.status}</span>
                                 </td>
                                 <td><RiskBadge level={r.risk} /></td>
                               </tr>
@@ -1025,15 +1064,246 @@ export default function ComponentCatalog() {
                           </tbody>
                         </table>
                       </div>
-                      {!tableShowEmpty && (
-                        <>
-                          <div className={styles.tableDivider} />
-                          <div style={{ padding: '0 16px 4px' }}>
-                            <Paginator page={tablePage} totalPages={5} pageSize={20} totalItems={87} onPageChange={setTablePage} />
-                          </div>
-                        </>
-                      )}
-                    </div>
+                    )}
+
+                    {/* ── Variant 2: Permission Matrix ── */}
+                    {tableVariant === 'Permission Matrix' && (
+                      <div>
+                        <p className={styles.variantDesc}>Used in: RoleDetails, Settings Stages. Nested accordion groups, checkbox cells, column toggle-all in header, N/A cells (—), expandable sub-rows with indent bar.</p>
+                        <table className={styles.specimenTable} style={{ minWidth: 0 }}>
+                          <thead>
+                            <tr>
+                              <th style={{ width: '34%' }}>Section</th>
+                              <th style={{ width: '11%', textAlign: 'center' }}>View</th>
+                              <th style={{ width: '11%', textAlign: 'center' }}>Edit</th>
+                              <th style={{ width: '11%', textAlign: 'center' }}>Create</th>
+                              <th style={{ width: '11%', textAlign: 'center' }}>Delete</th>
+                              <th style={{ width: '11%', textAlign: 'center' }}>Export</th>
+                              <th style={{ width: '11%', textAlign: 'center' }}>Reassign</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>General</td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                            </tr>
+                            <tr>
+                              <td>Risk Level</td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                                  <span style={{ display: 'inline-block', width: 3, height: 16, background: 'var(--primary-300)', borderRadius: 2, marginLeft: 12, marginRight: 4 }} />
+                                  Due Diligence — Internal
+                                </span>
+                              </td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                                  <span style={{ display: 'inline-block', width: 3, height: 16, background: 'var(--primary-300)', borderRadius: 2, marginLeft: 12, marginRight: 4 }} />
+                                  Due Diligence — External
+                                </span>
+                              </td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                            </tr>
+                            <tr>
+                              <td>Documents</td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
+                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+
+                    {/* ── Variant 3: Relationship Table ── */}
+                    {tableVariant === 'Relationship' && (
+                      <div>
+                        <p className={styles.variantDesc}>Used in: Profile Connections, Profile Suggested. Embedded in tab panels (no card wrapper), radio-button row selection, action toolbar activates on selection.</p>
+                        <table className={styles.specimenTable} style={{ minWidth: 0 }}>
+                          <thead>
+                            <tr>
+                              <th style={{ width: 32 }} />
+                              <th>Third Party Name</th>
+                              <th>Connection Type</th>
+                              <th>ID Type</th>
+                              <th>ID Value</th>
+                              <th>Country</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {[
+                              { name: 'Pied Piper Ltd (UK)', type: 'Subsidiary', idType: 'CRN', id: '12345678', country: 'United Kingdom' },
+                              { name: 'Hooli Corporation', type: 'Competitor', idType: 'LEI', id: '5493001KJTIIGC8Y1R12', country: 'United States' },
+                              { name: 'Raviga Capital', type: 'Investor', idType: 'EIN', id: '47-1234567', country: 'United States' },
+                            ].map((r, i) => (
+                              <tr key={i} style={{ cursor: 'pointer' }}>
+                                <td style={{ textAlign: 'center' }}>
+                                  <input type="radio" name="rel-demo" readOnly style={{ accentColor: 'var(--primary-500)', cursor: 'pointer' }} />
+                                </td>
+                                <td><span className={styles.cellLink}>{r.name}</span></td>
+                                <td>{r.type}</td>
+                                <td>{r.idType}</td>
+                                <td style={{ fontFamily: 'monospace', fontSize: 12 }}>{r.id}</td>
+                                <td>{r.country}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+
+                    {/* ── Variant 4: Audit Log ── */}
+                    {tableVariant === 'Audit Log' && (
+                      <div>
+                        <p className={styles.variantDesc}>Used in: ProfileAudit. Advanced filter toolbar, sortable headers, linked source cells, multi-line summary cells, empty state when filters return nothing.</p>
+                        <table className={styles.specimenTable} style={{ minWidth: 0 }}>
+                          <thead>
+                            <tr>
+                              <th style={{ width: 130 }}>Date <span className={`material-icons-outlined ${styles.sortIcon}`}>arrow_drop_down</span></th>
+                              <th style={{ width: 160 }}>Added By <span className={`material-icons-outlined ${styles.sortIcon}`}>arrow_drop_down</span></th>
+                              <th style={{ width: 180 }}>Source <span className={`material-icons-outlined ${styles.sortIcon}`}>arrow_drop_down</span></th>
+                              <th>Summary</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {[
+                              { date: '19 May 2026 09:14', by: 'Richard Hendricks', source: 'Onboarding', summary: 'Third party created via onboarding wizard. Entity type: Entity. Country: United States.' },
+                              { date: '18 May 2026 14:32', by: 'Monica Hall', source: 'Risk Assessment', summary: 'Risk level updated: Low → Medium\nTriggered by new screening result.' },
+                              { date: '17 May 2026 11:05', by: 'Jared Dunn', source: 'Documents', summary: 'Document uploaded: Due Diligence Report Q1 2026.pdf (2.4 MB)' },
+                              { date: '15 May 2026 16:48', by: 'System', source: 'Renewal', summary: 'Renewal reminder sent. Next renewal due: 15 Aug 2026.' },
+                            ].map((r, i) => (
+                              <tr key={i}>
+                                <td style={{ whiteSpace: 'nowrap', fontSize: 12, color: 'var(--text-light)' }}>{r.date}</td>
+                                <td>{r.by}</td>
+                                <td><span className={styles.cellLink}>{r.source}</span></td>
+                                <td style={{ whiteSpace: 'pre-line', fontSize: 13 }}>{r.summary}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+
+                    {/* ── Variant 5: Properties/Metadata ── */}
+                    {tableVariant === 'Properties' && (
+                      <div>
+                        <p className={styles.variantDesc}>Used in: ProfileProperties. Boolean icon cells (warning/flag), status badge columns, per-row edit button (not a ⋮ menu), sortable headers.</p>
+                        <table className={styles.specimenTable} style={{ minWidth: 0 }}>
+                          <thead>
+                            <tr>
+                              <th>Field Name <span className={`material-icons-outlined ${styles.sortIcon}`}>arrow_drop_down</span></th>
+                              <th>Value</th>
+                              <th style={{ width: 60, textAlign: 'center' }}>Key Risk</th>
+                              <th style={{ width: 60, textAlign: 'center' }}>Red Flag</th>
+                              <th style={{ width: 60, textAlign: 'center' }}>Score</th>
+                              <th style={{ width: 110 }}>Tag</th>
+                              <th style={{ width: 48 }} />
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {[
+                              { field: 'Country Risk', value: 'High', keyRisk: true, flag: false, score: 22, tag: 'Financial' },
+                              { field: 'PEP Status', value: 'Not a PEP', keyRisk: false, flag: false, score: null, tag: 'Integrity' },
+                              { field: 'Sanctions Screening', value: 'Clear', keyRisk: true, flag: true, score: 5, tag: 'Screening' },
+                              { field: 'Ultimate Beneficial Owner', value: null, keyRisk: false, flag: false, score: null, tag: 'Ownership' },
+                            ].map((r, i) => (
+                              <tr key={i}>
+                                <td>{r.field}</td>
+                                <td>
+                                  {r.value
+                                    ? <span className={styles.statusBadge} style={{ background: 'var(--primary-08)', color: 'var(--primary-700)' }}>{r.value}</span>
+                                    : <span style={{ color: 'var(--neutral-300)' }}>—</span>}
+                                </td>
+                                <td style={{ textAlign: 'center' }}>
+                                  {r.keyRisk ? <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--warning-500)' }}>warning</span> : null}
+                                </td>
+                                <td style={{ textAlign: 'center' }}>
+                                  {r.flag ? <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--alert-500)' }}>flag</span> : null}
+                                </td>
+                                <td style={{ textAlign: 'center', fontSize: 13, color: 'var(--text-normal)' }}>{r.score ?? <span style={{ color: 'var(--neutral-300)' }}>—</span>}</td>
+                                <td><span className={styles.statusBadge} style={{ background: 'var(--primary-08)', color: 'var(--primary-700)' }}>{r.tag}</span></td>
+                                <td style={{ textAlign: 'center' }}>
+                                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-light)', display: 'inline-flex', alignItems: 'center' }}>
+                                    <span className="material-icons-outlined" style={{ fontSize: 16 }}>edit</span>
+                                  </button>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+
+                    {/* ── Variant 6: Admin List ── */}
+                    {tableVariant === 'Admin List' && (
+                      <div>
+                        <p className={styles.variantDesc}>Used in: CompanyAdmin Roles. Lightweight, no card wrapper, two-line name+description cell, per-row ⋮ dropdown action menu with navigation actions.</p>
+                        <table className={styles.specimenTable} style={{ minWidth: 0 }}>
+                          <thead>
+                            <tr>
+                              <th>Role Name</th>
+                              <th style={{ width: 160, textAlign: 'center' }}>Restricted to TPs</th>
+                              <th style={{ width: 160, textAlign: 'center' }}>Restricted to Employees</th>
+                              <th style={{ width: 48 }} />
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {[
+                              { name: 'Standard RCTP Manager', desc: 'Full access to standard RCTP workflows and approvals.', tps: true, emp: false },
+                              { name: 'Read Only Auditor', desc: 'View-only access across all modules. Cannot edit or approve.', tps: false, emp: false },
+                              { name: 'Enhanced Due Diligence', desc: 'Access to EDD workflows and associated documents.', tps: true, emp: true },
+                            ].map((r, i) => (
+                              <tr key={i}>
+                                <td>
+                                  <div style={{ fontWeight: 500, color: 'var(--text-normal)', fontSize: 13 }}>{r.name}</div>
+                                  <div style={{ fontSize: 12, color: 'var(--text-light)', marginTop: 2 }}>{r.desc}</div>
+                                </td>
+                                <td style={{ textAlign: 'center', fontSize: 13 }}>
+                                  {r.tps ? <span style={{ color: 'var(--success-600)' }}>Yes</span> : <span style={{ color: 'var(--neutral-400)' }}>No</span>}
+                                </td>
+                                <td style={{ textAlign: 'center', fontSize: 13 }}>
+                                  {r.emp ? <span style={{ color: 'var(--success-600)' }}>Yes</span> : <span style={{ color: 'var(--neutral-400)' }}>No</span>}
+                                </td>
+                                <td style={{ textAlign: 'center' }}>
+                                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-light)', display: 'inline-flex', alignItems: 'center' }}>
+                                    <span className="material-icons-outlined" style={{ fontSize: 18 }}>more_vert</span>
+                                  </button>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+
                   </div>
                 </div>
               </div>
@@ -1183,6 +1453,125 @@ export default function ComponentCatalog() {
                     <Breadcrumb items={[{ label: 'Third Parties', to: '/third-parties' }, { label: 'Pied Piper Inc.' }]} />
                     <Breadcrumb items={[{ label: 'Settings', to: '/settings/general/currency_approval_groups' }, { label: 'General' }, { label: 'Currency & Approval Groups' }]} />
                     <Breadcrumb items={[{ label: 'Company Admin', to: '/company-admin/roles' }, { label: 'Roles' }, { label: 'Standard RCTP Analyst' }]} />
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* ══ Profile Sidenav ══ */}
+            <section id="pattern-sidenav" className={styles.categorySection} data-catalog-section style={{ scrollMarginTop: 68 }}>
+              <h2 className={styles.categoryTitle}>Profile Sidenav</h2>
+              <div className={styles.entryCard}>
+                <div className={styles.entryHeader}>
+                  <h3 className={styles.entryTitle}>Profile Side Navigation</h3>
+                  <p className={styles.entryDesc}>Left nav used on every profile page. Three regions separated by dividers: a Summary link at the top, workflow steps with status dots, and section links (Properties, Documents, etc.). Steps can carry partner icons with tooltips and a "New" badge. Dot colors signal task completion state — hover the dot to see the tooltip label.</p>
+                </div>
+                <div className={styles.demoShell}>
+                  <div className={styles.demoLabel}>Live Demo</div>
+                  <div style={{ padding: '20px', display: 'flex', gap: 40, alignItems: 'flex-start' }}>
+
+                    {/* ── Sidenav specimen ── */}
+                    <div className={styles.sidenavSpecimen}>
+
+                      {/* Summary link — active */}
+                      <div className={styles.sidenavItemActive}>Summary Page</div>
+
+                      <div className={styles.sidenavDivider} />
+
+                      {/* Workflow steps */}
+                      {[
+                        { label: 'Risk Assessment',              dot: 'green' },
+                        { label: 'Due Diligence',                dot: 'green' },
+                        { label: 'Integrity Check',              dot: 'green',   newTag: true, partnerTooltip: 'Powered by Xapiens' },
+                        { label: 'Enhanced Due Diligence',       dot: 'grey' },
+                        { label: 'UBO',                          dot: 'green',   partnerTooltip: 'Powered by Duns & Bradstreet' },
+                        { label: 'Risk Mitigation',              dot: 'red' },
+                        { label: 'Approval',                     dot: 'amber' },
+                        { label: 'Screening & Monitoring',       dot: 'blocked' },
+                      ].map((step, i) => {
+                        const dotBg = step.dot === 'green' ? 'var(--success-500)'
+                          : step.dot === 'red'     ? 'var(--alert-500)'
+                          : step.dot === 'amber'   ? 'var(--warning-500)'
+                          : step.dot === 'blocked' ? 'var(--neutral-200)'
+                          : 'var(--text-light)';
+                        const dotLabel = step.dot === 'green'   ? 'Complete'
+                          : step.dot === 'red'     ? 'Required — Not Started'
+                          : step.dot === 'amber'   ? 'Required — In Progress'
+                          : step.dot === 'blocked' ? 'Blocked by another activity'
+                          : 'Not Required';
+                        return (
+                          <div key={i} className={styles.sidenavItem}>
+                            {/* Dot with tooltip */}
+                            <span className={styles.sidenavDotWrap}>
+                              <span className={styles.sidenavDot} style={{ background: dotBg }} />
+                              <span className={styles.sidenavDotTooltip}>{dotLabel}</span>
+                            </span>
+                            {/* Label */}
+                            <span style={{ flex: 1 }}>{step.label}</span>
+                            {/* Partner icon + tooltip */}
+                            {step.partnerTooltip && (
+                              <span className={styles.sidenavPartnerWrap}>
+                                <span className={styles.sidenavPartnerIcon}>
+                                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="7.5" fill="white" stroke="#B1BCC5" />
+                                    <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#4A6FA5" fontWeight="bold">P</text>
+                                  </svg>
+                                </span>
+                                <span className={styles.sidenavTooltip}>{step.partnerTooltip}</span>
+                              </span>
+                            )}
+                            {/* New badge */}
+                            {step.newTag && <span className={styles.sidenavNewTag}>New</span>}
+                          </div>
+                        );
+                      })}
+
+                      <div className={styles.sidenavDivider} />
+
+                      {/* Section links */}
+                      {[
+                        { label: 'Properties' },
+                        { label: 'Documents' },
+                        { label: 'Entity Verification', partnerTooltip: 'Powered by Duns & Bradstreet' },
+                        { label: 'Audit' },
+                      ].map((sec, i) => (
+                        <div key={i} className={i === 0 ? styles.sidenavSectionActive : styles.sidenavSection}>
+                          <span style={{ flex: 1 }}>{sec.label}</span>
+                          {sec.partnerTooltip && (
+                            <span className={styles.sidenavPartnerWrap}>
+                              <span className={styles.sidenavPartnerIcon}>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                  <circle cx="8" cy="8" r="7.5" fill="white" stroke="#B1BCC5" />
+                                  <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#4A6FA5" fontWeight="bold">P</text>
+                                </svg>
+                              </span>
+                              <span className={styles.sidenavTooltip}>{sec.partnerTooltip}</span>
+                            </span>
+                          )}
+                        </div>
+                      ))}
+
+                      <div className={styles.sidenavDivider} />
+                    </div>
+
+                    {/* ── Dot legend ── */}
+                    <div className={styles.sidenavLegend}>
+                      <div className={styles.sidenavLegendTitle}>Dot colors</div>
+                      {[
+                        { color: 'var(--success-500)', label: 'Complete' },
+                        { color: 'var(--warning-500)', label: 'Required — In Progress' },
+                        { color: 'var(--alert-500)',   label: 'Required — Not Started' },
+                        { color: 'var(--text-light)',  label: 'Not Required' },
+                        { color: 'var(--text-normal)', label: 'In Progress (system)' },
+                        { color: 'var(--neutral-200)', label: 'Blocked' },
+                      ].map(d => (
+                        <div key={d.label} className={styles.sidenavLegendRow}>
+                          <span className={styles.sidenavDot} style={{ background: d.color, flexShrink: 0 }} />
+                          <span>{d.label}</span>
+                        </div>
+                      ))}
+                    </div>
+
                   </div>
                 </div>
               </div>

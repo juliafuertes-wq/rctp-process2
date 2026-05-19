@@ -1314,3 +1314,304 @@
   color: var(--text-normal);
   margin-bottom: 14px;
 }
+
+/* ── Tooltip demo ── */
+.tooltipTrigger {
+  position: relative;
+  cursor: default;
+}
+
+.tooltipTrigger:hover .tooltipBubbleSm,
+.tooltipTrigger:hover .tooltipBubbleLg {
+  display: block;
+}
+
+.tooltipBubbleSm {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-normal);
+  color: var(--neutral-00);
+  font-size: 11px;
+  font-weight: 400;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tooltipBubbleSm::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--text-normal);
+}
+
+.tooltipBubbleLg {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--neutral-900);
+  color: var(--neutral-00);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: normal;
+  width: 220px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  z-index: 10;
+  pointer-events: none;
+  text-align: left;
+}
+
+.tooltipBubbleLg::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--neutral-900);
+}
+
+/* ── Table variant tabs ── */
+.tableVariantTabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid var(--neutral-50);
+  margin-bottom: 16px;
+}
+
+.tableVariantTab {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-light);
+  padding: 10px 0 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s;
+  user-select: none;
+}
+
+.tableVariantTab:hover {
+  color: var(--text-normal);
+}
+
+.tableVariantTabActive {
+  color: var(--primary-600);
+}
+
+.tableVariantIndicator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary-600);
+  border-radius: 1px;
+}
+
+.variantDesc {
+  font-size: 13px;
+  color: var(--text-light);
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+/* ── Profile Sidenav specimen ── */
+.sidenavSpecimen {
+  width: 256px;
+  flex-shrink: 0;
+  background: var(--neutral-25);
+  padding: 0;
+}
+
+.sidenavItemActive {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--neutral-100);
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-normal);
+}
+
+.sidenavItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--text-normal);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.sidenavItem:hover { background: rgba(0,0,0,0.06); }
+
+.sidenavDivider {
+  height: 1px;
+  background: var(--neutral-50);
+  margin: 8px 16px;
+}
+
+.sidenavSection {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--neutral-800);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border-radius: 4px;
+}
+.sidenavSection:hover { background: rgba(0,0,0,0.04); }
+
+.sidenavSectionActive {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-normal);
+  background: var(--neutral-100);
+  border-radius: 4px;
+}
+
+/* Dot */
+.sidenavDotWrap {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.sidenavDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+.sidenavDotTooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-normal);
+  color: var(--neutral-00);
+  font-size: 11px;
+  font-weight: 400;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 10;
+}
+.sidenavDotTooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--text-normal);
+}
+.sidenavDotWrap:hover .sidenavDotTooltip { display: block; }
+
+/* Partner icon + tooltip */
+.sidenavPartnerWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.sidenavPartnerIcon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  cursor: default;
+}
+.sidenavTooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-normal);
+  color: var(--neutral-00);
+  font-size: 11px;
+  font-weight: 400;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 10;
+}
+.sidenavTooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--text-normal);
+}
+.sidenavPartnerWrap:hover .sidenavTooltip { display: block; }
+
+/* New tag badge */
+.sidenavNewTag {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--neutral-00);
+  background: var(--primary-500);
+  border-radius: 100px;
+  padding: 1px 6px;
+  flex-shrink: 0;
+  line-height: 14px;
+}
+
+/* Legend */
+.sidenavLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 4px;
+}
+.sidenavLegendTitle {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-light);
+  margin-bottom: 2px;
+}
+.sidenavLegendRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-normal);
+}

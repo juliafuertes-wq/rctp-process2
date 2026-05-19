@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import PageLayout from '../components/layout/PageLayout';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
@@ -335,7 +335,7 @@ export default function ComponentCatalog() {
   const [tablePage, setTablePage] = useState(1);
   const [accordionOpen, setAccordionOpen] = useState({ low: true, medium: false, high: false });
   const [headerRisk, setHeaderRisk] = useState('high');
-  const [panelOpen, setPanelOpen] = useState(false);
+  const [panelSize, setPanelSize] = useState(null); // null = closed, else width label
 
   /* color tokens read from CSS */
   const [colorTokens, setColorTokens] = useState({});
@@ -1058,10 +1058,12 @@ export default function ComponentCatalog() {
             {/* ══ Cards ══ */}
             <section id="pattern-cards" className={styles.categorySection} data-catalog-section style={{ scrollMarginTop: 68 }}>
               <h2 className={styles.categoryTitle}>Cards</h2>
+
+              {/* Card types */}
               <div className={styles.entryCard}>
                 <div className={styles.entryHeader}>
                   <h3 className={styles.entryTitle}>Card Types</h3>
-                  <p className={styles.entryDesc}>Four card patterns used across the application.</p>
+                  <p className={styles.entryDesc}>Three structural card patterns used across the application.</p>
                 </div>
                 <div className={styles.demoShell}>
                   <div className={styles.demoLabel}>Live Demo</div>
@@ -1081,25 +1083,9 @@ export default function ComponentCatalog() {
                       <div className={`${styles.patternCard} ${styles.patternCardAccent}`}>
                         <div className={styles.patternCardHeader}>
                           <h4 className={styles.patternCardTitle}>Open Tasks</h4>
-                          <Button variant="outline" style={{ fontSize: 11, height: 26, padding: '0 8px' }}>View all</Button>
+                          <Button variant="outline" size="sm">View all</Button>
                         </div>
                         <div className={styles.patternCardBody}>Card with top accent strip and shadow. Used for tables and data sections.</div>
-                      </div>
-                    </div>
-
-                    {/* Risk card */}
-                    <div style={{ flex: '1 1 200px', minWidth: 180 }}>
-                      <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: 'var(--neutral-400)', marginBottom: 6 }}>Risk Cards (rcard)</div>
-                      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                        {[{ level: 'low', val: '0', label: 'Screening' }, { level: 'medium', val: '4', label: 'Due Diligence' }, { level: 'high', val: '9', label: 'Integrity Check' }].map(r => (
-                          <div key={r.level} className={`${styles.rcard} ${styles['rcard' + r.level.charAt(0).toUpperCase() + r.level.slice(1)]}`}>
-                            <div className={styles.rcardTitle}>{r.label}</div>
-                            <div className={styles.rcardBottom}>
-                              <div className={styles.rcardVal}>{r.val}</div>
-                              <RiskBadge level={r.level} />
-                            </div>
-                          </div>
-                        ))}
                       </div>
                     </div>
 
@@ -1118,6 +1104,39 @@ export default function ComponentCatalog() {
                       </div>
                     </div>
 
+                  </div>
+                </div>
+              </div>
+
+              {/* Risk Level Cards */}
+              <div className={styles.entryCard}>
+                <div className={styles.entryHeader}>
+                  <h3 className={styles.entryTitle}>Risk Level Card (rcard)</h3>
+                  <p className={styles.entryDesc}>Used in the Risk Level Report section of the profile page. 123px tall, absolute-positioned labels and values, gradient background keyed to risk level. Four cards per row (3 on narrower viewports). Clickable — links to the section detail.</p>
+                </div>
+                <div className={styles.demoShell}>
+                  <div className={styles.demoLabel}>Live Demo</div>
+                  <div style={{ padding: 20 }}>
+                    <div className={styles.riskCardRow}>
+                      {[
+                        { level: 'low',    label: 'Source of Funds',           flags: 0,  score: 12 },
+                        { level: 'medium', label: 'Due Diligence',             flags: 3,  score: 44 },
+                        { level: 'high',   label: 'Integrity Check',           flags: 7,  score: 76 },
+                        { level: 'medium', label: 'Screening & Monitoring',    flags: 2,  score: null },
+                      ].map((r, i) => (
+                        <div key={i} className={`${styles.riskCard} ${styles['riskCard_' + r.level]}`}>
+                          <span className={styles.riskCardTitle}>{r.label}</span>
+                          <span className={styles.riskCardLbl} style={{ top: 46 }}>Risk level</span>
+                          <span className={styles.riskCardBadge}><RiskBadge level={r.level} /></span>
+                          <span className={styles.riskCardLbl} style={{ top: 75 }}>Red flags</span>
+                          <span className={styles.riskCardVal} style={{ top: 75 }}>{r.flags}</span>
+                          {r.score !== null && <>
+                            <span className={styles.riskCardLbl} style={{ top: 100 }}>Score</span>
+                            <span className={styles.riskCardVal} style={{ top: 100 }}>{r.score}</span>
+                          </>}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1308,41 +1327,70 @@ export default function ComponentCatalog() {
               <div className={styles.entryCard}>
                 <div className={styles.entryHeader}>
                   <h3 className={styles.entryTitle}>Slide-in Side Panel</h3>
-                  <p className={styles.entryDesc}>Fixed-position panel that slides in from the right with a dimmed overlay. Used for Edit Connection, Notes, Status, and Decline flows. Blue top border (4px), header with title + close, scrollable body, and an action footer.</p>
+                  <p className={styles.entryDesc}>Fixed-position panel sliding in from the right with a dimmed overlay. Four sizes used across the app: 480px (Status), 540px (Edit Connection / Renewal Details), 650px (Notes), 940px (Look for More). All share the same structure: blue 4px top border, header, scrollable body, action footer.</p>
                 </div>
                 <div className={styles.demoShell}>
                   <div className={styles.demoLabel}>Live Demo</div>
                   <div style={{ padding: '16px 20px 20px' }}>
-                    <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-                      <Button variant="filled" onClick={() => setPanelOpen(true)}>Open panel</Button>
+                    <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+                      {[
+                        { label: 'Status — 480px', size: 'sm', pct: '35%' },
+                        { label: 'Edit Connection — 540px', size: 'md', pct: '42%' },
+                        { label: 'Notes — 650px', size: 'lg', pct: '52%' },
+                        { label: 'Look for More — 940px', size: 'xl', pct: '72%' },
+                      ].map(p => (
+                        <Button key={p.size} variant={panelSize === p.size ? 'filled' : 'outline'} size="sm" onClick={() => setPanelSize(p.size)}>{p.label}</Button>
+                      ))}
                     </div>
                     <div className={styles.panelDemo}>
                       <div style={{ padding: 16, color: 'var(--text-light)', fontSize: 13 }}>Page content behind the overlay</div>
-                      {panelOpen && (
-                        <>
-                          <div className={styles.panelDemoOverlay} onClick={() => setPanelOpen(false)} />
-                          <div className={styles.panelDemoPanel}>
-                            <div className={styles.panelDemoHeader}>
-                              <span className={styles.panelDemoTitle}>Edit Connection</span>
-                              <Button variant="outline" onClick={() => setPanelOpen(false)}>Close</Button>
-                            </div>
-                            <div className={styles.panelDemoBody}>
-                              <div className={styles.panelFieldLabel}>Connection Type</div>
-                              <div className={styles.panelFieldValue}>Subsidiary</div>
-                              <div className={styles.panelFieldLabel}>ID Type</div>
-                              <div className={styles.panelFieldValue}>LEI</div>
-                              <div className={styles.panelFieldLabel}>ID Value</div>
-                              <div className={styles.panelFieldValue}>5493001KJTIIGC8Y1R12</div>
-                              <div className={styles.panelFieldLabel}>Country</div>
-                              <div className={styles.panelFieldValue}>United States</div>
-                            </div>
-                            <div className={styles.panelDemoFooter}>
-                              <Button variant="outline" onClick={() => setPanelOpen(false)}>Cancel</Button>
-                              <Button variant="filled">Save</Button>
-                            </div>
-                          </div>
-                        </>
-                      )}
+                      <AnimatePresence>
+                        {panelSize && (() => {
+                          const sizes = { sm: { pct: '35%', title: 'Current Status' }, md: { pct: '42%', title: 'Edit Connection' }, lg: { pct: '52%', title: 'Notes' }, xl: { pct: '72%', title: 'Look for More' } };
+                          const { pct, title } = sizes[panelSize];
+                          return (
+                            <>
+                              <motion.div
+                                key="overlay"
+                                className={styles.panelDemoOverlay}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.22 }}
+                                onClick={() => setPanelSize(null)}
+                              />
+                              <motion.div
+                                key="panel"
+                                className={styles.panelDemoPanel}
+                                style={{ width: pct }}
+                                initial={{ x: '100%' }}
+                                animate={{ x: 0 }}
+                                exit={{ x: '100%' }}
+                                transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}
+                              >
+                                <div className={styles.panelDemoHeader}>
+                                  <span className={styles.panelDemoTitle}>{title}</span>
+                                  <Button variant="outline" size="sm" onClick={() => setPanelSize(null)}>Close</Button>
+                                </div>
+                                <div className={styles.panelDemoBody}>
+                                  <div className={styles.panelFieldLabel}>Connection Type</div>
+                                  <div className={styles.panelFieldValue}>Subsidiary</div>
+                                  <div className={styles.panelFieldLabel}>ID Type</div>
+                                  <div className={styles.panelFieldValue}>LEI</div>
+                                  <div className={styles.panelFieldLabel}>ID Value</div>
+                                  <div className={styles.panelFieldValue}>5493001KJTIIGC8Y1R12</div>
+                                  <div className={styles.panelFieldLabel}>Country</div>
+                                  <div className={styles.panelFieldValue}>United States</div>
+                                </div>
+                                <div className={styles.panelDemoFooter}>
+                                  <Button variant="outline" onClick={() => setPanelSize(null)}>Cancel</Button>
+                                  <Button variant="filled">Save</Button>
+                                </div>
+                              </motion.div>
+                            </>
+                          );
+                        })()}
+                      </AnimatePresence>
                     </div>
                   </div>
                 </div>

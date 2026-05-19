@@ -8,6 +8,18 @@ import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
 import { riskBadge, RiskLevelIcon } from './profileAssets';
+
+const PROCESS_STATUS_MAP = {
+  'For Completion': 'In Progress',
+  'Action Required': 'In Progress',
+  'Not Required': 'Not Started',
+  'Not Approved': 'Completed',
+  'Post Approval': 'Completed',
+  'Mitigated': 'Completed',
+  'Acknowledged': 'Completed',
+  'Under Review': 'In Progress',
+};
+function normaliseProcessStatus(s) { return PROCESS_STATUS_MAP[s] ?? s; }
 import Badge from '../ui/Badge';
 import Flag from '../ui/Flag';
 import styles from './profile.module.css';
@@ -451,7 +463,7 @@ export default function ProfileRiskReport() {
                                 <td><span className={styles.cellLink}>{row.title}</span></td>
                                 <td>{row.status}</td>
                                 <td>{row.riskCategory || row.cat}</td>
-                                <td>{row.property || ''}</td>
+                                <td>{(row.riskCategory || row.cat) === 'Screening and Monitoring' ? '' : (row.property || '')}</td>
                               </tr>
                             ))}
                           </tbody>
@@ -485,7 +497,7 @@ export default function ProfileRiskReport() {
                               : <span>{row.step}</span>
                             }
                           </td>
-                          <td>{row.status}</td>
+                          <td>{normaliseProcessStatus(row.status)}</td>
                           <td>{row.startDate}</td>
                           <td>{row.date}</td>
                           <td>{row.by}</td>

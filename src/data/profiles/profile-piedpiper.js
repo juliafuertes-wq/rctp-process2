@@ -68,7 +68,7 @@ export default {
   openTasks: [
     { type: 'Red Flag', icon: 'iconFlag', name: 'IP Ownership Dispute — Hooli / Gavin Belson', status: 'Not Started', owner: 'Compliance Group', dateCreated: '10 Oct 2025', age: '81 Days' },
     { type: 'Red Flag', icon: 'iconFlag', name: 'Leadership Instability — Multiple CEO Changes', status: 'In Progress', owner: 'Compliance Group', dateCreated: '01 Nov 2025', age: '59 Days' },
-    { type: 'Questionnaire Incomplete', icon: 'iconInactiveOrder', name: 'Risk Assessment', status: 'In Progress', owner: 'Jared Dunn', dateCreated: '15 Nov 2025', age: '45 Days' },
+    { type: 'Questionnaire', icon: 'iconInactiveOrder', name: 'Risk Assessment', status: 'In Progress', owner: 'Jared Dunn', dateCreated: '15 Nov 2025', age: '45 Days' },
     { type: 'Approval Task', icon: 'iconFactCheck', name: 'Approval Stage 1 — Pending Legal Resolution', status: 'Not Started', owner: 'Sustainability Team', dateCreated: '01 Dec 2025', age: '29 Days' },
   ],
 

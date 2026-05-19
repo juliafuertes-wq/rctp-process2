@@ -556,7 +556,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                     <th>Match results</th>
                     <th>Updated</th>
                     <th>Type</th>
-                    <th>Assoc Status</th>
+                    <th>Association Status</th>
                     <th>Category</th>
                     <th>Entity/Person/Unknown</th>
                   </tr>

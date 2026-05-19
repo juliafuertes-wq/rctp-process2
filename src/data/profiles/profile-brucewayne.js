@@ -66,7 +66,7 @@ export default {
   ],
 
   openTasks: [
-    { type: 'Questionnaire Incomplete', icon: 'iconInactiveOrder', name: 'Integrity Check — Dual Identity Verification', status: 'In Progress', owner: 'Alfred Pennyworth', dateCreated: '01 Dec 2025', age: '29 Days' },
+    { type: 'Questionnaire', icon: 'iconInactiveOrder', name: 'Integrity Check — Dual Identity Verification', status: 'In Progress', owner: 'Alfred Pennyworth', dateCreated: '01 Dec 2025', age: '29 Days' },
     { type: 'Approval Task', icon: 'iconFactCheck', name: 'Approval Stage 1 — Pending Background Clearance', status: 'Not Started', owner: 'Lucius Fox', dateCreated: '15 Dec 2025', age: '14 Days' },
   ],
 

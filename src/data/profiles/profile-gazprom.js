@@ -68,7 +68,7 @@ export default {
   openTasks: [
     { type: 'Red Flag', icon: 'iconFlag', name: 'Public or Foreign Officials Interaction', status: 'Not Started', owner: 'Compliance Group', dateCreated: '13 Nov 2025', age: '37 Days' },
     { type: 'Red Flag', icon: 'iconFlag', name: 'High Risk Third Party Service Type', status: 'In Progress', owner: 'Compliance Group', dateCreated: '29 Nov 2025', age: '14 Days' },
-    { type: 'Questionnaire Incomplete', icon: 'iconInactiveOrder', name: 'Risk Assessment', status: 'In Progress', owner: 'Emily Forbes', dateCreated: '03 Dec 2025', age: '11 Days' },
+    { type: 'Questionnaire', icon: 'iconInactiveOrder', name: 'Risk Assessment', status: 'In Progress', owner: 'Emily Forbes', dateCreated: '03 Dec 2025', age: '11 Days' },
     { type: 'Approval Task', icon: 'iconFactCheck', name: 'Approval Stage 1', status: 'Not Started', owner: 'Sustainability Team', dateCreated: '04 Dec 2025', age: '10 Days' },
     { type: 'Enhanced Due Diligence Report Task', icon: 'iconFinanceMode', name: 'Enhanced Due Diligence Report Review Task - Test RCTP Notification 4', status: 'Not Started', owner: 'Emily Forbes', dateCreated: '18 Dec 2025', age: '4 Days' },
     { type: 'Cancel Red Flag Task', icon: 'iconFrame9', name: 'Red Flag Cancellation Request', status: 'Not Started', owner: 'Red Flag Approval Group', dateCreated: '18 Dec 2025', age: '4 Days' },

@@ -44,10 +44,10 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
   return (
     <aside className={styles.sideNav}>
       {summaryActive ? (
-        <div className={styles.navItemActive}>Summary page</div>
+        <div className={styles.navItemActive}>Summary Page</div>
       ) : (
         <Link to={summaryPath} className={styles.navItem} style={{ textDecoration: 'none' }}>
-          Summary page
+          Summary Page
         </Link>
       )}
 

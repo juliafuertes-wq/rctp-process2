@@ -66,7 +66,7 @@ export default {
   ],
 
   openTasks: [
-    { type: 'Questionnaire Incomplete', icon: 'iconInactiveOrder', name: 'Due Diligence', status: 'In Progress', owner: 'Dwight Schrute', dateCreated: '03 Jan 2026', age: '12 Days' },
+    { type: 'Questionnaire', icon: 'iconInactiveOrder', name: 'Due Diligence', status: 'In Progress', owner: 'Dwight Schrute', dateCreated: '03 Jan 2026', age: '12 Days' },
     { type: 'Red Flag', icon: 'iconFlag', name: 'Potential Conflict of Interest — Ryan Howard', status: 'Not Started', owner: 'Compliance Group', dateCreated: '10 Jan 2026', age: '5 Days' },
   ],
 

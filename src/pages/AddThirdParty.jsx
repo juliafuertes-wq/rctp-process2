@@ -1305,7 +1305,7 @@ function CancelModal({ onStay, onLeave }) {
         <div className={styles.cancelModalBody}>
           <div className={styles.cancelModalQuestion}>Are you sure you want to cancel?</div>
           <div className={styles.cancelModalDesc}>
-            All progress will be lost. You will be redirected to the Third Parties list.
+            All progress will be lost. You will be redirected to the Third Parties tab.
           </div>
         </div>
         <div className={styles.cancelModalFooter}>

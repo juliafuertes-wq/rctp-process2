@@ -7,14 +7,13 @@ import Modal from '../components/ui/Modal';
 import Checkbox from '../components/ui/Checkbox';
 import Radio from '../components/ui/Radio';
 import Chip from '../components/ui/Chip';
-import Flag from '../components/ui/Flag';
 import RiskBadge from '../components/ui/RiskBadge';
 import TextField from '../components/ui/TextField';
 import NativeSelect from '../components/ui/NativeSelect';
 import Combobox from '../components/ui/Combobox';
 import Toggle from '../components/ui/Toggle';
 import Paginator from '../components/ui/Paginator';
-import { RiskLevelIcon, TASK_ICONS } from '../components/profile/profileAssets';
+import { RiskLevelIcon } from '../components/profile/profileAssets';
 import Breadcrumb from '../components/layout/Breadcrumb';
 import PropsTable from '../components/catalog/PropsTable';
 import TokenSwatch from '../components/catalog/TokenSwatch';
@@ -71,14 +70,6 @@ const PROPS = {
   ],
   riskBadge: [
     { name: 'level', type: "'high' | 'medium' | 'low'", default: null, required: true, description: 'Risk level to display.' },
-  ],
-  flag: [
-    { name: 'type', type: "'pep'|'san'|'sco'|'ool'|'oel'|'si'|'rca'|'soc'|'brd'|'am'|'ecr'|'mrb'|'msb'", default: "'pep'", description: 'Screening / watchlist flag type — determines label, background, and text color.' },
-    { name: 'icon', type: "'person'|'entity'|'ship'|'aircraft'|'country'|'bank'|'port'|'airport'|'city'|'region'|'subregion'|'ftz'", default: "'person'", description: 'Entity type icon shown alongside the flag label.' },
-  ],
-  riskLevelIcon: [
-    { name: 'level', type: "'high' | 'medium' | 'low'", default: null, required: true, description: 'Risk level — determines which icon is rendered.' },
-    { name: 'size', type: 'number', default: '16', description: 'Icon size in pixels.' },
   ],
   textField: [
     { name: 'label', type: 'string', default: 'undefined', description: 'Label shown above the input.' },
@@ -137,8 +128,6 @@ const STATUS_ENTRIES = [
   { label: 'Approved! (Renewal Required)', bg: 'var(--warning-100)', color: 'var(--warning-900)', icon: 'history_toggle_off' },
 ];
 
-const FLAG_TYPES = ['pep','san','sco','ool','oel','si','rca','soc','brd','am','ecr','mrb','msb'];
-
 const SIDEBAR_SECTIONS = [
   {
     label: 'UI Components',
@@ -180,25 +169,15 @@ const SIDEBAR_SECTIONS = [
     id: 'risk-status',
     items: [
       { label: 'RiskBadge', id: 'riskbadge' },
-      { label: 'Flag', id: 'flag' },
     ],
   },
   {
     label: 'Profile Atoms',
     id: 'profile-atoms',
     items: [
-      { label: 'RiskLevelIcon', id: 'risklevelicon' },
-      { label: 'Task Icons', id: 'taskicons' },
       { label: 'Status Badges', id: 'statusbadges' },
       { label: 'Profile Page Header', id: 'profile-header' },
       { label: 'Field Grid', id: 'field-grid' },
-    ],
-  },
-  {
-    label: 'Layout',
-    id: 'layout',
-    items: [
-      { label: 'Breadcrumb', id: 'breadcrumb-demo' },
     ],
   },
   {
@@ -741,79 +720,11 @@ export default function ComponentCatalog() {
                 props={PROPS.riskBadge}
               />
 
-              <Entry
-                id="flag"
-                title="Flag"
-                description="Screening and watchlist flag chips. 13 type variants covering PEP, sanctions, SOC, BRD, and more. 12 entity-type icons."
-                demo={
-                  <div className={styles.demoStage}>
-                    <div className={styles.demoFlagGrid}>
-                      {FLAG_TYPES.map(type => (
-                        <Flag key={type} type={type} icon="entity" />
-                      ))}
-                    </div>
-                    <div style={{ width: '100%', borderTop: '1px solid var(--neutral-50)', paddingTop: 12, marginTop: 4 }}>
-                      <div className={styles.demoGroupLabel} style={{ marginBottom: 8 }}>Icon variants (PEP type)</div>
-                      <div className={styles.demoFlagGrid}>
-                        {['person','entity','ship','aircraft','country','bank','port','airport','city','region','subregion','ftz'].map(icon => (
-                          <Flag key={icon} type="pep" icon={icon} />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                }
-                props={PROPS.flag}
-              />
             </section>
 
             {/* ══ Profile Atoms ══ */}
             <section className={styles.categorySection} data-catalog-section>
               <h2 className={styles.categoryTitle}>Profile Atoms</h2>
-
-              <Entry
-                id="risklevelicon"
-                title="RiskLevelIcon"
-                description="Standalone risk level icon. High uses a custom SVG diamond; medium and low use Material Icons. Used inside RiskBadge and profile header strips."
-                demo={
-                  <div className={styles.demoStageColumn}>
-                    <div className={styles.demoRow}>
-                      <span className={styles.demoGroupLabel}>Size 16</span>
-                      {['high','medium','low'].map(level => (
-                        <span key={level} style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--text-light)' }}>
-                          <RiskLevelIcon level={level} size={16} /> {level}
-                        </span>
-                      ))}
-                    </div>
-                    <div className={styles.demoRow}>
-                      <span className={styles.demoGroupLabel}>Size 24</span>
-                      {['high','medium','low'].map(level => (
-                        <span key={level} style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--text-light)' }}>
-                          <RiskLevelIcon level={level} size={24} /> {level}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                }
-                props={PROPS.riskLevelIcon}
-              />
-
-              <Entry
-                id="taskicons"
-                title="Task Icons"
-                description="SVG icon set used in the Open Tasks table. Imported from profileAssets as TASK_ICONS."
-                demo={
-                  <div className={styles.demoStage}>
-                    <div className={styles.demoTaskGrid}>
-                      {Object.entries(TASK_ICONS).map(([key, src]) => (
-                        <div key={key} className={styles.demoTaskItem}>
-                          <img src={src} alt={key} style={{ width: 28, height: 28 }} />
-                          <span className={styles.demoTaskLabel}>{key}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                }
-              />
 
               <Entry
                 id="statusbadges"
@@ -928,24 +839,6 @@ export default function ComponentCatalog() {
                   </div>
                 }
                 demoNote="Grid is 4-column on desktop. Each cell renders independently — value can be plain text, a flag string, a link, or an overdue badge."
-              />
-            </section>
-
-            {/* ══ Layout ══ */}
-            <section className={styles.categorySection} data-catalog-section>
-              <h2 className={styles.categoryTitle}>Layout</h2>
-
-              <Entry
-                id="breadcrumb-demo"
-                title="Breadcrumb"
-                description="Navigation breadcrumb trail. Supports link items and a plain-text current page item."
-                demo={
-                  <div className={styles.demoStageColumn}>
-                    <Breadcrumb items={[{ label: 'Home-only' }]} />
-                    <Breadcrumb items={[{ label: 'Third Parties', to: '/third-parties' }, { label: 'Pied Piper Inc.' }]} />
-                    <Breadcrumb items={[{ label: 'Settings', to: '/settings/general/currency_approval_groups' }, { label: 'General' }, { label: 'Currency & Approval Groups' }]} />
-                  </div>
-                }
               />
             </section>
 

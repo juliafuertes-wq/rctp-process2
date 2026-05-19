@@ -1059,70 +1059,21 @@ export default function ComponentCatalog() {
             <section id="pattern-cards" className={styles.categorySection} data-catalog-section style={{ scrollMarginTop: 68 }}>
               <h2 className={styles.categoryTitle}>Cards</h2>
 
-              {/* Card types */}
-              <div className={styles.entryCard}>
-                <div className={styles.entryHeader}>
-                  <h3 className={styles.entryTitle}>Card Types</h3>
-                  <p className={styles.entryDesc}>Three structural card patterns used across the application.</p>
-                </div>
-                <div className={styles.demoShell}>
-                  <div className={styles.demoLabel}>Live Demo</div>
-                  <div style={{ padding: 20, display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'flex-start' }}>
-
-                    {/* Basic card */}
-                    <div style={{ flex: '1 1 200px', minWidth: 180 }}>
-                      <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: 'var(--neutral-400)', marginBottom: 6 }}>Basic Card</div>
-                      <div className={styles.patternCard} style={{ padding: 16 }}>
-                        <p style={{ margin: 0, fontSize: 13, color: 'var(--text-light)', lineHeight: 1.6 }}>A simple white card with a border. Used for content containers that don't require visual hierarchy emphasis.</p>
-                      </div>
-                    </div>
-
-                    {/* Table card */}
-                    <div style={{ flex: '1 1 200px', minWidth: 180 }}>
-                      <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: 'var(--neutral-400)', marginBottom: 6 }}>Table Card</div>
-                      <div className={`${styles.patternCard} ${styles.patternCardAccent}`}>
-                        <div className={styles.patternCardHeader}>
-                          <h4 className={styles.patternCardTitle}>Open Tasks</h4>
-                          <Button variant="outline" size="sm">View all</Button>
-                        </div>
-                        <div className={styles.patternCardBody}>Card with top accent strip and shadow. Used for tables and data sections.</div>
-                      </div>
-                    </div>
-
-                    {/* Detail card */}
-                    <div style={{ flex: '1 1 200px', minWidth: 180 }}>
-                      <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: 'var(--neutral-400)', marginBottom: 6 }}>Detail Card</div>
-                      <div className={styles.patternCard} style={{ borderTop: '3px solid var(--primary-600)', padding: 16 }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                          {[['Owner', 'Richard Hendricks'], ['Business Unit', 'Technology'], ['Process', 'Standard RCTP']].map(([l, v]) => (
-                            <div key={l} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13 }}>
-                              <span style={{ color: 'var(--text-light)', fontWeight: 500 }}>{l}</span>
-                              <span style={{ color: 'var(--text-normal)' }}>{v}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
               {/* Risk Level Cards */}
               <div className={styles.entryCard}>
                 <div className={styles.entryHeader}>
                   <h3 className={styles.entryTitle}>Risk Level Card (rcard)</h3>
-                  <p className={styles.entryDesc}>Used in the Risk Level Report section of the profile page. 123px tall, absolute-positioned labels and values, gradient background keyed to risk level. Four cards per row (3 on narrower viewports). Clickable — links to the section detail.</p>
+                  <p className={styles.entryDesc}>Used in the Risk Level Report section of the profile page. One card per risk category (Country Risk, Bribery & Corruption, General, Human Rights, Cyber, Environmental, Screening & Monitoring). 123px tall, gradient background keyed to risk level, absolute-positioned labels, risk badge, red flags count, and category score. Screening & Monitoring never shows a score.</p>
                 </div>
                 <div className={styles.demoShell}>
                   <div className={styles.demoLabel}>Live Demo</div>
                   <div style={{ padding: 20 }}>
                     <div className={styles.riskCardRow}>
                       {[
-                        { level: 'low',    label: 'Source of Funds',           flags: 0,  score: 12 },
-                        { level: 'medium', label: 'Due Diligence',             flags: 3,  score: 44 },
-                        { level: 'high',   label: 'Integrity Check',           flags: 7,  score: 76 },
-                        { level: 'medium', label: 'Screening & Monitoring',    flags: 2,  score: null },
+                        { level: 'low',    label: 'Country Risk',           flags: 0, score: 1  },
+                        { level: 'medium', label: 'Bribery & Corruption',   flags: 1, score: 9  },
+                        { level: 'high',   label: 'General',                flags: 5, score: 22 },
+                        { level: 'medium', label: 'Screening & Monitoring', flags: 2, score: null },
                       ].map((r, i) => (
                         <div key={i} className={`${styles.riskCard} ${styles['riskCard_' + r.level]}`}>
                           <span className={styles.riskCardTitle}>{r.label}</span>

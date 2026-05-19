@@ -333,6 +333,7 @@ export default function ComponentCatalog() {
   const [patternTab, setPatternTab] = useState('Overview');
   const [tableShowEmpty, setTableShowEmpty] = useState(false);
   const [tablePage, setTablePage] = useState(1);
+  const [selectedType, setSelectedType] = useState('entity');
   const [accordionOpen, setAccordionOpen] = useState({ low: true, medium: false, high: false });
   const [headerRisk, setHeaderRisk] = useState('high');
   const [panelSize, setPanelSize] = useState(null); // null = closed, else width label
@@ -1058,6 +1059,41 @@ export default function ComponentCatalog() {
             {/* ══ Cards ══ */}
             <section id="pattern-cards" className={styles.categorySection} data-catalog-section style={{ scrollMarginTop: 68 }}>
               <h2 className={styles.categoryTitle}>Cards</h2>
+
+              {/* Third Party Type cards */}
+              <div className={styles.entryCard}>
+                <div className={styles.entryHeader}>
+                  <h3 className={styles.entryTitle}>Third Party Type Card</h3>
+                  <p className={styles.entryDesc}>Selection cards shown in the first step of the onboarding wizard. Three options: Entity, Person, Unknown. Clicking selects the card — border turns primary-500, icon background fills blue, a check icon appears top-right. Used only in AddThirdParty.jsx.</p>
+                </div>
+                <div className={styles.demoShell}>
+                  <div className={styles.demoLabel}>Live Demo</div>
+                  <div style={{ padding: '20px 20px 24px' }}>
+                    <div className={styles.typeCards}>
+                      {[
+                        { id: 'entity',  icon: 'business',     title: 'Entity',  desc: 'A company, firm, partnership or other registered legal entity.' },
+                        { id: 'person',  icon: 'person',        title: 'Person',  desc: 'A natural person acting as a sole trader, contractor or individual.' },
+                        { id: 'unknown', icon: 'help_outline',  title: 'Unknown', desc: 'The type of third party is not yet known or cannot be determined.' },
+                      ].map(t => (
+                        <div
+                          key={t.id}
+                          className={`${styles.typeCard} ${selectedType === t.id ? styles.typeCardSelected : ''}`}
+                          onClick={() => setSelectedType(t.id)}
+                        >
+                          {selectedType === t.id && (
+                            <span className={`material-icons-outlined ${styles.typeCheck}`}>check_circle</span>
+                          )}
+                          <div className={styles.typeIconWrap}>
+                            <span className="material-icons-outlined">{t.icon}</span>
+                          </div>
+                          <div className={styles.typeTitle}>{t.title}</div>
+                          <div className={styles.typeDesc}>{t.desc}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               {/* Risk Level Cards */}
               <div className={styles.entryCard}>

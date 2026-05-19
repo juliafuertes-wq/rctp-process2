@@ -16,9 +16,6 @@ import Toggle from '../components/ui/Toggle';
 import Paginator from '../components/ui/Paginator';
 import { RiskLevelIcon, TASK_ICONS } from '../components/profile/profileAssets';
 import Breadcrumb from '../components/layout/Breadcrumb';
-import Header from '../components/layout/Header';
-import MainNav from '../components/layout/MainNav';
-import Footer from '../components/layout/Footer';
 import PropsTable from '../components/catalog/PropsTable';
 import TokenSwatch from '../components/catalog/TokenSwatch';
 import styles from './ComponentCatalog.module.css';
@@ -193,7 +190,6 @@ const SIDEBAR_SECTIONS = [
       { label: 'Task Icons', id: 'taskicons' },
       { label: 'Status Badges', id: 'statusbadges' },
       { label: 'Profile Page Header', id: 'profile-header' },
-      { label: 'Process Status Pill', id: 'process-status-pill' },
       { label: 'Field Grid', id: 'field-grid' },
     ],
   },
@@ -201,10 +197,7 @@ const SIDEBAR_SECTIONS = [
     label: 'Layout',
     id: 'layout',
     items: [
-      { label: 'Header', id: 'header-demo' },
-      { label: 'MainNav', id: 'mainnav-demo' },
       { label: 'Breadcrumb', id: 'breadcrumb-demo' },
-      { label: 'Footer', id: 'footer-demo' },
     ],
   },
   {
@@ -609,6 +602,111 @@ export default function ComponentCatalog() {
               />
             </section>
 
+            {/* ══ Form Inputs ══ */}
+            <section className={styles.categorySection} data-catalog-section>
+              <h2 className={styles.categoryTitle}>Form Inputs</h2>
+
+              <Entry
+                id="textfield"
+                title="TextField"
+                description="Labeled text input with optional leading icon, helper text, error state, and disabled state."
+                demo={
+                  <div className={styles.demoStageColumn}>
+                    <div className={styles.demoRow}>
+                      <TextField label="Default" value={tfValue} onChange={e => setTfValue(e.target.value)} placeholder="Enter value…" style={{ width: 220 }} />
+                      <TextField label="With icon" value={tfValue} onChange={e => setTfValue(e.target.value)} placeholder="Search…" icon="search" style={{ width: 220 }} />
+                    </div>
+                    <div className={styles.demoRow}>
+                      <TextField label="With helper" value={tfValue} onChange={e => setTfValue(e.target.value)} placeholder="Legal name" helperText="Enter the full registered legal name" style={{ width: 220 }} />
+                      <TextField label="Error state" value={tfValue} onChange={e => { setTfValue(e.target.value); setTfError(e.target.value.length > 0 && e.target.value.length < 3); }} placeholder="Min 3 chars" error={tfError} errorText="Must be at least 3 characters" style={{ width: 220 }} />
+                    </div>
+                    <div className={styles.demoRow}>
+                      <TextField label="Disabled" value="Locked value" disabled style={{ width: 220 }} />
+                    </div>
+                  </div>
+                }
+                props={PROPS.textField}
+              />
+
+              <Entry
+                id="nativeselect"
+                title="NativeSelect"
+                description="Labeled native <select> with consistent styling, custom caret, error state, and disabled state."
+                demo={
+                  <div className={styles.demoStageColumn}>
+                    <div className={styles.demoRow}>
+                      <NativeSelect label="Default" value={selValue} onChange={e => setSelValue(e.target.value)} placeholder="Choose a country…" options={COUNTRIES} style={{ width: 220 }} />
+                      <NativeSelect label="With value" value="France" onChange={() => {}} options={COUNTRIES} style={{ width: 220 }} />
+                    </div>
+                    <div className={styles.demoRow}>
+                      <NativeSelect label="Error state" value="" onChange={() => {}} placeholder="Required field" options={COUNTRIES} error style={{ width: 220 }} />
+                      <NativeSelect label="Disabled" value="Germany" onChange={() => {}} options={COUNTRIES} disabled style={{ width: 220 }} />
+                    </div>
+                  </div>
+                }
+                props={PROPS.nativeSelect}
+              />
+
+              <Entry
+                id="combobox"
+                title="Combobox"
+                description="Searchable dropdown. Type to filter options. Extracted from the ObSelect pattern in AddThirdParty."
+                demo={
+                  <div className={styles.demoStageColumn}>
+                    <div className={styles.demoRow}>
+                      <Combobox label="Country" value={comboValue} onChange={setComboValue} options={COUNTRIES} placeholder="Type to search…" />
+                      <Combobox label="Error state" value="" onChange={() => {}} options={COUNTRIES} placeholder="Required" hasError />
+                      <Combobox label="Disabled" value="Japan" onChange={() => {}} options={COUNTRIES} disabled />
+                    </div>
+                  </div>
+                }
+                props={PROPS.combobox}
+              />
+            </section>
+
+            {/* ══ Controls ══ */}
+            <section className={styles.categorySection} data-catalog-section>
+              <h2 className={styles.categoryTitle}>Controls</h2>
+
+              <Entry
+                id="toggle"
+                title="Toggle"
+                description="Active / Inactive sliding toggle. Used in onboarding, renewal edit, and row status controls."
+                demo={
+                  <div className={styles.demoStage}>
+                    <Toggle value={toggleOn} onChange={setToggleOn} />
+                    <Toggle value={false} onChange={() => {}} />
+                    <Toggle value={true} labelOn="Enabled" labelOff="Disabled" onChange={() => {}} />
+                    <Toggle value={true} disabled />
+                    <Toggle value={false} disabled />
+                  </div>
+                }
+                props={PROPS.toggle}
+              />
+
+              <Entry
+                id="paginator"
+                title="Paginator"
+                description="Full pagination bar with page-size selector, result count, and first/prev/next/last navigation."
+                demo={
+                  <div className={styles.demoStageColumn}>
+                    <Paginator
+                      page={paginatorPage}
+                      totalPages={Math.ceil(140 / paginatorSize)}
+                      pageSize={paginatorSize}
+                      totalItems={140}
+                      onPageChange={setPaginatorPage}
+                      onPageSizeChange={s => { setPaginatorSize(s); setPaginatorPage(1); }}
+                    />
+                    <div style={{ fontSize: 12, color: 'var(--text-light)' }}>
+                      Page {paginatorPage} of {Math.ceil(140 / paginatorSize)} · {paginatorSize} per page · 140 total items
+                    </div>
+                  </div>
+                }
+                props={PROPS.paginator}
+              />
+            </section>
+
             {/* ══ Risk & Status ══ */}
             <section className={styles.categorySection} data-catalog-section>
               <h2 className={styles.categoryTitle}>Risk &amp; Status</h2>
@@ -791,28 +889,6 @@ export default function ComponentCatalog() {
               />
 
               <Entry
-                id="process-status-pill"
-                title="Process Status Pill"
-                description="Small inline status indicator used in the Process Summary table of the Risk Report. Three canonical values map to five pill variants."
-                demo={
-                  <div className={styles.demoStageColumn}>
-                    {[
-                      { label: 'Completed', cls: styles.sPillCompleted },
-                      { label: 'In Progress', cls: styles.sPillInProgress },
-                      { label: 'Not Started', cls: styles.sPillNotStarted },
-                      { label: 'Action Required', cls: styles.sPillAction },
-                      { label: 'Not Required', cls: styles.sPillNotStarted },
-                    ].map(p => (
-                      <div key={p.label} className={styles.demoRow}>
-                        <span className={`${styles.sPill} ${p.cls}`}>{p.label}</span>
-                        <span style={{ fontSize: 11, color: 'var(--text-light)', fontFamily: 'var(--font-mono, monospace)' }}>{p.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                }
-              />
-
-              <Entry
                 id="field-grid"
                 title="Field Grid"
                 description="4-column label/value grid used in the Overview tab of the TP profile. Labels are small-caps primary-500; values are 16px text-normal. Renders empty fields as em-dashes."
@@ -844,34 +920,6 @@ export default function ComponentCatalog() {
               <h2 className={styles.categoryTitle}>Layout</h2>
 
               <Entry
-                id="header-demo"
-                title="Header"
-                description="Application top bar with DOW JONES branding, product name, and action icon buttons. Renders at full width inside PageLayout."
-                demo={
-                  <div className={styles.demoStage} style={{ padding: 0 }}>
-                    <div className={styles.demoPreviewWrap}>
-                      <Header />
-                    </div>
-                  </div>
-                }
-                demoNote="Non-interactive preview — action buttons are rendered but not functional in this context."
-              />
-
-              <Entry
-                id="mainnav-demo"
-                title="MainNav"
-                description="Horizontal primary navigation bar with NavLink items. Active route is highlighted. Renders below the Header in PageLayout."
-                demo={
-                  <div className={styles.demoStage} style={{ padding: 0 }}>
-                    <div className={styles.demoPreviewWrap}>
-                      <MainNav />
-                    </div>
-                  </div>
-                }
-                demoNote="NavLinks are fully functional — clicking will navigate the app."
-              />
-
-              <Entry
                 id="breadcrumb-demo"
                 title="Breadcrumb"
                 description="Navigation breadcrumb trail. Supports link items and a plain-text current page item."
@@ -882,20 +930,6 @@ export default function ComponentCatalog() {
                     <Breadcrumb items={[{ label: 'Settings', to: '/settings/general/currency_approval_groups' }, { label: 'General' }, { label: 'Currency & Approval Groups' }]} />
                   </div>
                 }
-              />
-
-              <Entry
-                id="footer-demo"
-                title="Footer"
-                description="Application footer with legal links and copyright notice. Renders at the bottom of every page via PageLayout."
-                demo={
-                  <div className={styles.demoStage} style={{ padding: 0 }}>
-                    <div className={styles.demoPreviewWrap}>
-                      <Footer />
-                    </div>
-                  </div>
-                }
-                demoNote="Non-interactive preview."
               />
             </section>
 
@@ -1007,111 +1041,6 @@ export default function ComponentCatalog() {
                 </div>
               </div>
 
-            </section>
-
-            {/* ══ Form Inputs ══ */}
-            <section className={styles.categorySection} data-catalog-section>
-              <h2 className={styles.categoryTitle}>Form Inputs</h2>
-
-              <Entry
-                id="textfield"
-                title="TextField"
-                description="Labeled text input with optional leading icon, helper text, error state, and disabled state."
-                demo={
-                  <div className={styles.demoStageColumn}>
-                    <div className={styles.demoRow}>
-                      <TextField label="Default" value={tfValue} onChange={e => setTfValue(e.target.value)} placeholder="Enter value…" style={{ width: 220 }} />
-                      <TextField label="With icon" value={tfValue} onChange={e => setTfValue(e.target.value)} placeholder="Search…" icon="search" style={{ width: 220 }} />
-                    </div>
-                    <div className={styles.demoRow}>
-                      <TextField label="With helper" value={tfValue} onChange={e => setTfValue(e.target.value)} placeholder="Legal name" helperText="Enter the full registered legal name" style={{ width: 220 }} />
-                      <TextField label="Error state" value={tfValue} onChange={e => { setTfValue(e.target.value); setTfError(e.target.value.length > 0 && e.target.value.length < 3); }} placeholder="Min 3 chars" error={tfError} errorText="Must be at least 3 characters" style={{ width: 220 }} />
-                    </div>
-                    <div className={styles.demoRow}>
-                      <TextField label="Disabled" value="Locked value" disabled style={{ width: 220 }} />
-                    </div>
-                  </div>
-                }
-                props={PROPS.textField}
-              />
-
-              <Entry
-                id="nativeselect"
-                title="NativeSelect"
-                description="Labeled native <select> with consistent styling, custom caret, error state, and disabled state."
-                demo={
-                  <div className={styles.demoStageColumn}>
-                    <div className={styles.demoRow}>
-                      <NativeSelect label="Default" value={selValue} onChange={e => setSelValue(e.target.value)} placeholder="Choose a country…" options={COUNTRIES} style={{ width: 220 }} />
-                      <NativeSelect label="With value" value="France" onChange={() => {}} options={COUNTRIES} style={{ width: 220 }} />
-                    </div>
-                    <div className={styles.demoRow}>
-                      <NativeSelect label="Error state" value="" onChange={() => {}} placeholder="Required field" options={COUNTRIES} error style={{ width: 220 }} />
-                      <NativeSelect label="Disabled" value="Germany" onChange={() => {}} options={COUNTRIES} disabled style={{ width: 220 }} />
-                    </div>
-                  </div>
-                }
-                props={PROPS.nativeSelect}
-              />
-
-              <Entry
-                id="combobox"
-                title="Combobox"
-                description="Searchable dropdown. Type to filter options. Extracted from the ObSelect pattern in AddThirdParty."
-                demo={
-                  <div className={styles.demoStageColumn}>
-                    <div className={styles.demoRow}>
-                      <Combobox label="Country" value={comboValue} onChange={setComboValue} options={COUNTRIES} placeholder="Type to search…" />
-                      <Combobox label="Error state" value="" onChange={() => {}} options={COUNTRIES} placeholder="Required" hasError />
-                      <Combobox label="Disabled" value="Japan" onChange={() => {}} options={COUNTRIES} disabled />
-                    </div>
-                  </div>
-                }
-                props={PROPS.combobox}
-              />
-            </section>
-
-            {/* ══ Controls ══ */}
-            <section className={styles.categorySection} data-catalog-section>
-              <h2 className={styles.categoryTitle}>Controls</h2>
-
-              <Entry
-                id="toggle"
-                title="Toggle"
-                description="Active / Inactive sliding toggle. Used in onboarding, renewal edit, and row status controls."
-                demo={
-                  <div className={styles.demoStage}>
-                    <Toggle value={toggleOn} onChange={setToggleOn} />
-                    <Toggle value={false} onChange={() => {}} />
-                    <Toggle value={true} labelOn="Enabled" labelOff="Disabled" onChange={() => {}} />
-                    <Toggle value={true} disabled />
-                    <Toggle value={false} disabled />
-                  </div>
-                }
-                props={PROPS.toggle}
-              />
-
-              <Entry
-                id="paginator"
-                title="Paginator"
-                description="Full pagination bar with page-size selector, result count, and first/prev/next/last navigation."
-                demo={
-                  <div className={styles.demoStageColumn}>
-                    <Paginator
-                      page={paginatorPage}
-                      totalPages={Math.ceil(140 / paginatorSize)}
-                      pageSize={paginatorSize}
-                      totalItems={140}
-                      onPageChange={setPaginatorPage}
-                      onPageSizeChange={s => { setPaginatorSize(s); setPaginatorPage(1); }}
-                    />
-                    <div style={{ fontSize: 12, color: 'var(--text-light)' }}>
-                      Page {paginatorPage} of {Math.ceil(140 / paginatorSize)} · {paginatorSize} per page · 140 total items
-                    </div>
-                  </div>
-                }
-                props={PROPS.paginator}
-              />
             </section>
 
           </>}

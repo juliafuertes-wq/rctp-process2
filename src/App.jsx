@@ -64,7 +64,7 @@ function PasswordGate({ onAuth }) {
       }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
           <span style={{ fontSize: 32 }} className="material-icons-outlined">lock</span>
-          <span style={{ fontSize: 20, fontWeight: 600, color: 'var(--text-primary)' }}>RCTP Platform</span>
+          <span style={{ fontSize: 20, fontWeight: 600, color: 'var(--text-normal)' }}>RCTP Platform</span>
           <span style={{ fontSize: 13, color: 'var(--text-light)' }}>Enter the password to continue</span>
         </div>
         <form onSubmit={handleSubmit} style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -78,7 +78,7 @@ function PasswordGate({ onAuth }) {
               width: '100%', boxSizing: 'border-box',
               padding: '10px 14px', borderRadius: 6,
               border: error ? '1.5px solid var(--danger-500, #d32f2f)' : '1.5px solid var(--neutral-50)',
-              fontSize: 14, outline: 'none', color: 'var(--text-primary)',
+              fontSize: 14, outline: 'none', color: 'var(--text-normal)',
             }}
           />
           {error && <span style={{ fontSize: 12, color: 'var(--danger-500, #d32f2f)' }}>Incorrect password</span>}

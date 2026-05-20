@@ -219,15 +219,15 @@ const COLOR_GROUPS = [
   },
   {
     label: 'Alert',
-    tokens: ['--alert-50','--alert-100','--alert-200','--alert-300','--alert-400','--alert-500','--alert-600','--alert-700','--alert-800','--alert-900'],
+    tokens: ['--alert-50','--alert-100','--alert-300','--alert-500','--alert-700','--alert-900'],
   },
   {
     label: 'Success',
-    tokens: ['--success-50','--success-100','--success-200','--success-300','--success-400','--success-500','--success-600','--success-700','--success-800','--success-900'],
+    tokens: ['--success-50','--success-100','--success-300','--success-500','--success-700','--success-900'],
   },
   {
     label: 'Warning',
-    tokens: ['--warning-50','--warning-100','--warning-200','--warning-300','--warning-400','--warning-500','--warning-600','--warning-700','--warning-800','--warning-900'],
+    tokens: ['--warning-50','--warning-100','--warning-300','--warning-500','--warning-700','--warning-900'],
   },
 ];
 

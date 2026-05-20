@@ -33,7 +33,7 @@
 }
 
 .inputWrapError:focus-within {
-  border-color: var(--alert-600);
+  border-color: var(--alert-700);
 }
 
 .inputWrapDisabled {
@@ -70,7 +70,7 @@
 
 .errorText {
   font-size: 11px;
-  color: var(--alert-600);
+  color: var(--alert-700);
   font-family: var(--font-body, Roboto, sans-serif);
 }
 

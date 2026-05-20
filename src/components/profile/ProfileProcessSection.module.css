@@ -71,7 +71,7 @@
   align-items: center;
   justify-content: center;
   padding: 4px;
-  border-radius: 4px;
+  border-radius: var(--rctp-radius-sm);
   transition: background 0.15s ease;
 }
 .playBtn:hover {
@@ -94,7 +94,7 @@
   align-items: center;
   justify-content: center;
   padding: 4px;
-  border-radius: 4px;
+  border-radius: var(--rctp-radius-sm);
   transition: background 0.15s ease, color 0.15s ease;
 }
 .iconBtn:hover {
@@ -110,7 +110,7 @@
   margin-top: 16px;
   padding: 14px 16px;
   background: var(--neutral-50);
-  border-radius: 4px;
+  border-radius: var(--rctp-radius-sm);
   font-size: 13px;
   color: var(--text-light);
 }

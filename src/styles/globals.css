@@ -145,8 +145,7 @@
   /* ── RCTP radii ── */
   --rctp-radius-xs:      2px;
   --rctp-radius-sm:      4px;
-  --rctp-radius-md:      16px;
-  --rctp-radius-lg:      28px;
+  --rctp-radius-md:      8px;
   --rctp-radius-pill:    1000px;
 
   /* ── RCTP spacing ── */
@@ -203,8 +202,6 @@
   --z-cancel:   2000;
   --z-creating: 3000;
 
-  /* ── Corner radius ── */
-  --corner-extra-large: var(--rctp-radius-lg);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }

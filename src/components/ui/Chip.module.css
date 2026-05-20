@@ -6,7 +6,7 @@
   gap: 8px;
   height: 32px;
   padding: 0 12px;
-  border-radius: 8px;
+  border-radius: var(--rctp-radius-md);
   font-size: 14px;         /* Body/Medium */
   font-family: inherit;
   font-weight: 400;
@@ -64,7 +64,7 @@
   max-width: 34px;
   height: 16px;
   padding: 0 4px;
-  border-radius: 100px;
+  border-radius: var(--rctp-radius-pill);
   background: var(--alert-500);
   color: #fff;
   font-size: 11px;                       /* Label/Small */

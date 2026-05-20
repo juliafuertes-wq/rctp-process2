@@ -2,7 +2,7 @@
   position: relative;
   width: 96px;
   height: 32px;
-  border-radius: 2px;
+  border-radius: var(--rctp-radius-xs);
   overflow: hidden;
   border: 1px solid var(--success-500);
   background: var(--success-500);

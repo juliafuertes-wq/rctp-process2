@@ -32,7 +32,7 @@
   max-width: 34px;
   height: 16px;
   padding: 4px;
-  border-radius: 100px;
+  border-radius: var(--rctp-radius-pill);
 }
 
 .largeSquare {
@@ -40,19 +40,19 @@
   max-width: 34px;
   height: 16px;
   padding: 4px 2px;
-  border-radius: 2px;
+  border-radius: var(--rctp-radius-xs);
 }
 
 .small {
   width: 6px;
   height: 6px;
-  border-radius: 100px;
+  border-radius: var(--rctp-radius-pill);
   padding: 0;
 }
 
 .medium {
   width: 10px;
   height: 10px;
-  border-radius: 100px;
+  border-radius: var(--rctp-radius-pill);
   padding: 0;
 }

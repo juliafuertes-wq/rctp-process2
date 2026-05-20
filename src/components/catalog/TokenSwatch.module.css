@@ -8,7 +8,7 @@
 .swatch {
   width: 36px;
   height: 20px;
-  border-radius: 3px;
+  border-radius: var(--rctp-radius-xs);
   border: 1px solid rgba(0, 0, 0, 0.08);
   flex-shrink: 0;
 }

@@ -255,8 +255,7 @@ const SHADOW_TOKENS = [
 const RADII_TOKENS = [
   { name: '--rctp-radius-xs', value: '2px' },
   { name: '--rctp-radius-sm', value: '4px' },
-  { name: '--rctp-radius-md', value: '16px' },
-  { name: '--rctp-radius-lg', value: '28px' },
+  { name: '--rctp-radius-md', value: '8px' },
   { name: '--rctp-radius-pill', value: '1000px' },
 ];
 

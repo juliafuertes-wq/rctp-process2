@@ -48,7 +48,7 @@
   color: var(--primary-700);
   background: var(--primary-08);
   padding: 1px 5px;
-  border-radius: 3px;
+  border-radius: var(--rctp-radius-xs);
 }
 
 .type {

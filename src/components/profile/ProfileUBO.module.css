@@ -74,7 +74,7 @@
 .btnView {
   height: 32px;
   padding: 0 14px;
-  border-radius: 4px;
+  border-radius: var(--rctp-radius-sm);
   font-size: 12px;
   font-weight: 500;
   font-family: inherit;

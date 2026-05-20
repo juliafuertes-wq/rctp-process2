@@ -148,45 +148,34 @@ const SIDEBAR_SECTIONS = [
       { label: 'Chip', id: 'chip' },
       { label: 'Tag', id: 'tag' },
       { label: 'Tooltip', id: 'tooltip' },
+      { label: 'Modal', id: 'modal' },
     ],
   },
   {
-    label: 'Form Controls',
-    id: 'form-controls',
+    label: 'Form',
+    id: 'form',
     items: [
       { label: 'Checkbox', id: 'checkbox' },
       { label: 'Radio', id: 'radio' },
-    ],
-  },
-  {
-    label: 'Form Inputs',
-    id: 'form-inputs',
-    items: [
       { label: 'TextField', id: 'textfield' },
       { label: 'NativeSelect', id: 'nativeselect' },
       { label: 'Combobox', id: 'combobox' },
-    ],
-  },
-  {
-    label: 'Controls',
-    id: 'controls',
-    items: [
       { label: 'Toggle', id: 'toggle' },
-      { label: 'Paginator', id: 'paginator' },
     ],
   },
   {
-    label: 'Risk & Status',
-    id: 'risk-status',
+    label: 'Data Display',
+    id: 'data-display',
     items: [
       { label: 'RiskBadge', id: 'riskbadge' },
+      { label: 'Status Badges', id: 'statusbadges' },
+      { label: 'Paginator', id: 'paginator' },
     ],
   },
   {
     label: 'Profile Atoms',
     id: 'profile-atoms',
     items: [
-      { label: 'Status Badges', id: 'statusbadges' },
       { label: 'Profile Page Header', id: 'profile-header' },
       { label: 'Field Grid', id: 'field-grid' },
     ],
@@ -293,7 +282,6 @@ const PATTERNS_SECTIONS = [
   { label: 'Alerts & Banners', id: 'pattern-alerts' },
   { label: 'Accordion',        id: 'pattern-accordion' },
   { label: 'Side Panel',       id: 'pattern-sidepanel' },
-  { label: 'Modal',            id: 'pattern-modal' },
 ];
 
 const SAMPLE_ROWS = [
@@ -565,14 +553,14 @@ export default function ComponentCatalog() {
                 description="Compact label pill used to categorise third parties. Appears in the ThirdParties table and the onboarding Summary section. Optional × button for removable chips."
                 demo={
                   <div className={styles.demoStage} style={{ flexWrap: 'wrap' }}>
-                    <span style={{ display:'inline-flex', alignItems:'center', padding:'2px 8px', borderRadius:3, background:'var(--neutral-100)', color:'var(--text-normal)', fontSize:11, fontWeight:500, whiteSpace:'nowrap' }}>Paper</span>
-                    <span style={{ display:'inline-flex', alignItems:'center', padding:'2px 8px', borderRadius:3, background:'var(--neutral-100)', color:'var(--text-normal)', fontSize:11, fontWeight:500, whiteSpace:'nowrap' }}>Regional</span>
-                    <span style={{ display:'inline-flex', alignItems:'center', padding:'2px 8px', borderRadius:3, background:'var(--neutral-100)', color:'var(--text-normal)', fontSize:11, fontWeight:500, whiteSpace:'nowrap' }}>Scranton</span>
-                    <span style={{ display:'inline-flex', alignItems:'center', background:'var(--text-light)', border:'1px solid var(--neutral-800)', borderRadius:4, height:24, overflow:'hidden', padding:'0 4px 0 8px', gap:8, fontSize:14, fontWeight:400, color:'var(--neutral-00)', whiteSpace:'nowrap' }}>
+                    <span style={{ display:'inline-flex', alignItems:'center', padding:'2px 8px', borderRadius:'var(--rctp-radius-xs)', background:'var(--neutral-100)', color:'var(--text-normal)', fontSize:11, fontWeight:500, whiteSpace:'nowrap' }}>Paper</span>
+                    <span style={{ display:'inline-flex', alignItems:'center', padding:'2px 8px', borderRadius:'var(--rctp-radius-xs)', background:'var(--neutral-100)', color:'var(--text-normal)', fontSize:11, fontWeight:500, whiteSpace:'nowrap' }}>Regional</span>
+                    <span style={{ display:'inline-flex', alignItems:'center', padding:'2px 8px', borderRadius:'var(--rctp-radius-xs)', background:'var(--neutral-100)', color:'var(--text-normal)', fontSize:11, fontWeight:500, whiteSpace:'nowrap' }}>Scranton</span>
+                    <span style={{ display:'inline-flex', alignItems:'center', background:'var(--text-light)', border:'1px solid var(--neutral-800)', borderRadius:'var(--rctp-radius-sm)', height:24, overflow:'hidden', padding:'0 4px 0 8px', gap:8, fontSize:14, fontWeight:400, color:'var(--neutral-00)', whiteSpace:'nowrap' }}>
                       Finance
                       <button style={{ background:'none', border:'none', color:'var(--neutral-00)', cursor:'pointer', fontSize:14, lineHeight:1, padding:0, opacity:0.8, display:'flex', alignItems:'center' }}>×</button>
                     </span>
-                    <span style={{ display:'inline-flex', alignItems:'center', background:'var(--text-light)', border:'1px solid var(--neutral-800)', borderRadius:4, height:24, overflow:'hidden', padding:'0 4px 0 8px', gap:8, fontSize:14, fontWeight:400, color:'var(--neutral-00)', whiteSpace:'nowrap' }}>
+                    <span style={{ display:'inline-flex', alignItems:'center', background:'var(--text-light)', border:'1px solid var(--neutral-800)', borderRadius:'var(--rctp-radius-sm)', height:24, overflow:'hidden', padding:'0 4px 0 8px', gap:8, fontSize:14, fontWeight:400, color:'var(--neutral-00)', whiteSpace:'nowrap' }}>
                       Compliance
                       <button style={{ background:'none', border:'none', color:'var(--neutral-00)', cursor:'pointer', fontSize:14, lineHeight:1, padding:0, opacity:0.8, display:'flex', alignItems:'center' }}>×</button>
                     </span>
@@ -660,11 +648,35 @@ export default function ComponentCatalog() {
                 props={PROPS.tooltip}
               />
 
+              <Entry
+                id="modal"
+                title="Modal"
+                description="Centered dialog with a dimmed overlay. Used for destructive confirmations (delete, cancel creation, decline) and renewal prompts. Closes on Escape, backdrop click, or the cancel button. Header, scrollable body, and a cancel/confirm footer."
+                demo={
+                  <div className={styles.demoStage}>
+                    <Button variant="filled" onClick={() => setModalOpen(true)}>Open Modal</Button>
+                    <Modal
+                      open={modalOpen}
+                      title="Confirm Action"
+                      onClose={() => setModalOpen(false)}
+                      onConfirm={() => setModalOpen(false)}
+                      confirmLabel="Confirm"
+                      cancelLabel="Cancel"
+                    >
+                      <p style={{ margin: 0, fontSize: 14, color: 'var(--text-light)', lineHeight: 1.6 }}>
+                        This is the modal body content. You can place any content here — forms, descriptions, warnings, etc.
+                      </p>
+                    </Modal>
+                  </div>
+                }
+                props={PROPS.modal}
+              />
+
             </section>
 
-            {/* ══ Form Controls ══ */}
+            {/* ══ Form ══ */}
             <section className={styles.categorySection} data-catalog-section>
-              <h2 className={styles.categoryTitle}>Form Controls</h2>
+              <h2 className={styles.categoryTitle}>Form</h2>
 
               <Entry
                 id="checkbox"
@@ -714,11 +726,6 @@ export default function ComponentCatalog() {
                 }
                 props={PROPS.radio}
               />
-            </section>
-
-            {/* ══ Form Inputs ══ */}
-            <section className={styles.categorySection} data-catalog-section>
-              <h2 className={styles.categoryTitle}>Form Inputs</h2>
 
               <Entry
                 id="textfield"
@@ -776,11 +783,6 @@ export default function ComponentCatalog() {
                 }
                 props={PROPS.combobox}
               />
-            </section>
-
-            {/* ══ Controls ══ */}
-            <section className={styles.categorySection} data-catalog-section>
-              <h2 className={styles.categoryTitle}>Controls</h2>
 
               <Entry
                 id="toggle"
@@ -794,6 +796,26 @@ export default function ComponentCatalog() {
                   </div>
                 }
                 props={PROPS.toggle}
+              />
+            </section>
+
+            {/* ══ Data Display ══ */}
+            <section className={styles.categorySection} data-catalog-section>
+              <h2 className={styles.categoryTitle}>Data Display</h2>
+
+              <Entry
+                id="riskbadge"
+                title="RiskBadge"
+                description="Risk level indicator badge with a semantic icon and label. Used in screening tables, association lists, and the profile header while risk assessment is pending."
+                demo={
+                  <div className={styles.demoStage}>
+                    <RiskBadge level="high" />
+                    <RiskBadge level="medium" />
+                    <RiskBadge level="low" />
+                    <RiskBadge level="unknown" />
+                  </div>
+                }
+                props={PROPS.riskBadge}
               />
 
               <Entry
@@ -817,32 +839,6 @@ export default function ComponentCatalog() {
                 }
                 props={PROPS.paginator}
               />
-            </section>
-
-            {/* ══ Risk & Status ══ */}
-            <section className={styles.categorySection} data-catalog-section>
-              <h2 className={styles.categoryTitle}>Risk &amp; Status</h2>
-
-              <Entry
-                id="riskbadge"
-                title="RiskBadge"
-                description="Risk level indicator badge with a semantic icon and label. Used in screening tables, association lists, and the profile header while risk assessment is pending."
-                demo={
-                  <div className={styles.demoStage}>
-                    <RiskBadge level="high" />
-                    <RiskBadge level="medium" />
-                    <RiskBadge level="low" />
-                    <RiskBadge level="unknown" />
-                  </div>
-                }
-                props={PROPS.riskBadge}
-              />
-
-            </section>
-
-            {/* ══ Profile Atoms ══ */}
-            <section className={styles.categorySection} data-catalog-section>
-              <h2 className={styles.categoryTitle}>Profile Atoms</h2>
 
               <Entry
                 id="statusbadges"
@@ -872,6 +868,12 @@ export default function ComponentCatalog() {
                   </div>
                 }
               />
+
+            </section>
+
+            {/* ══ Profile Atoms ══ */}
+            <section className={styles.categorySection} data-catalog-section>
+              <h2 className={styles.categoryTitle}>Profile Atoms</h2>
 
               <Entry
                 id="profile-header"
@@ -1189,7 +1191,7 @@ export default function ComponentCatalog() {
                             <tr>
                               <td>
                                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                                  <span style={{ display: 'inline-block', width: 3, height: 16, background: 'var(--primary-300)', borderRadius: 2, marginLeft: 12, marginRight: 4 }} />
+                                  <span style={{ display: 'inline-block', width: 3, height: 16, background: 'var(--primary-300)', borderRadius: 'var(--rctp-radius-xs)', marginLeft: 12, marginRight: 4 }} />
                                   Due Diligence — Internal
                                 </span>
                               </td>
@@ -1203,7 +1205,7 @@ export default function ComponentCatalog() {
                             <tr>
                               <td>
                                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                                  <span style={{ display: 'inline-block', width: 3, height: 16, background: 'var(--primary-300)', borderRadius: 2, marginLeft: 12, marginRight: 4 }} />
+                                  <span style={{ display: 'inline-block', width: 3, height: 16, background: 'var(--primary-300)', borderRadius: 'var(--rctp-radius-xs)', marginLeft: 12, marginRight: 4 }} />
                                   Due Diligence — External
                                 </span>
                               </td>
@@ -1372,10 +1374,10 @@ export default function ComponentCatalog() {
                                   <div style={{ fontSize: 12, color: 'var(--text-light)', marginTop: 2 }}>{r.desc}</div>
                                 </td>
                                 <td style={{ textAlign: 'center', fontSize: 13 }}>
-                                  {r.tps ? <span style={{ color: 'var(--success-600)' }}>Yes</span> : <span style={{ color: 'var(--neutral-400)' }}>No</span>}
+                                  {r.tps ? <span style={{ color: 'var(--success-700)' }}>Yes</span> : <span style={{ color: 'var(--neutral-400)' }}>No</span>}
                                 </td>
                                 <td style={{ textAlign: 'center', fontSize: 13 }}>
-                                  {r.emp ? <span style={{ color: 'var(--success-600)' }}>Yes</span> : <span style={{ color: 'var(--neutral-400)' }}>No</span>}
+                                  {r.emp ? <span style={{ color: 'var(--success-700)' }}>Yes</span> : <span style={{ color: 'var(--neutral-400)' }}>No</span>}
                                 </td>
                                 <td style={{ textAlign: 'center' }}>
                                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-light)', display: 'inline-flex', alignItems: 'center' }}>
@@ -1674,7 +1676,7 @@ export default function ComponentCatalog() {
                   <div className={styles.demoStageColumn}>
 
                     <div className={styles.banner} style={{ background: 'var(--warning-50)', borderColor: 'var(--warning-300)', color: 'var(--warning-900)' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--warning-600)' }}>warning_amber</span>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--warning-700)' }}>warning_amber</span>
                       <div>
                         <div className={styles.bannerTitle}>Warning — Potential duplicates found</div>
                         <div className={styles.bannerDesc}>10 existing records have a similar name. Review before continuing to avoid creating duplicate profiles.</div>
@@ -1690,7 +1692,7 @@ export default function ComponentCatalog() {
                     </div>
 
                     <div className={styles.banner} style={{ background: 'var(--alert-50)', borderColor: 'var(--alert-300)', color: 'var(--alert-900)' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--alert-600)' }}>error_outline</span>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--alert-700)' }}>error_outline</span>
                       <div>
                         <div className={styles.bannerTitle}>Error — Required fields missing</div>
                         <div className={styles.bannerDesc}>Please fill in all required fields before continuing. Highlighted fields are mandatory.</div>
@@ -1698,7 +1700,7 @@ export default function ComponentCatalog() {
                     </div>
 
                     <div className={styles.banner} style={{ background: 'var(--success-50)', borderColor: 'var(--success-300)', color: 'var(--success-900)' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--success-600)' }}>check_circle_outline</span>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--success-700)' }}>check_circle_outline</span>
                       <div>
                         <div className={styles.bannerTitle}>Success — Third party approved</div>
                         <div className={styles.bannerDesc}>The third party has been successfully approved and is now active in the system.</div>
@@ -1838,36 +1840,6 @@ export default function ComponentCatalog() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </section>
-
-            {/* ══ Modal ══ */}
-            <section id="pattern-modal" className={styles.categorySection} data-catalog-section style={{ scrollMarginTop: 68 }}>
-              <h2 className={styles.categoryTitle}>Modal</h2>
-              <div className={styles.entryCard}>
-                <div className={styles.entryHeader}>
-                  <h3 className={styles.entryTitle}>Confirmation Modal</h3>
-                  <p className={styles.entryDesc}>Centered dialog with a dimmed overlay. Used for destructive confirmations (delete, cancel creation, decline) and renewal prompts. Closes on Escape, backdrop click, or the cancel button. Header, scrollable body, and a cancel/confirm footer.</p>
-                </div>
-                <div className={styles.demoShell}>
-                  <div className={styles.demoLabel}>Live Demo</div>
-                  <div style={{ padding: '16px 20px 20px' }}>
-                    <Button variant="filled" onClick={() => setModalOpen(true)}>Open Modal</Button>
-                    <Modal
-                      open={modalOpen}
-                      title="Confirm Action"
-                      onClose={() => setModalOpen(false)}
-                      onConfirm={() => setModalOpen(false)}
-                      confirmLabel="Confirm"
-                      cancelLabel="Cancel"
-                    >
-                      <p style={{ margin: 0, fontSize: 14, color: 'var(--text-light)', lineHeight: 1.6 }}>
-                        This is the modal body content. You can place any content here — forms, descriptions, warnings, etc.
-                      </p>
-                    </Modal>
-                  </div>
-                </div>
-                <PropsTable rows={PROPS.modal} />
               </div>
             </section>
 

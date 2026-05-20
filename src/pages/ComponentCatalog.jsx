@@ -322,6 +322,25 @@ function Entry({ id, title, description, demo, demoNote, props: propsRows }) {
   );
 }
 
+function SegmentedDemo() {
+  const [ownerMode, setOwnerMode] = useState('group');
+  const [entityType, setEntityType] = useState('entity');
+  return (
+    <div style={{ display:'flex', gap:24, alignItems:'center', flexWrap:'wrap' }}>
+      <div className={styles.btnSegmentedGroup}>
+        {['Group','User'].map(o => (
+          <button key={o} className={`${styles.btnSegmented} ${ownerMode === o.toLowerCase() ? styles.btnSegmentedActive : ''}`} onClick={() => setOwnerMode(o.toLowerCase())}>{o}</button>
+        ))}
+      </div>
+      <div className={styles.btnSegmentedGroup}>
+        {['Entity','Person','Unknown'].map(o => (
+          <button key={o} className={`${styles.btnSegmented} ${entityType === o.toLowerCase() ? styles.btnSegmentedActive : ''}`} onClick={() => setEntityType(o.toLowerCase())}>{o}</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function ComponentCatalog() {
   const [activeTab, setActiveTab] = useState('Components');
   const [activeSection, setActiveSection] = useState('button');
@@ -467,7 +486,7 @@ export default function ComponentCatalog() {
               <Entry
                 id="button"
                 title="Button"
-                description="General-purpose action button. Two visual variants: filled (primary action) and outline (secondary action)."
+                description="General-purpose action button. Two visual variants: filled (primary action) and outline (secondary action). Segmented group joins multiple buttons into a single control for mutually exclusive selection."
                 demo={
                   <div className={styles.demoStageColumn}>
                     <div className={styles.demoRow}>
@@ -496,6 +515,10 @@ export default function ComponentCatalog() {
                       <Button variant="outline" size="sm" icon="add">Small</Button>
                       <Button variant="outline" size="md" icon="add">Medium</Button>
                       <Button variant="outline" size="lg" icon="add">Large</Button>
+                    </div>
+                    <div className={styles.demoRow} style={{ alignItems: 'center' }}>
+                      <span className={styles.demoGroupLabel}>Segmented</span>
+                      <SegmentedDemo />
                     </div>
                   </div>
                 }

@@ -609,6 +609,42 @@
   flex-wrap: wrap;
 }
 
+/* ── Segmented button group ── */
+.btnSegmentedGroup {
+  display: inline-flex;
+}
+
+.btnSegmented {
+  height: 34px;
+  padding: 0 16px;
+  background: var(--neutral-00);
+  border: 1px solid var(--neutral-300);
+  border-right: none;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.btnSegmented:last-child {
+  border-right: 1px solid var(--neutral-300);
+  border-radius: 0 4px 4px 0;
+}
+.btnSegmented:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.btnSegmented:hover:not(.btnSegmentedActive) {
+  background: var(--neutral-25);
+}
+.btnSegmentedActive {
+  background: var(--primary-500);
+  border-color: var(--primary-500);
+  color: var(--neutral-00);
+}
+
 .demoCheckboxGroup {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));

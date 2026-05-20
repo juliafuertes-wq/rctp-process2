@@ -52,7 +52,7 @@
   align-items: flex-start;
   gap: 12px;
   padding: 14px 16px;
-  border-radius: 4px;
+  border-radius: var(--rctp-radius-sm);
   border: 1px solid transparent;
   font-size: 14px;
   font-family: var(--font-body, Roboto, sans-serif);
@@ -69,6 +69,34 @@
   font-weight: 600;
   margin-bottom: 2px;
 }
+
+/* Toast variant — single line, fixed-position style; rendered statically in catalog */
+.bannerToast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-body, Roboto, sans-serif);
+  width: 100%;
+}
+.bannerToast .bannerIcon { margin-top: 0; font-size: 20px; }
+
+/* Inline warning — single line, no title */
+.bannerInline {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: var(--rctp-radius-sm);
+  font-size: 13px;
+  line-height: 1.5;
+  font-family: var(--font-body, Roboto, sans-serif);
+  width: 100%;
+}
+.bannerInline .bannerIcon { margin-top: 1px; font-size: 18px; }
 
 .bannerDesc {
   font-size: 13px;

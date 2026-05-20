@@ -16,6 +16,7 @@ import Paginator from '../components/ui/Paginator';
 import { RiskLevelIcon } from '../components/profile/profileAssets';
 import Breadcrumb from '../components/layout/Breadcrumb';
 import PropsTable from '../components/catalog/PropsTable';
+import AnatomyTable from '../components/catalog/AnatomyTable';
 import TokenSwatch from '../components/catalog/TokenSwatch';
 import styles from './ComponentCatalog.module.css';
 
@@ -1662,19 +1663,35 @@ export default function ComponentCatalog() {
                   </div>
                 </div>
               </div>
+
+              <div className={styles.entryCard}>
+                <div className={styles.entryHeader}>
+                  <h3 className={styles.entryTitle}>Anatomy</h3>
+                </div>
+                <AnatomyTable rows={[
+                  { part: 'Summary link',    purpose: 'Top-level entry point — always present, takes user to the profile overview.', notes: 'Bold when active; sits above the first divider.' },
+                  { part: 'Workflow steps',  purpose: 'Sequenced process steps with status dots (Risk Assessment, Due Diligence, etc.).', notes: 'Dot color signals state: green = complete, amber = in progress, red = required-not-started, grey = not required, neutral-200 = blocked.' },
+                  { part: 'Status dot',      purpose: 'Color-coded dot prefix; hover shows tooltip with the state label.',          notes: '8px circle, left of the label. Tooltip is the small dark Tooltip variant.' },
+                  { part: 'Partner icon',    purpose: 'Trailing badge marking steps powered by an external integration.',           notes: 'Hover shows partner name in a tooltip (e.g. "Powered by Duns & Bradstreet").' },
+                  { part: 'New tag',         purpose: 'Highlights recently introduced steps.',                                       notes: 'Pill-shaped, right-aligned. Removed once the step is no longer new.' },
+                  { part: 'Section links',   purpose: 'Profile-scoped pages (Properties, Documents, Audit, etc.).',                  notes: 'Below the second divider. Active state uses primary-500 background.' },
+                  { part: 'Divider',         purpose: 'Separates the three regions (Summary / Steps / Sections).',                   notes: '1px neutral-50 horizontal line, full sidebar width.' },
+                ]} />
+              </div>
             </section>
 
             {/* ══ Alerts & Banners ══ */}
             <section id="pattern-alerts" className={styles.categorySection} data-catalog-section style={{ scrollMarginTop: 68 }}>
               <h2 className={styles.categoryTitle}>Alerts &amp; Banners</h2>
+
+              {/* Variant 1: Inline with title */}
               <div className={styles.entryCard}>
                 <div className={styles.entryHeader}>
-                  <h3 className={styles.entryTitle}>Banner Variants</h3>
-                  <p className={styles.entryDesc}>Inline notification banners. Four severity levels: warning, info, error, and success.</p>
+                  <h3 className={styles.entryTitle}>Inline Banner — Title + Description</h3>
+                  <p className={styles.entryDesc}>Multi-line banner with bold title and supporting description. Used as a contextual notice inside page or panel content. Four severity levels share the same structure; color, icon, and tone change per severity.</p>
                 </div>
                 <div className={styles.demoShell}>
                   <div className={styles.demoStageColumn}>
-
                     <div className={styles.banner} style={{ background: 'var(--warning-50)', borderColor: 'var(--warning-300)', color: 'var(--warning-900)' }}>
                       <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--warning-700)' }}>warning_amber</span>
                       <div>
@@ -1682,7 +1699,6 @@ export default function ComponentCatalog() {
                         <div className={styles.bannerDesc}>10 existing records have a similar name. Review before continuing to avoid creating duplicate profiles.</div>
                       </div>
                     </div>
-
                     <div className={styles.banner} style={{ background: 'var(--primary-08)', borderColor: 'var(--primary-200)', color: 'var(--text-normal)' }}>
                       <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--primary-500)' }}>info</span>
                       <div>
@@ -1690,7 +1706,6 @@ export default function ComponentCatalog() {
                         <div className={styles.bannerDesc}>Some fields have been pre-filled from the entity verification step. Review and adjust as needed.</div>
                       </div>
                     </div>
-
                     <div className={styles.banner} style={{ background: 'var(--alert-50)', borderColor: 'var(--alert-300)', color: 'var(--alert-900)' }}>
                       <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--alert-700)' }}>error_outline</span>
                       <div>
@@ -1698,7 +1713,6 @@ export default function ComponentCatalog() {
                         <div className={styles.bannerDesc}>Please fill in all required fields before continuing. Highlighted fields are mandatory.</div>
                       </div>
                     </div>
-
                     <div className={styles.banner} style={{ background: 'var(--success-50)', borderColor: 'var(--success-300)', color: 'var(--success-900)' }}>
                       <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--success-700)' }}>check_circle_outline</span>
                       <div>
@@ -1706,9 +1720,63 @@ export default function ComponentCatalog() {
                         <div className={styles.bannerDesc}>The third party has been successfully approved and is now active in the system.</div>
                       </div>
                     </div>
-
                   </div>
                 </div>
+              </div>
+
+              {/* Variant 2: Toast */}
+              <div className={styles.entryCard}>
+                <div className={styles.entryHeader}>
+                  <h3 className={styles.entryTitle}>Toast — Single-line, Auto-dismiss</h3>
+                  <p className={styles.entryDesc}>Single-line notification rendered fixed-position at the top of the page (below the app header). Auto-dismisses after ~5 seconds. Used for transient confirmations and errors triggered by user actions. Source: <code>connAlert</code> in <code>profile.module.css</code>.</p>
+                </div>
+                <div className={styles.demoShell}>
+                  <div className={styles.demoStageColumn}>
+                    <div className={styles.bannerToast} style={{ background: 'var(--success-300)', color: 'var(--success-900)' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--success-900)' }}>check_circle</span>
+                      <span>Connection saved successfully</span>
+                    </div>
+                    <div className={styles.bannerToast} style={{ background: 'var(--warning-100)', color: 'var(--warning-900)' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--warning-900)' }}>remove_circle</span>
+                      <span>Connection discarded</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Variant 3: Inline single-line */}
+              <div className={styles.entryCard}>
+                <div className={styles.entryHeader}>
+                  <h3 className={styles.entryTitle}>Inline Warning — Single Line</h3>
+                  <p className={styles.entryDesc}>Compact inline notice without a title. Used for short contextual warnings inside form sections or accordions. Source: <code>warningBanner</code> in <code>ProfileRiskMitigation.module.css</code>.</p>
+                </div>
+                <div className={styles.demoShell}>
+                  <div className={styles.demoStageColumn}>
+                    <div className={styles.bannerInline} style={{ background: 'var(--alert-100)', color: 'var(--alert-700)' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--alert-700)' }}>error_outline</span>
+                      <span>This third party has open risk mitigation tasks. Resolve all tasks before approving.</span>
+                    </div>
+                    <div className={styles.bannerInline} style={{ background: 'var(--warning-50)', color: 'var(--warning-900)' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--warning-700)' }}>warning_amber</span>
+                      <span>Renewal is due in 14 days. Schedule a review meeting with the owner.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Anatomy reference */}
+              <div className={styles.entryCard}>
+                <div className={styles.entryHeader}>
+                  <h3 className={styles.entryTitle}>Anatomy</h3>
+                  <p className={styles.entryDesc}>Common parts shared by all three banner variants. Severity color is the only thing that differs across instances within a variant.</p>
+                </div>
+                <AnatomyTable rows={[
+                  { part: 'Container',   purpose: 'Wraps icon + content; sets background and (for inline) border.', notes: 'Inline variants have a 1px border in the same hue family. Toast has no border.' },
+                  { part: 'Icon',         purpose: 'Material Icons Outlined glyph signalling severity.',              notes: 'warning_amber, info, error_outline, check_circle_outline. Toast uses solid (check_circle, remove_circle).' },
+                  { part: 'Title',        purpose: 'Short headline (Inline-with-title only).',                         notes: 'Bold, 14px, single line. Omitted in Toast and Inline-single-line.' },
+                  { part: 'Description',  purpose: 'Body copy.',                                                       notes: '13px, 1.5 line-height. In Toast / Inline-single-line this is the only text.' },
+                  { part: 'Severity',     purpose: 'Color set keyed to outcome.',                                      notes: 'warning, info, error, success — each maps to its semantic 50/100/300/700 stops.' },
+                ]} />
               </div>
             </section>
 
@@ -1764,6 +1832,21 @@ export default function ComponentCatalog() {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div className={styles.entryCard}>
+                <div className={styles.entryHeader}>
+                  <h3 className={styles.entryTitle}>Anatomy</h3>
+                </div>
+                <AnatomyTable rows={[
+                  { part: 'Header',          purpose: 'Clickable strip that toggles the body open / closed.',         notes: 'Background gradient and border keyed to the risk level (low / medium / high).' },
+                  { part: 'Label',           purpose: 'Section name.',                                                  notes: '14px, weight 500, text-normal.' },
+                  { part: 'Factor count',    purpose: 'Pill showing the number of factors in the section.',             notes: 'Compact neutral chip beside the label.' },
+                  { part: 'Category score',  purpose: 'Aggregate risk score for the section.',                          notes: 'Right-aligned. Bold value, lighter label.' },
+                  { part: 'Risk badge',      purpose: 'Severity badge (RiskBadge component).',                          notes: 'Mirrors the section level.' },
+                  { part: 'Caret',           purpose: 'Open / closed indicator.',                                       notes: 'Material expand_less icon, rotated 180° when collapsed.' },
+                  { part: 'Body',            purpose: 'Expanded content — typically a factors table.',                  notes: 'White background, padded. Hidden when collapsed.' },
+                ]} />
               </div>
             </section>
 
@@ -1840,6 +1923,21 @@ export default function ComponentCatalog() {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div className={styles.entryCard}>
+                <div className={styles.entryHeader}>
+                  <h3 className={styles.entryTitle}>Anatomy</h3>
+                </div>
+                <AnatomyTable rows={[
+                  { part: 'Overlay',     purpose: 'Dim backdrop covering the page beneath the panel.',                          notes: 'rgba(0,0,0,0.45), z-index: --z-overlay. Click to close.' },
+                  { part: 'Panel',       purpose: 'Sliding container; anchored to the right edge.',                              notes: 'z-index: --z-panel (1 above overlay). Width varies: 480 / 540 / 650 / 940 / 1200px depending on content.' },
+                  { part: 'Top border',  purpose: 'Visual anchor identifying the panel as a primary surface.',                   notes: '4px solid var(--primary-500). Omitted on Notes panel only.' },
+                  { part: 'Header',      purpose: 'Title + close affordance.',                                                   notes: 'Sticky at top. Title left, close button right (Outline Button or × icon).' },
+                  { part: 'Body',        purpose: 'Scrollable content region.',                                                   notes: 'Padded 16-20px. overflow-y: auto. Form fields, tables, or read-only details.' },
+                  { part: 'Footer',      purpose: 'Action row (Cancel / Save / etc.).',                                          notes: 'Sticky at bottom when content scrolls. Buttons right-aligned. Omitted in read-only panels.' },
+                  { part: 'Animation',   purpose: 'Slide-in transition.',                                                         notes: 'translateX 100% → 0, 220ms ease [0.32, 0.72, 0, 1]. Overlay fades opacity 0 → 1.' },
+                ]} />
               </div>
             </section>
 

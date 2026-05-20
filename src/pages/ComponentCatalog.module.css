@@ -692,6 +692,11 @@
   border-radius: 4px;
   font-size: 12px;
   font-weight: 500;
+  transition: filter 0.15s;
+}
+
+.tooltipTrigger:hover .demoStatusBadge {
+  filter: brightness(0.93);
 }
 
 .demoPreviewWrap {

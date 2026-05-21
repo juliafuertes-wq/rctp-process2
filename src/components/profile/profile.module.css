@@ -2281,9 +2281,10 @@
   cursor: pointer;
   user-select: none;
   clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);
-  margin-right: -10px;
+  margin-right: -14px;
   transition: background 0.15s ease;
   overflow: hidden;
+  border: none;
 }
 .workflowStep:first-child {
   padding-left: 16px;

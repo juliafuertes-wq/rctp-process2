@@ -10,6 +10,7 @@ export default {
   embedded: false,
   deleteModal: true,
   alertBanners: true,
+  workflowLayout: true,
 
   sidebarSteps: [
     { label: 'Risk Assessment', dot: 'red', path: 'risk-assessment' },

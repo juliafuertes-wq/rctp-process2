@@ -1541,7 +1541,7 @@ function WorkflowStrip({ profile, profileLoading }) {
           <span className={styles.infoIconWrap}>
             <span className={`material-icons-outlined ${styles.infoIcon}`}>info</span>
             <span className={styles.infoTooltip}>
-              The stages below indicate which steps to follow in order to complete the third party workflow and reach the approval stage. Pending actions are highlighted. Click on any workflow stage to view tasks not started or in progress.
+              Click on any workflow stage below to view tasks not started or in progress in order to reach the third party approval.
             </span>
           </span>
         </div>

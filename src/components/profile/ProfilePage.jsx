@@ -231,9 +231,6 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
         <Sidebar profile={profile} activePage="summary" profileLoading={profileLoading} />
 
         <main className={styles.mainContent}>
-          {/* Third Party Workflow (chevron strip) */}
-          <WorkflowStrip profile={profile} profileLoading={profileLoading} />
-
           {/* Details Card */}
           <motion.section className={`${styles.card} ${styles.detailsCard}`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
             <div className={styles.cardHeader}>
@@ -433,6 +430,9 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               </AnimatePresence>
             </div>
           </motion.section>
+
+          {/* Third Party Workflow (chevron strip) */}
+          <WorkflowStrip profile={profile} profileLoading={profileLoading} />
 
           {/* Risk Level Report */}
           <motion.section className={styles.riskReport} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.07 }}>

@@ -1527,7 +1527,6 @@ function WorkflowStrip({ profile, profileLoading }) {
   // actionable: red (not started), amber (in progress), or black (pending).
   // Skip green (completed), grey (not required), and blocked.
   const nextIdx = effectiveDots.findIndex(d => d === 'red' || d === 'amber' || d === 'black');
-  const nextStep = nextIdx >= 0 ? steps[nextIdx] : null;
 
   return (
     <motion.section
@@ -1537,19 +1536,16 @@ function WorkflowStrip({ profile, profileLoading }) {
       transition={{ duration: 0.3, delay: 0.04 }}
     >
       <div className={styles.workflowSectionRow}>
-        <h2 className={styles.cardTitle}>Third Party Workflow</h2>
+        <div className={styles.sectionTitleGroup}>
+          <h2 className={styles.cardTitle}>Workflow</h2>
+          <span className={styles.infoIconWrap}>
+            <span className={`material-icons-outlined ${styles.infoIcon}`}>info</span>
+            <span className={styles.infoTooltip}>
+              The stages below indicate which steps to follow in order to complete the third party workflow and reach the approval stage. Pending actions are highlighted. Click on any workflow stage to view tasks not started or in progress.
+            </span>
+          </span>
+        </div>
       </div>
-      <p className={styles.workflowInstructions}>
-        Complete each step below to onboard this third party. The highlighted step
-        is your next action{nextStep ? (
-          <> — {nextStep.path ? (
-            <Link to={`/profile/${profile.id}/${nextStep.path}`} className={styles.workflowInstructionsLink}>
-              {nextStep.label}
-            </Link>
-          ) : <strong>{nextStep.label}</strong>}</>
-        ) : ''}.
-        Click any step to view and open its pending tasks.
-      </p>
       <div className={styles.workflowStrip}>
         {steps.map((step, i) => {
           const effectiveDot = effectiveDots[i];

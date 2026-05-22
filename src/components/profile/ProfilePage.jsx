@@ -1455,7 +1455,19 @@ function WorkflowStrip({ profile, profileLoading }) {
   const steps = profile.sidebarSteps || [];
   const [activeIdx, setActiveIdx] = useState(null);
 
-  const stepTasks = steps.map(step => tasksForStep(step, profile.openTasks));
+  // Only steps that are not-started (red) or in-progress (amber) can have
+  // pending tasks. Completed / not-required / blocked steps surface nothing.
+  const stepTasks = steps.map((step, i) => {
+    const dot = profileLoading
+      ? (step.label === 'Approval'        ? 'red'
+        : step.label === 'Risk Mitigation' ? 'green'
+        : step.label === 'Due Diligence'   ? 'black'
+        : step.partner === 'ubo'           ? 'grey'
+        : step.dot)
+      : step.dot;
+    if (dot !== 'red' && dot !== 'amber') return [];
+    return tasksForStep(step, profile.openTasks);
+  });
   const activeStep = activeIdx !== null ? steps[activeIdx] : null;
   const activeTasks = activeIdx !== null ? stepTasks[activeIdx] : [];
 

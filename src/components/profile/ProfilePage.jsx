@@ -1450,21 +1450,22 @@ function tasksForStep(step, profile) {
   const matched = matcher ? openTasks.filter(matcher) : [];
 
   // Risk Assessment surfaces a single "Risk Assessment Questionnaire" task —
-  // not red-flag follow-ups or amendments. Use the existing Questionnaire
-  // task from openTasks if one exists, otherwise synthesize a placeholder.
+  // not red-flag follow-ups or amendments. Mirror the step's dot status so
+  // the task row stays consistent with the chevron (red → Not Started,
+  // amber → In Progress).
   if (step.label === 'Risk Assessment') {
     const existing = openTasks.find(
       t => /questionnaire/i.test(t.type) && /risk assessment/i.test(t.name)
     );
-    if (existing) return [existing];
+    const status = step.dot === 'amber' ? 'In Progress' : 'Not Started';
     return [{
       type: 'Questionnaire',
-      icon: 'iconInactiveOrder',
-      name: 'Risk Assessment Questionnaire',
-      status: 'Not Started',
-      owner: '',
-      dateCreated: '',
-      age: '',
+      icon: existing?.icon || 'iconInactiveOrder',
+      name: existing?.name || 'Risk Assessment Questionnaire',
+      status,
+      owner: existing?.owner || '',
+      dateCreated: existing?.dateCreated || '',
+      age: existing?.age || '',
     }];
   }
 

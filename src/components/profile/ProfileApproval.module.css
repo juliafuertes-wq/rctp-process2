@@ -79,7 +79,8 @@
 
 .unavailableBanner {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   gap: 12px;
   margin: 20px 16px;
   padding: 16px;
@@ -87,6 +88,7 @@
   border: 1px solid var(--neutral-100);
   border-radius: var(--rctp-radius-sm);
   color: var(--text-light);
+  text-align: center;
 }
 
 .unavailableTitle {

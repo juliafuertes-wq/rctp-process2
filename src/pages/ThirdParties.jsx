@@ -10,13 +10,34 @@ function getOwner(p) { return p.overviewFields.find(f => f.label === 'Third Part
 function getBU(p) { return p.overviewFields.find(f => f.label === 'Business Unit')?.value || ''; }
 function getTags(p) { const t = p.overviewFields.find(f => f.label === 'Tags')?.value; return t && t !== '—' ? t : ''; }
 function getRef(p) { return p.additionalFields.find(f => f.label === 'Internal Reference or ID')?.value?.replace('—','') || ''; }
+const STAGE_STEP_MAP = {
+  'risk assessment':               ['Risk Assessment Required',                 'Risk Assessment In Progress'],
+  'due diligence':                 ['Due Diligence Required',                   'Due Diligence In Progress'],
+  'integrity check':               ['Integrity Check Required',                 'Integrity Check In Progress'],
+  'enhanced due diligence':        ['Enhanced Due Diligence Reports Required',  'Enhanced Due Diligence Reports In Progress'],
+  'ubo':                           ['UBO Required',                             'UBO In Progress'],
+  'risk mitigation':               ['Risk Mitigation Required',                 'Risk Mitigation In Progress'],
+  'screening':                     ['Screening & Monitoring Required',          'Screening & Monitoring In Progress'],
+  'approval':                      ['Approval Required',                        'Approval In Progress'],
+  'renewal':                       ['Approval Required',                        'Approval In Progress'],
+};
+
 function getStage(p) {
-  const task = p.openTasks?.[0];
+  const status = p.currentStatus?.label || '';
+  if (status === 'Approved') return 'Approved';
+  if (status === 'Approved*' || status === 'Approved! (Renewal Required)') return 'Approved* / Approved! Renewal Required';
+
+  const tasks = p.openTasks || [];
+  const task = tasks.find(t => t.status === 'In Progress') || tasks[0];
   if (!task) return 'Approved';
-  if (task.type === 'Onboarding') return 'Requires Onboarding';
-  if (task.name?.toLowerCase().includes('risk assessment')) return 'Requires Risk Assessment';
-  if (task.type?.toLowerCase().includes('risk mitigation')) return 'Requires Risk Mitigation';
-  return 'Requires Review';
+
+  const type = (task.type + ' ' + (task.name || '')).toLowerCase();
+  for (const [key, [required, inProgress]] of Object.entries(STAGE_STEP_MAP)) {
+    if (type.includes(key)) {
+      return task.status === 'In Progress' ? inProgress : required;
+    }
+  }
+  return 'Approval Required';
 }
 
 const ROWS = [

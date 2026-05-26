@@ -42,11 +42,11 @@ export default function ProfileRiskAssessment() {
               <table className={styles.table} style={{ minWidth: 0 }}>
                 <thead>
                   <tr>
-                    <th style={{ width: '35%' }}>Name</th>
-                    <th style={{ width: '25%' }}>Owner</th>
-                    <th>Start Date</th>
-                    <th>Completed Date</th>
-                    <th>Cancelled Date</th>
+                    <th style={{ width: '30%' }}>Name</th>
+                    <th style={{ width: '20%' }}>Owner</th>
+                    <th style={{ width: '13%' }}>Start Date</th>
+                    <th style={{ width: '13%' }}>Completed Date</th>
+                    <th style={{ width: '13%' }}>Cancelled Date</th>
                     <th style={{ width: 48 }} />
                   </tr>
                 </thead>

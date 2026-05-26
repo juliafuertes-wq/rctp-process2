@@ -78,6 +78,8 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
   const [openMenuIndex, setOpenMenuIndex] = useState(null);
   const [editRow, setEditRow] = useState(null); // { index, row }
 
+  const [tasksTab, setTasksTab] = useState('open');
+
   if (!profile) return <div style={{ padding: 40, textAlign: 'center' }}>Profile not found</div>;
 
   function handleConnect() {
@@ -474,18 +476,34 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
             </AnimatePresence>
           </motion.section>
 
-          {/* Open Tasks */}
+          {/* Tasks */}
           <motion.section className={styles.tableCard} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.14 }}>
             <div className={styles.sectionBar}>
               <div className={styles.sectionRow}>
                 <div className={styles.sectionTitleGroup}>
-                  <h2 className={styles.cardTitle}>Open Tasks</h2>
+                  <h2 className={styles.cardTitle}>Tasks</h2>
                   <span className={styles.infoIconWrap}>
                     <span className={`material-icons-outlined ${styles.infoIcon}`}>info</span>
-                    <span className={styles.infoTooltip}>Open tasks relating to this third party</span>
+                    <span className={styles.infoTooltip}>Tasks relating to this third party</span>
                   </span>
                 </div>
               </div>
+            </div>
+            <div className={styles.tasksTabBar}>
+              <button
+                className={`${styles.tasksTabChip} ${tasksTab === 'open' ? styles.tasksTabChipActive : ''}`}
+                onClick={() => setTasksTab('open')}
+              >
+                Open Tasks
+                <span className={styles.tasksTabCount}>{profileLoading ? 1 : profile.openTasks.length}</span>
+              </button>
+              <button
+                className={`${styles.tasksTabChip} ${tasksTab === 'completed' ? styles.tasksTabChipActive : ''}`}
+                onClick={() => setTasksTab('completed')}
+              >
+                Completed Tasks
+                <span className={styles.tasksTabCount}>{profileLoading ? 0 : profile.openTasks.length}</span>
+              </button>
             </div>
             <div className={styles.cardInner}>
               <table className={styles.table}>

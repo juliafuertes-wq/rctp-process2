@@ -1149,6 +1149,13 @@
   padding: 0 16px 8px;
 }
 
+.tableEmptyRow {
+  padding: 32px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-light);
+}
+
 .sectionTitleGroup {
   display: flex;
   align-items: center;

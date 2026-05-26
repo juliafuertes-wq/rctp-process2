@@ -512,11 +512,13 @@ export default function Settings() {
                 </div>
               </div>
 
-              {/* Owner reminder field */}
+              {/* Notification Settings */}
               <div className={styles.settingsBlockNotification}>
-                <p className={styles.settingsBlockTitle}>Owner</p>
+                <p className={styles.settingsBlockTitle}>Notification Settings</p>
                 <div className={styles.reminderFields}>
-                  <div className={styles.reminderField}>
+                  {/* Owner — 30% */}
+                  <div className={styles.reminderField} style={{ flex: '0 0 30%' }}>
+                    <label className={styles.fieldLabel}>Owner</label>
                     <div
                       className={`${styles.activeToggle}${!ownerNotifEnabled ? ' ' + styles.activeToggleOff : ''}`}
                       onClick={() => setOwnerNotifEnabled(v => !v)}
@@ -525,14 +527,8 @@ export default function Settings() {
                       <div className={styles.activeToggleThumb} />
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Notification Settings */}
-              <div className={styles.settingsBlockNotification}>
-                <p className={styles.settingsBlockTitle}>Notification Settings</p>
-                <div className={styles.reminderFields}>
-                  <div className={`${styles.reminderField} ${styles.reminderFieldGrow}`}>
+                  {/* Renewals Notification Group — 70% */}
+                  <div className={`${styles.reminderField} ${styles.reminderFieldGrow}`} style={{ flex: '0 0 70%' }}>
                     <label className={styles.fieldLabel}>
                       Renewals Notification Group <span className={styles.required}>*</span>
                     </label>

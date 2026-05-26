@@ -144,27 +144,31 @@ export default function ProfileApproval() {
             )}
 
             <div className={apStyles.tableWrap}>
-              {rawProfile.approvalUnavailable ? (
-                <div className={apStyles.unavailableBanner}>
-                  <span className="material-icons-outlined" style={{ fontSize: 20, flexShrink: 0 }}>block</span>
-                  <div>
-                    <div className={apStyles.unavailableTitle}>Approval Unavailable</div>
-                    <div className={apStyles.unavailableText}>This action will become available once all required workflow stages are completed, or when the record enters renewal.</div>
-                  </div>
-                </div>
-              ) : (
-                <table className={styles.table} style={{ minWidth: 0 }}>
-                  <thead>
+              <table className={styles.table} style={{ minWidth: 0 }}>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Owner</th>
+                    <th>Start Date</th>
+                    <th>Completed Date</th>
+                    <th>Cancelled Date</th>
+                    <th style={{ width: 48 }}></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rawProfile.approvalUnavailable ? (
                     <tr>
-                      <th>Name</th>
-                      <th>Owner</th>
-                      <th>Start Date</th>
-                      <th>Completed Date</th>
-                      <th>Cancelled Date</th>
-                      <th style={{ width: 48 }}></th>
+                      <td colSpan={6} style={{ padding: 0 }}>
+                        <div className={apStyles.unavailableBanner}>
+                          <span className="material-icons-outlined" style={{ fontSize: 20, flexShrink: 0 }}>block</span>
+                          <div>
+                            <div className={apStyles.unavailableTitle}>Approval Unavailable</div>
+                            <div className={apStyles.unavailableText}>This action will become available once all required workflow stages are completed, or when the record enters renewal.</div>
+                          </div>
+                        </div>
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
+                  ) : (
                     <tr>
                       <td>Approval</td>
                       <td>{ap.owner || tpOwner}</td>
@@ -177,9 +181,9 @@ export default function ProfileApproval() {
                         )}
                       </td>
                     </tr>
-                  </tbody>
-                </table>
-              )}
+                  )}
+                </tbody>
+              </table>
             </div>
 
           </section>

@@ -25,7 +25,7 @@ const STAGE_STEP_MAP = {
 function getStage(p) {
   const status = p.currentStatus?.label || '';
   if (status === 'Approved') return 'Approved';
-  if (status === 'Approved*' || status === 'Approved! (Renewal Required)') return 'Approved* / Approved! Renewal Required';
+  if (status === 'Approved*' || status === 'Approved! (Renewal Required)') return 'Approval In Progress';
 
   const tasks = p.openTasks || [];
   const task = tasks.find(t => t.status === 'In Progress') || tasks[0];

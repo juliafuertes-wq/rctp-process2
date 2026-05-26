@@ -1,7 +1,11 @@
+/* Page wrapper — full width, no TP sidebar */
+.raPageWrap {
+  padding: 0 16px 32px;
+}
+
 .raCard {
   background: var(--neutral-00);
   border-top: 3px solid var(--primary-600);
-  flex: 1;
   min-height: 600px;
 }
 
@@ -130,7 +134,6 @@
 .raSectionIcon {
   flex-shrink: 0;
   color: var(--primary-500);
-  font-size: 28px;
   display: flex;
   align-items: center;
 }

@@ -516,8 +516,8 @@ export default function Settings() {
               <div className={styles.settingsBlockNotification}>
                 <p className={styles.settingsBlockTitle}>Notification Settings</p>
                 <div className={styles.reminderFields}>
-                  {/* Owner — 30% */}
-                  <div className={styles.reminderField} style={{ flex: '0 0 30%' }}>
+                  {/* Owner — ~25% */}
+                  <div className={styles.reminderField} style={{ flex: '0 0 25%' }}>
                     <label className={styles.fieldLabel}>Owner</label>
                     <div
                       className={`${styles.activeToggle}${!ownerNotifEnabled ? ' ' + styles.activeToggleOff : ''}`}
@@ -527,8 +527,8 @@ export default function Settings() {
                       <div className={styles.activeToggleThumb} />
                     </div>
                   </div>
-                  {/* Renewals Notification Group — 70% */}
-                  <div className={`${styles.reminderField} ${styles.reminderFieldGrow}`} style={{ flex: '0 0 70%' }}>
+                  {/* Renewals Notification Group — fills remaining space */}
+                  <div className={`${styles.reminderField} ${styles.reminderFieldGrow}`} style={{ flex: '1 1 0' }}>
                     <label className={styles.fieldLabel}>
                       Renewals Notification Group <span className={styles.required}>*</span>
                     </label>

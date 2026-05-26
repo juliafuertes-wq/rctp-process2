@@ -291,19 +291,21 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                             <span style={{ fontSize: 20 }}>{f.flag}</span> {f.value}
                           </div>
                         ) : f.expiringSoon ? (
-                          <div className={`${styles.fieldValue} ${['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom','dundermifflin'].includes(profile.id) ? styles.fieldValueWithAction : ''}`}>
+                          <div className={styles.fieldValue}>
                             <div className={styles.fieldValueExpiringSoonWrap}>
-                              <span className={styles.fieldValueExpiringSoon}>
-                                <span className="material-icons-outlined" style={{ fontSize: 14 }}>schedule</span>
-                                {f.value}
-                              </span>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                                <span className={styles.fieldValueExpiringSoon}>
+                                  <span className="material-icons-outlined" style={{ fontSize: 14 }}>schedule</span>
+                                  {f.value}
+                                </span>
+                                {['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom','dundermifflin'].includes(profile.id) && (
+                                  <button className={styles.renewalInfoBtn} onClick={() => setRenewalDetailsPanelOpen(true)} aria-label="Renewal details">
+                                    <span className="material-icons-outlined">more_horiz</span>
+                                  </button>
+                                )}
+                              </div>
                               <span className={styles.fieldValueExpiringSoonHint}>This third party will need to be renewed soon</span>
                             </div>
-                            {['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom','dundermifflin'].includes(profile.id) && (
-                              <button className={styles.renewalInfoBtn} onClick={() => setRenewalDetailsPanelOpen(true)} aria-label="Renewal details">
-                                <span className="material-icons-outlined">more_horiz</span>
-                              </button>
-                            )}
                           </div>
                         ) : f.overdue ? (
                           <div className={`${styles.fieldValue} ${['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom','dundermifflin'].includes(profile.id) ? styles.fieldValueWithAction : ''}`}>

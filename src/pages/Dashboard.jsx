@@ -337,7 +337,7 @@ function SMTable({ rows, search }) {
                 </td>
                 <td>
                   <label className={styles.remediationCell}>
-                    <input type="checkbox" checked={row.remediation} readOnly style={{ cursor: 'pointer' }} />
+                    <Checkbox checked={row.remediation} onChange={() => {}} />
                     {row.remediation ? 'Remediation Required' : ''}
                   </label>
                 </td>
@@ -446,7 +446,7 @@ function SMTContent({ rows }) {
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th><input type="checkbox" style={{ cursor: 'pointer' }} /></th>
+                  <th style={{ width: 40, padding: 0, textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} /></th>
                   <th>Task Type <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
                   <th>Task Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
                   <th>Third Party Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
@@ -460,7 +460,7 @@ function SMTContent({ rows }) {
               <tbody>
                 {filtered.map((row, i) => (
                   <tr key={i}>
-                    <td style={{ width: 40, textAlign: 'center' }}><input type="checkbox" style={{ cursor: 'pointer' }} /></td>
+                    <td style={{ width: 40, textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} /></td>
                     <td><TaskTypeBadge type={row.type} /></td>
                     <td>
                       {row.tpId

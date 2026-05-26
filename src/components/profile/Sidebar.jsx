@@ -33,6 +33,25 @@ function PartnerIcon({ partner, tooltip }) {
   return icon;
 }
 
+function reorderSteps(original) {
+  const screeningIdx = original.findIndex(s => s.label === 'Screening & Monitoring');
+  const riskIdx = original.findIndex(s => s.label === 'Risk Assessment');
+  if (screeningIdx < 0 || riskIdx < 0 || screeningIdx === riskIdx + 1) return original;
+  const screening = original[screeningIdx];
+  const without = original.filter((_, i) => i !== screeningIdx);
+  const insertAt = without.findIndex(s => s.label === 'Risk Assessment') + 1;
+  return [...without.slice(0, insertAt), screening, ...without.slice(insertAt)];
+}
+
+function effectiveDotFor(step, profileLoading) {
+  if (!profileLoading) return step.dot;
+  if (step.label === 'Approval') return 'red';
+  if (step.label === 'Risk Mitigation') return 'green';
+  if (step.label === 'Due Diligence') return 'black';
+  if (step.partner === 'ubo') return 'grey';
+  return step.dot;
+}
+
 export default function Sidebar({ profile: profileProp, profileLoading = false }) {
   const profile = patchInitechProfile(profileProp);
   const location = useLocation();
@@ -40,6 +59,10 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
 
   const summaryPath = `/profile/${profile.id}`;
   const summaryActive = currentPath === summaryPath;
+
+  const steps = reorderSteps(profile.sidebarSteps || []);
+  const stepDots = steps.map(s => effectiveDotFor(s, profileLoading));
+  const nextIdx = stepDots.findIndex(d => d === 'red' || d === 'amber' || d === 'black');
 
   return (
     <aside className={styles.sideNav}>
@@ -53,14 +76,8 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
 
       <div className={styles.navDivider} />
 
-      {profile.sidebarSteps.map((step, i) => {
-        const effectiveDot = profileLoading
-          ? (step.label === 'Approval'        ? 'red'
-            : step.label === 'Risk Mitigation' ? 'green'
-            : step.label === 'Due Diligence'   ? 'black'
-            : step.partner === 'ubo'           ? 'grey'
-            : step.dot)
-          : step.dot;
+      {steps.map((step, i) => {
+        const effectiveDot = stepDots[i];
         const dotCls = effectiveDot === 'red'     ? styles.dotRed
           : effectiveDot === 'green'   ? styles.dotGreen
           : effectiveDot === 'amber'   ? styles.dotAmber
@@ -77,12 +94,18 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
 
         const stepPath = step.path ? `/profile/${profile.id}/${step.path}` : null;
         const stepActive = stepPath && currentPath === stepPath;
-        const inner = step.tooltip || step.newTag ? (
+        const isNext = i === nextIdx;
+        const isLast = i === steps.length - 1;
+        const connectorDone = effectiveDot === 'green';
+
+        const nextChip = isNext ? <span className={styles.navNextChip}>Next</span> : null;
+        const inner = step.tooltip || step.newTag || isNext ? (
           <div className={styles.navItemWrap}>
             {dotEl}
             {step.label}
             {step.partner && <PartnerIcon partner={step.partner} tooltip={step.tooltip} />}
             {step.newTag && <span className={styles.navNewTag}>New</span>}
+            {nextChip}
           </div>
         ) : (
           <>
@@ -92,16 +115,29 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
           </>
         );
 
-        if (stepPath && !stepActive) {
-          return (
-            <Link key={i} to={stepPath} className={styles.navItem} style={{ textDecoration: 'none' }}>
-              {inner}
-            </Link>
-          );
-        }
-        return (
-          <div key={i} className={stepActive ? styles.navItemActive : styles.navItem}>
+        const itemClass = [
+          stepActive ? styles.navItemActive : styles.navItem,
+          isNext && styles.navItemNext,
+        ].filter(Boolean).join(' ');
+
+        const itemNode = stepPath && !stepActive ? (
+          <Link to={stepPath} className={itemClass} style={{ textDecoration: 'none' }}>
             {inner}
+          </Link>
+        ) : (
+          <div className={itemClass}>
+            {inner}
+          </div>
+        );
+
+        return (
+          <div key={i} className={styles.navStepRow}>
+            {itemNode}
+            {!isLast && (
+              <span
+                className={`${styles.navConnector} ${connectorDone ? styles.navConnectorDone : ''}`}
+              />
+            )}
           </div>
         );
       })}

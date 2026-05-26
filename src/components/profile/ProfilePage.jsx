@@ -1515,6 +1515,12 @@ function WorkflowStrip({ profile, profileLoading }) {
     return [...without.slice(0, insertAt), renamed, ...without.slice(insertAt)];
   })();
   const [activeIdx, setActiveIdx] = useState(null);
+  const [workflowView, setWorkflowView] = useState('chevrons');
+  const switchView = (next) => {
+    if (next === workflowView) return;
+    setActiveIdx(null);
+    setWorkflowView(next);
+  };
 
   // Only steps that are not-started (red) or in-progress (amber) can have
   // pending tasks. Completed / not-required / blocked steps surface nothing.
@@ -1548,6 +1554,14 @@ function WorkflowStrip({ profile, profileLoading }) {
   // Skip green (completed), grey (not required), and blocked.
   const nextIdx = effectiveDots.findIndex(d => d === 'red' || d === 'amber' || d === 'black');
 
+  // Progress: completion is measured against required steps only (grey =
+  // Not Required, blocked = waiting on something else — both excluded).
+  const requiredDots = effectiveDots.filter(d => d !== 'grey' && d !== 'blocked');
+  const completedCount = requiredDots.filter(d => d === 'green').length;
+  const totalCount = requiredDots.length;
+  const pct = totalCount ? Math.round((completedCount / totalCount) * 100) : 0;
+  const nextStep = nextIdx >= 0 ? steps[nextIdx] : null;
+
   return (
     <motion.section
       className={styles.workflowSection}
@@ -1565,48 +1579,154 @@ function WorkflowStrip({ profile, profileLoading }) {
             </span>
           </span>
         </div>
+        <div className={styles.workflowViewSwitcher} role="tablist" aria-label="Workflow view">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={workflowView === 'chevrons'}
+            className={`${styles.workflowViewSwitcherBtn} ${workflowView === 'chevrons' ? styles.workflowViewSwitcherBtnActive : ''}`}
+            onClick={() => switchView('chevrons')}
+          >
+            Chevrons
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={workflowView === 'timeline'}
+            className={`${styles.workflowViewSwitcherBtn} ${workflowView === 'timeline' ? styles.workflowViewSwitcherBtnActive : ''}`}
+            onClick={() => switchView('timeline')}
+          >
+            Timeline
+          </button>
+        </div>
       </div>
-      <div className={styles.workflowStrip}>
-        {steps.map((step, i) => {
-          const effectiveDot = effectiveDots[i];
-          const dotCls = styles['workflowDot_' + effectiveDot] || styles.workflowDot_grey;
-          const statusLabel = STEP_STATUS_LABEL[effectiveDot] || 'Not Required';
-          const taskCount = stepTasks[i].length;
-          const isActive = activeIdx === i;
-          const isNext = i === nextIdx;
-          const isDim = effectiveDot === 'grey';
-          const className = [
-            styles.workflowStep,
-            isActive && styles.workflowStepActive,
-            isNext && styles.workflowStepNext,
-            isDim && styles.workflowStepDim,
-          ].filter(Boolean).join(' ');
-          const taskHint = taskCount > 0
-            ? `${taskCount} task${taskCount === 1 ? '' : 's'} to complete`
-            : null;
-          return (
-            <button
-              key={i}
-              type="button"
-              className={className}
-              title={step.label}
-              onClick={() => setActiveIdx(isActive ? null : i)}
-            >
-              <span className={styles.workflowStepInner}>
-                <span className={styles.workflowStepTopRow}>
-                  <span className={styles.workflowStepLabel}>{step.label}</span>
-                  {isNext && <span className={styles.workflowNextChip}>Next</span>}
-                </span>
-                <span className={styles.workflowStepStatus}>
-                  <span className={`${styles.workflowStepDot} ${dotCls}`} />
-                  {statusLabel}
-                </span>
-                {taskHint && <span className={styles.workflowStepTaskHint}>{taskHint}</span>}
-              </span>
-            </button>
-          );
-        })}
+
+      <div className={styles.workflowProgress}>
+        <div className={styles.workflowProgressMeta}>
+          <span className={styles.workflowProgressLabel}>
+            Progress: <strong>{completedCount}</strong> of <strong>{totalCount}</strong> steps · <strong>{pct}%</strong>
+          </span>
+          {nextStep && (
+            <span className={styles.workflowProgressNextChip}>
+              <span className={styles.workflowProgressNextChipDot} />
+              Up next: {nextStep.label}
+            </span>
+          )}
+        </div>
+        <div className={styles.workflowProgressBar}>
+          <motion.div
+            className={styles.workflowProgressBarFill}
+            initial={{ width: 0 }}
+            animate={{ width: `${pct}%` }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+          />
+        </div>
       </div>
+
+      {workflowView === 'chevrons' && (
+        <div className={styles.workflowStrip}>
+          {steps.map((step, i) => {
+            const effectiveDot = effectiveDots[i];
+            const dotCls = styles['workflowDot_' + effectiveDot] || styles.workflowDot_grey;
+            const statusLabel = STEP_STATUS_LABEL[effectiveDot] || 'Not Required';
+            const taskCount = stepTasks[i].length;
+            const isActive = activeIdx === i;
+            const isNext = i === nextIdx;
+            const isDim = effectiveDot === 'grey';
+            const className = [
+              styles.workflowStep,
+              isActive && styles.workflowStepActive,
+              isNext && styles.workflowStepNext,
+              isDim && styles.workflowStepDim,
+            ].filter(Boolean).join(' ');
+            const taskHint = taskCount > 0
+              ? `${taskCount} task${taskCount === 1 ? '' : 's'} to complete`
+              : null;
+            return (
+              <button
+                key={i}
+                type="button"
+                className={className}
+                title={step.label}
+                onClick={() => setActiveIdx(isActive ? null : i)}
+              >
+                <span className={styles.workflowStepInner}>
+                  <span className={styles.workflowStepTopRow}>
+                    <span className={styles.workflowStepLabel}>{step.label}</span>
+                    {isNext && <span className={styles.workflowNextChip}>Next</span>}
+                  </span>
+                  <span className={styles.workflowStepStatus}>
+                    <span className={`${styles.workflowStepDot} ${dotCls}`} />
+                    {statusLabel}
+                  </span>
+                  {taskHint && <span className={styles.workflowStepTaskHint}>{taskHint}</span>}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {workflowView === 'timeline' && (
+        <div className={styles.workflowTimeline}>
+          {steps.map((step, i) => {
+            const effectiveDot = effectiveDots[i];
+            const dotCls = styles['workflowTimelineNode_' + effectiveDot] || styles.workflowTimelineNode_grey;
+            const miniDotCls = styles['workflowDot_' + effectiveDot] || styles.workflowDot_grey;
+            const statusLabel = STEP_STATUS_LABEL[effectiveDot] || 'Not Required';
+            const taskCount = stepTasks[i].length;
+            const isActive = activeIdx === i;
+            const isNext = i === nextIdx;
+            const isDim = effectiveDot === 'grey';
+            const isLast = i === steps.length - 1;
+            const connectorDone = effectiveDot === 'green';
+            const taskHint = taskCount > 0
+              ? `${taskCount} task${taskCount === 1 ? '' : 's'} to complete`
+              : null;
+            const rowClass = [
+              styles.workflowTimelineRow,
+              isActive && styles.workflowTimelineRowActive,
+              isDim && styles.workflowTimelineRowDim,
+            ].filter(Boolean).join(' ');
+            const nodeClass = [
+              styles.workflowTimelineNode,
+              dotCls,
+              isNext && styles.workflowTimelineNodeNext,
+            ].filter(Boolean).join(' ');
+            return (
+              <div key={i} className={rowClass}>
+                <div className={styles.workflowTimelineGutter}>
+                  <span className={nodeClass}>
+                    {effectiveDot === 'green' && (
+                      <span className={`material-icons-outlined ${styles.workflowTimelineNodeIcon}`}>check</span>
+                    )}
+                  </span>
+                  {!isLast && (
+                    <span
+                      className={`${styles.workflowTimelineConnector} ${connectorDone ? styles.workflowTimelineConnectorDone : ''}`}
+                    />
+                  )}
+                </div>
+                <button
+                  type="button"
+                  className={styles.workflowTimelineContent}
+                  onClick={() => setActiveIdx(isActive ? null : i)}
+                >
+                  <span className={styles.workflowTimelineTopRow}>
+                    <span className={styles.workflowTimelineLabel}>{step.label}</span>
+                    {isNext && <span className={styles.workflowNextChip}>Next</span>}
+                  </span>
+                  <span className={styles.workflowTimelineStatus}>
+                    <span className={`${styles.workflowStepDot} ${miniDotCls}`} />
+                    {statusLabel}
+                  </span>
+                  {taskHint && <span className={styles.workflowTimelineTaskHint}>{taskHint}</span>}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       <AnimatePresence initial={false}>
         {activeStep && (

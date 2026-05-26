@@ -1,25 +1,47 @@
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { motion } from 'motion/react';
 import PageLayout from '../layout/PageLayout';
 import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
+import { patchInitechProfile } from '../../utils/initechFlow';
 import styles from './profile.module.css';
 import secStyles from './ProfileProcessSection.module.css';
+import raStyles from './ProfileRiskAssessment.module.css';
+
+const DEFAULT_SECTIONS = [
+  { id: 'legal-structure',       label: 'Legal Structure',        status: 'pending' },
+  { id: 'entity',                label: 'Entity',                 status: 'done' },
+  { id: 'person',                label: 'Person',                 status: 'pending' },
+  { id: 'unknown',               label: 'Unknown',                status: 'done' },
+  { id: 'contract-information',  label: 'Contract Information',   status: 'pending' },
+  { id: 'remuneration',          label: 'Remuneration',           status: 'pending' },
+  { id: 'declarations',          label: 'Declarations',           status: 'pending' },
+];
 
 export default function ProfileRiskAssessment() {
   const { profileId } = useParams();
-  const profile = profiles[profileId];
+  const navigate = useNavigate();
+  const profile = patchInitechProfile(profiles[profileId]);
   if (!profile) return null;
 
-  const ra = profile.riskAssessment || {};
-  const rows = ra.rows || [{ name: 'Risk Assessment', required: true, owner: '', startDate: '', completedDate: '', cancelledDate: '', renewalDate: '' }];
+  const raSections = profile.riskAssessment?.sections || DEFAULT_SECTIONS;
+  const [sections, setSections] = useState(raSections);
+
+  function toggleSection(id) {
+    setSections(prev => prev.map(s =>
+      s.id === id ? { ...s, status: s.status === 'done' ? 'pending' : 'done' } : s
+    ));
+  }
 
   return (
     <PageLayout>
       <Breadcrumb items={[
         { label: 'Third Parties', to: '/third-parties' },
-        { label: profile.name },
+        { label: profile.shortName, to: `/profile/${profile.id}` },
+        { label: 'Risk Assessment' },
       ]} />
 
       <ProfilePageHeader profile={profile} />
@@ -28,51 +50,66 @@ export default function ProfileRiskAssessment() {
         <Sidebar profile={profile} />
 
         <main className={styles.mainContent}>
-          <section className={secStyles.card}>
-            <div className={secStyles.cardHeader}>
-              <h2 className={styles.cardTitle}>Risk Assessment</h2>
+          <motion.div
+            className={raStyles.raCard}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.28 }}
+          >
+            {/* Sticky header */}
+            <div className={raStyles.raHeader}>
+              <div className={raStyles.raHeaderTop}>
+                <div>
+                  <h2 className={raStyles.raTitle}>Risk Assessment</h2>
+                  <p className={raStyles.raSubtitle}>Items marked with <span className={raStyles.raStar}>*</span> are required</p>
+                </div>
+              </div>
+              <div className={raStyles.raHeaderActions}>
+                <div className={raStyles.raNavGroup}>
+                  <button className={`${styles.btn} ${styles.btnOutline}`} onClick={() => navigate(`/profile/${profile.id}`)}>
+                    <span className="material-icons-outlined" style={{ fontSize: 16, marginRight: 4 }}>chevron_left</span>
+                    Previous
+                  </button>
+                  <button className={`${styles.btn} ${styles.btnFilled}`}>
+                    Next
+                    <span className="material-icons-outlined" style={{ fontSize: 16, marginLeft: 4 }}>chevron_right</span>
+                  </button>
+                </div>
+                <div className={raStyles.raActionGroup}>
+                  <button className={`${styles.btn} ${styles.btnOutline}`}>Notes</button>
+                  <button className={`${styles.btn} ${styles.btnOutline}`}>Reassign</button>
+                  <button className={`${styles.btn} ${styles.btnOutline}`}>Properties</button>
+                  <button className={`${styles.btn} ${styles.btnOutline}`} onClick={() => navigate(`/profile/${profile.id}`)}>Cancel</button>
+                </div>
+              </div>
             </div>
 
-            <p className={secStyles.requiredNote}>
-              Items marked with <span className={secStyles.requiredStar}>*</span> are required.
-            </p>
-
-            <div className={secStyles.tableWrap}>
-              <table className={styles.table} style={{ minWidth: 0 }}>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Owner</th>
-                    <th>Start Date</th>
-                    <th>Completed Date</th>
-                    <th>Cancelled Date</th>
-                    <th>Renewal Date</th>
-                    <th style={{ width: 48 }} />
-                  </tr>
-                </thead>
-                <tbody>
-                  {rows.map((row, i) => (
-                    <tr key={i}>
-                      <td>
-                        {row.name}
-                        {row.required && <span className={secStyles.requiredStar}> *</span>}
-                      </td>
-                      <td>{row.owner || ''}</td>
-                      <td>{row.startDate || ''}</td>
-                      <td>{row.completedDate || ''}</td>
-                      <td>{row.cancelledDate || ''}</td>
-                      <td>{row.renewalDate || ''}</td>
-                      <td style={{ textAlign: 'center' }}>
-                        <button className={secStyles.playBtn} title="Start">
-                          <span className="material-icons-outlined" style={{ fontSize: 18 }}>play_arrow</span>
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            {/* Instruction banner */}
+            <div className={raStyles.raBanner}>
+              <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--primary-500)', flexShrink: 0 }}>info</span>
+              Please complete the following sections.
             </div>
-          </section>
+
+            {/* Section cards grid */}
+            <div className={raStyles.raSectionGrid}>
+              {sections.map(sec => (
+                <button
+                  key={sec.id}
+                  className={`${raStyles.raSectionCard} ${sec.status === 'done' ? raStyles.raSectionCardDone : ''}`}
+                  onClick={() => toggleSection(sec.id)}
+                >
+                  <span className={`${raStyles.raSectionLabel} ${sec.status === 'done' ? raStyles.raSectionLabelDone : ''}`}>
+                    {sec.label}
+                  </span>
+                  <span className={`${raStyles.raSectionIcon} ${sec.status === 'done' ? raStyles.raSectionIconDone : ''}`}>
+                    <span className="material-icons-outlined">
+                      {sec.status === 'done' ? 'cancel' : 'play_circle'}
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
         </main>
       </div>
     </PageLayout>

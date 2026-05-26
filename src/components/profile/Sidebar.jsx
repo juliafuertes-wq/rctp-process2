@@ -11,6 +11,15 @@ const DOT_LABELS = {
   blocked: 'Blocked by another activity',
 };
 
+const STEP_STATUS_LABEL = {
+  green:   'Completed',
+  amber:   'In Progress',
+  red:     'Not Started',
+  grey:    'Not Required',
+  blocked: 'Blocked',
+  black:   'Pending',
+};
+
 function PartnerIcon({ partner, tooltip }) {
   const img = PARTNER_ICONS[partner];
   if (!img) return null;
@@ -76,71 +85,69 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
 
       <div className={styles.navDivider} />
 
-      {steps.map((step, i) => {
-        const effectiveDot = stepDots[i];
-        const dotCls = effectiveDot === 'red'     ? styles.dotRed
-          : effectiveDot === 'green'   ? styles.dotGreen
-          : effectiveDot === 'amber'   ? styles.dotAmber
-          : effectiveDot === 'blocked' ? styles.dotBlocked
-          : effectiveDot === 'black'   ? styles.dotBlack
-          : styles.dotGrey;
+      <div className={styles.navStepper}>
+        {steps.map((step, i) => {
+          const effectiveDot = stepDots[i];
+          const nodeCls = styles['navStepperNode_' + effectiveDot] || styles.navStepperNode_grey;
+          const stepPath = step.path ? `/profile/${profile.id}/${step.path}` : null;
+          const stepActive = stepPath && currentPath === stepPath;
+          const isNext = i === nextIdx;
+          const isLast = i === steps.length - 1;
+          const connectorDone = effectiveDot === 'green';
+          const statusLabel = STEP_STATUS_LABEL[effectiveDot] || 'Not Required';
 
-        const dotEl = (
-          <span className={styles.dotWrap}>
-            <span className={`${styles.dot} ${dotCls}`} />
-            <span className={styles.dotTooltip}>{DOT_LABELS[effectiveDot] ?? DOT_LABELS.grey}</span>
-          </span>
-        );
+          const rowClass = [
+            styles.navStepperRow,
+            stepActive && styles.navStepperRowActive,
+            isNext && styles.navStepperRowNext,
+            effectiveDot === 'grey' && styles.navStepperRowDim,
+          ].filter(Boolean).join(' ');
 
-        const stepPath = step.path ? `/profile/${profile.id}/${step.path}` : null;
-        const stepActive = stepPath && currentPath === stepPath;
-        const isNext = i === nextIdx;
-        const isLast = i === steps.length - 1;
-        const connectorDone = effectiveDot === 'green';
+          const nodeClass = [
+            styles.navStepperNode,
+            nodeCls,
+            isNext && styles.navStepperNodeNext,
+          ].filter(Boolean).join(' ');
 
-        const nextChip = isNext ? <span className={styles.navNextChip}>Next</span> : null;
-        const inner = step.tooltip || step.newTag || isNext ? (
-          <div className={styles.navItemWrap}>
-            {dotEl}
-            {step.label}
-            {step.partner && <PartnerIcon partner={step.partner} tooltip={step.tooltip} />}
-            {step.newTag && <span className={styles.navNewTag}>New</span>}
-            {nextChip}
-          </div>
-        ) : (
-          <>
-            {dotEl}
-            {step.label}
-            {step.partner && <PartnerIcon partner={step.partner} />}
-          </>
-        );
+          const content = (
+            <>
+              <span className={styles.navStepperGutter}>
+                <span className={nodeClass}>
+                  {effectiveDot === 'green' && (
+                    <span className={`material-icons-outlined ${styles.navStepperNodeIcon}`}>check</span>
+                  )}
+                </span>
+                {!isLast && (
+                  <span
+                    className={`${styles.navStepperConnector} ${connectorDone ? styles.navStepperConnectorDone : ''}`}
+                  />
+                )}
+              </span>
+              <span className={styles.navStepperContent}>
+                <span className={styles.navStepperTopRow}>
+                  <span className={styles.navStepperLabel}>{step.label}</span>
+                  {step.partner && <PartnerIcon partner={step.partner} tooltip={step.tooltip} />}
+                  {step.newTag && <span className={styles.navNewTag}>New</span>}
+                  {isNext && <span className={styles.navNextChip}>Next</span>}
+                </span>
+                <span className={styles.navStepperStatus} title={DOT_LABELS[effectiveDot] ?? DOT_LABELS.grey}>
+                  {statusLabel}
+                </span>
+              </span>
+            </>
+          );
 
-        const itemClass = [
-          stepActive ? styles.navItemActive : styles.navItem,
-          isNext && styles.navItemNext,
-        ].filter(Boolean).join(' ');
-
-        const itemNode = stepPath && !stepActive ? (
-          <Link to={stepPath} className={itemClass} style={{ textDecoration: 'none' }}>
-            {inner}
-          </Link>
-        ) : (
-          <div className={itemClass}>
-            {inner}
-          </div>
-        );
-
-        return (
-          <div key={i} className={styles.navStepRow}>
-            {itemNode}
-            {!isLast && (
-              <span
-                className={`${styles.navConnector} ${connectorDone ? styles.navConnectorDone : ''}`}
-              />
-            )}
-          </div>
-        );
-      })}
+          return stepPath && !stepActive ? (
+            <Link key={i} to={stepPath} className={rowClass} style={{ textDecoration: 'none' }}>
+              {content}
+            </Link>
+          ) : (
+            <div key={i} className={rowClass}>
+              {content}
+            </div>
+          );
+        })}
+      </div>
 
       <div className={styles.navDivider} />
 

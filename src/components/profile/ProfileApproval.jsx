@@ -156,18 +156,31 @@ export default function ProfileApproval() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Approval</td>
-                    <td>{ap.owner || tpOwner}</td>
-                    <td>{ap.startDate || '—'}</td>
-                    <td>{isCompleted ? ap.completedDate || '—' : '—'}</td>
-                    <td>{ap.cancelledDate || '—'}</td>
-                    <td style={{ textAlign: 'center' }}>
-                      {(isReady || isCompleted) && (
-                        <ApprovalRowMenu onApprove={handleApprove} />
-                      )}
-                    </td>
-                  </tr>
+                  {rawProfile.approvalUnavailable ? (
+                    <tr>
+                      <td colSpan={6} style={{ padding: 0 }}>
+                        <div className={apStyles.unavailableBanner}>
+                          <div>
+                            <div className={apStyles.unavailableTitle}>Approval Unavailable</div>
+                            <div className={apStyles.unavailableText}>This action will become available once all required workflow stages are completed, or when the record enters renewal.</div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  ) : (
+                    <tr>
+                      <td>Approval</td>
+                      <td>{ap.owner || tpOwner}</td>
+                      <td>{ap.startDate || '—'}</td>
+                      <td>{isCompleted ? ap.completedDate || '—' : '—'}</td>
+                      <td>{ap.cancelledDate || '—'}</td>
+                      <td style={{ textAlign: 'center' }}>
+                        {(isReady || isCompleted) && (
+                          <ApprovalRowMenu onApprove={handleApprove} />
+                        )}
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>

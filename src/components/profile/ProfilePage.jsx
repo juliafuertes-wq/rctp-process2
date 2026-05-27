@@ -290,18 +290,54 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                           <div className={`${styles.fieldValue} ${styles.fieldValueFlag}`}>
                             <span style={{ fontSize: 20 }}>{f.flag}</span> {f.value}
                           </div>
-                        ) : f.overdue ? (
+                        ) : f.expiringSoon ? (
                           <div className={styles.fieldValue}>
-                            <span
-                              className={styles.fieldValueOverdue}
-                              style={{ cursor: 'pointer' }}
-                              onClick={() => setRenewalModalOpen(true)}
-                            >
-                              <span className="material-icons-outlined" style={{ fontSize: 14 }}>warning</span>
-                              {f.value}
-                            </span>
+                            <div className={styles.fieldValueExpiringSoonWrap}>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                                <span className={styles.fieldValueExpiringSoon}>
+                                  <span className="material-icons-outlined" style={{ fontSize: 14 }}>schedule</span>
+                                  {f.value}
+                                </span>
+                                {['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom','dundermifflin'].includes(profile.id) && (
+                                  <button className={styles.renewalInfoBtn} onClick={() => setRenewalDetailsPanelOpen(true)} aria-label="Renewal details">
+                                    <span className="material-icons-outlined">more_horiz</span>
+                                  </button>
+                                )}
+                              </div>
+                              <span className={styles.fieldValueExpiringSoonHint}>This third party will need to be renewed soon</span>
+                            </div>
                           </div>
-                        ) : f.label === 'Third Party Renewal Date' && ['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom'].includes(profile.id) ? (
+                        ) : f.overdue ? (
+                          <div className={`${styles.fieldValue} ${['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom','dundermifflin'].includes(profile.id) ? styles.fieldValueWithAction : ''}`}>
+                            {f.overdueTooltip ? (
+                              <div className={styles.badgeTipWrap}>
+                                <span
+                                  className={styles.fieldValueOverdue}
+                                  style={{ cursor: 'pointer' }}
+                                  onClick={() => setRenewalModalOpen(true)}
+                                >
+                                  <span className="material-icons-outlined" style={{ fontSize: 14 }}>warning</span>
+                                  {f.value}
+                                </span>
+                                <span className={styles.badgeTip}>{f.overdueTooltip}</span>
+                              </div>
+                            ) : (
+                              <span
+                                className={styles.fieldValueOverdue}
+                                style={{ cursor: 'pointer' }}
+                                onClick={() => setRenewalModalOpen(true)}
+                              >
+                                <span className="material-icons-outlined" style={{ fontSize: 14 }}>warning</span>
+                                {f.value}
+                              </span>
+                            )}
+                            {['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom','dundermifflin'].includes(profile.id) && (
+                              <button className={styles.renewalInfoBtn} onClick={() => setRenewalDetailsPanelOpen(true)} aria-label="Renewal details">
+                                <span className="material-icons-outlined">more_horiz</span>
+                              </button>
+                            )}
+                          </div>
+                        ) : f.label === 'Third Party Renewal Date' && ['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom','dundermifflin'].includes(profile.id) ? (
                           <div className={`${styles.fieldValue} ${styles.fieldValueWithAction}`}>
                             {f.value}
                             <button className={styles.renewalInfoBtn} onClick={() => setRenewalDetailsPanelOpen(true)} aria-label="Renewal details">
@@ -727,7 +763,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
           onDecline={() => setDeclinePanelOpen(true)}
           onRenewal={() => { setStatusPanelOpen(false); setRenewalModalOpen(true); }}
           onCancelRenewal={() => { setStatusPanelOpen(false); setCancelRenewalModalOpen(true); }}
-          showRenewalDetails={['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom'].includes(profile.id)}
+          showRenewalDetails={['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom','dundermifflin'].includes(profile.id)}
           onRenewalDetails={() => setRenewalDetailsPanelOpen(true)}
         />
       )}
@@ -1386,25 +1422,24 @@ function StatusPanel({ currentStatus, renewalDate, canRenew, renewalInProgress, 
           {renewalDate && canRenew && (
             <div className={styles.statusPanelRenewal}>
               <div className={styles.statusPanelSectionLabel} style={{ marginTop: 20 }}>Third Party Renewal Date</div>
-              <div className={styles.statusPanelRenewalRow}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span className={styles.statusPanelRenewalDate}>{renewalDate}</span>
-                  {showRenewalDetails && (
-                    <button className={styles.renewalInfoBtn} onClick={onRenewalDetails} aria-label="Renewal details">
-                      <span className="material-icons-outlined">more_horiz</span>
-                    </button>
-                  )}
-                </div>
-                {renewalInProgress
-                  ? <button className={`${styles.btn} ${styles.btnOutline} ${styles.btnDanger}`} onClick={onCancelRenewal}>Cancel Renewal</button>
-                  : <button className={`${styles.btn} ${styles.btnFilled}`} onClick={onRenewal}>Renewal</button>
-                }
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span className={styles.statusPanelRenewalDate}>{renewalDate}</span>
+                {showRenewalDetails && (
+                  <button className={styles.renewalInfoBtn} onClick={onRenewalDetails} aria-label="Renewal details">
+                    <span className="material-icons-outlined">more_horiz</span>
+                  </button>
+                )}
               </div>
             </div>
           )}
         </div>
 
         <div className={styles.statusPanelFooter}>
+          {renewalDate && canRenew && (
+            renewalInProgress
+              ? <button className={`${styles.btn} ${styles.btnOutline} ${styles.btnDanger}`} onClick={onCancelRenewal}>Cancel Renewal</button>
+              : <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onRenewal}>Start Renewal Manually</button>
+          )}
           <button className={`${styles.btn} ${styles.btnFilled}`} onClick={onDecline}>Decline</button>
         </div>
       </motion.div>

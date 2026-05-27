@@ -77,6 +77,33 @@
   overflow: visible;
 }
 
+.unavailableBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 16px;
+  padding: 16px;
+  background: var(--neutral-25, #fafafa);
+  border: 1px solid var(--neutral-100);
+  border-radius: var(--rctp-radius-sm);
+  color: var(--text-light);
+  text-align: center;
+}
+
+.unavailableTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-normal);
+  margin-bottom: 4px;
+}
+
+.unavailableText {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
 /* ── Row menu ── */
 .menuWrap {
   position: relative;

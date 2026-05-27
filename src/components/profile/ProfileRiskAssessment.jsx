@@ -14,7 +14,7 @@ export default function ProfileRiskAssessment() {
   if (!profile) return null;
 
   const ra = profile.riskAssessment || {};
-  const rows = ra.rows || [{ name: 'Risk Assessment', required: true, owner: '', startDate: '', completedDate: '', cancelledDate: '', renewalDate: '' }];
+  const rows = ra.rows || [{ name: 'Risk Assessment', required: true, owner: '', startDate: '', completedDate: '', cancelledDate: '' }];
 
   return (
     <PageLayout>
@@ -42,12 +42,11 @@ export default function ProfileRiskAssessment() {
               <table className={styles.table} style={{ minWidth: 0 }}>
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Owner</th>
-                    <th>Start Date</th>
-                    <th>Completed Date</th>
-                    <th>Cancelled Date</th>
-                    <th>Renewal Date</th>
+                    <th style={{ width: '30%' }}>Name</th>
+                    <th style={{ width: '20%' }}>Owner</th>
+                    <th style={{ width: '13%' }}>Start Date</th>
+                    <th style={{ width: '13%' }}>Completed Date</th>
+                    <th style={{ width: '13%' }}>Cancelled Date</th>
                     <th style={{ width: 48 }} />
                   </tr>
                 </thead>
@@ -62,7 +61,6 @@ export default function ProfileRiskAssessment() {
                       <td>{row.startDate || ''}</td>
                       <td>{row.completedDate || ''}</td>
                       <td>{row.cancelledDate || ''}</td>
-                      <td>{row.renewalDate || ''}</td>
                       <td style={{ textAlign: 'center' }}>
                         <button
                           className={secStyles.playBtn}

@@ -4,7 +4,7 @@ export default {
   shortName: 'Dunder Mifflin',
   entityType: 'entity',
   verifiedText: 'Entity Verified',
-  currentStatus: { label: 'Approved! (Renewal Required)' },
+  currentStatus: { label: 'Approved! (Renewal Required)', tooltip: 'Renewal date reached' },
   riskLevel: { label: 'Medium', icon: 'info', level: 'medium' },
 
   embedded: false,
@@ -39,7 +39,7 @@ export default {
     { label: 'Screening & Monitoring Policy', value: 'Default Standard KYBP Policy' },
     { label: 'Third Party Legal Structure', value: 'Entity' },
     { label: 'Commercial Significance of Product or Service', value: '[Between 5 and 10%] / Significant / Top 10' },
-    { label: 'Third Party Renewal Date', value: '31 Dec 2025', overdue: true },
+    { label: 'Third Party Renewal Date', value: '31 Dec 2025', overdue: true, overdueTooltip: 'Renewal date reached' },
     { label: 'Tags', value: 'Paper, Regional' },
   ],
 
@@ -82,8 +82,8 @@ export default {
       ],
       updated: '10 Jan 2026',
       type: 'Primary Entity',
-      statusDot: 'var(--warning-500)',
-      statusLabel: 'Under Review',
+      statusDot: 'var(--alert-500)',
+      statusLabel: 'Remediation Required',
       categories: [
         { label: 'PEP', bg: '#edd500', color: 'var(--neutral-900)' },
       ],

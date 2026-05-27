@@ -7,18 +7,19 @@ import Badge from '../components/ui/Badge';
 import Flag from '../components/ui/Flag';
 import Chip from '../components/ui/Chip';
 import Checkbox from '../components/ui/Checkbox';
-import { RiskLevelIcon } from '../components/profile/profileAssets';
+import { RiskLevelIcon, TASK_ICONS } from '../components/profile/profileAssets';
 import styles from './Dashboard.module.css';
 
 const TABS = ['Actions', 'Screening & Monitoring', 'Screening & Monitoring Tasks', 'Enhanced Due Diligence Reports'];
 
 const TASK_TYPE_CONFIG = {
-  'APPROVAL':                      { icon: 'fact_check' },
-  'RED FLAG':                      { icon: 'flag' },
-  'QUESTIONNAIRE':                 { icon: 'grid_view' },
-  'ENHANCED DUE DILIGENCE REPORT': { icon: 'person_search' },
-  'RISK LEVEL AMEND APPROVAL':     { icon: 'manage_history' },
-  'RENEWAL':                       { icon: 'autorenew' },
+  'APPROVAL':                      { icon: TASK_ICONS.iconFactCheck },
+  'RED FLAG':                      { icon: TASK_ICONS.iconFlag },
+  'QUESTIONNAIRE':                 { icon: TASK_ICONS.iconInactiveOrder },
+  'ENHANCED DUE DILIGENCE REPORT': { icon: TASK_ICONS.iconFinanceMode },
+  'RISK LEVEL AMEND APPROVAL':     { icon: TASK_ICONS.iconArmingCountdown },
+  'RENEWAL':                       { icon: TASK_ICONS.iconArmingCountdown },
+  'CANCEL RED FLAG':               { icon: TASK_ICONS.iconFrame9 },
 };
 
 const STATUS_CONFIG = {
@@ -94,11 +95,11 @@ const MATCH_COLORS = [
 ];
 
 function TaskTypeBadge({ type }) {
-  const cfg = TASK_TYPE_CONFIG[type] || { icon: 'assignment' };
+  const cfg = TASK_TYPE_CONFIG[type] || { icon: TASK_ICONS.iconFactCheck };
   return (
     <span className={styles.typeBadge}>
       <span className={styles.typeIcon}>
-        <span className="material-icons-outlined" style={{ fontSize: 12 }}>{cfg.icon}</span>
+        <img src={cfg.icon} alt="" style={{ width: 12, height: 12 }} />
       </span>
       {type}
     </span>
@@ -157,7 +158,7 @@ function UpcomingTable({ rows, search, selected, onSelect }) {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th style={{ width: 40 }}><Checkbox checked={allChecked} indeterminate={someChecked && !allChecked} onChange={toggleAll} /></th>
+              <th style={{ width: 40, padding: 0, textAlign: 'center' }}><Checkbox checked={allChecked} indeterminate={someChecked && !allChecked} onChange={toggleAll} /></th>
               <th>Task Type <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
               <th>Task Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
               <th>Third Party Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
@@ -232,7 +233,7 @@ function ActionsTable({ rows, search, selected, onSelect }) {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th style={{ width: 40 }}><Checkbox checked={allChecked} indeterminate={someChecked && !allChecked} onChange={toggleAll} /></th>
+              <th style={{ width: 40, padding: 0, textAlign: 'center' }}><Checkbox checked={allChecked} indeterminate={someChecked && !allChecked} onChange={toggleAll} /></th>
               <th>Task Type <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
               <th>Task Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
               <th>Third Party Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
@@ -336,7 +337,7 @@ function SMTable({ rows, search }) {
                 </td>
                 <td>
                   <label className={styles.remediationCell}>
-                    <input type="checkbox" checked={row.remediation} readOnly style={{ cursor: 'pointer' }} />
+                    <Checkbox checked={row.remediation} onChange={() => {}} />
                     {row.remediation ? 'Remediation Required' : ''}
                   </label>
                 </td>
@@ -445,7 +446,7 @@ function SMTContent({ rows }) {
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th><input type="checkbox" style={{ cursor: 'pointer' }} /></th>
+                  <th style={{ width: 40, padding: 0, textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} /></th>
                   <th>Task Type <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
                   <th>Task Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
                   <th>Third Party Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
@@ -459,7 +460,7 @@ function SMTContent({ rows }) {
               <tbody>
                 {filtered.map((row, i) => (
                   <tr key={i}>
-                    <td style={{ width: 40, textAlign: 'center' }}><input type="checkbox" style={{ cursor: 'pointer' }} /></td>
+                    <td style={{ width: 40, textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} /></td>
                     <td><TaskTypeBadge type={row.type} /></td>
                     <td>
                       {row.tpId

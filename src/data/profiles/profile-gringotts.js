@@ -4,7 +4,7 @@ export default {
   shortName: 'Gringotts',
   entityType: 'entity',
   verifiedText: 'Entity Verified',
-  currentStatus: { label: 'Approved! (Renewal Required)', tooltip: 'Risk Level increase on approved profile.' },
+  currentStatus: { label: 'Approved' },
   riskLevel: { label: 'Medium', icon: 'error_outline', level: 'medium' },
 
   embedded: false,
@@ -13,12 +13,12 @@ export default {
 
   sidebarSteps: [
     { label: 'Risk Assessment',               dot: 'green', path: 'risk-assessment' },
-    { label: 'Due Diligence',                 dot: 'red',   path: 'due-diligence' },
+    { label: 'Due Diligence',                 dot: 'green', path: 'due-diligence' },
     { label: 'Integrity Check',               dot: 'grey',  partner: 'integrity', tooltip: 'Powered by Xapiens', newTag: true, path: 'integrity-check' },
     { label: 'Enhanced Due Diligence Reports',dot: 'grey',  path: 'enhanced-due-diligence' },
-    { label: 'UBO',                           dot: 'red',   partner: 'ubo', tooltip: 'Powered by Duns & Bradstreet', path: 'ubo' },
-    { label: 'Risk Mitigation',               dot: 'red',   path: 'risk-mitigation' },
-    { label: 'Approval',                      dot: 'red',   path: 'approval' },
+    { label: 'UBO',                           dot: 'green', partner: 'ubo', tooltip: 'Powered by Duns & Bradstreet', path: 'ubo' },
+    { label: 'Risk Mitigation',               dot: 'green', path: 'risk-mitigation' },
+    { label: 'Approval',                      dot: 'green', path: 'approval' },
     { label: 'Screening & Monitoring',        dot: 'green', path: 'screening-monitoring' },
   ],
   sidebarSections: [

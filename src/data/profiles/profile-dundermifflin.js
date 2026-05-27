@@ -4,7 +4,7 @@ export default {
   shortName: 'Dunder Mifflin',
   entityType: 'entity',
   verifiedText: 'Entity Verified',
-  currentStatus: { label: 'Approved! (Renewal Required)', tooltip: 'Renewal date reached' },
+  currentStatus: { label: 'Approved(!) Renewal Required', tooltip: 'Renewal date reached' },
   riskLevel: { label: 'Medium', icon: 'info', level: 'medium' },
 
   embedded: false,

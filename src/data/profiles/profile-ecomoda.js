@@ -4,7 +4,7 @@ export default {
   shortName: 'Ecomoda',
   entityType: 'entity',
   verifiedText: 'Entity Verified',
-  currentStatus: { label: 'Approved! (Renewal Required)' },
+  currentStatus: { label: 'Approved(!) Renewal Required' },
   riskLevel: { label: 'Medium', icon: 'warning_amber', level: 'medium' },
 
   embedded: false,

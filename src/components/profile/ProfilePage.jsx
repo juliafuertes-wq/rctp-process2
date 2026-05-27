@@ -20,7 +20,7 @@ const STATUS_CONFIG = {
   'Not Approved':                { cls: 'statusNotApproved',     icon: 'dangerous' },
   'Declined':                    { cls: 'statusDeclined',        icon: 'feedback' },
   'Approved*':                   { cls: 'statusExpired',         icon: 'history_toggle_off' },
-  'Approved! (Renewal Required)':{ cls: 'statusExpired',         icon: 'history_toggle_off' },
+  'Approved(!) Renewal Required':{ cls: 'statusExpired',         icon: 'history_toggle_off' },
 };
 
 function getStatusConfig(label) {
@@ -757,8 +757,8 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
           key="status-panel"
           currentStatus={currentStatus}
           renewalDate={profile.overviewFields.find(f => f.label === 'Third Party Renewal Date')?.value}
-          canRenew={['Approved', 'Approved*', 'Approved! (Renewal Required)'].includes(currentStatus)}
-          renewalInProgress={currentStatus === 'Approved! (Renewal Required)'}
+          canRenew={['Approved', 'Approved*', 'Approved(!) Renewal Required'].includes(currentStatus)}
+          renewalInProgress={currentStatus === 'Approved(!) Renewal Required'}
           onClose={() => setStatusPanelOpen(false)}
           onDecline={() => setDeclinePanelOpen(true)}
           onRenewal={() => { setStatusPanelOpen(false); setRenewalModalOpen(true); }}
@@ -832,7 +832,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                 onClick={() => {
                   if (profile.id === 'dundermifflin') setDMFlow({ renewed: true, approved: false });
                   if (profile.id === 'lumon') setLumonFlow({ renewed: true, approved: false });
-                  setCurrentStatus('Approved! (Renewal Required)');
+                  setCurrentStatus('Approved(!) Renewal Required');
                   setRenewalModalOpen(false);
                 }}
               >Continue</button>
@@ -877,7 +877,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                 className={`${styles.deleteModalBtn} ${styles.deleteModalContinue}`}
                 style={{ background: 'var(--primary-500)' }}
                 onClick={() => {
-                  if (profile.id === 'dundermifflin') { setDMFlow({ renewed: false, approved: false }); setCurrentStatus('Approved! (Renewal Required)'); }
+                  if (profile.id === 'dundermifflin') { setDMFlow({ renewed: false, approved: false }); setCurrentStatus('Approved(!) Renewal Required'); }
                   else if (profile.id === 'lumon') { setLumonFlow({ renewed: false, approved: false }); setCurrentStatus('Approved'); }
                   else if (profile.id === 'initech') { setCurrentStatus('Approved*'); }
                   setCancelRenewalModalOpen(false);

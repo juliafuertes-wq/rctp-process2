@@ -4,7 +4,7 @@ export default {
   shortName: 'Gringotts',
   entityType: 'entity',
   verifiedText: 'Entity Verified',
-  currentStatus: { label: 'Approved! (Renewal Required)', tooltip: 'Risk Level increase on approved profile.' },
+  currentStatus: { label: 'Approved(!) Renewal Required', tooltip: 'Risk Level increase on approved profile.' },
   riskLevel: { label: 'Medium', icon: 'error_outline', level: 'medium' },
 
   embedded: false,

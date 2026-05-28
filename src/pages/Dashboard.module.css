@@ -222,6 +222,7 @@
   letter-spacing: 0.5px;
   white-space: nowrap;
   position: relative;
+  vertical-align: middle;
 }
 .table thead th span[class*="material-icons"] {
   position: absolute;
@@ -244,7 +245,7 @@
 
 .cellLink {
   color: var(--primary-600);
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
 }
 .cellLink:hover { text-decoration: underline; }
@@ -255,7 +256,7 @@
   align-items: center;
   gap: 6px;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.3px;
   color: var(--text-normal);

@@ -10,7 +10,7 @@
   position: sticky;
   top: var(--nav-height);
   z-index: 50;
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease, height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tpTopStripScrolled {
@@ -91,16 +91,35 @@
   transition: margin 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Shrunk state when scrolled */
+/* Shrunk state when scrolled — fixed 64px height */
+.tpTopStripScrolled {
+  height: 64px;
+  overflow: hidden;
+}
+
 .tpTopStripScrolled .tpPageHeader {
-  margin: 4px 0;
-  padding: 0 0 4px;
+  margin: 0;
+  padding: 0;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
 }
 
 .tpTopStripScrolled .tpBack {
   padding: 0;
   line-height: 1;
-  margin-bottom: 2px;
+}
+
+.tpTopStripScrolled .tpTitleRow {
+  align-items: flex-start;
+}
+
+.tpTopStripScrolled .tpBadgeGroup {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
 }
 
 .tpBack {

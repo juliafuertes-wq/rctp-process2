@@ -10,11 +10,9 @@
   position: sticky;
   top: var(--nav-height);
   z-index: 50;
-  transition: box-shadow 0.2s ease, height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.tpTopStripScrolled {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: var(--tp-header-h);
+  overflow: hidden;
+  transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tpTopStripHigh {
@@ -86,25 +84,23 @@
 }
 
 .tpPageHeader {
-  padding: 0 0 12px;
-  margin: 16px 0;
-  transition: margin 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Shrunk state when scrolled — fixed 64px height */
-.tpTopStripScrolled {
-  height: 64px;
-  overflow: hidden;
-}
-
-.tpTopStripScrolled .tpPageHeader {
   position: relative;
-  margin: 0;
-  padding: 0;
-  height: 64px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 12px;
+  height: var(--tp-header-h);
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), gap 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Shrunk state when scrolled */
+.tpTopStripScrolled {
+  height: var(--tp-header-h-collapsed);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tpTopStripScrolled .tpPageHeader {
+  height: var(--tp-header-h-collapsed);
   gap: 4px;
 }
 
@@ -112,15 +108,6 @@
   padding: 0;
   line-height: 1;
 }
-
-/* Pull badges out of the flex flow so they don't inflate tpTitleRow height */
-.tpTopStripScrolled .tpBadges {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 
 .tpBack {
   display: inline-flex;
@@ -176,6 +163,10 @@
 .tpBadges {
   display: flex;
   gap: 16px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .tpBadgeGroup {

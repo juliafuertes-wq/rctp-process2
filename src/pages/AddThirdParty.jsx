@@ -28,6 +28,12 @@ const PERSON_DUP_ROWS = [
   { name: 'Bruce Wayne Batman', owner: 'Claudio Merino', bu: 'test', process: 'Standard RCTP', status: 'Pending Approval', ref: '', active: 'Active' },
 ];
 
+const UNKNOWN_DUP_ROWS = [
+  { name: 'Willy Wonka', owner: 'Claudio Merino', bu: 'Europe', process: 'Standard RCTP', status: 'Pending Approval', ref: 'WW-UK-001', active: 'Active' },
+  { name: 'W. Wonka Confectionery Ltd.', owner: 'Sarah Johnson', bu: 'Europe', process: 'Standard RCTP', status: 'Approved', ref: 'WWC-002', active: 'Active' },
+  { name: 'Wonka Chocolate Factory Ltd.', owner: 'Mark Davis', bu: 'Global Operations', process: 'Enhanced Due Diligence', status: 'Pending Approval', ref: '', active: 'Active' },
+];
+
 const VERIFY_ROWS = [
   { name: 'THE PIED PIPER EXTERMINATORS INC', duns: '029302064', address: '100 Enterprise Way,Scotts Valley,95066-3248,California', country: 'United States', ubo: true },
   { name: 'Pied Piper Mills, Inc.', duns: '057420044', address: '423 E Lake Dr,Hamlin,79520-4204,Texas', country: 'United States', ubo: true },
@@ -446,7 +452,7 @@ export default function AddThirdParty() {
                 <tr><th>Name</th><th>Owner</th><th>Business Unit</th><th>Process</th><th>Current Status</th><th>Internal Reference</th><th>Active/Inactive</th><th style={{ width: 40 }} /></tr>
               </thead>
               <tbody>
-                {(isPerson ? PERSON_DUP_ROWS : DUP_ROWS).map((r, i) => (
+                {(isPerson ? PERSON_DUP_ROWS : tpType === 'unknown' ? UNKNOWN_DUP_ROWS : DUP_ROWS).map((r, i) => (
                   <tr key={i}>
                     <td><span className={styles.cellLink} onClick={() => window.open(`${import.meta.env.BASE_URL}#/profile/piedpiper`, '_blank')}>{r.name}</span></td>
                     <td>{r.owner}</td>

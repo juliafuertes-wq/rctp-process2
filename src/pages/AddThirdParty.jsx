@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
 import ProfilePage from '../components/profile/ProfilePage';
-import { piedpiper, brucewayne } from '../data/profiles';
+import { piedpiper, brucewayne, willywonka } from '../data/profiles';
 import Checkbox from '../components/ui/Checkbox';
 import styles from './AddThirdParty.module.css';
 
@@ -311,7 +311,7 @@ export default function AddThirdParty() {
     stages.forEach(({ width, text, delay }) => {
       setTimeout(() => { setCreatingProgress(width); setCreatingLabel(text); }, delay);
     });
-    setTimeout(() => navigate(`/profile/${tpType === 'person' ? 'brucewayne' : 'piedpiper'}?new=1`), 3600);
+    setTimeout(() => navigate(`/profile/${tpType === 'person' ? 'brucewayne' : tpType === 'unknown' ? 'willywonka' : 'piedpiper'}?new=1`), 3600);
   }
 
   function handleCancel(e) {
@@ -1203,7 +1203,7 @@ function ProfilePanel({ name, tpType, onClose }) {
     return () => { document.body.style.overflow = ''; };
   }, [name]);
 
-  const profileData = name === 'Bruce Wayne Batman' ? brucewayne : piedpiper;
+  const profileData = name === 'Bruce Wayne Batman' ? brucewayne : tpType === 'unknown' ? willywonka : piedpiper;
 
   return (
     <>

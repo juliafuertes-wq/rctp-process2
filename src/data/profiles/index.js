@@ -9,6 +9,7 @@ import ecomoda from './profile-ecomoda';
 import lospollos from './profile-lospollos';
 import gringotts from './profile-gringotts';
 import agencegrateau from './profile-agencegrateau';
+import willywonka from './profile-willywonka';
 
 export const profiles = {
   piedpiper,
@@ -22,6 +23,7 @@ export const profiles = {
   lospollos,
   gringotts,
   agencegrateau,
+  willywonka,
 };
 
-export { piedpiper, brucewayne, gazprom, initech, dundermifflin, lumon, waystar, ecomoda, lospollos, gringotts, agencegrateau };
+export { piedpiper, brucewayne, gazprom, initech, dundermifflin, lumon, waystar, ecomoda, lospollos, gringotts, agencegrateau, willywonka };

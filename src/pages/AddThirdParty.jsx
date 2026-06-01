@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
 import ProfilePage from '../components/profile/ProfilePage';
-import { piedpiper, brucewayne } from '../data/profiles';
+import { piedpiper, brucewayne, willywonka } from '../data/profiles';
 import Checkbox from '../components/ui/Checkbox';
 import styles from './AddThirdParty.module.css';
 
@@ -26,6 +26,12 @@ const DUP_ROWS = [
 
 const PERSON_DUP_ROWS = [
   { name: 'Bruce Wayne Batman', owner: 'Claudio Merino', bu: 'test', process: 'Standard RCTP', status: 'Pending Approval', ref: '', active: 'Active' },
+];
+
+const UNKNOWN_DUP_ROWS = [
+  { name: 'Willy Wonka', owner: 'Claudio Merino', bu: 'Europe', process: 'Standard RCTP', status: 'Pending Approval', ref: 'WW-UK-001', active: 'Active' },
+  { name: 'W. Wonka Confectionery Ltd.', owner: 'Sarah Johnson', bu: 'Europe', process: 'Standard RCTP', status: 'Approved', ref: 'WWC-002', active: 'Active' },
+  { name: 'Wonka Chocolate Factory Ltd.', owner: 'Mark Davis', bu: 'Global Operations', process: 'Enhanced Due Diligence', status: 'Pending Approval', ref: '', active: 'Active' },
 ];
 
 const VERIFY_ROWS = [
@@ -311,7 +317,7 @@ export default function AddThirdParty() {
     stages.forEach(({ width, text, delay }) => {
       setTimeout(() => { setCreatingProgress(width); setCreatingLabel(text); }, delay);
     });
-    setTimeout(() => navigate('/profile/piedpiper?new=1'), 3600);
+    setTimeout(() => navigate(`/profile/${tpType === 'person' ? 'brucewayne' : tpType === 'unknown' ? 'willywonka' : 'piedpiper'}?new=1`), 3600);
   }
 
   function handleCancel(e) {
@@ -446,7 +452,7 @@ export default function AddThirdParty() {
                 <tr><th>Name</th><th>Owner</th><th>Business Unit</th><th>Process</th><th>Current Status</th><th>Internal Reference</th><th>Active/Inactive</th><th style={{ width: 40 }} /></tr>
               </thead>
               <tbody>
-                {(isPerson ? PERSON_DUP_ROWS : DUP_ROWS).map((r, i) => (
+                {(isPerson ? PERSON_DUP_ROWS : tpType === 'unknown' ? UNKNOWN_DUP_ROWS : DUP_ROWS).map((r, i) => (
                   <tr key={i}>
                     <td><span className={styles.cellLink} onClick={() => window.open(`${import.meta.env.BASE_URL}#/profile/piedpiper`, '_blank')}>{r.name}</span></td>
                     <td>{r.owner}</td>
@@ -1203,7 +1209,7 @@ function ProfilePanel({ name, tpType, onClose }) {
     return () => { document.body.style.overflow = ''; };
   }, [name]);
 
-  const profileData = name === 'Bruce Wayne Batman' ? brucewayne : piedpiper;
+  const profileData = name === 'Bruce Wayne Batman' ? brucewayne : tpType === 'unknown' ? willywonka : piedpiper;
 
   return (
     <>

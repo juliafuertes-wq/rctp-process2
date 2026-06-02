@@ -3007,15 +3007,21 @@
 }
 .navSubStepsClosed { display: none; }
 .navSubStepsOpen   { display: block; }
+.navStepCaretIcon {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.navStepCaretIconOpen {
+  transform: rotate(180deg);
+}
 .navStepOpenPageLink {
   display: inline-flex;
   align-items: center;
-  font-size: 10px;
-  font-weight: 500;
   color: var(--text-light);
   margin-left: auto;
-  letter-spacing: 0.1px;
-  white-space: nowrap;
   flex-shrink: 0;
 }
 .navStepOpenPageLink:hover { color: var(--primary-600); }

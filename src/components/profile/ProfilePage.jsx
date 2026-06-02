@@ -242,7 +242,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
           {/* Details Card */}
           <motion.section className={`${styles.card} ${styles.detailsCard}`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
             <div className={styles.cardHeader}>
-              <h2 className={styles.cardTitle}>{profile.shortName} Details</h2>
+              <h2 className={styles.cardTitle}>Third Party Details</h2>
               <div className={styles.cardHeaderRight}>
                 <div className={styles.statusInline}>
                   Third party STATUS:

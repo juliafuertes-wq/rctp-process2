@@ -231,9 +231,6 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
                             <span className={`material-icons-outlined ${styles.navStepperNodeIcon}`}>check</span>
                           )}
                         </span>
-                        {(!isLastSub || !isLast) && (
-                          <span className={`${styles.navStepperConnector} ${subConnectorDone ? styles.navStepperConnectorDone : ''}`} />
-                        )}
                       </span>
                       <span className={styles.navSubStepContent}>
                         <span className={styles.navSubStepLabel}>{sub.label}</span>

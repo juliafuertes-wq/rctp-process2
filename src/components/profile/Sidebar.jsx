@@ -1,8 +1,90 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { patchInitechProfile } from '../../utils/initechFlow';
+import { motion, AnimatePresence } from 'motion/react';
+import { patchInitechProfile, setExternalDDFlow, getExternalDDFlow } from '../../utils/initechFlow';
 import { PARTNER_ICONS } from './profileAssets';
 import styles from './profile.module.css';
+
+const LANGUAGES = ['English', 'Spanish', 'French', 'German', 'Portuguese', 'Italian', 'Chinese', 'Japanese'];
+
+function ExternalDDModal({ profileId, onClose, onAfterSend }) {
+  const [form, setFormState] = useState({ firstName: '', surname: '', email: '', language: '' });
+  const [errors, setErrors] = useState({});
+
+  function set(field, value) {
+    setFormState(f => ({ ...f, [field]: value }));
+    setErrors(e => ({ ...e, [field]: false }));
+  }
+
+  function handleSend() {
+    const errs = {};
+    if (!form.firstName.trim()) errs.firstName = true;
+    if (!form.surname.trim()) errs.surname = true;
+    if (!form.email.trim()) errs.email = true;
+    if (!form.language) errs.language = true;
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+    setExternalDDFlow(profileId, { sent: true });
+    onAfterSend?.();
+    onClose();
+  }
+
+  return (
+    <motion.div
+      className={styles.deleteModalOverlay}
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      transition={{ duration: 0.15 }}
+      onClick={onClose}
+    >
+      <motion.div
+        className={styles.deleteModal}
+        style={{ width: 460 }}
+        initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
+        transition={{ duration: 0.18 }}
+        onClick={e => e.stopPropagation()}
+        role="dialog" aria-modal="true"
+      >
+        <div className={styles.deleteModalHeader}>
+          <span className={styles.deleteModalTitle}>External Due Diligence — Send Invite</span>
+          <button className={styles.deleteModalClose} aria-label="Close" onClick={onClose} />
+        </div>
+        <div className={styles.deleteModalBody}>
+          {['firstName', 'surname', 'email'].map(field => (
+            <div key={field} className={styles.modalFormField}>
+              <label className={styles.modalFormLabel}>
+                {field === 'firstName' ? 'First Name' : field.charAt(0).toUpperCase() + field.slice(1)}
+                <span className={styles.modalFormRequired}> *</span>
+              </label>
+              <input
+                className={styles.modalFormInput}
+                type={field === 'email' ? 'email' : 'text'}
+                placeholder={field === 'firstName' ? 'First Name' : field.charAt(0).toUpperCase() + field.slice(1)}
+                style={errors[field] ? { borderColor: 'var(--alert-500)' } : undefined}
+                value={form[field]}
+                onChange={e => set(field, e.target.value)}
+              />
+            </div>
+          ))}
+          <div className={styles.modalFormField} style={{ marginBottom: 0 }}>
+            <label className={styles.modalFormLabel}>Language <span className={styles.modalFormRequired}>*</span></label>
+            <select
+              className={styles.modalFormSelect}
+              style={errors.language ? { borderColor: 'var(--alert-500)' } : undefined}
+              value={form.language}
+              onChange={e => set('language', e.target.value)}
+            >
+              <option value="">Please select</option>
+              {LANGUAGES.map(l => <option key={l} value={l}>{l}</option>)}
+            </select>
+          </div>
+        </div>
+        <div className={styles.deleteModalActions}>
+          <button className={`${styles.deleteModalBtn} ${styles.deleteModalCancel}`} onClick={onClose}>Close</button>
+          <button className={`${styles.deleteModalBtn} ${styles.btnFilled}`} onClick={handleSend}>Send Invite</button>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 const DOT_LABELS = {
   green:   'Complete',
@@ -52,7 +134,7 @@ function effectiveDotFor(step, profileLoading) {
   return step.dot;
 }
 
-export default function Sidebar({ profile: profileProp, profileLoading = false }) {
+export default function Sidebar({ profile: profileProp, profileLoading = false, onExternalDDSent }) {
   const profile = patchInitechProfile(profileProp);
   const location = useLocation();
   const currentPath = location.pathname;
@@ -63,6 +145,8 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
   const steps = profile.sidebarSteps || [];
   const stepDots = steps.map(s => effectiveDotFor(s, profileLoading));
   const nextIdx = stepDots.findIndex(d => d === 'red' || d === 'amber' || d === 'black');
+
+  const [externalDDOpen, setExternalDDOpen] = useState(false);
 
   const [expandedSubSteps, setExpandedSubSteps] = useState(() => {
     const init = {};
@@ -96,6 +180,7 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
   const pct = totalCount ? Math.round((completedCount / totalCount) * 100) : 0;
 
   return (
+    <>
     <aside className={styles.sideNav}>
       {summaryActive ? (
         <div className={styles.navItemActive}>Summary Page</div>
@@ -267,6 +352,14 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
                     </>
                   );
                   const rowCls = `${styles.navSubStepRow} ${isSubNext ? styles.navSubStepRowNext : ''}`;
+                  const isExternalDD = sub.label === 'External Due Diligence';
+                  if (isExternalDD) {
+                    return (
+                      <div key={j} className={rowCls} style={{ cursor: 'pointer' }} onClick={() => setExternalDDOpen(true)}>
+                        {subRowContent}
+                      </div>
+                    );
+                  }
                   return subPath ? (
                     <Link key={j} to={subPath} className={rowCls} style={{ textDecoration: 'none' }}>
                       {subRowContent}
@@ -315,6 +408,18 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
 
       <div className={styles.navDivider} />
     </aside>
+
+    <AnimatePresence>
+      {externalDDOpen && (
+        <ExternalDDModal
+          key="ext-dd-modal"
+          profileId={profile.id}
+          onClose={() => setExternalDDOpen(false)}
+          onAfterSend={onExternalDDSent}
+        />
+      )}
+    </AnimatePresence>
+    </>
   );
 }
 

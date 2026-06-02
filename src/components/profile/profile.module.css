@@ -3010,15 +3010,16 @@
 .navStepOpenPageLink {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 11px;
+  justify-content: flex-end;
+  gap: 3px;
+  font-size: 10px;
   font-weight: 500;
   color: var(--text-light);
-  padding: 3px 0 6px;
+  padding: 2px 0 4px;
   letter-spacing: 0.1px;
 }
 .navStepOpenPageLink:hover { color: var(--primary-600); }
-.navStepOpenPageLinkIcon { font-size: 12px; }
+.navStepOpenPageLinkIcon { font-size: 11px; }
 .navSubStepRow {
   display: grid;
   grid-template-columns: 32px 1fr;

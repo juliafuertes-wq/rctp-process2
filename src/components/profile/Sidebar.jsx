@@ -172,7 +172,7 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
                   {isNext && <span className={styles.navNextChip}>Next</span>}
                   {hasSubSteps && stepPath && (
                     <Link to={stepPath} className={styles.navStepOpenPageLink} style={{ textDecoration: 'none' }} onClick={e => e.stopPropagation()}>
-                      Open module
+                      <span className="material-icons-outlined" style={{ fontSize: 13 }}>open_in_new</span>
                     </Link>
                   )}
                 </span>

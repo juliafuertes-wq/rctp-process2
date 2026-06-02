@@ -2866,8 +2866,9 @@
   height: 100%;
   background: var(--primary-500);
   border-radius: 999px;
-  transition: width 0.4s ease;
+  transition: width 0.4s ease, background 0.2s ease;
 }
+.navProgressBarFillDone { background: var(--success-500); }
 
 /* ── Sidebar process stepper (vertical timeline) ── */
 .navStepper {

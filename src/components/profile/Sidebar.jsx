@@ -120,7 +120,7 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
           <span className={styles.navProgressCount}>{completedCount}/{totalCount} · {pct}%</span>
         </div>
         <div className={styles.navProgressBar}>
-          <span className={styles.navProgressBarFill} style={{ width: `${pct}%` }} />
+          <span className={`${styles.navProgressBarFill} ${pct === 100 ? styles.navProgressBarFillDone : ''}`} style={{ width: `${pct}%` }} />
         </div>
       </div>
 

@@ -3024,15 +3024,17 @@
   flex-shrink: 0;
 }
 .navStepOpenPageLink:hover { color: var(--primary-600); }
-/* Single continuous line: parent's connector ends → curves right → trunk runs down through substeps */
+/* Single continuous line: parent's connector ends → curves right → trunk runs down through substeps.
+   Geometry: parent connector lives at X=31 (2px wide, centered on parent dot at X=32).
+   The hook starts at X=31 (continuing parent connector) and curves right to land on the
+   substep trunk line at X=51 (2px wide, dot center at X=52). */
 .navSubSteps::before {
   content: '';
   position: absolute;
-  /* horizontal segment: starts at parent dot's center column, curves down-right */
   left: 31px;
   top: -10px;
-  width: 22px;          /* horizontal travel into substep column */
-  height: 22px;         /* vertical travel into substep zone */
+  width: 20px;          /* X=31 → X=51 */
+  height: 22px;         /* Y=-10 → Y=12 */
   border-left: 2px solid var(--neutral-100);
   border-bottom: 2px solid var(--neutral-100);
   border-bottom-left-radius: 10px;
@@ -3042,19 +3044,19 @@
 .navSubSteps::after {
   content: '';
   position: absolute;
-  left: 51px;            /* indented column for substep dots */
-  top: 12px;             /* meets the curve from ::before */
-  bottom: 13px;          /* stops at center of last substep row */
+  left: 51px;            /* same X as where hook ends */
+  top: 12px;             /* meets the bottom of the hook */
+  bottom: 13px;          /* stops at center of last substep row (26px row, center = 13px) */
   width: 2px;
   background: var(--neutral-100);
   pointer-events: none;
 }
 .navSubStepRow {
   display: grid;
-  /* gutter 56px → dot center at 52px (slightly right of trunk line at 52px) */
+  /* row padding-left=24, gutter column 56 → dot center at 24 + 28 = 52 (sits on trunk at X=51-53) */
   grid-template-columns: 56px 1fr;
   align-items: center;
-  padding: 3px 12px 3px 0;
+  padding: 3px 12px 3px 24px;
   min-height: 26px;
   transition: background 0.15s ease;
   position: relative;

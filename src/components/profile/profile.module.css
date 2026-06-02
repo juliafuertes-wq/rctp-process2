@@ -856,6 +856,56 @@
   color: var(--neutral-00);
 }
 
+/* ── Modal form fields (reusable across process modals) ── */
+.modalFormField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.modalFormLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.modalFormRequired { color: var(--alert-500); }
+.modalFormInput {
+  height: 36px;
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--rctp-radius-xs);
+  padding: 0 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-normal);
+  background: var(--neutral-00);
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+.modalFormInput:focus { border-color: var(--primary-500); }
+.modalFormInput::placeholder { color: var(--neutral-400); }
+.modalFormSelect {
+  height: 36px;
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--rctp-radius-xs);
+  padding: 0 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-normal);
+  background: var(--neutral-00);
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+  appearance: auto;
+}
+.modalFormSelect:focus { border-color: var(--primary-500); }
+
 /* ══════════════════════════════════════════════════════════════════════════
    ProfilePage (Summary) Styles
    ══════════════════════════════════════════════════════════════════════════ */

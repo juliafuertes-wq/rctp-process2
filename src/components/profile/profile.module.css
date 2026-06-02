@@ -2816,6 +2816,7 @@
   align-items: center;
   color: var(--text-light);
   border-radius: 3px;
+  margin-left: auto;
 }
 .navExpandAllBtn:hover { color: var(--text-normal); }
 .navExpandAllIcon {
@@ -3044,5 +3045,29 @@
   font-weight: 400;
   color: var(--text-normal);
   line-height: 1.2;
+}
+.navSubStepStatusRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 1px;
+}
+.navSubStepStatus {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-light);
+  letter-spacing: 0.1px;
+}
+.navSubStepPageLink {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-light);
+  border-radius: 3px;
+  padding: 1px;
+  flex-shrink: 0;
+}
+.navSubStepPageLink:hover { color: var(--primary-600); }
+.navSubStepPageLinkIcon {
+  font-size: 11px;
 }
 

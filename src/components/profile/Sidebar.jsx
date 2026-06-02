@@ -67,7 +67,7 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
   const [expandedSubSteps, setExpandedSubSteps] = useState(() => {
     const init = {};
     steps.forEach((step, i) => {
-      if (step.subSteps?.length) init[i] = true;
+      if (step.subSteps?.length) init[i] = i === nextIdx;
     });
     return init;
   });
@@ -91,31 +91,29 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
       <div className={styles.navProgress}>
         <div className={styles.navProgressHeader}>
           <span className={styles.navProgressTitle}>Workflow</span>
-          <span className={styles.navProgressHeaderRight}>
-            <button
-              className={styles.navExpandAllBtn}
-              onClick={() => {
-                const allExpanded = steps.every((s, i) => !s.subSteps?.length || expandedSubSteps[i]);
-                setExpandedSubSteps(() => {
-                  const next = {};
-                  steps.forEach((s, i) => { if (s.subSteps?.length) next[i] = !allExpanded; });
-                  return next;
-                });
-              }}
-              aria-label={steps.every((s, i) => !s.subSteps?.length || expandedSubSteps[i]) ? 'Collapse all' : 'Expand all'}
-              title={steps.every((s, i) => !s.subSteps?.length || expandedSubSteps[i]) ? 'Collapse all' : 'Expand all'}
-            >
-              <span className={`material-icons-outlined ${styles.navExpandAllIcon}`}>
-                {steps.every((s, i) => !s.subSteps?.length || expandedSubSteps[i]) ? 'unfold_less' : 'unfold_more'}
-              </span>
-            </button>
-            <span className={styles.navProgressInfoWrap}>
-              <span className={`material-icons-outlined ${styles.navProgressInfoIcon}`}>info</span>
-              <span className={styles.navProgressInfoTooltip}>
-                Track third party progress through each workflow stage. Click a stage below to open its page.
-              </span>
+          <span className={styles.navProgressInfoWrap}>
+            <span className={`material-icons-outlined ${styles.navProgressInfoIcon}`}>info</span>
+            <span className={styles.navProgressInfoTooltip}>
+              Track third party progress through each workflow stage. Click a stage below to open its page.
             </span>
           </span>
+          <button
+            className={styles.navExpandAllBtn}
+            onClick={() => {
+              const allExpanded = steps.every((s, i) => !s.subSteps?.length || expandedSubSteps[i]);
+              setExpandedSubSteps(() => {
+                const next = {};
+                steps.forEach((s, i) => { if (s.subSteps?.length) next[i] = !allExpanded; });
+                return next;
+              });
+            }}
+            aria-label={steps.every((s, i) => !s.subSteps?.length || expandedSubSteps[i]) ? 'Collapse all' : 'Expand all'}
+            title={steps.every((s, i) => !s.subSteps?.length || expandedSubSteps[i]) ? 'Collapse all' : 'Expand all'}
+          >
+            <span className={`material-icons-outlined ${styles.navExpandAllIcon}`}>
+              {steps.every((s, i) => !s.subSteps?.length || expandedSubSteps[i]) ? 'unfold_less' : 'unfold_more'}
+            </span>
+          </button>
         </div>
         <div className={styles.navProgressMeta}>
           <span className={styles.navProgressLabel}>Progress</span>
@@ -172,32 +170,11 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
                   <span className={styles.navStepperLabel}>{step.label}</span>
                   {step.partner && <PartnerIcon partner={step.partner} tooltip={step.tooltip} />}
                   {isNext && <span className={styles.navNextChip}>Next</span>}
-                  {hasSubSteps && stepPath && (
-                    <Link
-                      to={stepPath}
-                      className={styles.navStepPageLink}
-                      onClick={e => e.stopPropagation()}
-                      title="Open page"
-                      aria-label="Open page"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <span className={`material-icons-outlined ${styles.navStepPageLinkIcon}`}>open_in_new</span>
-                    </Link>
-                  )}
                 </span>
                 <span className={styles.navStepperStatusRow}>
                   <span className={styles.navStepperStatus} title={DOT_LABELS[effectiveDot] ?? DOT_LABELS.grey}>
                     {statusLabel}
                   </span>
-                  {hasSubSteps && (
-                    <button
-                      className={styles.navSubStepToggle}
-                      onClick={e => { e.preventDefault(); setExpandedSubSteps(prev => ({ ...prev, [i]: !prev[i] })); }}
-                      aria-label={subExpanded ? 'Collapse sub-steps' : 'Expand sub-steps'}
-                    >
-                      <span className={`material-icons-outlined ${styles.navSubStepToggleIcon} ${subExpanded ? styles.navSubStepToggleIconOpen : ''}`}>expand_more</span>
-                    </button>
-                  )}
                 </span>
               </span>
             </>
@@ -252,14 +229,25 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
                       </span>
                       <span className={styles.navSubStepContent}>
                         <span className={styles.navSubStepLabel}>{sub.label}</span>
+                        <span className={styles.navSubStepStatusRow}>
+                          <span className={styles.navSubStepStatus}>{subStatusLabel}</span>
+                          {subPath && (
+                            <Link
+                              to={subPath}
+                              className={styles.navSubStepPageLink}
+                              onClick={e => e.stopPropagation()}
+                              title="Open page"
+                              aria-label="Open page"
+                              style={{ textDecoration: 'none' }}
+                            >
+                              <span className={`material-icons-outlined ${styles.navSubStepPageLinkIcon}`}>open_in_new</span>
+                            </Link>
+                          )}
+                        </span>
                       </span>
                     </>
                   );
-                  return subPath ? (
-                    <Link key={j} to={subPath} className={styles.navSubStepRow} style={{ textDecoration: 'none' }}>
-                      {subRowContent}
-                    </Link>
-                  ) : (
+                  return (
                     <div key={j} className={styles.navSubStepRow}>
                       {subRowContent}
                     </div>

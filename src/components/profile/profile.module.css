@@ -2801,6 +2801,39 @@
   pointer-events: none;
   z-index: var(--z-tooltip);
 }
+.navProgressHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+.navExpandAllBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-light);
+  border-radius: 3px;
+}
+.navExpandAllBtn:hover { color: var(--text-normal); }
+.navExpandAllIcon {
+  font-size: 16px;
+}
+.navStepPageLink {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  color: var(--text-light);
+  border-radius: 3px;
+  padding: 1px;
+  flex-shrink: 0;
+}
+.navStepPageLink:hover { color: var(--primary-600); }
+.navStepPageLinkIcon {
+  font-size: 13px;
+}
 .navProgressMeta {
   display: flex;
   align-items: baseline;

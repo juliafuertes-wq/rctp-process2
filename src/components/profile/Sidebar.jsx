@@ -247,8 +247,13 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
                       </span>
                     </>
                   );
-                  return (
-                    <div key={j} className={`${styles.navSubStepRow} ${isSubNext ? styles.navSubStepRowNext : ''}`}>
+                  const rowCls = `${styles.navSubStepRow} ${isSubNext ? styles.navSubStepRowNext : ''}`;
+                  return subPath ? (
+                    <Link key={j} to={subPath} className={rowCls} style={{ textDecoration: 'none' }}>
+                      {subRowContent}
+                    </Link>
+                  ) : (
+                    <div key={j} className={rowCls}>
                       {subRowContent}
                     </div>
                   );

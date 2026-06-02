@@ -170,16 +170,16 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
                   <span className={styles.navStepperLabel}>{step.label}</span>
                   {step.partner && <PartnerIcon partner={step.partner} tooltip={step.tooltip} />}
                   {isNext && <span className={styles.navNextChip}>Next</span>}
+                  {hasSubSteps && stepPath && (
+                    <Link to={stepPath} className={styles.navStepOpenPageLink} style={{ textDecoration: 'none' }} onClick={e => e.stopPropagation()}>
+                      Open module
+                    </Link>
+                  )}
                 </span>
                 <span className={styles.navStepperStatusRow}>
                   <span className={styles.navStepperStatus} title={DOT_LABELS[effectiveDot] ?? DOT_LABELS.grey}>
                     {statusLabel}
                   </span>
-                  {hasSubSteps && subExpanded && stepPath && (
-                    <Link to={stepPath} className={styles.navStepOpenPageLink} style={{ textDecoration: 'none' }} onClick={e => e.stopPropagation()}>
-                      Open module
-                    </Link>
-                  )}
                 </span>
               </span>
             </>

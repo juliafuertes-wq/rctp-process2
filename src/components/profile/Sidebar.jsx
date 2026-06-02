@@ -176,6 +176,11 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
                     {statusLabel}
                   </span>
                 </span>
+                {hasSubSteps && subExpanded && stepPath && (
+                  <Link to={stepPath} className={styles.navStepOpenPageLink} style={{ textDecoration: 'none' }} onClick={e => e.stopPropagation()}>
+                    Open module
+                  </Link>
+                )}
               </span>
             </>
           );
@@ -208,12 +213,6 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
             <div key={`step-group-${i}`}>
               {mainRow}
               <div className={`${styles.navSubSteps} ${subExpanded ? styles.navSubStepsOpen : styles.navSubStepsClosed}`}>
-                {stepPath && (
-                  <Link to={stepPath} className={styles.navStepOpenPageLink} style={{ textDecoration: 'none' }} onClick={e => e.stopPropagation()}>
-                    Open module
-                    <span className={`material-icons-outlined ${styles.navStepOpenPageLinkIcon}`}>open_in_new</span>
-                  </Link>
-                )}
                 {step.subSteps.map((sub, j) => {
                   const subDot = sub.dot || 'grey';
                   const subNodeCls = styles['navStepperNode_' + subDot] || styles.navStepperNode_grey;

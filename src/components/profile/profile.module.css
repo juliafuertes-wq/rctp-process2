@@ -3008,18 +3008,14 @@
 .navSubStepsClosed { display: none; }
 .navSubStepsOpen   { display: block; }
 .navStepOpenPageLink {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 3px;
+  display: block;
   font-size: 10px;
   font-weight: 500;
   color: var(--text-light);
-  padding: 2px 0 4px;
+  margin-top: 2px;
   letter-spacing: 0.1px;
 }
 .navStepOpenPageLink:hover { color: var(--primary-600); }
-.navStepOpenPageLinkIcon { font-size: 11px; }
 .navSubStepRow {
   display: grid;
   grid-template-columns: 32px 1fr;

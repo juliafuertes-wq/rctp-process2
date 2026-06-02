@@ -3021,7 +3021,6 @@
   display: inline-flex;
   align-items: center;
   color: var(--text-light);
-  margin-left: auto;
   flex-shrink: 0;
 }
 .navStepOpenPageLink:hover { color: var(--primary-600); }

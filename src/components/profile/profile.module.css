@@ -3074,6 +3074,19 @@
   border-left-color: var(--primary-500);
   border-bottom-color: var(--primary-500);
 }
+/* Green routing path: when the parent step is completed, paint the entire substep tree green
+   (opening hook, trunk through all substeps, and closing curve). */
+.navSubStepsDone::before {
+  border-left-color: var(--success-500);
+  border-bottom-color: var(--success-500);
+}
+.navSubStepsDone::after {
+  background: var(--success-500);
+}
+.navSubStepsDone .navSubStepsCloser {
+  border-right-color: var(--success-500);
+  border-bottom-color: var(--success-500);
+}
 .navSubStepsNext::after {
   /* Paint the trunk blue only above the next-sub dot, grey below.
      Each substep row is 26px tall, dot center sits at row-top + 13px.
@@ -3108,7 +3121,6 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--neutral-300);
   display: inline-flex;
   align-items: center;
   justify-content: center;

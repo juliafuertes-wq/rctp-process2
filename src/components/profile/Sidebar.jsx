@@ -158,6 +158,7 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
             : -1;
           const showChipOnParent = isNext && !hasSubSteps;
           const parentRouteToNext = isNext && hasSubSteps;
+          const parentRouteDone = effectiveDot === 'green' && hasSubSteps;
 
           const content = (
             <>
@@ -224,7 +225,7 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
             <div key={`step-group-${i}`}>
               {mainRow}
               <div
-                className={`${styles.navSubSteps} ${subExpanded ? styles.navSubStepsOpen : styles.navSubStepsClosed} ${parentRouteToNext ? styles.navSubStepsNext : ''}`}
+                className={`${styles.navSubSteps} ${subExpanded ? styles.navSubStepsOpen : styles.navSubStepsClosed} ${parentRouteToNext ? styles.navSubStepsNext : ''} ${parentRouteDone ? styles.navSubStepsDone : ''}`}
                 style={parentRouteToNext ? { '--next-sub-idx': subNextIdx } : undefined}
               >
                 {step.subSteps.map((sub, j) => {
@@ -238,11 +239,7 @@ export default function Sidebar({ profile: profileProp, profileLoading = false }
                   const subRowContent = (
                     <>
                       <span className={styles.navSubStepGutter}>
-                        <span className={`${styles.navSubStepNode} ${subNodeCls} ${isSubNext ? styles.navStepperNodeNext : ''}`}>
-                          {subDot === 'green' && (
-                            <span className={`material-icons-outlined ${styles.navStepperNodeIcon}`}>check</span>
-                          )}
-                        </span>
+                        <span className={`${styles.navSubStepNode} ${subNodeCls} ${isSubNext ? styles.navStepperNodeNext : ''}`} />
                       </span>
                       <span className={styles.navSubStepContent}>
                         <span className={styles.navSubStepLabel}>{sub.label}</span>

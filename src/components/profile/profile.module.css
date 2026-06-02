@@ -2958,12 +2958,12 @@
   justify-content: center;
   flex-shrink: 0;
   z-index: 1;
+  overflow: hidden;
   transition: box-shadow 0.15s ease;
 }
 .navStepperNodeIcon {
   font-size: 12px;
   color: var(--neutral-00);
-  font-weight: 700;
 }
 .navStepperNode_red     { background: var(--alert-500); }
 .navStepperNode_amber   { background: var(--warning-500); }

@@ -1,0 +1,288 @@
+/* ── Outer page wrapper (full-width, no sidebar) ── */
+.pageWrap {
+  padding: 0 16px 40px;
+}
+
+/* ── Main card ── */
+.card {
+  background: var(--neutral-00);
+  border-top: 3px solid var(--primary-600);
+  min-height: 600px;
+}
+
+/* ── Sticky header ── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--neutral-00);
+  border-bottom: 1px solid var(--neutral-50);
+  padding: 14px 20px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.headerTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.headerTitleCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-normal);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* ── Action bar (Approved / Not Approved / Notes / … / Cancel / Save) ── */
+.actionBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 12px;
+  gap: 8px;
+}
+
+.actionLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.actionRight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Step tabs (numbered pills) ── */
+.stepTabs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 10px 0 0;
+}
+
+.stepTab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-light);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: inherit;
+}
+
+.stepTab:hover {
+  color: var(--text-normal);
+}
+
+.stepTabActive {
+  color: var(--primary-600);
+  border-bottom-color: var(--primary-600);
+}
+
+.stepPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--neutral-100);
+  color: var(--text-light);
+  transition: background 0.15s, color 0.15s;
+}
+
+.stepTabActive .stepPill {
+  background: var(--primary-500);
+  color: #fff;
+}
+
+.stepPillDone {
+  background: var(--success-500) !important;
+  color: #fff !important;
+}
+
+/* ── Progress bar (below tabs) ── */
+.progressBar {
+  height: 3px;
+  background: var(--neutral-50);
+  margin: 0 -20px;
+}
+
+.progressBarFill {
+  height: 3px;
+  background: var(--primary-500);
+  transition: width 0.3s ease;
+}
+
+/* ── Form body ── */
+.formBody {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Section block (card within card) ── */
+.section {
+  border: 1px solid var(--neutral-50);
+  border-radius: var(--rctp-radius-sm);
+  padding: 20px;
+  background: var(--neutral-00);
+  margin-bottom: 16px;
+}
+
+.sectionLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-normal);
+  margin-bottom: 14px;
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  line-height: 1.4;
+}
+
+.sectionNum {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-normal);
+  flex-shrink: 0;
+}
+
+.required {
+  color: var(--alert-500);
+  margin-left: 2px;
+}
+
+/* ── Textarea ── */
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--neutral-100);
+  border-radius: var(--rctp-radius-sm);
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text-normal);
+  resize: vertical;
+  min-height: 120px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.textarea:focus {
+  border-color: var(--primary-400);
+}
+
+/* ── File upload row ── */
+.fileRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--neutral-100);
+  border-radius: var(--rctp-radius-sm);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.fileLabel {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--text-light);
+  background: var(--neutral-00);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.browseBtn {
+  padding: 8px 14px;
+  background: var(--neutral-50);
+  border: none;
+  border-left: 1px solid var(--neutral-100);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--text-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.browseBtn:hover {
+  background: var(--neutral-100);
+}
+
+.fileHint {
+  font-size: 12px;
+  color: var(--text-light);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.uploadBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 18px;
+  border: 1px solid var(--primary-500);
+  border-radius: var(--rctp-radius-sm);
+  background: none;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--primary-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.uploadBtn:hover {
+  background: var(--primary-08);
+}
+
+/* ── Not-ready banner (shown when prior steps incomplete) ── */
+.notReadyBanner {
+  margin: 20px;
+  padding: 16px;
+  background: var(--neutral-25);
+  border: 1px solid var(--neutral-100);
+  border-radius: var(--rctp-radius-sm);
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.5;
+  text-align: center;
+}

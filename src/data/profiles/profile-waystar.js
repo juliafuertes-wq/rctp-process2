@@ -25,8 +25,8 @@ export default {
     { label: 'UBO', dot: 'amber', partner: 'ubo', tooltip: 'Powered by Duns & Bradstreet' , path: 'ubo'},
     { label: 'Risk Mitigation', dot: 'red' , path: 'risk-mitigation'},
     { label: 'Approval', dot: 'red', path: 'approval', subSteps: [
-      { label: 'Approval 1', dot: 'red' },
-      { label: 'Approval 2', dot: 'red' },
+      { label: 'Approval Stage 1', dot: 'red', path: 'approval/1' },
+      { label: 'Approval Stage 2', dot: 'red', path: 'approval/2' },
     ]},
     { label: 'Screening & Monitoring', dot: 'red', path: 'screening-monitoring' },
   ],

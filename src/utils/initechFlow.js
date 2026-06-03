@@ -146,6 +146,8 @@ let _waystarState = {
   integrityCheckInProgress: false,
   enhancedDDDone: false,
   riskMitigationDone: false,
+  approval1Done: false,
+  approval2Done: false,
 };
 
 export function getWaystarFlow() {
@@ -157,7 +159,7 @@ export function setWaystarFlow(updates) {
 }
 
 function _patchWaystar(profile) {
-  const { ra1Done, ra2Done, internalDDDone, integrityCheckInProgress, enhancedDDDone, riskMitigationDone } = _waystarState;
+  const { ra1Done, ra2Done, internalDDDone, integrityCheckInProgress, enhancedDDDone, riskMitigationDone, approval1Done, approval2Done } = _waystarState;
   const externalDDSent = getExternalDDFlow('waystar').sent;
 
   const steps = profile.sidebarSteps.map(s => {
@@ -204,7 +206,14 @@ function _patchWaystar(profile) {
         const { subSteps: _, ...rest } = s;
         return rest;
       }
-      return s;
+      const allDone = approval1Done && approval2Done;
+      const anyDone = approval1Done || approval2Done;
+      const subSteps = (s.subSteps || []).map((sub, i) => {
+        const done = i === 0 ? approval1Done : approval2Done;
+        return { ...sub, dot: done ? 'green' : 'red' };
+      });
+      const dot = allDone ? 'green' : anyDone ? 'amber' : 'red';
+      return { ...s, dot, subSteps };
     }
     return s;
   });

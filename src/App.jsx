@@ -18,6 +18,7 @@ const ProfileRiskReport  = lazy(() => import('./components/profile/ProfileRiskRe
 const ProfileEdit            = lazy(() => import('./components/profile/ProfileEdit'));
 const ProfileRiskMitigation       = lazy(() => import('./components/profile/ProfileRiskMitigation'));
 const ProfileApproval             = lazy(() => import('./components/profile/ProfileApproval'));
+const ProfileApprovalStage        = lazy(() => import('./components/profile/ProfileApprovalStage'));
 const ProfilePlaceholder          = lazy(() => import('./components/profile/ProfilePlaceholder'));
 const ProfileRiskAssessment             = lazy(() => import('./components/profile/ProfileRiskAssessment'));
 const ProfileRiskAssessmentQuestionnaire = lazy(() => import('./components/profile/ProfileRiskAssessmentQuestionnaire'));
@@ -131,6 +132,7 @@ export default function App() {
           <Route path="/profile/:profileId/enhanced-due-diligence" element={<ProfileEnhancedDueDiligence />} />
           <Route path="/profile/:profileId/ubo" element={<ProfileUBO />} />
           <Route path="/profile/:profileId/approval" element={<ProfileApproval />} />
+          <Route path="/profile/:profileId/approval/:stageNum" element={<ProfileApprovalStage />} />
           <Route path="/profile/:profileId/screening-monitoring" element={<ProfileScreeningMonitoring />} />
           <Route path="/profile/:profileId/properties" element={<ProfileProperties />} />
           <Route path="/profile/:profileId/entity-verification" element={<ProfileEntityVerification />} />

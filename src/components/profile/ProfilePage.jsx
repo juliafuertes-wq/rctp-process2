@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import confetti from 'canvas-confetti';
 import Flag from '../ui/Flag';
 import Badge from '../ui/Badge';
 
@@ -85,6 +86,27 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const statusBadgeRef = useRef(null);
+  const confettiFiredRef = useRef(false);
+  useEffect(() => {
+    if (currentStatus !== 'Approved' || confettiFiredRef.current) return;
+    confettiFiredRef.current = true;
+    const badge = statusBadgeRef.current;
+    if (!badge) return;
+    const rect = badge.getBoundingClientRect();
+    confetti({
+      particleCount: 140,
+      spread: 90,
+      startVelocity: 50,
+      origin: {
+        x: (rect.left + rect.width / 2) / window.innerWidth,
+        y: (rect.top + rect.height / 2) / window.innerHeight,
+      },
+      colors: ['#02A3D5', '#028FBB', '#13DF81', '#F0C043', '#ffffff'],
+      zIndex: 9999,
+    });
+  }, [currentStatus]);
 
   if (!profile) return <div style={{ padding: 40, textAlign: 'center' }}>Profile not found</div>;
 
@@ -192,6 +214,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   const tip = profile.currentStatus?.tooltip;
                   const badge = (
                     <div
+                      ref={statusBadgeRef}
                       className={`${styles.badge} ${styles[cls]} ${styles.badgeBtn}`}
                       onClick={() => setStatusPanelOpen(true)}
                     >

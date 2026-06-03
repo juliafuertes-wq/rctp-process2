@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { setWaystarFlow, setExternalDDFlow } from '../../utils/initechFlow';
 import PageLayout from '../layout/PageLayout';
 import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
@@ -23,7 +24,20 @@ export default function ProfileScreeningMonitoring() {
   const isWaystar = profileId === 'waystar';
 
   function handleAdd() {
-    if (isWaystar) navigate(`/profile/${profileId}/approval/2`);
+    if (isWaystar) {
+      setExternalDDFlow('waystar', { sent: true });
+      setWaystarFlow({
+        ra1Done: true,
+        ra2Done: true,
+        internalDDDone: true,
+        integrityCheckInProgress: true,
+        enhancedDDDone: true,
+        riskMitigationDone: true,
+        approval1Done: true,
+        screeningDone: true,
+      });
+      navigate(`/profile/${profileId}/approval/2`);
+    }
   }
 
   const rows = profile.screeningRows || [];

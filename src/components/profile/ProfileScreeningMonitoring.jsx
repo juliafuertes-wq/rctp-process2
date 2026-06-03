@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import PageLayout from '../layout/PageLayout';
 import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
@@ -14,10 +14,17 @@ import smStyles from './ProfileScreeningMonitoring.module.css';
 
 export default function ProfileScreeningMonitoring() {
   const { profileId } = useParams();
+  const navigate = useNavigate();
   const profile = profiles[profileId];
   const [active, setActive] = useState(true);
 
   if (!profile) return null;
+
+  const isWaystar = profileId === 'waystar';
+
+  function handleAdd() {
+    if (isWaystar) navigate(`/profile/${profileId}/approval/2`);
+  }
 
   const rows = profile.screeningRows || [];
 
@@ -57,7 +64,7 @@ export default function ProfileScreeningMonitoring() {
                   <div className={smStyles.activeToggleTrack}>{active ? 'Active' : 'Inactive'}</div>
                   <div className={smStyles.activeToggleThumb} />
                 </div>
-                <button className={`${styles.btn} ${styles.btnFilled}`}>Add</button>
+                <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleAdd}>Add</button>
               </div>
             </div>
 

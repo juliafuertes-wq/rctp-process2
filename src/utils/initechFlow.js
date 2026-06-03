@@ -143,7 +143,9 @@ let _waystarState = {
   ra1Done: false,
   ra2Done: false,
   internalDDDone: false,
-  approvalReady: false,
+  integrityCheckInProgress: false,
+  enhancedDDDone: false,
+  riskMitigationDone: false,
 };
 
 export function getWaystarFlow() {
@@ -155,7 +157,7 @@ export function setWaystarFlow(updates) {
 }
 
 function _patchWaystar(profile) {
-  const { ra1Done, ra2Done, internalDDDone, approvalReady } = _waystarState;
+  const { ra1Done, ra2Done, internalDDDone, integrityCheckInProgress, enhancedDDDone, riskMitigationDone } = _waystarState;
   const externalDDSent = getExternalDDFlow('waystar').sent;
 
   const steps = profile.sidebarSteps.map(s => {
@@ -169,18 +171,34 @@ function _patchWaystar(profile) {
     }
     if (s.label === 'Due Diligence') {
       if (!ra2Done) return s;
+      const extDot = enhancedDDDone ? 'green' : externalDDSent ? 'amber' : 'red';
       const subSteps = s.subSteps.map(sub => {
         if (sub.label === 'Internal Due Diligence') return { ...sub, dot: internalDDDone ? 'green' : 'red' };
-        if (sub.label === 'External Due Diligence') return { ...sub, dot: externalDDSent ? 'amber' : 'red' };
+        if (sub.label === 'External Due Diligence') return { ...sub, dot: extDot };
         return sub;
       });
-      const waiting = internalDDDone && externalDDSent;
+      const allDone = internalDDDone && enhancedDDDone;
+      const waiting = internalDDDone && externalDDSent && !enhancedDDDone;
       const anyStarted = internalDDDone || externalDDSent;
-      const dot = anyStarted ? 'amber' : 'red';
+      const dot = allDone ? 'green' : anyStarted ? 'amber' : 'red';
       return { ...s, dot, subSteps, ...(waiting ? { waiting: true } : {}) };
     }
+    if (s.label === 'Integrity Check') {
+      if (!externalDDSent) return s;
+      return { ...s, dot: integrityCheckInProgress ? 'amber' : 'red', ...(integrityCheckInProgress ? { waiting: true } : {}) };
+    }
+    if (s.label === 'Enhanced Due Diligence Reports') {
+      if (!integrityCheckInProgress) return s;
+      return { ...s, dot: enhancedDDDone ? 'green' : 'red' };
+    }
+    if (s.label === 'UBO') {
+      return { ...s, dot: riskMitigationDone ? 'green' : s.dot };
+    }
+    if (s.label === 'Risk Mitigation') {
+      return { ...s, dot: riskMitigationDone ? 'green' : 'red' };
+    }
     if (s.label === 'Approval') {
-      if (!approvalReady) {
+      if (!riskMitigationDone) {
         const { subSteps: _, ...rest } = s;
         return rest;
       }

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import PageLayout from '../layout/PageLayout';
 import Breadcrumb from '../layout/Breadcrumb';
@@ -9,20 +9,27 @@ import Checkbox from '../ui/Checkbox';
 import ProfilePageHeader from './ProfilePageHeader';
 import styles from './profile.module.css';
 import rmStyles from './ProfileRiskMitigation.module.css';
-import { getFlow, setFlow, patchInitechProfile } from '../../utils/initechFlow';
+import { getFlow, setFlow, patchInitechProfile, getWaystarFlow, setWaystarFlow } from '../../utils/initechFlow';
 
-function RiskTable({ rows, onMenuClick, onCheckOpen }) {
+function RiskTable({ rows, onMenuClick, onCheckOpen, onAllChecked }) {
   const [checked, setChecked] = useState({});
   const allChecked = rows.length > 0 && rows.every(r => checked[r.id]);
   const someChecked = rows.some(r => checked[r.id]) && !allChecked;
 
   function toggleAll() {
     if (allChecked) setChecked({});
-    else setChecked(Object.fromEntries(rows.map(r => [r.id, true])));
+    else {
+      setChecked(Object.fromEntries(rows.map(r => [r.id, true])));
+      onAllChecked?.();
+    }
   }
 
   function handleCheck(row, val) {
-    setChecked(p => ({ ...p, [row.id]: val }));
+    setChecked(p => {
+      const next = { ...p, [row.id]: val };
+      if (val && rows.every(r => !!next[r.id])) onAllChecked?.();
+      return next;
+    });
     if (onCheckOpen && val) onCheckOpen(row);
   }
 
@@ -86,12 +93,12 @@ function EmptyRow({ message }) {
   );
 }
 
-function Section({ title, rows, onMenuClick, onCheckOpen }) {
+function Section({ title, rows, onMenuClick, onCheckOpen, onAllChecked }) {
   return (
     <div className={rmStyles.section}>
       <h3 className={rmStyles.sectionTitle}>{title}</h3>
       {rows.length > 0
-        ? <div className={rmStyles.tableWrap}><RiskTable rows={rows} onMenuClick={onMenuClick} onCheckOpen={onCheckOpen} /></div>
+        ? <div className={rmStyles.tableWrap}><RiskTable rows={rows} onMenuClick={onMenuClick} onCheckOpen={onCheckOpen} onAllChecked={onAllChecked} /></div>
         : <EmptyRow message={`Currently no ${title}.`} />
       }
     </div>
@@ -139,6 +146,7 @@ function ProtoModal({ onClose, onContinue }) {
 
 export default function ProfileRiskMitigation() {
   const params = useParams();
+  const navigate = useNavigate();
   const rawProfile = profiles[params.profileId];
 
   const [tick, setTick] = useState(0);
@@ -146,11 +154,13 @@ export default function ProfileRiskMitigation() {
 
   if (!rawProfile) return <div style={{ padding: 40, textAlign: 'center' }}>Profile not found</div>;
 
+  const isWaystar = params.profileId === 'waystar';
   const profile = patchInitechProfile(rawProfile);
   const { riskMitigated } = getFlow();
+  const { riskMitigationDone } = isWaystar ? getWaystarFlow() : { riskMitigationDone: false };
 
   const baseRm = rawProfile.riskMitigation || { openRisks: [], mitigatedRisks: [], cancelledRisks: [] };
-  const rm = riskMitigated
+  const rm = (riskMitigated || riskMitigationDone)
     ? {
         openRisks: [],
         mitigatedRisks: [...baseRm.mitigatedRisks, ...baseRm.openRisks.map(r => ({ ...r, status: 'Mitigated' }))],
@@ -168,10 +178,20 @@ export default function ProfileRiskMitigation() {
     if (profile.id === 'initech') setModalOpen(true);
   }
 
+  function handleAllChecked() {
+    if (isWaystar) setModalOpen(true);
+  }
+
   function handleMitigate() {
-    setFlow({ riskMitigated: true });
-    setModalOpen(false);
-    setTick(t => t + 1);
+    if (isWaystar) {
+      setWaystarFlow({ riskMitigationDone: true });
+      setModalOpen(false);
+      navigate(`/profile/${rawProfile.id}`);
+    } else {
+      setFlow({ riskMitigated: true });
+      setModalOpen(false);
+      setTick(t => t + 1);
+    }
   }
 
   return (
@@ -210,7 +230,7 @@ export default function ProfileRiskMitigation() {
             )}
 
             <div className={rmStyles.sectionsWrap}>
-              <Section title="Open Risks" rows={rm.openRisks} onMenuClick={handleMenuClick} onCheckOpen={handleCheckOpen} />
+              <Section title="Open Risks" rows={rm.openRisks} onMenuClick={handleMenuClick} onCheckOpen={handleCheckOpen} onAllChecked={handleAllChecked} />
               <Section title="Mitigated Risks" rows={rm.mitigatedRisks} onMenuClick={handleMenuClick} />
               <Section title="Cancelled Risks" rows={rm.cancelledRisks} onMenuClick={handleMenuClick} />
             </div>

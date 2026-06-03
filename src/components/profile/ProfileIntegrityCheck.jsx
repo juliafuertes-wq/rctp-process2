@@ -1,7 +1,8 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import PageLayout from '../layout/PageLayout';
 import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
+import { setWaystarFlow } from '../../utils/initechFlow';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
 import styles from './profile.module.css';
@@ -12,8 +13,17 @@ export default function ProfileIntegrityCheck() {
   const profile = profiles[profileId];
   if (!profile) return null;
 
+  const navigate = useNavigate();
+  const isWaystar = profileId === 'waystar';
   const ic = profile.integrityCheck || {};
   const rows = ic.rows || [];
+
+  function handleCreateReport() {
+    if (isWaystar) {
+      setWaystarFlow({ integrityCheckInProgress: true });
+      navigate(`/profile/${profileId}`);
+    }
+  }
 
   return (
     <PageLayout>
@@ -37,7 +47,7 @@ export default function ProfileIntegrityCheck() {
                   <span className={secStyles.poweredByLogo}>xapien</span>
                 </span>
               </div>
-              <button className={`${styles.btn} ${styles.btnFilled}`}>
+              <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleCreateReport}>
                 Create New Report
               </button>
             </div>

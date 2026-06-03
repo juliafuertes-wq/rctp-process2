@@ -1,7 +1,8 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import PageLayout from '../layout/PageLayout';
 import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
+import { setWaystarFlow } from '../../utils/initechFlow';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
 import styles from './profile.module.css';
@@ -62,7 +63,16 @@ export default function ProfileEnhancedDueDiligence() {
   const profile = profiles[profileId];
   if (!profile) return null;
 
+  const navigate = useNavigate();
+  const isWaystar = profileId === 'waystar';
   const edd = profile.enhancedDueDiligence || {};
+
+  function handleCreateReport() {
+    if (isWaystar) {
+      setWaystarFlow({ enhancedDDDone: true });
+      navigate(`/profile/${profileId}`);
+    }
+  }
 
   return (
     <PageLayout>
@@ -84,7 +94,7 @@ export default function ProfileEnhancedDueDiligence() {
                 <h2 className={styles.cardTitle}>Enhanced Due Diligence Reports</h2>
                 <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', cursor: 'pointer' }}>info</span>
               </div>
-              <button className={`${styles.btn} ${styles.btnFilled}`}>
+              <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleCreateReport}>
                 Create New Report
               </button>
             </div>

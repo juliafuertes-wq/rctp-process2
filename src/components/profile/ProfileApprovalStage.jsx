@@ -37,7 +37,7 @@ export default function ProfileApprovalStage() {
   const progressPct = totalSteps ? Math.round((completedSteps / totalSteps) * 100) : 0;
 
   function handleApproved() {
-    if (!isReady || !details.trim()) return;
+    if (!isReady) return;
     if (isWaystar) {
       if (stage === 1) {
         setWaystarFlow({ approval1Done: true, screeningDone: true });
@@ -91,8 +91,7 @@ export default function ProfileApprovalStage() {
                   <button
                     className={`${styles.btn} ${styles.btnFilled}`}
                     onClick={handleApproved}
-                    disabled={!isReady || !details.trim() || currentStageDone}
-                    title={!isReady ? 'Prior steps must be completed first' : !details.trim() ? 'Supporting information is required' : ''}
+                    disabled={!isReady || currentStageDone}
                   >
                     Approved
                   </button>

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import PageLayout from '../layout/PageLayout';
 import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
@@ -13,8 +13,11 @@ function getField(fields, label) {
 
 export default function ProfileUBO() {
   const { profileId } = useParams();
+  const navigate = useNavigate();
   const profile = profiles[profileId];
   if (!profile) return null;
+
+  const isWaystar = profileId === 'waystar';
 
   const allFields = [...(profile.overviewFields || []), ...(profile.additionalFields || [])];
 
@@ -70,7 +73,7 @@ export default function ProfileUBO() {
               </div>
 
               <div className={uboStyles.actions}>
-                <button className={uboStyles.btnSkip}>Skip</button>
+                <button className={uboStyles.btnSkip} onClick={() => isWaystar && navigate(`/profile/${profileId}/risk-mitigation`)}>Skip</button>
                 <button className={uboStyles.btnView}>View</button>
                 <button className={`${styles.btn} ${styles.btnFilled}`}>Get UBO Information</button>
               </div>

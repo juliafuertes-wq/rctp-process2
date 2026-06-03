@@ -197,7 +197,9 @@ function _patchWaystar(profile) {
       return { ...s, dot: enhancedDDDone ? 'green' : 'red' };
     }
     if (s.label === 'UBO') {
-      return { ...s, dot: riskMitigationDone ? 'green' : s.dot };
+      if (riskMitigationDone) return { ...s, dot: 'green' };
+      if (!enhancedDDDone) return { ...s, dot: 'grey' };
+      return { ...s, dot: 'amber' };
     }
     if (s.label === 'Risk Mitigation') {
       return { ...s, dot: riskMitigationDone ? 'green' : 'red' };

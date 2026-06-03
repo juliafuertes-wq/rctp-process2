@@ -5,7 +5,7 @@ import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
-import { patchInitechProfile } from '../../utils/initechFlow';
+import { patchInitechProfile, setWaystarFlow } from '../../utils/initechFlow';
 import styles from './profile.module.css';
 import secStyles from './ProfileProcessSection.module.css';
 
@@ -14,7 +14,16 @@ export default function ProfileInternalDueDiligence() {
   const navigate = useNavigate();
   const rawProfile = profiles[profileId];
   if (!rawProfile) return null;
+
+  const isWaystar = profileId === 'waystar';
   const profile = patchInitechProfile(rawProfile);
+
+  function handleSubmit() {
+    if (isWaystar) {
+      setWaystarFlow({ internalDDDone: true });
+      navigate(`/profile/${rawProfile.id}`);
+    }
+  }
 
   const [details, setDetails] = useState('');
   const [fileName, setFileName] = useState('');
@@ -43,7 +52,7 @@ export default function ProfileInternalDueDiligence() {
                 <h2 className={styles.cardTitle}>DD Internal</h2>
               </div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                <button className={`${styles.btn} ${styles.btnFilled}`}>Submit</button>
+                <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleSubmit}>Submit</button>
                 <button className={`${styles.btn} ${styles.btnOutline}`}>Notes</button>
                 <button className={`${styles.btn} ${styles.btnOutline}`}>Reassign</button>
                 <button className={`${styles.btn} ${styles.btnOutline}`}>Properties</button>

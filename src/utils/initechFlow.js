@@ -16,6 +16,7 @@ export function patchInitechProfile(profile) {
   if (profile.id === 'dundermifflin') return _patchExternalDD(_patchDunderMifflin(profile));
   if (profile.id === 'lumon') return _patchExternalDD(_patchLumon(profile));
   if (profile.id === 'gringotts') return profile;
+  if (profile.id === 'waystar') return _patchWaystar(profile);
   return _patchExternalDD(profile);
 }
 
@@ -134,6 +135,61 @@ export function getExternalDDFlow(profileId) {
 
 export function setExternalDDFlow(profileId, updates) {
   if ('sent' in updates) _externalDDSent[profileId] = updates.sent;
+}
+
+// ── Waystar flow ──────────────────────────────────────────────────────────────
+
+let _waystarState = {
+  ra1Done: false,
+  ra2Done: false,
+  internalDDDone: false,
+  approvalReady: false,
+};
+
+export function getWaystarFlow() {
+  return { ..._waystarState };
+}
+
+export function setWaystarFlow(updates) {
+  _waystarState = { ..._waystarState, ...updates };
+}
+
+function _patchWaystar(profile) {
+  const { ra1Done, ra2Done, internalDDDone, approvalReady } = _waystarState;
+  const externalDDSent = getExternalDDFlow('waystar').sent;
+
+  const steps = profile.sidebarSteps.map(s => {
+    if (s.label === 'Risk Assessment') {
+      const subSteps = [
+        { ...s.subSteps[0], dot: ra1Done ? 'green' : 'red' },
+        { ...s.subSteps[1], dot: ra2Done ? 'green' : 'red' },
+      ];
+      const dot = ra1Done && ra2Done ? 'green' : (ra1Done ? 'amber' : 'red');
+      return { ...s, dot, subSteps };
+    }
+    if (s.label === 'Due Diligence') {
+      if (!ra2Done) return s;
+      const subSteps = s.subSteps.map(sub => {
+        if (sub.label === 'Internal Due Diligence') return { ...sub, dot: internalDDDone ? 'green' : 'red' };
+        if (sub.label === 'External Due Diligence') return { ...sub, dot: externalDDSent ? 'amber' : 'red' };
+        return sub;
+      });
+      const waiting = internalDDDone && externalDDSent;
+      const anyStarted = internalDDDone || externalDDSent;
+      const dot = anyStarted ? 'amber' : 'red';
+      return { ...s, dot, subSteps, ...(waiting ? { waiting: true } : {}) };
+    }
+    if (s.label === 'Approval') {
+      if (!approvalReady) {
+        const { subSteps: _, ...rest } = s;
+        return rest;
+      }
+      return s;
+    }
+    return s;
+  });
+
+  return { ...profile, sidebarSteps: steps };
 }
 
 function _patchExternalDD(profile) {

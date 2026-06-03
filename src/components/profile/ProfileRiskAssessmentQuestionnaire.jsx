@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import PageLayout from '../layout/PageLayout';
 import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
-import { patchInitechProfile } from '../../utils/initechFlow';
+import { patchInitechProfile, getWaystarFlow, setWaystarFlow } from '../../utils/initechFlow';
 import styles from './profile.module.css';
 import raStyles from './ProfileRiskAssessment.module.css';
 
@@ -23,9 +23,23 @@ export default function ProfileRiskAssessmentQuestionnaire() {
   const navigate = useNavigate();
   const profile = patchInitechProfile(profiles[profileId]);
   if (!profile) return null;
+  const isWaystar = profileId === 'waystar';
+  const { ra1Done = false, ra2Done = false } = isWaystar ? getWaystarFlow() : {};
+  const currentRA = isWaystar ? (ra1Done ? 2 : 1) : null;
 
   const raSections = profile.riskAssessment?.sections || DEFAULT_SECTIONS;
   const [sections, setSections] = useState(raSections);
+
+  function handleNext() {
+    if (isWaystar && !ra2Done) {
+      if (currentRA === 1) {
+        setWaystarFlow({ ra1Done: true });
+      } else {
+        setWaystarFlow({ ra2Done: true });
+      }
+      navigate(`/profile/${profile.id}`);
+    }
+  }
 
   function toggleSection(id) {
     setSections(prev => prev.map(s =>
@@ -39,7 +53,7 @@ export default function ProfileRiskAssessmentQuestionnaire() {
         { label: 'Third Parties', to: '/third-parties' },
         { label: profile.shortName, to: `/profile/${profile.id}` },
         { label: 'Risk Assessment', to: `/profile/${profile.id}/risk-assessment` },
-        { label: 'Questionnaire' },
+        { label: isWaystar ? `Risk Assessment ${currentRA}` : 'Questionnaire' },
       ]} />
 
       <div className={raStyles.raPageWrap}>
@@ -53,7 +67,7 @@ export default function ProfileRiskAssessmentQuestionnaire() {
           <div className={raStyles.raHeader}>
             <div className={raStyles.raHeaderTop}>
               <div>
-                <h2 className={raStyles.raTitle}>Risk Assessment</h2>
+                <h2 className={raStyles.raTitle}>{isWaystar ? `Risk Assessment ${currentRA}` : 'Risk Assessment'}</h2>
                 <p className={raStyles.raSubtitle}>Items marked with <span className={raStyles.raStar}>*</span> are required</p>
               </div>
             </div>
@@ -66,7 +80,7 @@ export default function ProfileRiskAssessmentQuestionnaire() {
                   <span className="material-icons-outlined" style={{ fontSize: 16, marginRight: 4 }}>chevron_left</span>
                   Previous
                 </button>
-                <button className={`${styles.btn} ${styles.btnFilled}`}>
+                <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleNext}>
                   Next
                   <span className="material-icons-outlined" style={{ fontSize: 16, marginLeft: 4 }}>chevron_right</span>
                 </button>

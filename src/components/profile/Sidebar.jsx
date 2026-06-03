@@ -144,7 +144,12 @@ export default function Sidebar({ profile: profileProp, profileLoading = false, 
 
   const steps = profile.sidebarSteps || [];
   const stepDots = steps.map(s => effectiveDotFor(s, profileLoading));
-  const nextIdx = stepDots.findIndex(d => d === 'red' || d === 'amber' || d === 'black');
+  const nextIdx = steps.findIndex((step, i) => {
+    const d = stepDots[i];
+    if (d === 'green' || d === 'grey' || d === 'blocked') return false;
+    if (d === 'amber' && step.waiting) return false;
+    return true;
+  });
 
   const [externalDDOpen, setExternalDDOpen] = useState(false);
 
@@ -174,9 +179,32 @@ export default function Sidebar({ profile: profileProp, profileLoading = false, 
     });
   }, [currentPath]);
 
-  const requiredDots = stepDots.filter(d => d !== 'grey' && d !== 'blocked');
-  const completedCount = requiredDots.filter(d => d === 'green').length;
-  const totalCount = requiredDots.length;
+  const waitingKey = steps.map(s => s.waiting ? '1' : '0').join('');
+  useEffect(() => {
+    steps.forEach((step, i) => {
+      if (step.waiting) {
+        setExpandedSubSteps(prev => prev[i] ? { ...prev, [i]: false } : prev);
+      }
+    });
+  }, [waitingKey]);
+
+  let completedCount = 0;
+  let totalCount = 0;
+  steps.forEach((step, i) => {
+    const dot = stepDots[i];
+    if (dot === 'grey' || dot === 'blocked') return;
+    const subs = (step.subSteps || []).filter(sub => {
+      const d = sub.dot || 'grey';
+      return d !== 'grey' && d !== 'blocked';
+    });
+    if (subs.length > 0) {
+      totalCount += subs.length;
+      completedCount += subs.filter(sub => sub.dot === 'green').length;
+    } else {
+      totalCount += 1;
+      if (dot === 'green') completedCount += 1;
+    }
+  });
   const pct = totalCount ? Math.round((completedCount / totalCount) * 100) : 0;
 
   return (

@@ -90,7 +90,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
   const statusBadgeRef = useRef(null);
   const confettiFiredRef = useRef(false);
   useEffect(() => {
-    if (currentStatus !== 'Approved' || confettiFiredRef.current) return;
+    if (currentStatus !== 'Approved' || profile.id !== 'waystar' || confettiFiredRef.current) return;
     confettiFiredRef.current = true;
     const badge = statusBadgeRef.current;
     if (!badge) return;

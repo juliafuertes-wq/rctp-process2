@@ -209,7 +209,7 @@
   color: var(--neutral-00);
   font-size: 12px;
   font-weight: 400;
-  letter-spacing: 0;
+  letter-spacing: normal;
   text-transform: none;
   line-height: 1.4;
   white-space: normal;

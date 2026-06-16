@@ -22,8 +22,9 @@ const ProfileApprovalStage        = lazy(() => import('./components/profile/Prof
 const ProfilePlaceholder          = lazy(() => import('./components/profile/ProfilePlaceholder'));
 const ProfileRiskAssessment             = lazy(() => import('./components/profile/ProfileRiskAssessment'));
 const ProfileRiskAssessmentQuestionnaire = lazy(() => import('./components/profile/ProfileRiskAssessmentQuestionnaire'));
-const ProfileIntegrityCheck       = lazy(() => import('./components/profile/ProfileIntegrityCheck'));
-const ProfileIntegrityCheckCreate = lazy(() => import('./components/profile/ProfileIntegrityCheckCreate'));
+const ProfileIntegrityCheck        = lazy(() => import('./components/profile/ProfileIntegrityCheck'));
+const ProfileIntegrityCheckCreate  = lazy(() => import('./components/profile/ProfileIntegrityCheckCreate'));
+const ProfileIntegrityCheckResults = lazy(() => import('./components/profile/ProfileIntegrityCheckResults'));
 const ProfileDueDiligence         = lazy(() => import('./components/profile/ProfileDueDiligence'));
 const ProfileInternalDueDiligence = lazy(() => import('./components/profile/ProfileInternalDueDiligence'));
 const ProfileEnhancedDueDiligence = lazy(() => import('./components/profile/ProfileEnhancedDueDiligence'));
@@ -131,6 +132,7 @@ export default function App() {
           <Route path="/profile/:profileId/due-diligence/internal" element={<ProfileInternalDueDiligence />} />
           <Route path="/profile/:profileId/integrity-check" element={<ProfileIntegrityCheck />} />
           <Route path="/profile/:profileId/integrity-check/create" element={<ProfileIntegrityCheckCreate />} />
+          <Route path="/profile/:profileId/integrity-check/results" element={<ProfileIntegrityCheckResults />} />
           <Route path="/profile/:profileId/enhanced-due-diligence" element={<ProfileEnhancedDueDiligence />} />
           <Route path="/profile/:profileId/ubo" element={<ProfileUBO />} />
           <Route path="/profile/:profileId/approval" element={<ProfileApproval />} />

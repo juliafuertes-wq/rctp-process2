@@ -33,6 +33,12 @@
   gap: 6px;
 }
 
+.poweredByImg {
+  height: 16px;
+  width: auto;
+  display: block;
+}
+
 .poweredByLogo {
   font-size: 16px;
   font-weight: 700;

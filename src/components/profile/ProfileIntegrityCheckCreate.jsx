@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PageLayout from '../layout/PageLayout';
 import Breadcrumb from '../layout/Breadcrumb';
@@ -18,6 +18,20 @@ export default function ProfileIntegrityCheckCreate() {
 
   const [subjectType, setSubjectType] = useState('entity');
   const [subject, setSubject] = useState('');
+  const [loading, setLoading] = useState(false);
+  const timerRef = useRef(null);
+
+  function handleSubjectChange(e) {
+    const val = e.target.value;
+    setSubject(val);
+    clearTimeout(timerRef.current);
+    if (val.trim()) {
+      setLoading(true);
+      timerRef.current = setTimeout(() => setLoading(false), 1200);
+    } else {
+      setLoading(false);
+    }
+  }
 
   function handleContinue() {
     // Placeholder — next screen will be provided via Figma
@@ -73,20 +87,26 @@ export default function ProfileIntegrityCheckCreate() {
                 </div>
               </div>
 
+              {loading && (
+                <p className={createStyles.loadingSuggestions}>Loading suggestions...</p>
+              )}
+
               <div className={createStyles.fieldGroup}>
-                <input
-                  className={createStyles.subjectInput}
-                  type="text"
-                  placeholder="Select a report subject"
-                  value={subject}
-                  onChange={e => setSubject(e.target.value)}
-                />
-                <span className={createStyles.seeExamples}>See Examples</span>
+                <div className={createStyles.inputGroup}>
+                  <input
+                    className={createStyles.subjectInput}
+                    type="text"
+                    placeholder="Select a report subject"
+                    value={subject}
+                    onChange={handleSubjectChange}
+                  />
+                  <span className={createStyles.seeExamples}>See Examples</span>
+                </div>
               </div>
 
               <button
-                className={`${styles.btn} ${styles.btnFilled} ${createStyles.continueBtn}`}
-                disabled={!subject.trim()}
+                className={`${styles.btn} ${styles.btnFilled} ${createStyles.continueBtn} ${loading ? createStyles.continueBtnLoading : ''}`}
+                disabled={!subject.trim() || loading}
                 onClick={handleContinue}
               >
                 Continue

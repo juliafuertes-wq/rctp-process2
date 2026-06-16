@@ -109,21 +109,41 @@
   background: var(--neutral-00);
 }
 
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
 .seeExamples {
   font-size: 14px;
   color: var(--primary-600);
   cursor: pointer;
-  align-self: flex-start;
 }
 
 .seeExamples:hover {
   text-decoration: underline;
 }
 
+.loadingSuggestions {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-normal);
+  margin: 0;
+  text-align: center;
+}
+
 .continueBtn {
   height: 40px;
   padding: 0 24px;
   font-size: 14px;
+  width: 151px;
+}
+
+.continueBtnLoading {
+  background: var(--primary-200);
+  border-color: var(--primary-200);
 }
 
 .continueBtn:disabled {

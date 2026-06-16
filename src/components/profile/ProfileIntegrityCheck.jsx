@@ -20,8 +20,7 @@ export default function ProfileIntegrityCheck() {
 
   function handleCreateReport() {
     if (isWaystar) {
-      setWaystarFlow({ integrityCheckInProgress: true });
-      navigate(`/profile/${profileId}`);
+      navigate(`/profile/${profileId}/integrity-check/create`);
     }
   }
 

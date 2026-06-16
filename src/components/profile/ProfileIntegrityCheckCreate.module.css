@@ -1,0 +1,132 @@
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--neutral-50);
+}
+
+.poweredByImg {
+  height: 16px;
+  width: auto;
+  display: block;
+}
+
+.formBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 32px 16px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--primary-500);
+}
+
+.required {
+  color: var(--alert-500);
+}
+
+.segmentedGroup {
+  display: flex;
+  align-items: center;
+}
+
+.segBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-light);
+  background: var(--neutral-00);
+  border: 1px solid var(--neutral-200);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.segBtn:first-child {
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+}
+
+.segBtn:last-child {
+  border-radius: 0 4px 4px 0;
+  border-left: 1px solid var(--neutral-200);
+}
+
+.segBtnActive {
+  background: var(--primary-500);
+  color: var(--neutral-00);
+  border-color: var(--primary-500);
+}
+
+.segBtn:first-child.segBtnActive + .segBtn {
+  border-left-color: var(--primary-500);
+}
+
+.subjectInput {
+  width: 100%;
+  min-width: 864px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--neutral-200);
+  border-radius: 4px;
+  background: var(--neutral-25);
+  font-size: 14px;
+  color: var(--text-normal);
+  font-family: inherit;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.subjectInput::placeholder {
+  color: var(--text-light);
+}
+
+.subjectInput:focus {
+  border-color: var(--primary-500);
+  background: var(--neutral-00);
+}
+
+.seeExamples {
+  font-size: 14px;
+  color: var(--primary-600);
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.seeExamples:hover {
+  text-decoration: underline;
+}
+
+.continueBtn {
+  height: 40px;
+  padding: 0 24px;
+  font-size: 14px;
+}
+
+.continueBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

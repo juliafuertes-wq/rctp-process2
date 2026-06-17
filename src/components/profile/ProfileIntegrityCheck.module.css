@@ -1,0 +1,118 @@
+.icTable tbody tr td {
+  height: 32px;
+  box-sizing: border-box;
+}
+
+.icTable tbody tr:nth-child(odd) td {
+  background: var(--primary-08) !important;
+}
+
+.icTable tbody tr:nth-child(even) td {
+  background: var(--neutral-00) !important;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 42, 49, 0.7);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 135px;
+  z-index: 1000;
+}
+
+.dialog {
+  background: var(--neutral-00);
+  border-radius: 4px;
+  width: 582px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+  height: 40px;
+}
+
+.dialogTitle {
+  flex: 1;
+  font-family: 'Simplon Norm', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  color: var(--text-normal);
+  margin: 0;
+}
+
+.dialogContent {
+  border-top: 1px solid var(--neutral-100);
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dialogBody {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.dialogQuestion {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.dialogActions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+}
+
+.successBanner {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 0 24px;
+  background: var(--success-300);
+  z-index: 2000;
+}
+
+.successBannerIcon {
+  font-size: 24px;
+  color: var(--success-900);
+  display: flex;
+  align-items: center;
+}
+
+.successBannerText {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+  color: var(--success-900);
+}

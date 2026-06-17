@@ -44,6 +44,48 @@ const SUGGESTIONS = {
       dimmed: false,
     },
   ],
+  entity_lospollos: [
+    {
+      id: 'lp1',
+      name: 'Los Pollos Hermanos LLC',
+      relation: 'Subsidiary',
+      country: 'United States',
+      idLabel: 'DUNS Number: 362819047',
+      website: 'https://www.lospollos.com/',
+      address: '6200 Central Ave SW, Albuquerque, NM',
+      dimmed: false,
+    },
+    {
+      id: 'lp2',
+      name: 'Madrigal Electromotive GmbH',
+      relation: 'Joint Venture partner',
+      country: 'Germany',
+      idLabel: 'Company Identification No.: HRB 48291',
+      website: null,
+      address: 'Hanover, Germany',
+      dimmed: false,
+    },
+    {
+      id: 'lp3',
+      name: 'Lavandería Brillante S.A.',
+      relation: 'Other associated entity',
+      country: 'Mexico',
+      idLabel: null,
+      website: null,
+      address: 'Juárez, Chihuahua, Mexico',
+      dimmed: true,
+    },
+    {
+      id: 'lp4',
+      name: 'Pollos Logistics International',
+      relation: 'Subsidiary',
+      country: 'United States',
+      idLabel: 'DUNS Number: 509183762',
+      website: null,
+      address: '821 N. Industrial Blvd, El Paso, TX',
+      dimmed: false,
+    },
+  ],
   person: [
     {
       id: 'p1',
@@ -89,7 +131,9 @@ export default function ProfileIntegrityCheckCreate() {
   const [loading, setLoading] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const [carouselOffset, setCarouselOffset] = useState(0);
   const [chips, setChips] = useState([]);
+  const [showExamples, setShowExamples] = useState(false);
   const [searching, setSearching] = useState(false);
   const [searchProgress, setSearchProgress] = useState(0);
   const timerRef = useRef(null);
@@ -108,6 +152,7 @@ export default function ProfileIntegrityCheckCreate() {
     setSubject('');
     setChips([]);
     setShowSuggestions(false);
+    setCarouselOffset(0);
     clearTimeout(timerRef.current);
     setLoading(true);
     timerRef.current = setTimeout(() => {
@@ -159,7 +204,8 @@ export default function ProfileIntegrityCheckCreate() {
     }, 3000);
   }
 
-  const suggestions = (subjectType && SUGGESTIONS[subjectType]) || [];
+  const suggestionsKey = subjectType ? (SUGGESTIONS[`${subjectType}_${profileId}`] ? `${subjectType}_${profileId}` : subjectType) : null;
+  const suggestions = (suggestionsKey && SUGGESTIONS[suggestionsKey]) || [];
   const hasSelection = selectedId !== null && chips.length > 0;
   const canContinue = hasSelection || subject.trim().length > 0;
 
@@ -232,11 +278,20 @@ export default function ProfileIntegrityCheckCreate() {
 
               {showSuggestions && !loading && (
                 <div className={createStyles.suggestionsSection}>
+                  <div className={createStyles.suggestionsInner}>
                   <p className={createStyles.suggestionsHeader}>
                     <strong>Suggestions:</strong> Select from your existing list of entities and persons, or type the report subject into the text field.
                   </p>
+                  <div className={createStyles.carouselWrap}>
+                    {carouselOffset > 0 && (
+                      <div className={createStyles.carouselFadeLeft}>
+                        <button type="button" className={createStyles.carouselArrow} onClick={() => setCarouselOffset(o => o - 1)}>
+                          <span className="material-icons-outlined" style={{ fontSize: 20, color: 'var(--neutral-300)' }}>chevron_left</span>
+                        </button>
+                      </div>
+                    )}
                   <div className={createStyles.suggestionCards}>
-                    {suggestions.map((s) => (
+                    {suggestions.slice(carouselOffset, carouselOffset + 3).map((s) => (
                       <button
                         key={s.id}
                         type="button"
@@ -283,6 +338,15 @@ export default function ProfileIntegrityCheckCreate() {
                       </button>
                     ))}
                   </div>
+                    {carouselOffset + 3 < suggestions.length && (
+                      <div className={createStyles.carouselFadeRight}>
+                        <button type="button" className={createStyles.carouselArrow} onClick={() => setCarouselOffset(o => o + 1)}>
+                          <span className="material-icons-outlined" style={{ fontSize: 20, color: 'var(--primary-500)' }}>chevron_right</span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  </div>
                 </div>
               )}
 
@@ -296,20 +360,42 @@ export default function ProfileIntegrityCheckCreate() {
                           label={chip.label}
                           selected={false}
                           showClose
+                          size="sm"
+                          bold={!!chip.bold}
                           onClose={() => removeChip(chip.key)}
                         />
                       ))}
                     </div>
                   ) : (
                     <input
-                      className={createStyles.subjectInput}
+                      className={`${createStyles.subjectInput} ${subjectType !== null ? createStyles.subjectInputActive : ''}`}
                       type="text"
                       placeholder="Select a report subject"
                       value={subject}
                       onChange={handleSubjectChange}
+                      disabled={subjectType === null}
                     />
                   )}
-                  <span className={createStyles.seeExamples}>See Examples</span>
+                  <span className={createStyles.seeExamples} onClick={() => setShowExamples(v => !v)}>
+                    {showExamples ? 'Hide Examples' : 'See Examples'}
+                  </span>
+                  {showExamples && (
+                    <div className={createStyles.examplesBox}>
+                      <p className={createStyles.examplesInstruction}>
+                        Start by typing in the organisation's full name and add any related context such as where they are based. You can also add other context such as sectors they operate in, incorporation date, related person, etc.
+                      </p>
+                      <div className={createStyles.examplesList}>
+                        <div className={createStyles.examplesItem}>
+                          <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--text-light)' }}>factory</span>
+                          <span className={createStyles.examplesItemText}>Acme holding LTD, company no. 28219-GB</span>
+                        </div>
+                        <div className={createStyles.examplesItem}>
+                          <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--text-light)' }}>factory</span>
+                          <span className={createStyles.examplesItemText}>Dyson, engineering</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 

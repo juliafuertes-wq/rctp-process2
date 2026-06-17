@@ -108,6 +108,19 @@
   color: var(--text-normal);
 }
 
+.iconBtnActive {
+  color: var(--primary-600);
+}
+.iconBtnActive:hover {
+  color: var(--primary-700);
+}
+
+.iconBtnDisabled {
+  color: var(--text-disabled);
+  cursor: default;
+  pointer-events: none;
+}
+
 /* Generic empty state (used in Integrity Check table) */
 .emptyState {
   display: flex;

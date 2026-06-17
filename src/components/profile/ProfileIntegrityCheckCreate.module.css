@@ -26,7 +26,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--primary-500);
+  color: var(--text-normal);
 }
 
 .required {
@@ -92,11 +92,22 @@
   transition: border-color 0.15s;
 }
 
+.subjectInput:disabled {
+  background: var(--neutral-50);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
 .subjectInput::placeholder {
   color: var(--text-light);
 }
 
 .subjectInput:focus {
+  border-color: var(--primary-500);
+  background: var(--neutral-00);
+}
+
+.subjectInputActive {
   border-color: var(--primary-500);
   background: var(--neutral-00);
 }
@@ -116,6 +127,47 @@
 
 .seeExamples:hover {
   text-decoration: underline;
+}
+
+.examplesBox {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--neutral-200);
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.examplesInstruction {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.examplesList {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.examplesItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 9px;
+}
+
+.examplesItemText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--text-light);
 }
 
 .loadingSuggestions {
@@ -146,7 +198,6 @@
 .suggestionsSection {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   width: 100%;
 }
 
@@ -156,6 +207,73 @@
   color: var(--text-normal);
   letter-spacing: 0.5px;
   margin: 0;
+}
+
+.suggestionsInner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+}
+
+.carouselWrap {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carouselFadeLeft {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.99) 50%, rgba(255,255,255,0) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carouselFadeLeft .carouselArrow {
+  pointer-events: all;
+}
+
+.carouselFadeRight {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.99) 50%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carouselFadeRight .carouselArrow {
+  pointer-events: all;
+}
+
+.carouselArrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
 }
 
 .suggestionCards {
@@ -169,6 +287,8 @@
   flex-direction: column;
   gap: 8px;
   width: 320px;
+  flex-shrink: 1;
+  min-width: 0;
   padding: 8px;
   background: var(--neutral-00);
   border: 1px solid var(--neutral-200);

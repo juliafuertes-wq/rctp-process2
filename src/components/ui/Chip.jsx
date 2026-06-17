@@ -20,6 +20,8 @@ export default function Chip({
   onClick,
   onClose,
   disabled = false,
+  size = 'md',
+  bold = false,
 }) {
   const hasTrailing = selected
     ? (count != null && count > 0)
@@ -28,11 +30,11 @@ export default function Chip({
   return (
     <button
       type="button"
-      className={`${styles.chip} ${selected ? styles.selected : styles.unselected} ${disabled ? styles.disabled : ''}`}
+      className={`${styles.chip} ${selected ? styles.selected : styles.unselected} ${disabled ? styles.disabled : ''} ${size === 'sm' ? styles.small : ''}`}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
     >
-      <span className={styles.label}>{label}</span>
+      <span className={styles.label} style={bold ? { fontWeight: 500 } : undefined}>{label}</span>
 
       {/* count badge — shown whenever count is provided, including 0 */}
       {count != null && (

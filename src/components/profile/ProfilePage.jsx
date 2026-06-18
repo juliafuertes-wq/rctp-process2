@@ -193,7 +193,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
       ]} />}
 
       {/* Top Strip */}
-      <div className={`${styles.tpTopStrip}${profileLoading ? ' ' + styles.tpTopStripPending : profile.riskLevel.level === 'high' ? ' ' + styles.tpTopStripHigh : profile.riskLevel.level === 'medium' ? ' ' + styles.tpTopStripMedium : profile.riskLevel.level === 'low' ? ' ' + styles.tpTopStripLow : ''}${scrolled ? ' ' + styles.tpTopStripScrolled : ''}`}>
+      <div className={`${styles.tpTopStrip}${profileLoading ? ' ' + styles.tpTopStripPending : profile.riskLevel.level === 'high' ? ' ' + styles.tpTopStripHigh : profile.riskLevel.level === 'medium' ? ' ' + styles.tpTopStripMedium : profile.riskLevel.level === 'low' ? ' ' + styles.tpTopStripLow : profile.riskLevel.level === 'unknown' ? ' ' + styles.tpTopStripUnknown : ''}${scrolled ? ' ' + styles.tpTopStripScrolled : ''}`}>
         <div className={styles.tpPageHeader}>
           <Link to="/third-parties" className={styles.tpBack}>
             <span className="material-icons-outlined">chevron_left</span> Back

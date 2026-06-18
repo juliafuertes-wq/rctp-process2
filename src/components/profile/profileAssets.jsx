@@ -26,7 +26,8 @@ export function RiskLevelIcon({ level, size = 16 }) {
 }
 
 export function riskBadge(level) {
-  if (level === 'high')   return { className: styles.badgeHigh,   label: 'High'   };
-  if (level === 'medium') return { className: styles.badgeMedium, label: 'Medium' };
-  return                         { className: styles.badgeLow,    label: 'LOW'    };
+  if (level === 'high')    return { className: styles.badgeHigh,    label: 'High'    };
+  if (level === 'medium')  return { className: styles.badgeMedium,  label: 'Medium'  };
+  if (level === 'unknown') return { className: styles.badgeUnknown, label: 'Unknown' };
+  return                          { className: styles.badgeLow,     label: 'LOW'     };
 }

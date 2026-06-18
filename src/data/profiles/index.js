@@ -12,6 +12,7 @@ import agencegrateau from './profile-agencegrateau';
 import willywonka from './profile-willywonka';
 import vought from './profile-vought';
 import ricksanchez from './profile-ricksanchez';
+import starkindustries from './profile-starkindustries';
 
 export const profiles = {
   piedpiper,
@@ -28,6 +29,7 @@ export const profiles = {
   willywonka,
   vought,
   ricksanchez,
+  starkindustries,
 };
 
-export { piedpiper, brucewayne, gazprom, initech, dundermifflin, lumon, waystar, ecomoda, lospollos, gringotts, agencegrateau, willywonka, vought, ricksanchez };
+export { piedpiper, brucewayne, gazprom, initech, dundermifflin, lumon, waystar, ecomoda, lospollos, gringotts, agencegrateau, willywonka, vought, ricksanchez, starkindustries };

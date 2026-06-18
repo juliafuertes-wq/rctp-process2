@@ -8,6 +8,7 @@ import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
 import { getICRows, deleteICRow, updateICRowStatus } from '../../utils/icStore';
 import Button from '../ui/Button';
+import Modal from '../ui/Modal';
 import styles from './profile.module.css';
 import secStyles from './ProfileProcessSection.module.css';
 import icStyles from './ProfileIntegrityCheck.module.css';
@@ -155,23 +156,21 @@ export default function ProfileIntegrityCheck() {
           </section>
         </main>
       </div>
-      {confirmIndex !== null && (
-        <div className={icStyles.overlay}>
-          <div className={icStyles.dialog}>
-            <div className={icStyles.dialogHeader}>
-              <h2 className={icStyles.dialogTitle}>Delete Report</h2>
-            </div>
-            <div className={icStyles.dialogContent}>
-              <p className={icStyles.dialogBody}>This will permanently delete the selected Integrity Check report</p>
-              <p className={icStyles.dialogQuestion}>Do you want to continue?</p>
-            </div>
-            <div className={icStyles.dialogActions}>
-              <Button variant="outline" size="sm" onClick={() => setConfirmIndex(null)}>Cancel</Button>
-              <Button variant="filled" size="sm" onClick={() => handleDelete(confirmIndex)}>Continue</Button>
-            </div>
-          </div>
-        </div>
-      )}
+      <Modal
+        open={confirmIndex !== null}
+        title="Delete an Integrity Check report"
+        onClose={() => setConfirmIndex(null)}
+        onConfirm={() => handleDelete(confirmIndex)}
+        confirmLabel="Continue"
+        cancelLabel="Cancel"
+      >
+        <p style={{ margin: 0, fontSize: 16, fontWeight: 500, color: 'var(--text-light)', lineHeight: '24px', letterSpacing: '0.5px' }}>
+          This will permanently delete the selected Integrity Check report
+        </p>
+        <p style={{ margin: '8px 0 0', fontStyle: 'italic', fontSize: 16, color: 'var(--text-light)', lineHeight: '24px', letterSpacing: '0.5px' }}>
+          Do you want to continue?
+        </p>
+      </Modal>
     </PageLayout>
   );
 }

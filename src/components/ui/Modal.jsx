@@ -56,7 +56,6 @@ export default function Modal({
 
             {/* Footer */}
             <div className={styles.footer}>
-              <div className={styles.footerDivider} />
               <div className={styles.footerButtons}>
                 <Button variant="outline" onClick={onClose}>{cancelLabel}</Button>
                 <Button variant="filled" onClick={onConfirm} disabled={confirmDisabled}>{confirmLabel}</Button>

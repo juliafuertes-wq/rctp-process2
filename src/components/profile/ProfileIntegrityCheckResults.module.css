@@ -8,11 +8,13 @@
 
 .backToSearch {
   font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 20px;
   color: var(--primary-600);
   background: none;
   border: none;
   cursor: pointer;
-  font-family: inherit;
   padding: 0;
 }
 
@@ -46,6 +48,8 @@
 .accordionLabel {
   font-size: 14px;
   font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  line-height: 20px;
   color: #000000;
 }
 
@@ -109,29 +113,33 @@
   font-weight: 500;
   font-family: 'Simplon Norm', sans-serif;
   color: var(--text-normal);
+  line-height: 32px;
 }
 
 .matchTag {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 75px;
   height: 17px;
   padding: 4px;
   background: var(--text-normal);
   border-radius: 4px;
   font-size: 12px;
+  line-height: 16px;
   color: var(--neutral-00);
   font-family: 'Roboto', sans-serif;
+  white-space: nowrap;
 }
 
 .matchTagPartial {
-  width: 80px;
+  /* same size — kept for any callers */
 }
 
 .entityDesc {
   margin: 0;
   font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   color: var(--text-light);
   line-height: 20px;
 }
@@ -140,6 +148,7 @@
   display: flex;
   flex-direction: row;
   gap: 24px;
+  font-size: 14px;
 }
 
 .entityDetail {
@@ -153,13 +162,15 @@
   font-size: 14px;
   font-weight: 500;
   color: var(--text-normal);
+  font-family: 'Roboto', sans-serif;
+  line-height: 20px;
 }
 
 .entityDetailLink {
   font-size: 14px;
-  font-weight: 500;
-  color: var(--text-normal);
-  text-decoration: underline;
+  font-weight: 400;
+  color: var(--primary-600);
+  font-family: 'Roboto', sans-serif;
 }
 
 .matchBanner {
@@ -200,19 +211,44 @@
   border-radius: 4px;
 }
 
-.entityImgPlaceholderSmall {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  background: var(--neutral-50);
-  border-radius: 8px;
+
+
+.noMatchWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 848px;
 }
 
-.selectBtn {
-  width: 58px;
-  height: 32px;
-  padding: 0 8px;
-  font-size: 12px;
-  align-self: center;
-  white-space: nowrap;
+.noMatchText {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-normal);
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.noMatchSubText {
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--text-normal);
+  margin: 0;
+  text-align: center;
+}
+
+.noMatchHint {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-normal);
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.5px;
 }

@@ -6,6 +6,7 @@ import { profiles } from '../../data/profiles';
 import ProfilePageHeader from './ProfilePageHeader';
 import { Sidebar } from './ProfilePage';
 import Chip from '../ui/Chip';
+import Button from '../ui/Button';
 import styles from './profile.module.css';
 import secStyles from './ProfileProcessSection.module.css';
 import icLogo from '../../assets/integrity-check-logo.png';
@@ -86,6 +87,7 @@ const SUGGESTIONS = {
       dimmed: false,
     },
   ],
+  person_lospollos: [],
   person: [
     {
       id: 'p1',
@@ -136,6 +138,8 @@ export default function ProfileIntegrityCheckCreate() {
   const [showExamples, setShowExamples] = useState(false);
   const [searching, setSearching] = useState(false);
   const [searchProgress, setSearchProgress] = useState(0);
+  const [personNoMatch, setPersonNoMatch] = useState(false);
+  const [personNoMatchText, setPersonNoMatchText] = useState('');
   const timerRef = useRef(null);
   const searchTimerRef = useRef(null);
   const progressTimerRef = useRef(null);
@@ -144,6 +148,7 @@ export default function ProfileIntegrityCheckCreate() {
     setSubject(e.target.value);
     setSelectedId(null);
     setChips([]);
+    setPersonNoMatch(false);
   }
 
   function handleSubjectTypeChange(type) {
@@ -153,6 +158,7 @@ export default function ProfileIntegrityCheckCreate() {
     setChips([]);
     setShowSuggestions(false);
     setCarouselOffset(0);
+    setPersonNoMatch(false);
     clearTimeout(timerRef.current);
     setLoading(true);
     timerRef.current = setTimeout(() => {
@@ -189,22 +195,34 @@ export default function ProfileIntegrityCheckCreate() {
     searchTimerRef.current = setTimeout(() => {
       clearInterval(progressTimerRef.current);
       setSearchProgress(100);
-      const selected = (subjectType && SUGGESTIONS[subjectType] || []).find(s => s.id === selectedId);
+      const selected = (SUGGESTIONS[suggestionsKey] || []).find(s => s.id === selectedId);
+      const isLosPollos = profileId === 'lospollos';
+      const isPerson = subjectType === 'person';
+      if (isLosPollos && isPerson) {
+        const text = selected ? selected.name : subject.trim();
+        setPersonNoMatchText(text);
+        setPersonNoMatch(true);
+        setSearching(false);
+        return;
+      }
+      const noExactMatch = isLosPollos;
       setTimeout(() => navigate(
         `/profile/${profileId}/integrity-check/results`,
-        { state: { entity: selected ? {
+        { state: { noExactMatch, entity: selected ? {
           name: selected.name,
-          matchScore: '100%',
-          description: 'Gazprom PAO (Public Joint Stock Company Gazprom) is a Russian majority state-owned multinational energy corporation. It is the largest company in Russia by market capitalization as of 2022 and a global leader in natural gas exploration and production.',
           country: selected.country,
           website: selected.website,
-          matchNote: `Exact match on ${selected.name} and location in ${selected.country}, aligning with the registered name and headquarters of ${selected.name}`,
+          address: selected.address,
+          matchScore: '100%',
+          description: noExactMatch ? null : 'Gazprom PAO (Public Joint Stock Company Gazprom) is a Russian majority state-owned multinational energy corporation. It is the largest company in Russia by market capitalization as of 2022 and a global leader in natural gas exploration and production.',
+          matchNote: noExactMatch ? null : `Exact match on ${selected.name} and location in ${selected.country}, aligning with the registered name and headquarters of ${selected.name}`,
         } : null }}
       ), 200);
     }, 3000);
   }
 
-  const suggestionsKey = subjectType ? (SUGGESTIONS[`${subjectType}_${profileId}`] ? `${subjectType}_${profileId}` : subjectType) : null;
+  const profileKey = subjectType ? `${subjectType}_${profileId}` : null;
+  const suggestionsKey = profileKey && profileKey in SUGGESTIONS ? profileKey : subjectType;
   const suggestions = (suggestionsKey && SUGGESTIONS[suggestionsKey]) || [];
   const hasSelection = selectedId !== null && chips.length > 0;
   const canContinue = hasSelection || subject.trim().length > 0;
@@ -247,6 +265,14 @@ export default function ProfileIntegrityCheckCreate() {
               </div>
             )}
 
+            {personNoMatch && (
+              <div className={createStyles.personNoMatchBanner}>
+                <p className={createStyles.personNoMatchTitle}>We could not find any organisations using this description:</p>
+                <p className={createStyles.personNoMatchSub}>{personNoMatchText}</p>
+                <p className={createStyles.personNoMatchHint}><strong>Check the name you typed or add more context.</strong> You can view tips on best practices by clicking See Examples below.</p>
+              </div>
+            )}
+
             <div className={createStyles.formBody} style={searching ? { display: 'none' } : {}}>
               <div className={createStyles.fieldGroup}>
                 <label className={createStyles.fieldLabel}>
@@ -279,6 +305,12 @@ export default function ProfileIntegrityCheckCreate() {
               {showSuggestions && !loading && (
                 <div className={createStyles.suggestionsSection}>
                   <div className={createStyles.suggestionsInner}>
+                  {suggestions.length === 0 ? (
+                    <p className={createStyles.noSuggestions}>
+                      No suggestions found for this {subjectType === 'entity' ? 'Entity' : 'Person'}. Please type the report subject into the text field. You can view tips on best practices by clicking See examples below.
+                    </p>
+                  ) : (
+                  <>
                   <p className={createStyles.suggestionsHeader}>
                     <strong>Suggestions:</strong> Select from your existing list of entities and persons, or type the report subject into the text field.
                   </p>
@@ -346,6 +378,8 @@ export default function ProfileIntegrityCheckCreate() {
                       </div>
                     )}
                   </div>
+                  </>
+                  )}
                   </div>
                 </div>
               )}
@@ -399,13 +433,15 @@ export default function ProfileIntegrityCheckCreate() {
                 </div>
               </div>
 
-              <button
-                className={`${styles.btn} ${styles.btnFilled} ${createStyles.continueBtn} ${loading ? createStyles.continueBtnLoading : ''}`}
+              <Button
+                variant="filled"
+                size="lg"
+                style={{ width: 151, opacity: loading ? 0.6 : undefined }}
                 disabled={!canContinue || loading}
                 onClick={handleContinue}
               >
                 Continue
-              </button>
+              </Button>
             </div>
           </section>
         </main>

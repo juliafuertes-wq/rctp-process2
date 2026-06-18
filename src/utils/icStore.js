@@ -1,8 +1,8 @@
 const rows = {
   lospollos: [
-    { _id: 1001, subject: 'Los Pollos Hermanos LLC', requestor: 'Gustavo Fring', createdDate: '12/03/2024', renewalDate: '12/03/2025', status: 'completed' },
-    { _id: 1002, subject: 'Madrigal Electromotive GmbH', requestor: 'Mike Ehrmantraut', createdDate: '28/01/2024', renewalDate: '28/01/2025', status: 'completed' },
-    { _id: 1003, subject: 'Lavandería Brillante S.A.', requestor: 'Saul Goodman', createdDate: '05/11/2023', renewalDate: '05/11/2024', status: 'completed' },
+    { _id: 1001, subject: 'Los Pollos Hermanos LLC', requestor: 'Gustavo Fring', createdDate: '12 Mar 2024', renewalDate: '12 Mar 2025', status: 'completed' },
+    { _id: 1002, subject: 'Madrigal Electromotive GmbH', requestor: 'Mike Ehrmantraut', createdDate: '28 Jan 2024', renewalDate: '28 Jan 2025', status: 'completed' },
+    { _id: 1003, subject: 'Lavandería Brillante S.A.', requestor: 'Saul Goodman', createdDate: '5 Nov 2023', renewalDate: '5 Nov 2024', status: 'completed' },
   ],
 };
 let nextId = 2000;

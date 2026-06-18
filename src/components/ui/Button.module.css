@@ -33,7 +33,7 @@
 .filled:disabled               { background: var(--rctp-blue-200); }
 
 /* Outline */
-.outline { background: #fff; border: 1px solid var(--rctp-gray-700); color: var(--rctp-ink-800); }
+.outline { background: #fff; border: 1px solid var(--neutral-300); color: var(--rctp-ink-800); }
 .outline:hover:not(:disabled)  { background: var(--rctp-gray-100); }
 .outline:active:not(:disabled) { border-width: 3px; }
 .outline:disabled              { color: var(--rctp-gray-700); border-color: var(--rctp-gray-700); }

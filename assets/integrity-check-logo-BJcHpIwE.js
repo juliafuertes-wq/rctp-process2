@@ -1,1 +1,0 @@
-var e=`/rctp-process2/assets/integrity-check-logo-fZE0802F.png`;export{e as t};

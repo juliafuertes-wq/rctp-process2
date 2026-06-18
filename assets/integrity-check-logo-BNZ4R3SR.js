@@ -1,0 +1,1 @@
+var e=`/rctp-process2/assets/partner-icon-integrity-fZE0802F.png`;export{e as t};

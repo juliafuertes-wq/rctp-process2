@@ -54,6 +54,7 @@ const SUGGESTIONS = {
       idLabel: 'DUNS Number: 362819047',
       website: 'https://www.lospollos.com/',
       address: '6200 Central Ave SW, Albuquerque, NM',
+      people: ['Gustavo Fring', 'Lyle Headley', 'Michael Ehrmantraut'],
       dimmed: false,
     },
     {
@@ -64,6 +65,7 @@ const SUGGESTIONS = {
       idLabel: 'Company Identification No.: HRB 48291',
       website: null,
       address: 'Hanover, Germany',
+      people: ['Peter Schuler', 'Lydia Rodarte-Quayle'],
       dimmed: false,
     },
     {
@@ -74,6 +76,7 @@ const SUGGESTIONS = {
       idLabel: null,
       website: null,
       address: 'Juárez, Chihuahua, Mexico',
+      people: ['Saul Goodman', 'Kim Wexler'],
       dimmed: true,
     },
     {
@@ -84,6 +87,7 @@ const SUGGESTIONS = {
       idLabel: 'DUNS Number: 509183762',
       website: null,
       address: '821 N. Industrial Blvd, El Paso, TX',
+      people: ['Don Eladio', 'Juan Bolsa', 'Hector Salamanca'],
       dimmed: false,
     },
   ],
@@ -140,6 +144,7 @@ export default function ProfileIntegrityCheckCreate() {
   const [searchProgress, setSearchProgress] = useState(0);
   const [personNoMatch, setPersonNoMatch] = useState(false);
   const [personNoMatchText, setPersonNoMatchText] = useState('');
+  const [expandedPeople, setExpandedPeople] = useState(null);
   const timerRef = useRef(null);
   const searchTimerRef = useRef(null);
   const progressTimerRef = useRef(null);
@@ -149,6 +154,13 @@ export default function ProfileIntegrityCheckCreate() {
     setSelectedId(null);
     setChips([]);
     setPersonNoMatch(false);
+  }
+
+  function handleSubjectKeyDown(e) {
+    if (e.key === 'Enter' && subject.trim().length > 0) {
+      setChips(prev => [...prev, { key: `typed_${Date.now()}`, label: subject.trim() }]);
+      setSubject('');
+    }
   }
 
   function handleSubjectTypeChange(type) {
@@ -199,7 +211,8 @@ export default function ProfileIntegrityCheckCreate() {
       const isLosPollos = profileId === 'lospollos';
       const isPerson = subjectType === 'person';
       if (isLosPollos && isPerson) {
-        const text = selected ? selected.name : subject.trim();
+        const typedChips = chips.filter(c => c.key.startsWith('typed'));
+        const text = selected ? selected.name : (typedChips.length > 0 ? typedChips.map(c => c.label).join(', ') : subject.trim());
         setPersonNoMatchText(text);
         setPersonNoMatch(true);
         setSearching(false);
@@ -224,7 +237,7 @@ export default function ProfileIntegrityCheckCreate() {
   const profileKey = subjectType ? `${subjectType}_${profileId}` : null;
   const suggestionsKey = profileKey && profileKey in SUGGESTIONS ? profileKey : subjectType;
   const suggestions = (suggestionsKey && SUGGESTIONS[suggestionsKey]) || [];
-  const hasSelection = selectedId !== null && chips.length > 0;
+  const hasSelection = chips.length > 0;
   const canContinue = hasSelection || subject.trim().length > 0;
 
   return (
@@ -366,6 +379,39 @@ export default function ProfileIntegrityCheckCreate() {
                               <span className={createStyles.suggestionRowText}>{s.address}</span>
                             </div>
                           )}
+                          {s.people && s.people.length > 0 && (() => {
+                            const isExpanded = expandedPeople === s.id;
+                            return (
+                              <div className={createStyles.suggestionPeopleRow}>
+                                <div className={createStyles.suggestionPeopleIcon}>
+                                  <span className="material-icons-outlined" style={{ fontSize: 16, color: '#495158' }}>group</span>
+                                </div>
+                                {isExpanded ? (
+                                  <>
+                                    <span className={createStyles.suggestionPeopleExpanded}>
+                                      {s.people.join(', ')}.
+                                    </span>
+                                    <span
+                                      className={createStyles.suggestionViewMore}
+                                      onClick={e => { e.stopPropagation(); setExpandedPeople(null); }}
+                                    >view less</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <span className={createStyles.suggestionRowText}>
+                                      {s.people.slice(0, 2).join(', ')}{s.people.length > 2 ? ', ' + s.people[2].split(' ')[0] + ' ' + s.people[2].split(' ').slice(-1)[0][0] + '...' : ''}
+                                    </span>
+                                    {s.people.length > 2 && (
+                                      <span
+                                        className={createStyles.suggestionViewMore}
+                                        onClick={e => { e.stopPropagation(); setExpandedPeople(s.id); }}
+                                      >view more</span>
+                                    )}
+                                  </>
+                                )}
+                              </div>
+                            );
+                          })()}
                         </div>
                       </button>
                     ))}
@@ -386,30 +432,28 @@ export default function ProfileIntegrityCheckCreate() {
 
               <div className={createStyles.fieldGroup}>
                 <div className={createStyles.inputGroup}>
-                  {hasSelection ? (
-                    <div className={createStyles.chipInput}>
-                      {chips.map(chip => (
-                        <Chip
-                          key={chip.key}
-                          label={chip.label}
-                          selected={false}
-                          showClose
-                          size="sm"
-                          bold={!!chip.bold}
-                          onClose={() => removeChip(chip.key)}
-                        />
-                      ))}
-                    </div>
-                  ) : (
+                  <div className={createStyles.chipInput}>
+                    {chips.map(chip => (
+                      <Chip
+                        key={chip.key}
+                        label={chip.label}
+                        selected={false}
+                        showClose
+                        size="sm"
+                        bold={!!chip.bold}
+                        onClose={() => removeChip(chip.key)}
+                      />
+                    ))}
                     <input
-                      className={`${createStyles.subjectInput} ${subjectType !== null ? createStyles.subjectInputActive : ''}`}
+                      className={`${createStyles.chipTextInput} ${subjectType !== null ? createStyles.subjectInputActive : ''}`}
                       type="text"
-                      placeholder="Select a report subject"
+                      placeholder={chips.length === 0 ? 'Select a report subject' : ''}
                       value={subject}
                       onChange={handleSubjectChange}
+                      onKeyDown={handleSubjectKeyDown}
                       disabled={subjectType === null}
                     />
-                  )}
+                  </div>
                   <span className={createStyles.seeExamples} onClick={() => setShowExamples(v => !v)}>
                     {showExamples ? 'Hide Examples' : 'See Examples'}
                   </span>

@@ -73,10 +73,10 @@ const THIRD_PARTIES_SECTIONS = [
         title: 'Current Risk Status',
         cols: ['View', 'Edit', 'Cancel'],
         rows: [
-          { name: 'Current Risk Status',              perms: [true,  false, true ] },
+          { name: 'Current Risk Status',              perms: [false, false, true ] },
           { name: 'Mid Process Renewal',               perms: [true,  true,  false] },
           { name: 'Allow Mid Process Decline',        perms: [false, true,  true ] },
-          { name: 'View Mid Process Decline Reason',  perms: [true,  false, true ] },
+          { name: 'View Mid Process Decline Reason',  perms: [false, false, true ] },
         ],
       },
       {

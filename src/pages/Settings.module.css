@@ -619,13 +619,6 @@
   background: var(--primary-600);
 }
 
-/* Fields */
-.cagSection {
-  padding: 16px 20px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
 
 .cagLabel {
   font-size: 11px;

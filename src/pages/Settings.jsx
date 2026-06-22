@@ -293,7 +293,7 @@ function CurrencyApprovalGroupsPanel() {
       </div>
 
       {/* Currency */}
-      <div>
+      <div className={styles.cagSection}>
         <label className={styles.cagLabel}>Currency</label>
         {isEditing ? (
           <select className={styles.cagSelect} value={d.currency} onChange={e => set('currency', e.target.value)}>
@@ -313,7 +313,7 @@ function CurrencyApprovalGroupsPanel() {
         { key: 'redFlagGroup',      label: 'Red Flag Cancel Approval',                            required: true,  tooltip: null },
         { key: 'renewalCancelGroup', label: 'Renewal Cancel Approval Group',                      required: true,  tooltip: 'Approval requests for cancelling a manual renewal will be sent to this group.' },
       ].map(({ key, label, required, tooltip }) => (
-        <div key={key}>
+        <div key={key} className={styles.cagSection}>
           <label className={styles.cagLabel}>
             {label}
             {required && <span className={styles.cagReq}> *</span>}

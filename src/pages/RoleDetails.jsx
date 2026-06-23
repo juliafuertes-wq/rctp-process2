@@ -71,12 +71,12 @@ const THIRD_PARTIES_SECTIONS = [
       },
       {
         title: 'Current Risk Status',
-        cols: ['View', 'Edit'],
+        cols: ['View', 'Edit', 'Cancel'],
         rows: [
-          { name: 'Current Risk Status',              perms: [true,  false] },
-          { name: 'Mid Process Renewal',               perms: [true,  true ] },
-          { name: 'Allow Mid Process Decline',        perms: [false, true ] },
-          { name: 'View Mid Process Decline Reason',  perms: [true,  false] },
+          { name: 'Current Risk Status',              perms: [true,  false, false] },
+          { name: 'Mid Process Renewal',               perms: [true,  true,  false] },
+          { name: 'Allow Mid Process Decline',        perms: [false, true,  false] },
+          { name: 'View Mid Process Decline Reason',  perms: [true,  false, false] },
         ],
       },
       {
@@ -100,7 +100,6 @@ const THIRD_PARTIES_SECTIONS = [
           { name: 'UBO',                              perms: [true,  true,  false, false, false, false, true ] },
           { name: 'Risk Mitigation',                  perms: [true,  true,  true,  false, false, true,  false] },
           { name: 'Red Flag Cancellation Request Task', perms: [true, false, true, false, false, false, false] },
-          { name: 'Renewal Cancellation Request Task',  perms: [true, false, true, false, false, false, false] },
         ],
       },
       {

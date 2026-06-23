@@ -48,7 +48,7 @@ export default {
     { label: 'Screening & Monitoring Policy', value: 'Default Standard KYBP Policy' },
     { label: 'Third Party Legal Structure', value: 'Entity' },
     { label: 'Commercial Significance of Product or Service', value: '[Greater than 10%] / Critical / Top 10' },
-    { label: 'Third Party Renewal Date', value: 'Unknown' },
+    { label: 'Third Party Renewal Date', value: '' },
     { label: 'Tags', value: 'Defence, Tech, Manufacturing' },
   ],
 
@@ -74,10 +74,7 @@ export default {
     { title: 'Cyber', level: 'unknown', flags: 0, score: 0 },
   ],
 
-  openTasks: [
-    { type: 'Questionnaire', icon: 'iconInactiveOrder', name: 'Risk Assessment 1 — Defence Sector Questionnaire', status: 'In Progress', owner: 'Compliance Group', dateCreated: '01 Jun 2026', age: '17 Days' },
-    { type: 'Approval Task', icon: 'iconFactCheck', name: 'Approval Stage 1 — Pending Risk Assessment Completion', status: 'Not Started', owner: 'Compliance Group', dateCreated: '01 Jun 2026', age: '17 Days' },
-  ],
+  openTasks: [],
 
   screeningRows: [
     {
@@ -91,8 +88,8 @@ export default {
       ],
       updated: '01 Jun 2026',
       type: 'Primary Entity',
-      statusDot: 'var(--warning-500)',
-      statusLabel: 'Requires Review',
+      statusDot: 'var(--neutral-400)',
+      statusLabel: 'Queued',
       categories: [
         { label: 'AM', bg: '#edd500', color: 'var(--neutral-900)' },
       ],
@@ -110,8 +107,8 @@ export default {
       ],
       updated: '01 Jun 2026',
       type: 'CEO & Founder',
-      statusDot: 'var(--warning-500)',
-      statusLabel: 'Requires Review',
+      statusDot: 'var(--neutral-400)',
+      statusLabel: 'Queued',
       categories: [
         { label: 'PEP', bg: 'var(--warning-100)', color: 'var(--warning-900)' },
       ],

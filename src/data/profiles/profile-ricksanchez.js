@@ -48,7 +48,7 @@ export default {
     { label: 'Screening & Monitoring Policy', value: 'Enhanced KYBP Policy' },
     { label: 'Third Party Legal Structure', value: 'Individual / Person' },
     { label: 'Commercial Significance of Product or Service', value: '[Greater than 10%] / Critical / Top 10' },
-    { label: 'Third Party Renewal Date', value: '—' },
+    { label: 'Third Party Renewal Date', value: '' },
     { label: 'Tags', value: 'Science, High Risk, Interdimensional' },
   ],
 

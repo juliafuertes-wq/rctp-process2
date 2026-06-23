@@ -48,7 +48,7 @@ export default {
     { label: 'Screening & Monitoring Policy', value: 'Default Standard KYBP Policy' },
     { label: 'Third Party Legal Structure', value: 'Entity' },
     { label: 'Commercial Significance of Product or Service', value: '[Between 1 and 5%] / Significant / Not in top 10' },
-    { label: 'Third Party Renewal Date', value: 'Unknown' },
+    { label: 'Third Party Renewal Date', value: '' },
     { label: 'Tags', value: 'Tech, Compression' },
   ],
 

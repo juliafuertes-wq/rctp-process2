@@ -16,12 +16,12 @@ import Sidebar, { PartnerIcon } from './Sidebar';
 import Chip from '../ui/Chip';
 
 const STATUS_CONFIG = {
-  'Pending Approval':            { cls: 'statusPendingApproval', icon: 'pending' },
+  'Pending Approval':            { cls: 'statusPendingApproval', icon: 'pending', tooltip: 'Record has not yet had a first approval.' },
   'Approved':                    { cls: 'statusApproved',        icon: 'check_circle' },
   'Not Approved':                { cls: 'statusNotApproved',     icon: 'dangerous' },
   'Declined':                    { cls: 'statusDeclined',        icon: 'feedback' },
   'Approved*':                   { cls: 'statusExpired',         icon: 'history_toggle_off' },
-  'Approved(!) Renewal Required':{ cls: 'statusExpired',         icon: 'history_toggle_off', display: 'Approved - Renewal Required' },
+  'Approved(!) Renewal Required':{ cls: 'statusExpired',         icon: 'history_toggle_off', display: 'Approved - Renewal Required', tooltip: 'Renewal date reached' },
 };
 
 function getStatusConfig(label) {
@@ -69,6 +69,13 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
   const [cancelRenewalModalOpen, setCancelRenewalModalOpen] = useState(false);
   const [renewalDetailsPanelOpen, setRenewalDetailsPanelOpen] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(profile?.currentStatus?.label || 'Pending Approval');
+
+  const [screeningReady, setScreeningReady] = useState(profile?.id !== 'starkindustries');
+  useEffect(() => {
+    if (profile?.id !== 'starkindustries') return;
+    const t = setTimeout(() => setScreeningReady(true), 2000);
+    return () => clearTimeout(t);
+  }, []);
 
   // Connect panel state
   const [connectPanelRow, setConnectPanelRow] = useState(null);
@@ -210,8 +217,8 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               <div className={styles.tpBadgeGroup}>
                 <div className={styles.tpBadgeLabel}>Current status:</div>
                 {(() => {
-                  const { cls, icon, display } = getStatusConfig(currentStatus);
-                  const tip = profile.currentStatus?.tooltip;
+                  const { cls, icon, display, tooltip: configTooltip } = getStatusConfig(currentStatus);
+                  const tip = profile.currentStatus?.tooltip ?? configTooltip;
                   const badge = (
                     <div
                       ref={statusBadgeRef}
@@ -637,7 +644,9 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   </tr>
                 </thead>
                 <tbody>
-                  {profile.screeningRows.map((r, i) => (
+                  {!screeningReady ? (
+                    <tr><td colSpan={7} className={styles.tableEmptyRow}>No monitored associations found for this third party.</td></tr>
+                  ) : profile.screeningRows.map((r, i) => (
                     <tr key={i}>
                       <td><span className={styles.cellLink}>{r.name}</span></td>
                       <td>

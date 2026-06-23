@@ -53,7 +53,7 @@ export default {
   ],
 
   additionalFields: [
-    { label: 'Entity Other Known Name or Alias', value: '—' },
+    { label: 'Entity Other Known Name or Alias', value: '' },
     { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
     { label: 'Entity Company Number', value: 'US-98765432' },
     { label: 'Entity ID Type', value: 'DUNS Number' },

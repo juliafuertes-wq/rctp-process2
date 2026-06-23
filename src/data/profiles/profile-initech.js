@@ -189,7 +189,7 @@ export default {
       { step: 'Risk Assessment', isLink: true, status: 'In Progress', startDate: '2 Jan 2026', by: '', date: '' },
       { step: 'Internal Due Diligence', isLink: true, status: 'Completed', startDate: '6 Jan 2025', by: 'Bob Porter', date: '15 Jan 2025' },
       { step: 'External Due Diligence', isLink: true, status: 'Completed', startDate: '15 Jan 2025', by: 'Bob Slydell', date: '20 Jan 2025' },
-      { step: 'Integrity Check', isLink: true, status: 'For Completion', startDate: '', by: '', date: '' },
+      { step: 'Integrity Check', isLink: true, status: 'For Completion', startDate: '6 Jan 2025', by: '', date: '' },
       { step: 'Enhanced Due Diligence Report', isLink: true, status: 'Not Required', startDate: '', by: '', date: '' },
       { step: 'UBO', isLink: false, status: 'Completed', startDate: '20 Jan 2025', by: 'Tom Smykowski', date: '25 Jan 2025' },
       { step: 'Risk Mitigation', isLink: true, status: 'Action Required', startDate: '15 Jan 2026', by: '', date: '' },

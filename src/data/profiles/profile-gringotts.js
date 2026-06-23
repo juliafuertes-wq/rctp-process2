@@ -172,7 +172,7 @@ export default {
       { step: 'Risk Assessment',          isLink: true,  status: 'Completed',    startDate: '15 Jan 2024', by: 'Filius Flitwick',    date: '17 Jan 2024' },
       { step: 'Internal Due Diligence',   isLink: true,  status: 'Completed',    startDate: '18 Jan 2024', by: 'Pomona Sprout',      date: '20 Jan 2024' },
       { step: 'External Due Diligence',   isLink: true,  status: 'Completed',    startDate: '20 Jan 2024', by: 'Pomona Sprout',      date: '22 Jan 2024' },
-      { step: 'Integrity Check', isLink: true, status: 'For Completion', startDate: '', by: '', date: '' },
+      { step: 'Integrity Check', isLink: true, status: 'For Completion', startDate: '6 Jan 2025', by: '', date: '' },
       { step: 'Enhanced Due Diligence Report', isLink: true, status: 'Not Required', startDate: '', by: '', date: '' },
       { step: 'UBO',                      isLink: false, status: 'Completed',    startDate: '23 Jan 2024', by: 'Filius Flitwick',    date: '25 Jan 2024' },
       { step: 'Risk Mitigation',          isLink: true,  status: 'Completed',    startDate: '26 Jan 2024', by: 'Minerva McGonagall', date: '28 Jan 2024' },

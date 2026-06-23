@@ -21,7 +21,7 @@ const STATUS_CONFIG = {
   'Not Approved':                { cls: 'statusNotApproved',     icon: 'dangerous' },
   'Declined':                    { cls: 'statusDeclined',        icon: 'feedback' },
   'Approved*':                   { cls: 'statusExpired',         icon: 'history_toggle_off' },
-  'Approved(!) Renewal Required':{ cls: 'statusExpired',         icon: 'history_toggle_off' },
+  'Approved(!) Renewal Required':{ cls: 'statusExpired',         icon: 'history_toggle_off', display: 'Approved - Renewal Required' },
 };
 
 function getStatusConfig(label) {
@@ -210,7 +210,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               <div className={styles.tpBadgeGroup}>
                 <div className={styles.tpBadgeLabel}>Current status:</div>
                 {(() => {
-                  const { cls, icon } = getStatusConfig(currentStatus);
+                  const { cls, icon, display } = getStatusConfig(currentStatus);
                   const tip = profile.currentStatus?.tooltip;
                   const badge = (
                     <div
@@ -218,7 +218,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                       className={`${styles.badge} ${styles[cls]} ${styles.badgeBtn}`}
                       onClick={() => setStatusPanelOpen(true)}
                     >
-                      {currentStatus}
+                      {display ?? currentStatus}
                       <span className="material-icons-outlined" style={{ fontSize: 16 }}>{icon}</span>
                     </div>
                   );
@@ -546,7 +546,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
             <div className={styles.sectionBar}>
               <div className={styles.sectionRow}>
                 <div className={styles.sectionTitleGroup}>
-                  <h2 className={styles.cardTitle}>Tasks</h2>
+                  <h2 className={styles.cardTitle}>Open Tasks</h2>
                   <span className={styles.infoIconWrap}>
                     <span className={`material-icons-outlined ${styles.infoIcon}`}>info</span>
                     <span className={styles.infoTooltip}>Tasks relating to this third party</span>
@@ -1360,7 +1360,7 @@ function StatusPanel({ currentStatus, renewalDate, canRenew, renewalInProgress, 
     return () => { document.body.style.overflow = ''; };
   }, []);
 
-  const { cls, icon } = getStatusConfig(currentStatus);
+  const { cls, icon, display } = getStatusConfig(currentStatus);
 
   return (
     <>
@@ -1383,7 +1383,7 @@ function StatusPanel({ currentStatus, renewalDate, canRenew, renewalInProgress, 
           <div className={styles.statusPanelOptions}>
             <div className={styles.statusOption}>
               <div className={`${styles.badge} ${styles[cls]}`}>
-                {currentStatus}
+                {display ?? currentStatus}
                 <span className="material-icons-outlined" style={{ fontSize: 16 }}>{icon}</span>
               </div>
             </div>

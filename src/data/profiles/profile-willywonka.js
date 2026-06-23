@@ -216,7 +216,7 @@ export default {
       { step: 'Risk Assessment', isLink: true, status: 'In Progress', startDate: '12 Jan 2026', by: '', date: '' },
       { step: 'Internal Due Diligence', isLink: true, status: 'In Progress', startDate: '15 Jan 2026', by: '', date: '' },
       { step: 'External Due Diligence', isLink: true, status: 'Not Started', startDate: '', by: '', date: '' },
-      { step: 'Integrity Check', isLink: true, status: 'For Completion', startDate: '', by: '', date: '' },
+      { step: 'Integrity Check', isLink: true, status: 'For Completion', startDate: '6 Jan 2025', by: '', date: '' },
       { step: 'Enhanced Due Diligence Report', isLink: true, status: 'Not Required', startDate: '', by: '', date: '' },
       { step: 'UBO', isLink: false, status: 'Action Required', startDate: '20 Jan 2026', by: '', date: '' },
       { step: 'Risk Mitigation', isLink: true, status: 'Not Started', startDate: '', by: '', date: '' },

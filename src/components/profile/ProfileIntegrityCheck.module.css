@@ -3,6 +3,55 @@
   box-sizing: border-box;
 }
 
+.landing {
+  display: flex;
+  gap: 40px;
+  padding: 32px 24px;
+  align-items: flex-start;
+}
+.landingContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.landingSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.landingSectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-normal);
+  margin: 0;
+}
+.landingBody {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+.landingBodyDark {
+  font-size: 13px;
+  color: var(--text-normal);
+  line-height: 1.6;
+  margin: 0;
+}
+.landingBodyDarkBold {
+  font-weight: 500;
+}
+.landingIllustration {
+  flex: 0 0 320px;
+  border: 2px solid var(--primary-500);
+  border-radius: var(--rctp-radius-sm);
+  overflow: hidden;
+}
+.landingImg {
+  width: 100%;
+  display: block;
+}
+
 .icTable tbody tr:nth-child(odd) td {
   background: var(--primary-08) !important;
 }

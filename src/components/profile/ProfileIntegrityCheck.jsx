@@ -12,6 +12,7 @@ import Modal from '../ui/Modal';
 import styles from './profile.module.css';
 import secStyles from './ProfileProcessSection.module.css';
 import icStyles from './ProfileIntegrityCheck.module.css';
+import heroImg from '../../assets/hero.png';
 
 export default function ProfileIntegrityCheck() {
   const { profileId } = useParams();
@@ -27,6 +28,8 @@ export default function ProfileIntegrityCheck() {
   const bannerTimerRef = useRef(null);
   const inProgressTimerRef = useRef(null);
   const isWaystar = profileId === 'waystar' || profileId === 'lospollos';
+  const icStep = profile.sidebarSteps?.find(s => s.label === 'Integrity Check');
+  const isNotRequired = icStep?.dot === 'grey';
   const rows = getICRows(profileId);
 
   function handleDelete(id) {
@@ -87,13 +90,38 @@ export default function ProfileIntegrityCheck() {
                   <span className={secStyles.poweredByLogo}>xapien</span>
                 </span>
               </div>
-              <Button variant="filled" onClick={handleCreateReport}>
-                Create New Report
-              </Button>
+              {!isNotRequired && (
+                <Button variant="filled" onClick={handleCreateReport}>
+                  Create New Report
+                </Button>
+              )}
             </div>
 
             <div className={secStyles.tableWrap}>
-              {rows.length === 0 ? (
+              {isNotRequired ? (
+                <div className={icStyles.landing}>
+                  <div className={icStyles.landingContent}>
+                    <div className={icStyles.landingSection}>
+                      <p className={icStyles.landingSectionTitle}>What is Integrity Check?</p>
+                      <p className={icStyles.landingBody}>
+                        A Dow Jones Integrity Check report is an automated due diligence report that leverages cutting edge artificial intelligence powered by Xapien to understand risks relevant to those working in compliance teams globally.
+                      </p>
+                    </div>
+                    <div className={icStyles.landingSection}>
+                      <p className={icStyles.landingSectionTitle}>Who is Dow Jones Integrity Check For?</p>
+                      <p className={icStyles.landingBody}>
+                        Dow Jones Integrity Check is suitable for customers currently using due diligence reports and those who would consider the general due diligence product suite. It fits an enhanced due diligence use case both for third-party risk management as well as financial crime compliance.
+                      </p>
+                      <p className={icStyles.landingBodyDark}>
+                        For more information <span className={icStyles.landingBodyDarkBold}>contact your Dow Jones Account Manager</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div className={icStyles.landingIllustration}>
+                    <img src={heroImg} alt="" className={icStyles.landingImg} />
+                  </div>
+                </div>
+              ) : rows.length === 0 ? (
                 <div className={secStyles.emptyState}>
                   <span className="material-icons-outlined">info</span>
                   No integrity check reports yet.

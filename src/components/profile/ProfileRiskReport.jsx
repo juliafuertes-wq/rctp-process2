@@ -492,7 +492,7 @@ export default function ProfileRiskReport() {
                       {(rr.processSummary || []).map((row, i) => (
                         <tr key={i}>
                           <td>
-                            {row.isLink
+                            {(row.isLink || row.step === 'UBO')
                               ? <span className={styles.cellLink}>{row.step}</span>
                               : <span>{row.step}</span>
                             }

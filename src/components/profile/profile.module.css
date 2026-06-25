@@ -510,11 +510,16 @@
   color: var(--text-normal);
 }
 .btnFilled {
-  background: var(--primary-500);
-  color: var(--neutral-00);
-  transition: background 0.15s ease;
+  background: var(--neutral-00);
+  border: 1px solid var(--neutral-300);
+  color: var(--text-light);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
-.btnFilled:hover { background: var(--primary-600); }
+.btnFilled:hover {
+  background: var(--neutral-25);
+  border-color: var(--neutral-400);
+  color: var(--text-normal);
+}
 .btnDanger { color: var(--alert-500); border-color: var(--alert-500); }
 .btnDanger:hover { background: var(--alert-500); color: var(--neutral-00); border-color: var(--alert-500); }
 .btn:focus-visible {

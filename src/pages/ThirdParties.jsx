@@ -132,7 +132,7 @@ export default function ThirdParties() {
                   <td>{row.stage}</td>
                   <td><RiskBadge level={row.risk} /></td>
                   <td>{row.ref || ''}</td>
-                  <td>{row.status}</td>
+                  <td>{row.status === 'Approved(!) Renewal Required' ? 'Approved - Renewal Required' : row.status}</td>
                   <td>Yes</td>
                 </tr>
               ))}

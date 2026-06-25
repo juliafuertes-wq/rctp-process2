@@ -37,13 +37,12 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
   const location = useLocation();
   const profile = patchInitechProfile(profileProp || profiles[params.profileId]);
 
-  // New profile loading state (8s simulation after creation)
   const [profileLoading, setProfileLoading] = useState(
     !embedded && new URLSearchParams(location.search).get('new') === '1'
   );
   useEffect(() => {
     if (!profileLoading) return;
-    const t = setTimeout(() => setProfileLoading(false), 8000);
+    const t = setTimeout(() => setProfileLoading(false), 5000);
     return () => clearTimeout(t);
   }, [profileLoading]);
 
@@ -512,14 +511,12 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               {!profileLoading && <Link to={`/profile/${profile.id}/risk-report`} className={styles.linkText}>VIEW FULL REPORT</Link>}
             </div>
             <AnimatePresence mode="wait">
-            {profileLoading ? (
-              <motion.div key="risk-loading" className={styles.blankState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-                <span className={`material-icons-outlined ${styles.spinIcon}`} style={{ fontSize: 32, color: 'var(--neutral-300)' }}>sync</span>
-                <p>Calculating risk profile…</p>
-              </motion.div>
-            ) : (
-              <motion.div key="risk-loaded" className={styles.riskRow} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
-                {[...profile.riskCards].sort((a, b) => a.title === 'Screening & Monitoring' ? 1 : b.title === 'Screening & Monitoring' ? -1 : 0).map((rc, i) => {
+            {(
+              <motion.div key={profileLoading ? 'risk-loading' : 'risk-loaded'} className={styles.riskRow} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
+                {(profileLoading
+                  ? ['Country Risk','Bribery & Corruption','Environmental','Human Rights','General','Cyber','Screening & Monitoring'].map(t => ({ title: t, level: 'unknown', flags: 0, score: 0 }))
+                  : [...profile.riskCards].sort((a, b) => a.title === 'Screening & Monitoring' ? 1 : b.title === 'Screening & Monitoring' ? -1 : 0)
+                ).map((rc, i) => {
                   const b = riskBadgeFn(rc.level);
                   const isScreening = rc.title === 'Screening & Monitoring';
                   const sectionId = (profile.riskReport?.accordionSections || []).find(
@@ -549,6 +546,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
           </motion.section>
 
           {/* Tasks */}
+
           <motion.section className={styles.tableCard} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.14 }}>
             <div className={styles.sectionBar}>
               <div className={styles.sectionRow}>
@@ -562,9 +560,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               </div>
             </div>
             {(() => {
-              const rows = profileLoading
-                ? [{ type: 'Questionnaire', icon: 'iconInactiveOrder', name: 'Questionnaire', status: 'Not Started', owner: '', dateCreated: '', age: '' }]
-                : profile.openTasks;
+              const rows = profileLoading ? [] : profile.openTasks;
               return (
                 <div className={styles.cardInner}>
                   <table className={styles.table}>
@@ -623,13 +619,8 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               </div>
             </div>
             <AnimatePresence mode="wait">
-            {profileLoading ? (
-              <motion.div key="screening-loading" className={styles.blankState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-                <span className={`material-icons-outlined ${styles.spinIcon}`} style={{ fontSize: 32, color: 'var(--neutral-300)' }}>sync</span>
-                <p>Setting up screening associations…</p>
-              </motion.div>
-            ) : (
-              <motion.div key="screening-loaded" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
+            {(
+              <motion.div key={profileLoading ? 'screening-loading' : 'screening-loaded'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
             <div className={styles.cardInner}>
               <table className={styles.table}>
                 <thead>
@@ -644,7 +635,17 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   </tr>
                 </thead>
                 <tbody>
-                  {!screeningReady ? (
+                  {profileLoading ? (
+                    <tr key="queued-loading">
+                      <td><span className={styles.cellLink}>{profile.name ? profile.name.split(' ').slice(0,3).join(' ') : 'New Entity'}</span></td>
+                      <td><div className={styles.matchBadges}><Badge label="1" bgColor="var(--neutral-400)" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="var(--neutral-400)" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="var(--neutral-400)" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="var(--neutral-400)" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="var(--neutral-400)" textColor="#fff" size="large" shape="square" /></div></td>
+                      <td>01 May 2026</td>
+                      <td>Primary Entity</td>
+                      <td><div className={styles.assocStatus}><span className={styles.statusDot} style={{ background: 'var(--neutral-400)' }} />Queued</div></td>
+                      <td></td>
+                      <td>Entity</td>
+                    </tr>
+                  ) : !screeningReady ? (
                     <tr><td colSpan={7} className={styles.tableEmptyRow}>No monitored associations found for this third party.</td></tr>
                   ) : profile.screeningRows.map((r, i) => (
                     <tr key={i}>
@@ -678,7 +679,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               </table>
               <div className={styles.tablePagination}>
                 <select><option>20</option></select>
-                <span>Showing results 1 - {profile.screeningRows.length} of {profile.screeningRows.length}</span>
+                <span>Showing results 1 - {profileLoading ? 1 : profile.screeningRows.length} of {profileLoading ? 1 : profile.screeningRows.length}</span>
               </div>
             </div>
               </motion.div>

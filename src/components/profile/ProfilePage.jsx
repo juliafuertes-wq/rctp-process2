@@ -1409,12 +1409,13 @@ function StatusPanel({ currentStatus, renewalDate, canRenew, renewalInProgress, 
         </div>
 
         <div className={styles.statusPanelFooter}>
-          {renewalDate && canRenew && (
+          {systemRenewalRequired && (
+            <button className={`${styles.btn} ${styles.btnOutline} ${styles.btnDanger}`} onClick={onCancelRenewal}>Cancel Renewal</button>
+          )}
+          {!systemRenewalRequired && renewalDate && canRenew && (
             renewalInProgress
               ? <button className={`${styles.btn} ${styles.btnOutline} ${styles.btnDanger}`} onClick={onCancelRenewal}>Cancel Renewal</button>
-              : !systemRenewalRequired
-                ? <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onRenewal}>Start Renewal Manually</button>
-                : null
+              : <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onRenewal}>Start Renewal Manually</button>
           )}
           <button className={`${styles.btn} ${styles.btnFilled}`} onClick={onDecline}>Decline</button>
         </div>

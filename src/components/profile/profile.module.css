@@ -860,6 +860,7 @@
   border-radius: var(--rctp-radius-sm);
   font-size: 13px;
   font-weight: 500;
+  text-transform: uppercase;
   cursor: pointer;
   border: none;
   font-family: inherit;
@@ -2992,7 +2993,7 @@
 .navStepperNode_blocked { background: var(--neutral-300); }
 .navStepperNode_black   { background: var(--text-normal); }
 .navStepperNodeNext {
-  box-shadow: 0 0 0 2px var(--primary-500), 0 0 0 5px var(--primary-50);
+  box-shadow: 0 0 0 2px var(--neutral-200), 0 0 0 5px var(--neutral-50);
 }
 .navStepperConnector {
   flex: 1;
@@ -3002,8 +3003,8 @@
   min-height: 10px;
   border-bottom-left-radius: 0;
 }
-.navStepperConnectorDone { background: var(--success-500); }
-.navStepperConnectorNext { background: var(--primary-500); }
+.navStepperConnectorDone { background: var(--neutral-100); }
+.navStepperConnectorNext { background: var(--neutral-100); }
 .navStepperContent {
   display: flex;
   flex-direction: column;
@@ -3035,7 +3036,7 @@
   color: var(--text-light);
   line-height: 1;
 }
-.navStepperRowNext .navStepperStatus { color: var(--primary-700); }
+.navStepperRowNext .navStepperStatus { color: var(--text-light); }
 
 .navNextChip {
   font-size: 9px;
@@ -3139,36 +3140,24 @@
   border-bottom-right-radius: 10px;
   pointer-events: none;
 }
-/* Blue routing path: when the parent step is "next", paint the path from parent → first incomplete substep blue.
-   This colors the opening hook and the trunk segment up to the next-sub dot. */
+/* Routing paths: always grey regardless of step state. */
 .navSubStepsNext::before {
-  border-left-color: var(--primary-500);
-  border-bottom-color: var(--primary-500);
+  border-left-color: var(--neutral-100);
+  border-bottom-color: var(--neutral-100);
 }
-/* Green routing path: when the parent step is completed, paint the entire substep tree green
-   (opening hook, trunk through all substeps, and closing curve). */
 .navSubStepsDone::before {
-  border-left-color: var(--success-500);
-  border-bottom-color: var(--success-500);
+  border-left-color: var(--neutral-100);
+  border-bottom-color: var(--neutral-100);
 }
 .navSubStepsDone::after {
-  background: var(--success-500);
+  background: var(--neutral-100);
 }
 .navSubStepsDone .navSubStepsCloser {
-  border-right-color: var(--success-500);
-  border-bottom-color: var(--success-500);
+  border-right-color: var(--neutral-100);
+  border-bottom-color: var(--neutral-100);
 }
 .navSubStepsNext::after {
-  /* Paint the trunk blue only above the next-sub dot, grey below.
-     Each substep row is 26px tall, dot center sits at row-top + 13px.
-     The trunk starts at top: 12px (same as height-of-hook). The next-sub dot center is at:
-     12 (offset) + 26 * --next-sub-idx + 13 (row-center within row) = 25 + 26*idx px from top of trunk = 25 + 26*idx - 12 = 13 + 26*idx from trunk top */
-  background: linear-gradient(
-    to bottom,
-    var(--primary-500) 0,
-    var(--primary-500) calc(13px + 26px * var(--next-sub-idx, 0)),
-    var(--neutral-100) calc(13px + 26px * var(--next-sub-idx, 0))
-  );
+  background: var(--neutral-100);
 }
 .navSubStepRow {
   display: grid;

@@ -1,5 +1,10 @@
 import '../src/styles/globals.css';
 
+const materialIconsLink = document.createElement('link');
+materialIconsLink.rel = 'stylesheet';
+materialIconsLink.href = 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined';
+document.head.appendChild(materialIconsLink);
+
 /** @type { import('@storybook/react-vite').Preview } */
 const preview = {
   parameters: {

@@ -1,18 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 const TYPE_SPECIMENS = [
-  { label: "Heading H1", size: "32px", lineHeight: "40px", weight: "500", family: "Simplon Norm", sample: "Third Party Risk" },
-  { label: "Heading H2", size: "28px", lineHeight: "36px", weight: "500", family: "Simplon Norm", sample: "Risk Assessment" },
-  { label: "Heading H3", size: "24px", lineHeight: "32px", weight: "500", family: "Simplon Norm", sample: "Due Diligence" },
-  { label: "Heading H4", size: "22px", lineHeight: "32px", weight: "500", family: "Simplon Norm", sample: "Screening Results" },
-  { label: "Heading H5", size: "20px", lineHeight: "32px", weight: "500", family: "Simplon Norm", sample: "Open Tasks" },
-  { label: "Heading H6", size: "18px", lineHeight: "32px", weight: "500", family: "Simplon Norm", sample: "Recent Activity" },
+  { label: "Heading H1", size: "32px", lineHeight: "40px", weight: "600", family: "Simplon Norm", sample: "Third Party Risk" },
+  { label: "Heading H2", size: "28px", lineHeight: "36px", weight: "600", family: "Simplon Norm", sample: "Risk Assessment" },
+  { label: "Heading H3", size: "24px", lineHeight: "32px", weight: "600", family: "Simplon Norm", sample: "Due Diligence" },
+  { label: "Heading H4", size: "20px", lineHeight: "28px", weight: "500", family: "Simplon Norm", sample: "Screening Results" },
+  { label: "Heading H5", size: "18px", lineHeight: "26px", weight: "500", family: "Simplon Norm", sample: "Open Tasks" },
   { label: "Body Large",  size: "16px", lineHeight: "24px", weight: "400", family: "Roboto",       sample: "These existing records have a similar name to the one being created." },
-  { label: "Body Medium", size: "14px", lineHeight: "20px", weight: "400", family: "Roboto",       sample: "All progress will be lost. You will be redirected to the Third Parties tab." },
-  { label: "Body Small",  size: "13px", lineHeight: "16px", weight: "400", family: "Roboto",       sample: "Select one of the options to configure the onboarding process." },
-  { label: "Caption",     size: "12px", lineHeight: "16px", weight: "400", family: "Roboto",       sample: "Showing results 1–20 of 140 third parties" },
+  { label: "Body Medium", size: "14px", lineHeight: "22px", weight: "400", family: "Roboto",       sample: "All progress will be lost. You will be redirected to the Third Parties tab." },
+  { label: "Body Small",  size: "13px", lineHeight: "20px", weight: "400", family: "Roboto",       sample: "Select one of the options to configure the onboarding process." },
+  { label: "Caption",     size: "12px", lineHeight: "18px", weight: "400", family: "Roboto",       sample: "Showing results 1–20 of 140 third parties" },
   { label: "Label Large",  size: "14px", lineHeight: "20px", weight: "500", family: "Roboto",      sample: "TASK TYPE" },
-  { label: "Label Medium", size: "12px", lineHeight: "16px", weight: "500", family: "Roboto",      sample: "CURRENT STATUS" },
+  { label: "Label Medium", size: "12px", lineHeight: "18px", weight: "500", family: "Roboto",      sample: "CURRENT STATUS" },
   { label: "Label Small",  size: "11px", lineHeight: "16px", weight: "600", family: "Roboto",      sample: "RISK LEVEL" },
 ];
 

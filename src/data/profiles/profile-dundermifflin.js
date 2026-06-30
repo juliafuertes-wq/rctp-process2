@@ -54,14 +54,14 @@ export default {
 
   additionalFields: [
     { label: 'Entity Other Known Name or Alias', value: 'Dunder Mifflin Scranton' },
-    { label: 'Responsible Client Unit', value: 'Procurement (Regional Offices)' },
-    { label: 'Entity Company Number', value: '11-0848164' },
-    { label: 'Entity ID Type', value: 'DUNS Number' },
     { label: 'Entity Registered Address', value: '1725 Slough Avenue, Scranton, PA 18505' },
-    { label: 'All Relevant Client Units', value: 'Scranton Branch, Utica Branch, Nashua Branch' },
-    { label: 'Internal Reference or ID', value: 'DM-SCR-001' },
-    { label: 'Entity ID Value', value: '078459823' },
+    { label: 'Entity ID Type', value: 'DUNS Number' },
+    { label: 'Entity Company Number', value: '11-0848164' },
+    { label: 'Responsible Client Unit', value: 'Procurement (Regional Offices)' },
     { label: 'Entity Website', value: 'www.dundermifflin.com', link: true, href: 'https://www.dundermifflin.com' },
+    { label: 'Entity ID Value', value: '078459823' },
+    { label: 'Internal Reference or ID', value: 'DM-SCR-001' },
+    { label: 'All Relevant Client Units', value: 'Scranton Branch, Utica Branch, Nashua Branch' },
   ],
 
   riskCards: [

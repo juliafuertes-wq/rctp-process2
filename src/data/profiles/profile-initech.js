@@ -54,14 +54,14 @@ export default {
 
   additionalFields: [
     { label: 'Entity Other Known Name or Alias', value: '' },
-    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
-    { label: 'Entity Company Number', value: 'US-98765432' },
-    { label: 'Entity ID Type', value: 'DUNS Number' },
     { label: 'Entity Registered Address', value: '4120 Freidrich Lane, Austin, TX 78744' },
-    { label: 'All Relevant Client Units', value: 'Americas, Global Operations' },
-    { label: 'Internal Reference or ID', value: 'INT-0042' },
-    { label: 'Entity ID Value', value: '808241999' },
+    { label: 'Entity ID Type', value: 'DUNS Number' },
+    { label: 'Entity Company Number', value: 'US-98765432' },
+    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
     { label: 'Entity Website', value: 'www.initech.com', link: true },
+    { label: 'Entity ID Value', value: '808241999' },
+    { label: 'Internal Reference or ID', value: 'INT-0042' },
+    { label: 'All Relevant Client Units', value: 'Americas, Global Operations' },
   ],
 
   riskCards: [

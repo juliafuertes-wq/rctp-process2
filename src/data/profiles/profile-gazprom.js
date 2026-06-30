@@ -54,14 +54,14 @@ export default {
 
   additionalFields: [
     { label: 'Entity Other Known Name or Alias', value: 'Gazmash' },
-    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
-    { label: 'Entity Company Number', value: '587762367' },
-    { label: 'Entity ID Type', value: 'DUNS Number' },
     { label: 'Entity Registered Address', value: 'Primorskiy Prospekt, 54/1A/1N' },
-    { label: 'All Relevant Client Units', value: 'Business Unit 1, Business Unit 2, Business Unit 3' },
-    { label: 'Internal Reference or ID', value: '123GAZ789' },
-    { label: 'Entity ID Value', value: '366162464' },
+    { label: 'Entity ID Type', value: 'DUNS Number' },
+    { label: 'Entity Company Number', value: '587762367' },
+    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
     { label: 'Entity Website', value: 'www.gazprom.ru', link: true, href: 'https://www.gazprom.ru' },
+    { label: 'Entity ID Value', value: '366162464' },
+    { label: 'Internal Reference or ID', value: '123GAZ789' },
+    { label: 'All Relevant Client Units', value: 'Business Unit 1, Business Unit 2, Business Unit 3' },
   ],
 
   riskCards: [

@@ -54,14 +54,14 @@ export default {
 
   additionalFields: [
     { label: 'Entity Other Known Name or Alias', value: 'Ecomoda' },
-    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
-    { label: 'Entity Company Number', value: 'CO-00384712' },
-    { label: 'Entity ID Type', value: 'NIT' },
     { label: 'Entity Registered Address', value: 'Cra. 7 #32-16, Bogotá, Cundinamarca, Colombia' },
-    { label: 'All Relevant Client Units', value: 'Design & Collections, Export Sales, Retail Operations' },
-    { label: 'Internal Reference or ID', value: 'ECO-COL-001' },
-    { label: 'Entity ID Value', value: '900.184.736-1' },
+    { label: 'Entity ID Type', value: 'NIT' },
+    { label: 'Entity Company Number', value: 'CO-00384712' },
+    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
     { label: 'Entity Website', value: 'www.ecomoda.com.co', link: true, href: 'https://www.ecomoda.com.co' },
+    { label: 'Entity ID Value', value: '900.184.736-1' },
+    { label: 'Internal Reference or ID', value: 'ECO-COL-001' },
+    { label: 'All Relevant Client Units', value: 'Design & Collections, Export Sales, Retail Operations' },
   ],
 
   riskCards: [

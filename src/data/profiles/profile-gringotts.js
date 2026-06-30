@@ -54,14 +54,14 @@ export default {
 
   additionalFields: [
     { label: 'Entity Other Known Name or Alias',  value: 'Gringotts Bank, The Only Wizarding Bank' },
-    { label: 'Responsible Client Unit',           value: 'Treasury & Financial Operations' },
-    { label: 'Entity Company Number',             value: 'GB-WIZ-0001' },
-    { label: 'Entity ID Type',                    value: 'DUNS Number' },
     { label: 'Entity Registered Address',         value: 'Gringotts Bank, Diagon Alley, London, WC2H 0AH' },
-    { label: 'All Relevant Client Units',         value: 'Treasury, Procurement, Legal' },
-    { label: 'Internal Reference or ID',          value: 'INT-GRG-001' },
-    { label: 'Entity ID Value',                   value: '112233445' },
+    { label: 'Entity ID Type',                    value: 'DUNS Number' },
+    { label: 'Entity Company Number',             value: 'GB-WIZ-0001' },
+    { label: 'Responsible Client Unit',           value: 'Treasury & Financial Operations' },
     { label: 'Entity Website',                    value: 'www.gringotts.wiz', link: true },
+    { label: 'Entity ID Value',                   value: '112233445' },
+    { label: 'Internal Reference or ID',          value: 'INT-GRG-001' },
+    { label: 'All Relevant Client Units',         value: 'Treasury, Procurement, Legal' },
   ],
 
   riskCards: [

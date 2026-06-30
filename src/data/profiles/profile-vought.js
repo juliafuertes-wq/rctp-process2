@@ -54,14 +54,14 @@ export default {
 
   additionalFields: [
     { label: 'Entity Other Known Name or Alias', value: 'Vought-American' },
-    { label: 'Responsible Client Unit', value: 'Compliance (Legal & Regulatory)' },
-    { label: 'Entity Company Number', value: 'US-99887766' },
-    { label: 'Entity ID Type', value: 'DUNS Number' },
     { label: 'Entity Registered Address', value: '1 Liberty Plaza, New York, NY 10006' },
-    { label: 'All Relevant Client Units', value: 'Legal, Compliance, Public Affairs' },
-    { label: 'Internal Reference or ID', value: 'VGT-001' },
-    { label: 'Entity ID Value', value: '998877661' },
+    { label: 'Entity ID Type', value: 'DUNS Number' },
+    { label: 'Entity Company Number', value: 'US-99887766' },
+    { label: 'Responsible Client Unit', value: 'Compliance (Legal & Regulatory)' },
     { label: 'Entity Website', value: 'www.vought.com', link: true },
+    { label: 'Entity ID Value', value: '998877661' },
+    { label: 'Internal Reference or ID', value: 'VGT-001' },
+    { label: 'All Relevant Client Units', value: 'Legal, Compliance, Public Affairs' },
   ],
 
   riskCards: [

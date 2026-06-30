@@ -55,14 +55,14 @@ export default {
 
   additionalFields: [
     { label: 'Entity Other Known Name or Alias', value: 'Pollos Hermanos, The Chicken Brothers' },
-    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
-    { label: 'Entity Company Number', value: 'US-00583921' },
-    { label: 'Entity ID Type', value: 'DUNS Number' },
     { label: 'Entity Registered Address', value: '9516 Snow Heights Circle NE, Albuquerque, NM 87112' },
-    { label: 'All Relevant Client Units', value: 'Food Distribution, Chemical Supply Chain, Logistics' },
-    { label: 'Internal Reference or ID', value: 'LPH-ABQ-001' },
-    { label: 'Entity ID Value', value: '773019284' },
+    { label: 'Entity ID Type', value: 'DUNS Number' },
+    { label: 'Entity Company Number', value: 'US-00583921' },
+    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
     { label: 'Entity Website', value: 'www.lospolloschickens.com', link: true, href: 'https://www.lospolloschickens.com' },
+    { label: 'Entity ID Value', value: '773019284' },
+    { label: 'Internal Reference or ID', value: 'LPH-ABQ-001' },
+    { label: 'All Relevant Client Units', value: 'Food Distribution, Chemical Supply Chain, Logistics' },
   ],
 
   riskCards: [

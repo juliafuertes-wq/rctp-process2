@@ -54,14 +54,14 @@ export default {
 
   additionalFields: [
     { label: 'Entity Other Known Name or Alias', value: 'Waystar, Royco Media' },
-    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
-    { label: 'Entity Company Number', value: 'US-10293847' },
-    { label: 'Entity ID Type', value: 'DUNS Number' },
     { label: 'Entity Registered Address', value: '1230 Avenue of the Americas, New York, NY 10020' },
-    { label: 'All Relevant Client Units', value: 'ATN, Park Broadcasting, Brightstar Cruises, Vaulter' },
-    { label: 'Internal Reference or ID', value: 'WYS-NYC-001' },
-    { label: 'Entity ID Value', value: '998827364' },
+    { label: 'Entity ID Type', value: 'DUNS Number' },
+    { label: 'Entity Company Number', value: 'US-10293847' },
+    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
     { label: 'Entity Website', value: 'www.waystarroyco.com', link: true, href: 'https://www.waystarroyco.com' },
+    { label: 'Entity ID Value', value: '998827364' },
+    { label: 'Internal Reference or ID', value: 'WYS-NYC-001' },
+    { label: 'All Relevant Client Units', value: 'ATN, Park Broadcasting, Brightstar Cruises, Vaulter' },
   ],
 
   riskCards: [

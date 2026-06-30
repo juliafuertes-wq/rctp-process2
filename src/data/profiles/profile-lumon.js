@@ -54,14 +54,14 @@ export default {
 
   additionalFields: [
     { label: 'Entity Other Known Name or Alias', value: 'Lumon' },
-    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
-    { label: 'Entity Company Number', value: 'US-00741852' },
-    { label: 'Entity ID Type', value: 'DUNS Number' },
     { label: 'Entity Registered Address', value: '1 Lumon Drive, Kier, PE 04101' },
-    { label: 'All Relevant Client Units', value: 'Macrodata Refinement, Optics & Design, Overtime Contingency' },
-    { label: 'Internal Reference or ID', value: 'LMN-MDR-001' },
-    { label: 'Entity ID Value', value: '441209873' },
+    { label: 'Entity ID Type', value: 'DUNS Number' },
+    { label: 'Entity Company Number', value: 'US-00741852' },
+    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
     { label: 'Entity Website', value: 'www.lumonindustries.com', link: true, href: 'https://www.lumonindustries.com' },
+    { label: 'Entity ID Value', value: '441209873' },
+    { label: 'Internal Reference or ID', value: 'LMN-MDR-001' },
+    { label: 'All Relevant Client Units', value: 'Macrodata Refinement, Optics & Design, Overtime Contingency' },
   ],
 
   riskCards: [

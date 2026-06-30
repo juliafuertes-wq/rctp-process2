@@ -54,14 +54,14 @@ export default {
 
   additionalFields: [
     { label: 'Entity Other Known Name or Alias', value: 'Grateau Agency' },
-    { label: 'Responsible Client Unit', value: 'Communications (Central)' },
-    { label: 'Entity Company Number', value: 'FR-51234567800019' },
-    { label: 'Entity ID Type', value: 'SIRET Number' },
     { label: 'Entity Registered Address', value: '6 Rue des Entrepreneurs, 75015 Paris, France' },
-    { label: 'All Relevant Client Units', value: 'Communications & Media, Marketing' },
-    { label: 'Internal Reference or ID', value: 'AGR-COM-001' },
-    { label: 'Entity ID Value', value: '51234567800019' },
+    { label: 'Entity ID Type', value: 'SIRET Number' },
+    { label: 'Entity Company Number', value: 'FR-51234567800019' },
+    { label: 'Responsible Client Unit', value: 'Communications (Central)' },
     { label: 'Entity Website', value: 'www.agencegrateau.fr', link: true, href: 'https://www.agencegrateau.fr' },
+    { label: 'Entity ID Value', value: '51234567800019' },
+    { label: 'Internal Reference or ID', value: 'AGR-COM-001' },
+    { label: 'All Relevant Client Units', value: 'Communications & Media, Marketing' },
   ],
 
   riskCards: [

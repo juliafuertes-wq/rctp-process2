@@ -54,14 +54,14 @@ export default {
 
   additionalFields: [
     { label: 'Entity Other Known Name or Alias', value: 'Stark Corp, SI' },
-    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
-    { label: 'Entity Company Number', value: 'US-11223344' },
-    { label: 'Entity ID Type', value: 'DUNS Number' },
     { label: 'Entity Registered Address', value: '10880 Malibu Point, Malibu, CA 90265' },
-    { label: 'All Relevant Client Units', value: 'Defence, R&D, Manufacturing' },
-    { label: 'Internal Reference or ID', value: 'STK-001' },
-    { label: 'Entity ID Value', value: '112233440' },
+    { label: 'Entity ID Type', value: 'DUNS Number' },
+    { label: 'Entity Company Number', value: 'US-11223344' },
+    { label: 'Responsible Client Unit', value: 'Procurement (Central, direct material)' },
     { label: 'Entity Website', value: 'www.starkindustries.com', link: true },
+    { label: 'Entity ID Value', value: '112233440' },
+    { label: 'Internal Reference or ID', value: 'STK-001' },
+    { label: 'All Relevant Client Units', value: 'Defence, R&D, Manufacturing' },
   ],
 
   riskCards: [

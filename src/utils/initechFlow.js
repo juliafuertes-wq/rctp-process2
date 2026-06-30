@@ -81,7 +81,7 @@ function _patchDunderMifflin(profile) {
     ...profile,
     sidebarSteps: steps,
     overviewFields,
-    currentStatus: { label: approved ? 'Approved' : 'Approved(!) Renewal Required' },
+    currentStatus: { label: approved ? 'Approved' : 'Approved - Renewal Required' },
   };
 }
 
@@ -122,7 +122,7 @@ function _patchLumon(profile) {
     ...profile,
     sidebarSteps: steps,
     overviewFields,
-    currentStatus: { label: approved ? 'Approved' : 'Approved(!) Renewal Required' },
+    currentStatus: { label: approved ? 'Approved' : 'Approved - Renewal Required' },
   };
 }
 

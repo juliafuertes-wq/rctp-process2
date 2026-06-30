@@ -94,9 +94,9 @@ function ProfileHeaderDisplay() {
               <div className={profileStyles.tpBadges}>
                 <div className={profileStyles.tpBadgeGroup}>
                   <div className={profileStyles.tpBadgeLabel}>Current status:</div>
-                  <div className={`${profileStyles.badge} ${profileStyles.statusApproved} ${profileStyles.badgeBtn}`}>
-                    Approved
-                    <span className="material-icons-outlined" style={{ fontSize: 16 }}>check_circle</span>
+                  <div className={`${profileStyles.badge} ${risk === "pending" ? profileStyles.statusPendingApproval : profileStyles.statusApproved} ${profileStyles.badgeBtn}`}>
+                    {risk === "pending" ? "Pending Approval" : "Approved"}
+                    <span className="material-icons-outlined" style={{ fontSize: 16 }}>{risk === "pending" ? "pending" : "check_circle"}</span>
                   </div>
                 </div>
                 <div className={profileStyles.tpBadgeGroup}>

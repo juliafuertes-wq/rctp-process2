@@ -31,7 +31,7 @@ const STATUS_CONFIG = {
   'Not Approved':                 { cls: 'statusNotApproved',     icon: 'dangerous' },
   'Declined':                     { cls: 'statusDeclined',        icon: 'feedback' },
   'Approved*':                    { cls: 'statusExpired',         icon: 'history_toggle_off' },
-  'Approved(!) Renewal Required': { cls: 'statusExpired',         icon: 'history_toggle_off' },
+  'Approved - Renewal Required': { cls: 'statusExpired',         icon: 'history_toggle_off' },
 };
 function getStatusConfig(label) {
   return STATUS_CONFIG[label] ?? { cls: 'statusPendingApproval', icon: 'pending' };

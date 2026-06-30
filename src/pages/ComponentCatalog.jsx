@@ -146,7 +146,7 @@ const STATUS_ENTRIES = [
   { label: 'Not Approved',                 bg: 'var(--alert-100)',   color: 'var(--alert-700)',   icon: 'dangerous',          tooltip: 'Approval was not granted for this third party.' },
   { label: 'Declined',                     bg: 'var(--alert-100)',   color: 'var(--alert-700)',   icon: 'feedback',           tooltip: 'This third party has been declined.' },
   { label: 'Approved*',                    bg: 'var(--warning-100)', color: 'var(--warning-900)', icon: 'history_toggle_off', tooltip: 'Approved with conditions. Review required.' },
-  { label: 'Approved(!) Renewal Required', bg: 'var(--warning-100)', color: 'var(--warning-900)', icon: 'history_toggle_off', tooltip: 'Approval valid but renewal is due.' },
+  { label: 'Approved - Renewal Required', bg: 'var(--warning-100)', color: 'var(--warning-900)', icon: 'history_toggle_off', tooltip: 'Approval valid but renewal is due.' },
 ];
 
 const SIDEBAR_SECTIONS = [

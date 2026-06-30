@@ -141,12 +141,12 @@ const PROPS = {
 };
 
 const STATUS_ENTRIES = [
-  { label: 'Pending Approval',             bg: 'var(--neutral-50)',  color: 'var(--text-normal)',  icon: 'pending',            tooltip: 'This third party is awaiting approval.' },
+  { label: 'Pending Approval',             bg: 'var(--neutral-50)',  color: 'var(--text-normal)',  icon: 'pending',            tooltip: 'Record has not yet had a first approval.' },
   { label: 'Approved',                     bg: 'var(--success-100)', color: 'var(--success-900)', icon: 'check_circle',       tooltip: 'This third party has been approved.' },
   { label: 'Not Approved',                 bg: 'var(--alert-100)',   color: 'var(--alert-700)',   icon: 'dangerous',          tooltip: 'Approval was not granted for this third party.' },
   { label: 'Declined',                     bg: 'var(--alert-100)',   color: 'var(--alert-700)',   icon: 'feedback',           tooltip: 'This third party has been declined.' },
-  { label: 'Approved*',                    bg: 'var(--warning-100)', color: 'var(--warning-900)', icon: 'history_toggle_off', tooltip: 'Approved with conditions. Review required.' },
-  { label: 'Approved(!) Renewal Required', bg: 'var(--warning-100)', color: 'var(--warning-900)', icon: 'history_toggle_off', tooltip: 'Approval valid but renewal is due.' },
+  { label: 'Approved*',                    bg: 'var(--warning-100)', color: 'var(--warning-900)', icon: 'history_toggle_off', tooltip: 'Renewal date reached.' },
+  { label: 'Approved - Renewal Required', bg: 'var(--warning-100)', color: 'var(--warning-900)', icon: 'history_toggle_off', tooltip: 'Renewal started manually.' },
 ];
 
 const SIDEBAR_SECTIONS = [
@@ -896,8 +896,8 @@ export default function ComponentCatalog() {
                     <div style={{ display:'flex', flexWrap:'wrap', gap:8 }}>
                       {STATUS_ENTRIES.map(s => (
                         <span key={s.label} className={styles.demoStatusBadge} style={{ background: s.bg, color: s.color }}>
-                          <span className="material-icons-outlined" style={{ fontSize: 14, display:'block', width:14, height:14, lineHeight:'14px' }}>{s.icon}</span>
                           {s.label}
+                          <span className="material-icons-outlined" style={{ fontSize: 14, display:'block', width:14, height:14, lineHeight:'14px' }}>{s.icon}</span>
                         </span>
                       ))}
                     </div>
@@ -905,8 +905,8 @@ export default function ComponentCatalog() {
                       {STATUS_ENTRIES.map(s => (
                         <div key={s.label} className={styles.tooltipTrigger}>
                           <span className={styles.demoStatusBadge} style={{ background: s.bg, color: s.color }}>
-                            <span className="material-icons-outlined" style={{ fontSize: 14, display:'block', width:14, height:14, lineHeight:'14px' }}>{s.icon}</span>
                             {s.label}
+                            <span className="material-icons-outlined" style={{ fontSize: 14, display:'block', width:14, height:14, lineHeight:'14px' }}>{s.icon}</span>
                           </span>
                           <div className={styles.tooltipBubbleLg}>{s.tooltip}</div>
                         </div>
@@ -984,9 +984,9 @@ export default function ComponentCatalog() {
                               <div className={profileStyles.tpBadges}>
                                 <div className={profileStyles.tpBadgeGroup}>
                                   <div className={profileStyles.tpBadgeLabel}>Current status:</div>
-                                  <div className={`${profileStyles.badge} ${profileStyles.statusApproved} ${profileStyles.badgeBtn}`}>
-                                    Approved
-                                    <span className="material-icons-outlined" style={{ fontSize: 16 }}>check_circle</span>
+                                  <div className={`${profileStyles.badge} ${headerRisk === 'pending' ? profileStyles.statusPendingApproval : profileStyles.statusApproved} ${profileStyles.badgeBtn}`}>
+                                    {headerRisk === 'pending' ? 'Pending Approval' : 'Approved'}
+                                    <span className="material-icons-outlined" style={{ fontSize: 16 }}>{headerRisk === 'pending' ? 'pending' : 'check_circle'}</span>
                                   </div>
                                 </div>
                                 <div className={profileStyles.tpBadgeGroup}>

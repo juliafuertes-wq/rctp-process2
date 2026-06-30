@@ -25,7 +25,7 @@ const STAGE_STEP_MAP = {
 function getStage(p) {
   const status = p.currentStatus?.label || '';
   if (status === 'Approved') return 'Approved';
-  if (status === 'Approved*' || status === 'Approved(!) Renewal Required') return 'Approval In Progress';
+  if (status === 'Approved*' || status === 'Approved - Renewal Required') return 'Approval In Progress';
 
   const tasks = p.openTasks || [];
   const task = tasks.find(t => t.status === 'In Progress') || tasks[0];
@@ -132,7 +132,7 @@ export default function ThirdParties() {
                   <td>{row.stage}</td>
                   <td><RiskBadge level={row.risk} /></td>
                   <td>{row.ref || ''}</td>
-                  <td>{row.status === 'Approved(!) Renewal Required' ? 'Approved - Renewal Required' : row.status}</td>
+                  <td>{row.status}</td>
                   <td>Yes</td>
                 </tr>
               ))}

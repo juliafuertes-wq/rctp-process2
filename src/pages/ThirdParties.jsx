@@ -3,7 +3,7 @@ import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
 import RiskBadge from '../components/ui/RiskBadge';
 import Button from '../components/ui/Button';
-import { piedpiper, brucewayne, gazprom, initech, dundermifflin, lumon, waystar, ecomoda, lospollos, gringotts, agencegrateau, vought, ricksanchez, starkindustries } from '../data/profiles';
+import { piedpiper, brucewayne, gazprom, initech, dundermifflin, lumon, waystar, ecomoda, lospollos, gringotts, agencegrateau, vought, ricksanchez, starkindustries, willywonka } from '../data/profiles';
 import styles from './ThirdParties.module.css';
 
 function getOwner(p) { return p.overviewFields.find(f => f.label === 'Third Party Owner')?.value || ''; }
@@ -55,6 +55,7 @@ const ROWS = [
   { profile: vought,         id: 'vought' },
   { profile: ricksanchez,    id: 'ricksanchez' },
   { profile: starkindustries, id: 'starkindustries' },
+  { profile: willywonka,     id: 'willywonka' },
 ].map(({ profile, id }) => ({
   id,
   name:   profile.name,

@@ -60,7 +60,7 @@ function StatusBadgesDisplay() {
                     <span className="material-icons-outlined" style={{ fontSize: 14, display: "block", width: 14, height: 14, lineHeight: "14px" }}>{s.icon}</span>
                     {s.label}
                   </span>
-                  <div className={styles.tooltipBubbleLg}>{s.tooltip}</div>
+                  <div className={styles.tooltipBubbleLg} style={{ whiteSpace: "nowrap", width: "auto" }}>{s.tooltip}</div>
                 </div>
               ))}
             </div>

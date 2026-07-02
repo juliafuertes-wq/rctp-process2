@@ -4,10 +4,24 @@ import { useState } from "react";
 const meta: Meta = {
   title: "Catalog/UI Components/Tag",
   parameters: { layout: "fullscreen" },
+  argTypes: {
+    tagLabel: {
+      control: "text",
+      description: "Label text for the interactive static tag",
+    },
+    tagBg: {
+      control: "color",
+      description: "Background color for the interactive static tag",
+    },
+  },
+  args: {
+    tagLabel: "Paper",
+    tagBg: "#E0E0E0",
+  },
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<{ tagLabel: string; tagBg: string }>;
 
 const PROPS = [
   { name: "label",    required: true, type: "string",      defaultVal: "—",          desc: "Text shown inside the tag." },
@@ -42,7 +56,7 @@ const removableStyle: React.CSSProperties = {
   whiteSpace: "nowrap",
 };
 
-function TagDisplay() {
+function TagDisplay({ tagLabel, tagBg }: { tagLabel: string; tagBg: string }) {
   const [tags, setTags] = useState(["Finance", "Compliance", "Legal"]);
 
   return (
@@ -62,8 +76,8 @@ function TagDisplay() {
           Live Demo
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-          {/* Static tags */}
-          <span style={tagStyle}>Paper</span>
+          {/* Static tags — first one uses controlled args */}
+          <span style={{ ...tagStyle, background: tagBg }}>{tagLabel}</span>
           <span style={tagStyle}>Regional</span>
           <span style={tagStyle}>Scranton</span>
 
@@ -138,5 +152,5 @@ function TagDisplay() {
 
 export const AllStates: Story = {
   name: "All States",
-  render: () => <TagDisplay />,
+  render: (args) => <TagDisplay tagLabel={args.tagLabel} tagBg={args.tagBg} />,
 };

@@ -4,10 +4,24 @@ import Badge from "../components/ui/Badge";
 const meta: Meta = {
   title: "Catalog/UI Components/Badge",
   parameters: { layout: "fullscreen" },
+  argTypes: {
+    label: {
+      control: "text",
+      description: "Label text for the interactive badge",
+    },
+    bgColor: {
+      control: "color",
+      description: "Background color override for the interactive badge",
+    },
+  },
+  args: {
+    label: "12",
+    bgColor: "#028FBB",
+  },
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<{ label: string; bgColor: string }>;
 
 const STYLES = ["action-required", "no-action", "incomplete", "not-initiated", "completed", "confirmed", "cleared"] as const;
 
@@ -34,7 +48,7 @@ const row: React.CSSProperties = {
   gap: 12,
 };
 
-function BadgeDisplay() {
+function BadgeDisplay({ label, bgColor }: { label: string; bgColor: string }) {
   return (
     <div style={{ padding: "24px 32px", background: "var(--neutral-00)", minHeight: "100vh" }}>
       {/* Header */}
@@ -64,6 +78,18 @@ function BadgeDisplay() {
         </div>
       </div>
 
+      {/* Interactive */}
+      <div style={{ marginTop: 24, marginBottom: 24 }}>
+        <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-light)", marginBottom: 16 }}>
+          Interactive
+        </div>
+        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+          <Badge bgColor={bgColor} size="large" shape="round" label={label} />
+          <Badge bgColor={bgColor} size="large" shape="square" label={label} />
+          <Badge bgColor={bgColor} size="medium" />
+          <Badge bgColor={bgColor} size="small" />
+        </div>
+      </div>
       <div style={{ borderBottom: "1px solid var(--neutral-50)", margin: "24px 0" }} />
 
       {/* Props table */}
@@ -120,5 +146,5 @@ function BadgeDisplay() {
 
 export const AllStates: Story = {
   name: "All States",
-  render: () => <BadgeDisplay />,
+  render: (args) => <BadgeDisplay label={args.label} bgColor={args.bgColor} />,
 };

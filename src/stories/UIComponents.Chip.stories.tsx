@@ -5,10 +5,24 @@ import Chip from "../components/ui/Chip";
 const meta: Meta = {
   title: "Catalog/UI Components/Chip",
   parameters: { layout: "fullscreen" },
+  argTypes: {
+    label: {
+      control: "text",
+      description: "Label text for the interactive chip",
+    },
+    chipColor: {
+      control: "color",
+      description: "Color of the interactive chip when selected",
+    },
+  },
+  args: {
+    label: "Toggle me",
+    chipColor: "#028FBB",
+  },
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<{ label: string; chipColor: string }>;
 
 const PROPS = [
   { name: "label",     required: true, type: "string",        defaultVal: "—",       desc: "Text displayed inside the chip." },
@@ -20,7 +34,7 @@ const PROPS = [
   { name: "disabled",                  type: "boolean",       defaultVal: "false",   desc: "Disables click and close interactions." },
 ];
 
-function ChipDisplay() {
+function ChipDisplay({ label, chipColor }: { label: string; chipColor: string }) {
   const [selected, setSelected] = useState(false);
 
   return (
@@ -40,7 +54,9 @@ function ChipDisplay() {
           Live Demo
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
-          <Chip label="Toggle me" selected={selected} onClick={() => setSelected(v => !v)} />
+          <div style={{ ["--primary-500" as any]: chipColor, ["--primary-600" as any]: chipColor }}>
+            <Chip label={label} selected={selected} onClick={() => setSelected(v => !v)} />
+          </div>
           <Chip label="With count" count={5} onClick={() => {}} />
           <Chip label="With close" showClose onClick={() => {}} onClose={() => {}} />
           <Chip label="Disabled" disabled onClick={() => {}} />
@@ -104,5 +120,5 @@ function ChipDisplay() {
 
 export const AllStates: Story = {
   name: "All States",
-  render: () => <ChipDisplay />,
+  render: (args) => <ChipDisplay label={args.label} chipColor={args.chipColor} />,
 };

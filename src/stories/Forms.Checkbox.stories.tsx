@@ -5,10 +5,24 @@ import Checkbox from "../components/ui/Checkbox";
 const meta: Meta = {
   title: "Catalog/Forms/Checkbox",
   parameters: { layout: "fullscreen" },
+  argTypes: {
+    checkColor: {
+      control: "color",
+      description: "Color of the interactive checkbox border and checkmark",
+    },
+    size: {
+      control: { type: "range", min: 12, max: 40, step: 1 },
+      description: "Size of the interactive checkbox in px",
+    },
+  },
+  args: {
+    checkColor: "#028FBB",
+    size: 18,
+  },
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<{ checkColor: string; size: number }>;
 
 const PROPS = [
   { name: "checked", required: true,  type: "boolean",            defaultVal: "—",           desc: "Checked state." },
@@ -31,7 +45,7 @@ const DEMOS = [
   { label: "Small checked",    checked: true,  indeterminate: false, disabled: false, error: false, size: "small" as const },
 ];
 
-function CheckboxDisplay() {
+function CheckboxDisplay({ checkColor, size }: { checkColor: string; size: number }) {
   const [defaultChecked, setDefaultChecked] = useState(false);
   const [indeterminate, setIndeterminate] = useState(false);
   const [errorChecked, setErrorChecked] = useState(false);
@@ -76,9 +90,11 @@ function CheckboxDisplay() {
           Interactive
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "12px 40px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <Checkbox checked={defaultChecked} onChange={(e) => setDefaultChecked(e.target.checked)} />
-            <span style={{ fontSize: 13, color: "var(--text-normal)" }}>Default</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, ["--primary-500" as any]: checkColor, ["--primary-600" as any]: checkColor }}>
+            <div style={{ transform: `scale(${size / 18})`, transformOrigin: "center", flexShrink: 0 }}>
+              <Checkbox checked={defaultChecked} onChange={(e) => setDefaultChecked(e.target.checked)} />
+            </div>
+            <span style={{ fontSize: 13, color: "var(--text-normal)" }}>{defaultChecked ? "Checked" : "Unchecked"} — Default</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Checkbox checked={indeterminate} indeterminate={indeterminate} onChange={(e) => setIndeterminate(e.target.checked)} />
@@ -154,5 +170,5 @@ function CheckboxDisplay() {
 
 export const AllStates: Story = {
   name: "All States",
-  render: () => <CheckboxDisplay />,
+  render: (args) => <CheckboxDisplay checkColor={args.checkColor} size={args.size} />,
 };

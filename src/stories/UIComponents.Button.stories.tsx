@@ -4,10 +4,29 @@ import Button from "../components/ui/Button";
 const meta: Meta = {
   title: "Catalog/UI Components/Button",
   parameters: { layout: "fullscreen" },
+  argTypes: {
+    label: {
+      control: "text",
+      description: "Label text for the interactive button",
+    },
+    buttonColor: {
+      control: "color",
+      description: "Color of the interactive button",
+    },
+    variant: {
+      control: { type: "select", options: ["filled", "outline", "text"] },
+      description: "Variant of the interactive button",
+    },
+  },
+  args: {
+    label: "Save Changes",
+    buttonColor: "#028FBB",
+    variant: "filled",
+  },
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<{ label: string; buttonColor: string; variant: "filled" | "outline" | "text" }>;
 
 const PROPS = [
   { name: "variant",   type: "'outline' | 'filled' | 'text'", defaultVal: "'outline'",  desc: "Visual style of the button." },
@@ -32,7 +51,7 @@ const row: React.CSSProperties = {
   gap: 12,
 };
 
-function ButtonDisplay() {
+function ButtonDisplay({ label, buttonColor, variant }: { label: string; buttonColor: string; variant: "filled" | "outline" | "text" }) {
   return (
     <div style={{ padding: "24px 32px", background: "var(--neutral-00)", minHeight: "100vh" }}>
       {/* Header */}
@@ -77,6 +96,15 @@ function ButtonDisplay() {
         </div>
       </div>
 
+      {/* Interactive */}
+      <div style={{ marginTop: 24, marginBottom: 24 }}>
+        <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-light)", marginBottom: 16 }}>
+          Interactive
+        </div>
+        <div style={{ ["--primary-500" as any]: buttonColor, ["--primary-600" as any]: buttonColor }}>
+          <Button variant={variant}>{label}</Button>
+        </div>
+      </div>
       <div style={{ borderBottom: "1px solid var(--neutral-50)", margin: "24px 0" }} />
 
       {/* Props table */}
@@ -133,5 +161,5 @@ function ButtonDisplay() {
 
 export const AllStates: Story = {
   name: "All States",
-  render: () => <ButtonDisplay />,
+  render: (args) => <ButtonDisplay label={args.label} buttonColor={args.buttonColor} variant={args.variant} />,
 };

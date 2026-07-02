@@ -5,10 +5,24 @@ import Toggle from "../components/ui/Toggle";
 const meta: Meta = {
   title: "Catalog/Forms/Toggle",
   parameters: { layout: "fullscreen" },
+  argTypes: {
+    labelOn: {
+      control: "text",
+      description: "Label shown when the toggle is on",
+    },
+    labelOff: {
+      control: "text",
+      description: "Label shown when the toggle is off",
+    },
+  },
+  args: {
+    labelOn: "Active",
+    labelOff: "Inactive",
+  },
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<{ labelOn: string; labelOff: string }>;
 
 const PROPS = [
   { name: "value",     required: true,  type: "boolean",            defaultVal: "false",       desc: "Current on/off state." },
@@ -18,7 +32,7 @@ const PROPS = [
   { name: "disabled",                   type: "boolean",            defaultVal: "false",       desc: "Disables toggle interaction." },
 ];
 
-function ToggleDisplay() {
+function ToggleDisplay({ labelOn, labelOff }: { labelOn: string; labelOff: string }) {
   const [on, setOn] = useState(false);
 
   return (
@@ -38,9 +52,9 @@ function ToggleDisplay() {
           Live Demo
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "12px 40px", alignItems: "center" }}>
-          <Toggle value={on} onChange={setOn} />
-          <Toggle value={true} disabled />
-          <Toggle value={false} disabled />
+          <Toggle value={on} onChange={setOn} labelOn={labelOn} labelOff={labelOff} />
+          <Toggle value={true} disabled labelOn={labelOn} labelOff={labelOff} />
+          <Toggle value={false} disabled labelOn={labelOn} labelOff={labelOff} />
         </div>
       </div>
 
@@ -100,5 +114,5 @@ function ToggleDisplay() {
 
 export const AllStates: Story = {
   name: "All States",
-  render: () => <ToggleDisplay />,
+  render: (args) => <ToggleDisplay labelOn={args.labelOn} labelOff={args.labelOff} />,
 };

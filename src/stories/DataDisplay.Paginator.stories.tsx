@@ -1,14 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Paginator from "../components/ui/Paginator";
 
 const meta: Meta = {
   title: "Catalog/Data Display/Paginator",
   parameters: { layout: "fullscreen" },
+  argTypes: {
+    totalItems: {
+      control: { type: "range", min: 0, max: 500, step: 10 },
+      description: "Total number of items to paginate",
+    },
+  },
+  args: {
+    totalItems: 140,
+  },
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<{ totalItems: number }>;
 
 const PROPS = [
   { name: "page",             required: true, type: "number",               defaultVal: "1",          desc: "Current page (1-based)." },
@@ -20,11 +29,12 @@ const PROPS = [
   { name: "pageSizeOptions",                  type: "number[]",             defaultVal: "[20, 50, 100]", desc: "Options available in the page size selector." },
 ];
 
-function PaginatorDisplay() {
+function PaginatorDisplay({ totalItems }: { totalItems: number }) {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(20);
-  const totalItems = 140;
   const totalPages = Math.ceil(totalItems / pageSize);
+
+  useEffect(() => { setPage(1); }, [totalItems]);
 
   return (
     <div style={{ padding: "24px 32px", background: "var(--neutral-00)", minHeight: "100vh" }}>
@@ -52,7 +62,7 @@ function PaginatorDisplay() {
             onPageSizeChange={(s) => { setPageSize(s); setPage(1); }}
           />
           <div style={{ fontSize: 12, color: "var(--text-light)" }}>
-            Page {page} of {totalPages} · {pageSize} per page · {totalItems} total items
+            Page {page} of {Math.max(1, totalPages)} · {pageSize} per page · {totalItems} total items
           </div>
         </div>
       </div>
@@ -113,5 +123,5 @@ function PaginatorDisplay() {
 
 export const AllStates: Story = {
   name: "All States",
-  render: () => <PaginatorDisplay />,
+  render: (args) => <PaginatorDisplay totalItems={args.totalItems} />,
 };

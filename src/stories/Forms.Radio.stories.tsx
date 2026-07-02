@@ -5,10 +5,29 @@ import Radio from "../components/ui/Radio";
 const meta: Meta = {
   title: "Catalog/Forms/Radio",
   parameters: { layout: "fullscreen" },
+  argTypes: {
+    label: {
+      control: "text",
+      description: "Label text for the interactive radio",
+    },
+    buttonColor: {
+      control: "color",
+      description: "Color of the interactive radio button border and dot",
+    },
+    size: {
+      control: { type: "range", min: 12, max: 40, step: 1 },
+      description: "Size of the interactive radio button in px",
+    },
+  },
+  args: {
+    label: "Option A",
+    buttonColor: "#028FBB",
+    size: 20,
+  },
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<{ label: string; buttonColor: string; size: number }>;
 
 const PROPS = [
   { name: "checked",  required: true,  type: "boolean",     defaultVal: "—",     desc: "Selected state." },
@@ -23,7 +42,7 @@ const DEMOS = [
   { label: "Disabled checked", checked: true,  disabled: true  },
 ];
 
-function RadioDisplay() {
+function RadioDisplay({ label, buttonColor, size }: { label: string; buttonColor: string; size: number }) {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
@@ -58,9 +77,11 @@ function RadioDisplay() {
           Interactive
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "12px 40px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <Radio checked={selected === "Option A"} onChange={() => setSelected("Option A")} onClick={() => setSelected(selected === "Option A" ? null : "Option A")} />
-            <span style={{ fontSize: 13, color: "var(--text-normal)" }}>{selected === "Option A" ? "Checked" : "Unchecked"}</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, ["--primary-500" as any]: buttonColor, ["--primary-600" as any]: buttonColor }}>
+            <div style={{ transform: `scale(${size / 20})`, transformOrigin: "center", flexShrink: 0 }}>
+              <Radio checked={selected === label} onChange={() => setSelected(label)} onClick={() => setSelected(selected === label ? null : label)} />
+            </div>
+            <span style={{ fontSize: 13, color: "var(--text-normal)" }}>{selected === label ? "Checked" : "Unchecked"} — {label}</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Radio checked={false} disabled onChange={() => {}} />
@@ -124,5 +145,5 @@ function RadioDisplay() {
 
 export const AllStates: Story = {
   name: "All States",
-  render: () => <RadioDisplay />,
+  render: (args) => <RadioDisplay label={args.label} buttonColor={args.buttonColor} size={args.size} />,
 };

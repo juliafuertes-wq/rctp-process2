@@ -4,10 +4,24 @@ import styles from "../pages/ComponentCatalog.module.css";
 const meta: Meta = {
   title: "Catalog/UI Components/Tooltip",
   parameters: { layout: "fullscreen" },
+  argTypes: {
+    dotContent: {
+      control: "text",
+      description: "Text shown in the dot tooltip bubbles",
+    },
+    infoContent: {
+      control: "text",
+      description: "Text shown in the info tooltip bubbles",
+    },
+  },
+  args: {
+    dotContent: "Approved",
+    infoContent: "Monitored associations being continuously monitored against Risk and Compliance Database",
+  },
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<{ dotContent: string; infoContent: string }>;
 
 const PROPS = [
   { name: "content",   required: true, type: "string",                          defaultVal: "—",        desc: "Text shown in the tooltip bubble." },
@@ -28,7 +42,7 @@ const dirCol: React.CSSProperties = {
   gap: 6,
 };
 
-function TooltipDisplay() {
+function TooltipDisplay({ dotContent, infoContent }: { dotContent: string; infoContent: string }) {
   return (
     <div style={{ padding: "24px 32px", background: "var(--neutral-00)", minHeight: "100vh" }}>
       {/* Header */}
@@ -61,7 +75,7 @@ function TooltipDisplay() {
                       dir === "bottom" ? styles.tooltipBubbleSmBottom :
                       dir === "left"   ? styles.tooltipBubbleSmLeft :
                                          styles.tooltipBubbleSmRight
-                    }>Approved</div>
+                    }>{dotContent}</div>
                   </div>
                 </div>
               ))}
@@ -82,7 +96,7 @@ function TooltipDisplay() {
                       dir === "bottom" ? styles.tooltipBubbleLgBottom :
                       dir === "left"   ? styles.tooltipBubbleLgLeft :
                                          styles.tooltipBubbleLgRight
-                    }>Monitored associations being continuously monitored against Risk and Compliance Database</div>
+                    }>{infoContent}</div>
                   </div>
                 </div>
               ))}
@@ -148,5 +162,5 @@ function TooltipDisplay() {
 
 export const AllStates: Story = {
   name: "All States",
-  render: () => <TooltipDisplay />,
+  render: (args) => <TooltipDisplay dotContent={args.dotContent} infoContent={args.infoContent} />,
 };

@@ -6,10 +6,29 @@ import Modal from "../components/ui/Modal";
 const meta: Meta = {
   title: "Catalog/UI Components/Modal",
   parameters: { layout: "fullscreen" },
+  argTypes: {
+    title: {
+      control: "text",
+      description: "Modal header title",
+    },
+    confirmLabel: {
+      control: "text",
+      description: "Confirm button label",
+    },
+    cancelLabel: {
+      control: "text",
+      description: "Cancel button label",
+    },
+  },
+  args: {
+    title: "Confirm Action",
+    confirmLabel: "Confirm",
+    cancelLabel: "Cancel",
+  },
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<{ title: string; confirmLabel: string; cancelLabel: string }>;
 
 const PROPS = [
   { name: "open",            required: true, type: "boolean",      defaultVal: "—",          desc: "Controls modal visibility." },
@@ -22,7 +41,7 @@ const PROPS = [
   { name: "children",                         type: "ReactNode",   defaultVal: "—",          desc: "Modal body content." },
 ];
 
-function ModalDisplay() {
+function ModalDisplay({ title, confirmLabel, cancelLabel }: { title: string; confirmLabel: string; cancelLabel: string }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -44,11 +63,11 @@ function ModalDisplay() {
         <Button variant="filled" onClick={() => setOpen(true)}>Open Modal</Button>
         <Modal
           open={open}
-          title="Confirm Action"
+          title={title}
           onClose={() => setOpen(false)}
           onConfirm={() => setOpen(false)}
-          confirmLabel="Confirm"
-          cancelLabel="Cancel"
+          confirmLabel={confirmLabel}
+          cancelLabel={cancelLabel}
         >
           <p style={{ margin: 0, fontSize: 14, color: "var(--text-light)", lineHeight: 1.6 }}>
             This is the modal body content. You can place any content here — forms, descriptions, warnings, etc.
@@ -112,5 +131,5 @@ function ModalDisplay() {
 
 export const AllStates: Story = {
   name: "All States",
-  render: () => <ModalDisplay />,
+  render: (args) => <ModalDisplay title={args.title} confirmLabel={args.confirmLabel} cancelLabel={args.cancelLabel} />,
 };

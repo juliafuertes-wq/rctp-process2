@@ -4,16 +4,25 @@ import RiskBadge from "../components/ui/RiskBadge";
 const meta: Meta = {
   title: "Catalog/Data Display/RiskBadge",
   parameters: { layout: "fullscreen" },
+  argTypes: {
+    badgeScale: {
+      control: { type: "range", min: 0.5, max: 2, step: 0.1 },
+      description: "Scale factor for the risk badges",
+    },
+  },
+  args: {
+    badgeScale: 1,
+  },
 };
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<{ badgeScale: number }>;
 
 const PROPS = [
   { name: "level", required: true, type: "'high' | 'medium' | 'low' | 'unknown'", defaultVal: "—", desc: "Risk level to display. unknown is shown when risk assessment has not yet completed." },
 ];
 
-function RiskBadgeDisplay() {
+function RiskBadgeDisplay({ badgeScale }: { badgeScale: number }) {
   return (
     <div style={{ padding: "24px 32px", background: "var(--neutral-00)", minHeight: "100vh" }}>
       {/* Header */}
@@ -30,7 +39,7 @@ function RiskBadgeDisplay() {
         <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-light)", marginBottom: 16 }}>
           Live Demo
         </div>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center", transform: `scale(${badgeScale})`, transformOrigin: "left center" }}>
           <RiskBadge level="high" />
           <RiskBadge level="medium" />
           <RiskBadge level="low" />
@@ -94,5 +103,5 @@ function RiskBadgeDisplay() {
 
 export const AllStates: Story = {
   name: "All States",
-  render: () => <RiskBadgeDisplay />,
+  render: (args) => <RiskBadgeDisplay badgeScale={args.badgeScale} />,
 };

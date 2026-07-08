@@ -1,0 +1,55 @@
+@use "sass:map";
+
+// Bootstrap base colours
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+// DJ colours
+$bergblue:      #02A3D5;
+$darkcharc:     #0C2A31;
+$lightcharc:    #394859;
+$darkgrey:      #8D9CA9;
+$midgrey:       #DEE1E0;
+$lightgrey:     #F4F4F4;
+$deepblue:      #3D6AA6;
+$tahitiblue:    #05B5D2;
+$slateblue:     #3D8CBC;
+$bergbluetint1: #028FBB;
+$bergbluetint2: #017295;
+$bergbluetint3: #014155;
+$postive:       #13DF81;
+$negative:      #E34C53;
+$warning:       #F0C043;
+$white:         #FFF;
+$black:         #000;
+
+// New UX Enhancement colours
+$newbergblue: #0289B3;
+$newcharc:    #26383D;
+$newgrey:     #4f5b66;
+$bglightgrey: #f4f4f4;
+$softlightblue: #F4F9FC;
+
+// Override Bootstrap default colours with DJ values
+$primary:   $bergblue  !default;
+$secondary: $darkgrey  !default;
+$success:   $postive   !default;
+$info:      $tahitiblue !default;
+$warning:   $warning   !default;
+$danger:    $negative  !default;
+$light:     $darkgrey  !default;
+$dark:      $darkgrey  !default;
+
+// Body overrides
+$body-color:      #0c2a31;
+$body-bg:         #F4F4F4;
+$font-family-base: "simplonnorm", "Roboto", "Helvetica", "Arial", sans-serif;

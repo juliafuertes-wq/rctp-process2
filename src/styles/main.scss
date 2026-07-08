@@ -1,0 +1,3 @@
+@import "variables";                                        // 1. custom variables first
+@import "../../node_modules/bootstrap/scss/bootstrap";      // 2. bootstrap (uses your variables)
+@import "base";                                             // 3. base styles on top

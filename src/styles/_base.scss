@@ -487,6 +487,487 @@
     white-space: nowrap;
 }
 
+// ── Tooltip ──────────────────────────────────────────────────────────────────
+
+// Hover wrapper — any element that reveals a .tooltip-sm or .tooltip-lg child
+.tooltip-trigger {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+// Shared bubble base
+%tooltip-base {
+    display: none;
+    position: absolute;
+    background: #0C2A31;
+    color: #FFFFFF;
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 1070;
+}
+
+// Small bubble — single-line, no wrap (used for dot labels, partner icons, badge tips)
+.tooltip-sm {
+    @extend %tooltip-base;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: 400;
+    white-space: nowrap;
+    padding: 4px 8px;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 5px solid transparent;
+        border-top-color: #0C2A31;
+    }
+}
+
+// Large bubble — multi-line, 220px wide (used for info tooltips)
+.tooltip-lg {
+    @extend %tooltip-base;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    white-space: normal;
+    width: 220px;
+    padding: 6px 10px;
+    text-align: left;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 5px solid transparent;
+        border-top-color: #0C2A31;
+    }
+}
+
+// Direction modifiers (override position of both bubble sizes)
+.tooltip-bottom {
+    bottom: auto;
+    top: calc(100% + 6px);
+    &::after {
+        top: auto;
+        bottom: 100%;
+        border-top-color: transparent;
+        border-bottom-color: #0C2A31;
+    }
+}
+
+.tooltip-left {
+    bottom: auto;
+    left: auto;
+    right: calc(100% + 6px);
+    top: 50%;
+    transform: translateY(-50%);
+    &::after {
+        top: 50%;
+        left: 100%;
+        bottom: auto;
+        transform: translateY(-50%);
+        border-top-color: transparent;
+        border-left-color: #0C2A31;
+    }
+}
+
+.tooltip-right {
+    bottom: auto;
+    left: calc(100% + 6px);
+    top: 50%;
+    transform: translateY(-50%);
+    &::after {
+        top: 50%;
+        right: 100%;
+        left: auto;
+        bottom: auto;
+        transform: translateY(-50%);
+        border-top-color: transparent;
+        border-right-color: #0C2A31;
+    }
+}
+
+// Show tooltip on hover
+.tooltip-trigger:hover > .tooltip-sm,
+.tooltip-trigger:hover > .tooltip-lg { display: block; }
+
+// Down-pointing tooltip (bottom of badge, used in navProgressInfoTooltip)
+.tooltip-trigger-down {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    &:hover > .tooltip-lg { display: block; }
+    > .tooltip-lg {
+        bottom: auto;
+        top: calc(100% + 6px);
+        left: -8px;
+        transform: none;
+        &::after {
+            top: auto;
+            bottom: 100%;
+            left: 12px;
+            transform: none;
+            border-top-color: transparent;
+            border-bottom-color: #0C2A31;
+        }
+    }
+}
+
+// Info icon trigger (uses CSS ::after to render tooltip from data-tooltip attr)
+.tooltip-info-trigger {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 4px;
+    color: #516267;
+    vertical-align: middle;
+    cursor: help;
+    &::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: calc(100% + 6px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: #0C2A31;
+        color: #FFFFFF;
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 1.5;
+        text-transform: none;
+        letter-spacing: normal;
+        padding: 6px 10px;
+        border-radius: 4px;
+        white-space: normal;
+        width: 220px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.15s;
+        z-index: 1070;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    &:hover::after { opacity: 1; }
+}
+
+// Variant with no data-tooltip (uses browser title attr — ProfileEdit infoTip)
+.tooltip-info-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 4px;
+    color: #516267;
+    vertical-align: middle;
+    cursor: help;
+}
+
+// ── Modal ─────────────────────────────────────────────────────────────────────
+
+// Full-screen dimmed overlay
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-overlay);
+}
+
+// Dialog card (shared component Modal.jsx)
+.modal-dialog {
+    background: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: var(--rctp-shadow-xl);
+    width: 540px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 4px 8px 8px;
+    flex-shrink: 0;
+}
+
+.modal-title {
+    flex: 1;
+    font-size: 20px;
+    font-weight: 500;
+    color: #0C2A31;
+    margin: 0;
+    line-height: 32px;
+    letter-spacing: 0;
+}
+
+.modal-close-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    color: #516267;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 140ms ease, color 140ms ease;
+    &:hover { background: #EEF0F2; color: #0C2A31; }
+}
+
+.modal-content {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0 16px 8px;
+}
+
+.modal-footer {
+    flex-shrink: 0;
+}
+
+.modal-footer-divider {
+    height: 1px;
+    background: #D6DBE0;
+}
+
+.modal-footer-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 8px 8px 8px 16px;
+}
+
+// Overlay for compact confirmation card
+.modal-card-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+}
+
+// Compact confirmation card
+.modal-card {
+    background: #FFFFFF;
+    border-radius: 4px;
+    width: 480px;
+    max-width: calc(100vw - 32px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    overflow: hidden;
+}
+
+.modal-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #EEF0F2;
+}
+
+.modal-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0C2A31;
+}
+
+.modal-card-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #516267;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    transition: color 0.15s;
+    &:hover { color: #0C2A31; }
+}
+
+.modal-card-body {
+    padding: 20px 20px 24px;
+}
+
+.modal-card-question {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0C2A31;
+    margin-bottom: 10px;
+}
+
+.modal-card-desc {
+    font-size: 13px;
+    color: #516267;
+    line-height: 1.6;
+}
+
+.modal-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-top: 1px solid #EEF0F2;
+}
+
+// Full form modal (overlay + card, used in ComponentCatalog demo and profile panels)
+.modal-form-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9000;
+}
+
+.modal-form-card {
+    background: #FFFFFF;
+    width: 460px;
+    max-width: calc(100vw - 32px);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.30);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #EEF0F2;
+}
+
+.modal-form-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0C2A31;
+}
+
+.modal-form-close {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: none;
+    background: none;
+    font-size: 22px;
+    line-height: 1;
+    color: #516267;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    &:hover { background: #F4F4F4; color: #0C2A31; }
+}
+
+.modal-form-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid #EEF0F2;
+}
+
+// Form fields inside any modal
+.modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.modal-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #02A3D5;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.modal-required { color: #E34C53; }
+
+.modal-input {
+    height: 36px;
+    border: 1px solid #B1BCC5;
+    border-radius: 2px;
+    padding: 0 10px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #0C2A31;
+    background: #FFFFFF;
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+    box-sizing: border-box;
+    &:focus { border-color: #02A3D5; }
+    &::placeholder { color: #8D9CA9; }
+}
+
+.modal-select {
+    height: 36px;
+    border: 1px solid #B1BCC5;
+    border-radius: 2px;
+    padding: 0 10px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #0C2A31;
+    background: #FFFFFF;
+    outline: none;
+    width: 100%;
+    cursor: pointer;
+    appearance: auto;
+    &:focus { border-color: #02A3D5; }
+}
+
+// Confirm link button (used in cancel modal footer)
+.modal-confirm-link {
+    background: #02A3D5;
+    color: #FFFFFF;
+    border: none;
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: background 0.2s;
+    &:hover { background: #017295; }
+}
+
 #appContainer {
     max-width: 1280px;
     margin: 0 auto;

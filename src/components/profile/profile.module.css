@@ -239,39 +239,6 @@
   filter: brightness(0.92);
   box-shadow: 0 1px 4px rgba(0,0,0,0.12);
 }
-.badgeTipWrap {
-  position: relative;
-  display: inline-flex;
-}
-.badgeTip {
-  display: none;
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--text-normal);
-  color: var(--neutral-00);
-  font-size: 11px;
-  font-weight: 400;
-  white-space: nowrap;
-  padding: 5px 10px;
-  border-radius: var(--rctp-radius-sm);
-  pointer-events: none;
-  z-index: var(--z-tooltip);
-  text-transform: none;
-  letter-spacing: 0;
-}
-.badgeTip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: var(--text-normal);
-}
-.badgeTipWrap:hover .badgeTip { display: block; }
-
 /* ── Page Body ── */
 .pageBody {
   display: flex;
@@ -357,36 +324,6 @@
   align-items: center;
   flex-shrink: 0;
 }
-.dotWrap:hover .dotTooltip,
-.navItem:hover .dotTooltip,
-.navItemActive:hover .dotTooltip { display: block; }
-
-.dotTooltip {
-  display: none;
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--text-normal);
-  color: var(--neutral-00);
-  font-size: 11px;
-  font-weight: 400;
-  white-space: nowrap;
-  padding: 4px 8px;
-  border-radius: var(--rctp-radius-sm);
-  pointer-events: none;
-  z-index: var(--z-tooltip);
-}
-.dotTooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: var(--text-normal);
-}
-
 .dot {
   width: 16px;
   height: 16px;
@@ -445,33 +382,6 @@
   object-fit: cover;
   border-radius: 50%;
 }
-
-.navTooltip {
-  display: none;
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--text-normal);
-  color: var(--neutral-00);
-  font-size: 11px;
-  font-weight: 400;
-  white-space: nowrap;
-  padding: 4px 8px;
-  border-radius: var(--rctp-radius-sm);
-  pointer-events: none;
-  z-index: var(--z-tooltip);
-}
-.navTooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: var(--text-normal);
-}
-.navPartnerIconWrap:hover .navTooltip { display: block; }
 
 /* ── Main Content ── */
 .mainContent {
@@ -814,56 +724,6 @@
   background: var(--alert-500);
   color: var(--neutral-00);
 }
-
-/* ── Modal form fields (reusable across process modals) ── */
-.modalFormField {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-.modalFormLabel {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--primary-500);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-.modalFormRequired { color: var(--alert-500); }
-.modalFormInput {
-  height: 36px;
-  border: 1px solid var(--neutral-300);
-  border-radius: var(--rctp-radius-xs);
-  padding: 0 10px;
-  font-size: 14px;
-  font-family: inherit;
-  color: var(--text-normal);
-  background: var(--neutral-00);
-  outline: none;
-  transition: border-color 0.15s;
-  width: 100%;
-  box-sizing: border-box;
-}
-.modalFormInput:focus { border-color: var(--primary-500); }
-.modalFormInput::placeholder { color: var(--neutral-400); }
-.modalFormSelect {
-  height: 36px;
-  border: 1px solid var(--neutral-300);
-  border-radius: var(--rctp-radius-xs);
-  padding: 0 10px;
-  font-size: 14px;
-  font-family: inherit;
-  color: var(--text-normal);
-  background: var(--neutral-00);
-  outline: none;
-  width: 100%;
-  cursor: pointer;
-  appearance: auto;
-}
-.modalFormSelect:focus { border-color: var(--primary-500); }
 
 /* ══════════════════════════════════════════════════════════════════════════
    ProfilePage (Summary) Styles
@@ -1257,38 +1117,6 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-}
-
-.infoIconWrap:hover .infoTooltip { display: block; }
-
-.infoTooltip {
-  display: none;
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--neutral-900);
-  color: var(--neutral-00);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.4;
-  white-space: normal;
-  width: 220px;
-  padding: 6px 10px;
-  border-radius: var(--rctp-radius-sm);
-  z-index: var(--z-tooltip);
-  pointer-events: none;
-  text-align: left;
-}
-
-.infoTooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: var(--neutral-900);
 }
 
 /* ── Open Tasks ── */
@@ -2776,23 +2604,6 @@
   font-size: 16px;
   color: var(--text-light);
   cursor: help;
-}
-.navProgressInfoWrap:hover .navProgressInfoTooltip { display: block; }
-.navProgressInfoTooltip {
-  display: none;
-  position: absolute;
-  top: calc(100% + 6px);
-  left: -8px;
-  width: 200px;
-  background: var(--text-normal);
-  color: var(--neutral-00);
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 1.4;
-  padding: 6px 8px;
-  border-radius: var(--rctp-radius-sm);
-  pointer-events: none;
-  z-index: var(--z-tooltip);
 }
 .navProgressHeaderRight {
   display: flex;

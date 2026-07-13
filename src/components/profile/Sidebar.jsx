@@ -49,13 +49,13 @@ function ExternalDDModal({ profileId, onClose, onAfterSend }) {
         </div>
         <div className={styles.deleteModalBody}>
           {['firstName', 'surname', 'email'].map(field => (
-            <div key={field} className={styles.modalFormField}>
-              <label className={styles.modalFormLabel}>
+            <div key={field} className="modal-field">
+              <label className="modal-label">
                 {field === 'firstName' ? 'First Name' : field.charAt(0).toUpperCase() + field.slice(1)}
-                <span className={styles.modalFormRequired}> *</span>
+                <span className="modal-required"> *</span>
               </label>
               <input
-                className={styles.modalFormInput}
+                className="modal-input"
                 type={field === 'email' ? 'email' : 'text'}
                 placeholder={field === 'firstName' ? 'First Name' : field.charAt(0).toUpperCase() + field.slice(1)}
                 style={errors[field] ? { borderColor: 'var(--alert-500)' } : undefined}
@@ -64,10 +64,10 @@ function ExternalDDModal({ profileId, onClose, onAfterSend }) {
               />
             </div>
           ))}
-          <div className={styles.modalFormField} style={{ marginBottom: 0 }}>
-            <label className={styles.modalFormLabel}>Language <span className={styles.modalFormRequired}>*</span></label>
+          <div className="modal-field" style={{ marginBottom: 0 }}>
+            <label className="modal-label">Language <span className="modal-required">*</span></label>
             <select
-              className={styles.modalFormSelect}
+              className="modal-select"
               style={errors.language ? { borderColor: 'var(--alert-500)' } : undefined}
               value={form.language}
               onChange={e => set('language', e.target.value)}
@@ -116,9 +116,9 @@ function PartnerIcon({ partner, tooltip }) {
   );
   if (tooltip) {
     return (
-      <span className={styles.navPartnerIconWrap}>
+      <span className="tooltip-trigger">
         {icon}
-        <span className={styles.navTooltip}>{tooltip}</span>
+        <span className="tooltip-sm">{tooltip}</span>
       </span>
     );
   }
@@ -223,9 +223,9 @@ export default function Sidebar({ profile: profileProp, profileLoading = false, 
       <div className={styles.navProgress}>
         <div className={styles.navProgressHeader}>
           <span className={styles.navProgressTitle}>Workflow</span>
-          <span className={styles.navProgressInfoWrap}>
+          <span className="tooltip-trigger-down">
             <span className={`material-icons-outlined ${styles.navProgressInfoIcon}`}>info</span>
-            <span className={styles.navProgressInfoTooltip}>
+            <span className="tooltip-lg">
               Track third party progress through each workflow stage. Click a stage below to open its page.
             </span>
           </span>

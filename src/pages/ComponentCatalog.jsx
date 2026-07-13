@@ -599,30 +599,30 @@ export default function ComponentCatalog() {
                       <div style={{ display:'flex', gap:48, alignItems:'center', paddingTop:8, paddingBottom:8 }}>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>top</span>
-                          <div className={styles.tooltipTrigger}>
+                          <div className="tooltip-trigger">
                             <div style={{ width:16, height:16, borderRadius:'50%', background:'var(--success-500)' }} />
-                            <div className={styles.tooltipBubbleSm}>Approved</div>
+                            <div className="tooltip-sm">Approved</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>bottom</span>
-                          <div className={styles.tooltipTrigger}>
+                          <div className="tooltip-trigger">
                             <div style={{ width:16, height:16, borderRadius:'50%', background:'var(--success-500)' }} />
-                            <div className={styles.tooltipBubbleSmBottom}>Approved</div>
+                            <div className="tooltip-sm tooltip-bottom">Approved</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>left</span>
-                          <div className={styles.tooltipTrigger}>
+                          <div className="tooltip-trigger">
                             <div style={{ width:16, height:16, borderRadius:'50%', background:'var(--success-500)' }} />
-                            <div className={styles.tooltipBubbleSmLeft}>Approved</div>
+                            <div className="tooltip-sm tooltip-left">Approved</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>right</span>
-                          <div className={styles.tooltipTrigger}>
+                          <div className="tooltip-trigger">
                             <div style={{ width:16, height:16, borderRadius:'50%', background:'var(--success-500)' }} />
-                            <div className={styles.tooltipBubbleSmRight}>Approved</div>
+                            <div className="tooltip-sm tooltip-right">Approved</div>
                           </div>
                         </div>
                       </div>
@@ -633,30 +633,30 @@ export default function ComponentCatalog() {
                       <div style={{ display:'flex', gap:48, alignItems:'center', paddingTop:8, paddingBottom:8 }}>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>top</span>
-                          <div className={styles.tooltipTrigger}>
+                          <div className="tooltip-trigger">
                             <span className="material-icons-outlined" style={{ fontSize:18, color:'var(--text-light)', display:'block', width:18, height:18, lineHeight:'18px' }}>info_outline</span>
-                            <div className={styles.tooltipBubbleLg}>Monitored associations being continuously monitored against Risk and Compliance Database</div>
+                            <div className="tooltip-lg">Monitored associations being continuously monitored against Risk and Compliance Database</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>bottom</span>
-                          <div className={styles.tooltipTrigger}>
+                          <div className="tooltip-trigger">
                             <span className="material-icons-outlined" style={{ fontSize:18, color:'var(--text-light)', display:'block', width:18, height:18, lineHeight:'18px' }}>info_outline</span>
-                            <div className={styles.tooltipBubbleLgBottom}>Monitored associations being continuously monitored against Risk and Compliance Database</div>
+                            <div className="tooltip-lg tooltip-bottom">Monitored associations being continuously monitored against Risk and Compliance Database</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>left</span>
-                          <div className={styles.tooltipTrigger}>
+                          <div className="tooltip-trigger">
                             <span className="material-icons-outlined" style={{ fontSize:18, color:'var(--text-light)', display:'block', width:18, height:18, lineHeight:'18px' }}>info_outline</span>
-                            <div className={styles.tooltipBubbleLgLeft}>Monitored associations being continuously monitored against Risk and Compliance Database</div>
+                            <div className="tooltip-lg tooltip-left">Monitored associations being continuously monitored against Risk and Compliance Database</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>right</span>
-                          <div className={styles.tooltipTrigger}>
+                          <div className="tooltip-trigger">
                             <span className="material-icons-outlined" style={{ fontSize:18, color:'var(--text-light)', display:'block', width:18, height:18, lineHeight:'18px' }}>info_outline</span>
-                            <div className={styles.tooltipBubbleLgRight}>Monitored associations being continuously monitored against Risk and Compliance Database</div>
+                            <div className="tooltip-lg tooltip-right">Monitored associations being continuously monitored against Risk and Compliance Database</div>
                           </div>
                         </div>
                       </div>
@@ -903,12 +903,12 @@ export default function ComponentCatalog() {
                     </div>
                     <div style={{ display:'flex', flexWrap:'wrap', gap:8, alignItems:'flex-start' }}>
                       {STATUS_ENTRIES.map(s => (
-                        <div key={s.label} className={styles.tooltipTrigger}>
+                        <div key={s.label} className="tooltip-trigger">
                           <span className={styles.demoStatusBadge} style={{ background: s.bg, color: s.color }}>
                             {s.label}
                             <span className="material-icons-outlined" style={{ fontSize: 14, display:'block', width:14, height:14, lineHeight:'14px' }}>{s.icon}</span>
                           </span>
-                          <div className={styles.tooltipBubbleLg}>{s.tooltip}</div>
+                          <div className="tooltip-lg">{s.tooltip}</div>
                         </div>
                       ))}
                     </div>
@@ -1646,22 +1646,22 @@ export default function ComponentCatalog() {
                         return (
                           <div key={i} className={styles.sidenavItem}>
                             {/* Dot with tooltip */}
-                            <span className={styles.sidenavDotWrap}>
+                            <span className="tooltip-trigger">
                               <span className={styles.sidenavDot} style={{ background: dotBg }} />
-                              <span className={styles.sidenavDotTooltip}>{dotLabel}</span>
+                              <span className="tooltip-sm">{dotLabel}</span>
                             </span>
                             {/* Label */}
                             <span style={{ flex: 1 }}>{step.label}</span>
                             {/* Partner icon + tooltip */}
                             {step.partnerTooltip && (
-                              <span className={styles.sidenavPartnerWrap}>
+                              <span className="tooltip-trigger">
                                 <span className={styles.sidenavPartnerIcon}>
                                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <circle cx="8" cy="8" r="7.5" fill="white" stroke="#B1BCC5" />
                                     <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#4A6FA5" fontWeight="bold">P</text>
                                   </svg>
                                 </span>
-                                <span className={styles.sidenavTooltip}>{step.partnerTooltip}</span>
+                                <span className="tooltip-sm">{step.partnerTooltip}</span>
                               </span>
                             )}
                             {/* New badge */}
@@ -1682,14 +1682,14 @@ export default function ComponentCatalog() {
                         <div key={i} className={i === 0 ? styles.sidenavSectionActive : styles.sidenavSection}>
                           <span style={{ flex: 1 }}>{sec.label}</span>
                           {sec.partnerTooltip && (
-                            <span className={styles.sidenavPartnerWrap}>
+                            <span className="tooltip-trigger">
                               <span className={styles.sidenavPartnerIcon}>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                   <circle cx="8" cy="8" r="7.5" fill="white" stroke="#B1BCC5" />
                                   <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#4A6FA5" fontWeight="bold">P</text>
                                 </svg>
                               </span>
-                              <span className={styles.sidenavTooltip}>{sec.partnerTooltip}</span>
+                              <span className="tooltip-sm">{sec.partnerTooltip}</span>
                             </span>
                           )}
                         </div>
@@ -1905,23 +1905,23 @@ export default function ComponentCatalog() {
                       {formModalOpen && (
                         <motion.div
                           key="form-modal-overlay"
-                          className={styles.formModalOverlay}
+                          className="modal-form-overlay"
                           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                           transition={{ duration: 0.15 }}
                           onClick={() => setFormModalOpen(false)}
                         >
                           <motion.div
-                            className={styles.formModalCard}
+                            className="modal-form-card"
                             initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
                             transition={{ duration: 0.18 }}
                             onClick={e => e.stopPropagation()}
                             role="dialog" aria-modal="true"
                           >
-                            <div className={styles.formModalHeader}>
-                              <span className={styles.formModalTitle}>External Due Diligence — Send Invite</span>
-                              <button className={styles.formModalClose} aria-label="Close" onClick={() => setFormModalOpen(false)}>×</button>
+                            <div className="modal-form-header">
+                              <span className="modal-form-title">External Due Diligence — Send Invite</span>
+                              <button className="modal-form-close" aria-label="Close" onClick={() => setFormModalOpen(false)}>×</button>
                             </div>
-                            <div className={styles.formModalBody}>
+                            <div className="modal-form-body">
                               <TextField
                                 label="First Name *"
                                 value={formModalData.firstName}
@@ -1949,7 +1949,7 @@ export default function ComponentCatalog() {
                                 options={['English', 'Spanish', 'French', 'German', 'Portuguese', 'Italian', 'Chinese', 'Japanese']}
                               />
                             </div>
-                            <div className={styles.formModalFooter}>
+                            <div className="modal-form-footer">
                               <Button variant="outline" onClick={() => setFormModalOpen(false)}>Close</Button>
                               <Button variant="filled" onClick={() => setFormModalOpen(false)}>Send Invite</Button>
                             </div>

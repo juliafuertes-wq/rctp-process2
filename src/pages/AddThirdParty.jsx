@@ -654,7 +654,7 @@ export default function AddThirdParty() {
               <div className={`${styles.editField} ${errors.owner ? styles.hasError : ''}`} ref={ownerRef}>
                 <label className={styles.editLabel}>
                   Third Party Owner <span className={styles.req}>*</span>
-                  <span className={styles.infoTip} data-tooltip="This person or group will be the representative of the third party relationship and can receive notifications and actions.">
+                  <span className="tooltip-info-trigger" data-tooltip="This person or group will be the representative of the third party relationship and can receive notifications and actions.">
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
@@ -682,7 +682,7 @@ export default function AddThirdParty() {
               <div className={`${styles.editField} ${errors.bu ? styles.hasError : ''}`} ref={buRef}>
                 <label className={styles.editLabel}>
                   Business Unit <span className={styles.req}>*</span>
-                  <span className={styles.infoTip} data-tooltip="The Business Unit defines where the Third Party sits within your organisational structure.">
+                  <span className="tooltip-info-trigger" data-tooltip="The Business Unit defines where the Third Party sits within your organisational structure.">
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
@@ -709,7 +709,7 @@ export default function AddThirdParty() {
               <div className={styles.editField} ref={tagsRef}>
                 <label className={styles.editLabel}>
                   Third Party Tags
-                  <span className={styles.infoTip} data-tooltip="Tag your Third Party to allow for faster searching or to allocate further relevant attributes.">
+                  <span className="tooltip-info-trigger" data-tooltip="Tag your Third Party to allow for faster searching or to allocate further relevant attributes.">
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
@@ -748,7 +748,7 @@ export default function AddThirdParty() {
               <div className={`${styles.editField} ${errors.process ? styles.hasError : ''}`} ref={processRef}>
                 <label className={styles.editLabel}>
                   <span>Process <span className={styles.req}>*</span></span>
-                  <span className={styles.infoTip} data-tooltip="The process defines the mandatory stages and actions within the Third Party workflow.">
+                  <span className="tooltip-info-trigger" data-tooltip="The process defines the mandatory stages and actions within the Third Party workflow.">
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
@@ -775,7 +775,7 @@ export default function AddThirdParty() {
               <div className={styles.editField} ref={policyRef}>
                 <label className={styles.editLabel}>
                   Screening &amp; Monitoring Policy <span className={styles.req}>*</span>
-                  <span className={styles.infoTip} data-tooltip="The Screening & Monitoring Policy determines how the third party will be screened and monitored against the Dow Jones Risk and Compliance database. Only the process default or ad hoc policies can be selected.">
+                  <span className="tooltip-info-trigger" data-tooltip="The Screening & Monitoring Policy determines how the third party will be screened and monitored against the Dow Jones Risk and Compliance database. Only the process default or ad hoc policies can be selected.">
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
@@ -1305,9 +1305,9 @@ function PropertiesPanel({ name, onClose }) {
                   <td className={styles.propIndicator}>
                     {p.value
                       ? (
-                        <span className={styles.propWarningWrap}>
+                        <span className="tooltip-trigger">
                           <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--primary-500)', display: 'block' }}>warning</span>
-                          <span className={styles.propTooltip}>High Risk Factors</span>
+                          <span className="tooltip-sm tooltip-left">High Risk Factors</span>
                         </span>
                       )
                       : <span className={styles.propDot} />
@@ -1327,23 +1327,23 @@ function PropertiesPanel({ name, onClose }) {
 
 function CancelModal({ onStay, onLeave }) {
   return (
-    <motion.div className={styles.cancelOverlay} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={mot.overlay} onClick={e => e.target === e.currentTarget && onStay()}>
-      <motion.div className={styles.cancelModal} initial={{ scale: 0.92, opacity: 0, y: 10 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.92, opacity: 0, y: 10 }} transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}>
-        <div className={styles.cancelModalHeader}>
-          <span className={styles.cancelModalTitle}>Cancel Creation</span>
-          <button className={styles.cancelModalClose} onClick={onStay}>
+    <motion.div className="modal-card-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={mot.overlay} onClick={e => e.target === e.currentTarget && onStay()}>
+      <motion.div className="modal-card" initial={{ scale: 0.92, opacity: 0, y: 10 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.92, opacity: 0, y: 10 }} transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}>
+        <div className="modal-card-header">
+          <span className="modal-card-title">Cancel Creation</span>
+          <button className="modal-card-close" onClick={onStay}>
             <span className="material-icons-outlined">close</span>
           </button>
         </div>
-        <div className={styles.cancelModalBody}>
-          <div className={styles.cancelModalQuestion}>Are you sure you want to cancel?</div>
-          <div className={styles.cancelModalDesc}>
+        <div className="modal-card-body">
+          <div className="modal-card-question">Are you sure you want to cancel?</div>
+          <div className="modal-card-desc">
             All progress will be lost. You will be redirected to the Third Parties tab.
           </div>
         </div>
-        <div className={styles.cancelModalFooter}>
+        <div className="modal-card-footer">
           <button className="btn btn-outline-secondary" onClick={onStay}>Stay on Page</button>
-          <a href="#/third-parties" className={styles.cancelModalConfirm} onClick={onLeave}>Yes, Cancel</a>
+          <a href="#/third-parties" className="modal-confirm-link" onClick={onLeave}>Yes, Cancel</a>
         </div>
       </motion.div>
     </motion.div>

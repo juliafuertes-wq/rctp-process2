@@ -663,14 +663,14 @@ export default function AddThirdParty() {
                     <button type="button" className={`${styles.ownerBtn} ${ownerMode === 'group' ? styles.ownerBtnActive : ''}`} onClick={() => setOwnerMode('group')}>Group</button>
                     <button type="button" className={`${styles.ownerBtn} ${ownerMode === 'user' ? styles.ownerBtnActive : ''}`} onClick={() => setOwnerMode('user')}>User</button>
                   </div>
-                  <div className={styles.dropdownWrap} style={{ flex: 1, minWidth: 0 }}>
-                    <div className={styles.dropdownTrigger} style={{ padding: '0 10px', gap: 4 }}>
-                      <input className={styles.comboInput} value={ownerOpen ? ownerQuery : owner} placeholder="Type and select employee name" onChange={e => { setOwnerQuery(e.target.value); setOwnerOpen(true); }} onFocus={() => { setOwnerOpen(true); setOwnerQuery(''); }} />
+                  <div className="dd-wrap" style={{ flex: 1, minWidth: 0 }}>
+                    <div className="dd-trigger" style={{ padding: '0 10px', gap: 4 }}>
+                      <input className="dd-combo-input" value={ownerOpen ? ownerQuery : owner} placeholder="Type and select employee name" onChange={e => { setOwnerQuery(e.target.value); setOwnerOpen(true); }} onFocus={() => { setOwnerOpen(true); setOwnerQuery(''); }} />
                       <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', flexShrink: 0, cursor: 'pointer' }} onClick={() => setOwnerOpen(v => !v)}>expand_more</span>
                     </div>
                     {ownerOpen && (
-                      <div className={styles.dropdown}>
-                        {OWNER_OPTIONS.filter(o => !ownerQuery || o.toLowerCase().includes(ownerQuery.toLowerCase())).map(o => <div key={o} className={styles.dropdownItem} onClick={() => selectOwner(o)}>{o}</div>)}
+                      <div className="dd-menu">
+                        {OWNER_OPTIONS.filter(o => !ownerQuery || o.toLowerCase().includes(ownerQuery.toLowerCase())).map(o => <div key={o} className="dd-item" onClick={() => selectOwner(o)}>{o}</div>)}
                       </div>
                     )}
                   </div>
@@ -686,15 +686,15 @@ export default function AddThirdParty() {
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
-                <div className={styles.dropdownWrap}>
-                  <div className={styles.dropdownTrigger} style={{ padding: '0 10px', gap: 4 }}>
-                    <input className={styles.comboInput} value={buOpen ? buQuery : businessUnit} placeholder="Select a business unit" onChange={e => { setBuQuery(e.target.value); setBuOpen(true); }} onFocus={() => { setBuOpen(true); setBuQuery(''); }} />
+                <div className="dd-wrap">
+                  <div className="dd-trigger" style={{ padding: '0 10px', gap: 4 }}>
+                    <input className="dd-combo-input" value={buOpen ? buQuery : businessUnit} placeholder="Select a business unit" onChange={e => { setBuQuery(e.target.value); setBuOpen(true); }} onFocus={() => { setBuOpen(true); setBuQuery(''); }} />
                     <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', flexShrink: 0, cursor: 'pointer' }} onClick={() => setBuOpen(v => !v)}>expand_more</span>
                   </div>
                   {buOpen && (
-                    <div className={styles.dropdown}>
+                    <div className="dd-menu">
                       {BU_OPTIONS.filter(o => !buQuery || o.toLowerCase().includes(buQuery.toLowerCase())).map(o => (
-                        <div key={o} className={`${styles.dropdownItem} ${businessUnit === o ? styles.dropdownItemSelected : ''}`} onClick={() => selectBu(o)}>
+                        <div key={o} className={`dd-item${businessUnit === o ? ' dd-item-selected' : ''}`} onClick={() => selectBu(o)}>
                           {businessUnit === o && <span className="material-icons-outlined" style={{ fontSize: 14, marginRight: 4 }}>check</span>}
                           {o}
                         </div>
@@ -715,7 +715,7 @@ export default function AddThirdParty() {
                 </label>
                 <div className={styles.tagSelectWrap}>
                   <div className={styles.tagSelectTrigger} onClick={() => setTagsOpen(v => !v)}>
-                    <span className={styles.dropdownPlaceholder}>Search</span>
+                    <span className="dd-placeholder">Search</span>
                     <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)' }}>expand_more</span>
                   </div>
                   {tags.length > 0 && (
@@ -726,10 +726,10 @@ export default function AddThirdParty() {
                     </div>
                   )}
                   {tagsOpen && (
-                    <div className={styles.dropdown}>
-                      <div className={styles.dropdownSearch}><input className={styles.comboInput} placeholder="Search tags…" value={tagsQuery} onChange={e => setTagsQuery(e.target.value)} autoFocus /></div>
+                    <div className="dd-menu">
+                      <div className="dd-search"><input className="dd-combo-input" placeholder="Search tags…" value={tagsQuery} onChange={e => setTagsQuery(e.target.value)} autoFocus /></div>
                       {TAG_OPTIONS.filter(o => !tagsQuery || o.toLowerCase().includes(tagsQuery.toLowerCase())).map(o => (
-                        <label key={o} className={styles.dropdownCheckItem}>
+                        <label key={o} className="dd-check-item">
                           <Checkbox checked={tags.includes(o)} onChange={() => toggleTag(o)} size="small" />
                           {o}
                         </label>
@@ -752,15 +752,15 @@ export default function AddThirdParty() {
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
-                <div className={styles.dropdownWrap}>
-                  <div className={styles.dropdownTrigger} style={{ padding: '0 10px', gap: 4 }}>
-                    <input className={styles.comboInput} value={processOpen ? processQuery : process} placeholder="Select a process" onChange={e => { setProcessQuery(e.target.value); setProcessOpen(true); }} onFocus={() => { setProcessOpen(true); setProcessQuery(''); }} />
+                <div className="dd-wrap">
+                  <div className="dd-trigger" style={{ padding: '0 10px', gap: 4 }}>
+                    <input className="dd-combo-input" value={processOpen ? processQuery : process} placeholder="Select a process" onChange={e => { setProcessQuery(e.target.value); setProcessOpen(true); }} onFocus={() => { setProcessOpen(true); setProcessQuery(''); }} />
                     <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', flexShrink: 0, cursor: 'pointer' }} onClick={() => setProcessOpen(v => !v)}>expand_more</span>
                   </div>
                   {processOpen && (
-                    <div className={styles.dropdown}>
+                    <div className="dd-menu">
                       {PROCESS_OPTIONS.filter(o => !processQuery || o.toLowerCase().includes(processQuery.toLowerCase())).map(o => (
-                        <div key={o} className={`${styles.dropdownItem} ${process === o ? styles.dropdownItemSelected : ''}`} onClick={() => { setProcess(o); setPolicy(PROCESS_POLICIES[o]?.managed[0] || ''); setProcessOpen(false); setProcessQuery(''); }}>
+                        <div key={o} className={`dd-item${process === o ? ' dd-item-selected' : ''}`} onClick={() => { setProcess(o); setPolicy(PROCESS_POLICIES[o]?.managed[0] || ''); setProcessOpen(false); setProcessQuery(''); }}>
                           {process === o && <span className="material-icons-outlined" style={{ fontSize: 14, marginRight: 4 }}>check</span>}
                           {o}
                         </div>
@@ -779,23 +779,23 @@ export default function AddThirdParty() {
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
-                <div className={styles.dropdownWrap}>
-                  <div className={styles.dropdownTrigger} style={{ padding: '0 10px', gap: 4 }}>
-                    <input className={styles.comboInput} value={policyOpen ? policyQuery : policy} placeholder="Select a policy…" onChange={e => { setPolicyQuery(e.target.value); setPolicyOpen(true); }} onFocus={() => { setPolicyOpen(true); setPolicyQuery(''); }} />
+                <div className="dd-wrap">
+                  <div className="dd-trigger" style={{ padding: '0 10px', gap: 4 }}>
+                    <input className="dd-combo-input" value={policyOpen ? policyQuery : policy} placeholder="Select a policy…" onChange={e => { setPolicyQuery(e.target.value); setPolicyOpen(true); }} onFocus={() => { setPolicyOpen(true); setPolicyQuery(''); }} />
                     <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', flexShrink: 0, cursor: 'pointer' }} onClick={() => setPolicyOpen(v => !v)}>expand_more</span>
                   </div>
                   {policyOpen && (
-                    <div className={styles.dropdown}>
+                    <div className="dd-menu">
                       {PROCESS_POLICIES[process].managed.filter(o => !policyQuery || o.toLowerCase().includes(policyQuery.toLowerCase())).length > 0 && <>
-                        <div className={styles.dropdownGroup}>Process Managed Policies</div>
+                        <div className="dd-group">Process Managed Policies</div>
                         {PROCESS_POLICIES[process].managed.filter(o => !policyQuery || o.toLowerCase().includes(policyQuery.toLowerCase())).map(o => (
-                          <div key={o} className={styles.dropdownItem} onClick={() => { setPolicy(o); setPolicyOpen(false); setPolicyQuery(''); }}>{o}</div>
+                          <div key={o} className="dd-item" onClick={() => { setPolicy(o); setPolicyOpen(false); setPolicyQuery(''); }}>{o}</div>
                         ))}
                       </>}
                       {PROCESS_POLICIES[process].unmanaged.filter(o => !policyQuery || o.toLowerCase().includes(policyQuery.toLowerCase())).length > 0 && <>
-                        <div className={styles.dropdownGroup}>Unmanaged Policies</div>
+                        <div className="dd-group">Unmanaged Policies</div>
                         {PROCESS_POLICIES[process].unmanaged.filter(o => !policyQuery || o.toLowerCase().includes(policyQuery.toLowerCase())).map(o => (
-                          <div key={o} className={styles.dropdownItem} onClick={() => { setPolicy(o); setPolicyOpen(false); setPolicyQuery(''); }}>{o}</div>
+                          <div key={o} className="dd-item" onClick={() => { setPolicy(o); setPolicyOpen(false); setPolicyQuery(''); }}>{o}</div>
                         ))}
                       </>}
                     </div>
@@ -1364,15 +1364,15 @@ function ObSelect({ value, onChange, options, placeholder = 'Choose…', hasErro
   }, [open]);
   const filtered = query ? options.filter(o => o.toLowerCase().includes(query.toLowerCase())) : options;
   return (
-    <div className={styles.dropdownWrap} ref={ref}>
-      <div className={`${styles.dropdownTrigger} ${hasError ? styles.dropdownTriggerError : ''}`} style={{ padding: '0 10px', gap: 4 }}>
-        <input className={styles.comboInput} value={open ? query : value} placeholder={placeholder} onChange={e => { setQuery(e.target.value); setOpen(true); }} onFocus={() => { setOpen(true); setQuery(''); }} />
+    <div className="dd-wrap" ref={ref}>
+      <div className={`dd-trigger${hasError ? ' dd-trigger-error' : ''}`} style={{ padding: '0 10px', gap: 4 }}>
+        <input className="dd-combo-input" value={open ? query : value} placeholder={placeholder} onChange={e => { setQuery(e.target.value); setOpen(true); }} onFocus={() => { setOpen(true); setQuery(''); }} />
         <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', flexShrink: 0, cursor: 'pointer' }} onClick={() => setOpen(v => !v)}>expand_more</span>
       </div>
       {open && filtered.length > 0 && (
-        <div className={styles.dropdown}>
+        <div className="dd-menu">
           {filtered.map(o => (
-            <div key={o} className={`${styles.dropdownItem} ${value === o ? styles.dropdownItemSelected : ''}`} onClick={() => { onChange(o); setOpen(false); setQuery(''); }}>
+            <div key={o} className={`dd-item${value === o ? ' dd-item-selected' : ''}`} onClick={() => { onChange(o); setOpen(false); setQuery(''); }}>
               {value === o && <span className="material-icons-outlined" style={{ fontSize: 14, marginRight: 4 }}>check</span>}
               {o}
             </div>

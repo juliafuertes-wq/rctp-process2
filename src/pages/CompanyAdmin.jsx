@@ -570,14 +570,14 @@ function SlotCell({ slotNumber, value, readonly, isEditing, onChange }) {
           </span>
         )}
         {open && (
-          <div ref={panelRef} className={styles.dropdownPanel}>
+          <div ref={panelRef} className="dd-panel">
             {filteredFields.length === 0 ? (
-              <div className={styles.dropdownNoResults}>No results found</div>
+              <div className="dd-panel-no-results">No results found</div>
             ) : (
               filteredFields.map(field => (
                 <div
                   key={field.value || '__empty__'}
-                  className={`${styles.dropdownItem}${field.value === value ? ' ' + styles.dropdownItemSelected : ''}${!field.value ? ' ' + styles.dropdownItemEmpty : ''}`}
+                  className={`dd-panel-item${field.value === value ? ' dd-panel-item-selected' : ''}${!field.value ? ' dd-panel-item-empty' : ''}`}
                   onMouseDown={e => { e.preventDefault(); commitValue(field.value); }}
                 >
                   {field.label}

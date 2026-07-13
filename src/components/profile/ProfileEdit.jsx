@@ -168,7 +168,7 @@ export default function ProfileEdit() {
                 <div className={styles.editField} ref={ownerRef}>
                   <label className={styles.editLabel}>
                     Third Party Owner <span className={styles.req}>*</span>
-                    <span className={styles.infoTip} title="Each third party requires a group or user owner.">
+                    <span className="tooltip-info-icon" title="Each third party requires a group or user owner.">
                       <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                     </span>
                   </label>
@@ -177,14 +177,14 @@ export default function ProfileEdit() {
                       <button type="button" className={`${styles.ownerBtn} ${ownerMode === 'group' ? styles.ownerBtnActive : ''}`} onClick={() => setOwnerMode('group')}>Group</button>
                       <button type="button" className={`${styles.ownerBtn} ${ownerMode === 'user' ? styles.ownerBtnActive : ''}`} onClick={() => setOwnerMode('user')}>User</button>
                     </div>
-                    <div className={styles.dropdownWrap} style={{ flex: 1, minWidth: 0 }}>
-                      <div className={styles.dropdownTrigger} onClick={() => setOwnerOpen(v => !v)}>
-                        <span className={owner ? styles.dropdownValueSelected : styles.dropdownPlaceholder}>{owner || 'Type And Select Employee Name'}</span>
+                    <div className="dd-wrap" style={{ flex: 1, minWidth: 0 }}>
+                      <div className="dd-trigger" onClick={() => setOwnerOpen(v => !v)}>
+                        <span className={owner ? "dd-value" : "dd-placeholder"}>{owner || 'Type And Select Employee Name'}</span>
                         <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)' }}>expand_more</span>
                       </div>
                       {ownerOpen && (
-                        <div className={styles.dropdown}>
-                          {OWNER_OPTIONS.map(o => <div key={o} className={styles.dropdownItem} onClick={() => selectOwner(o)}>{o}</div>)}
+                        <div className="dd-menu">
+                          {OWNER_OPTIONS.map(o => <div key={o} className="dd-item" onClick={() => selectOwner(o)}>{o}</div>)}
                         </div>
                       )}
                     </div>
@@ -201,7 +201,7 @@ export default function ProfileEdit() {
                   <label className={styles.editLabel}>Business Unit <span className={styles.req}>*</span></label>
                   <div className={styles.tagSelectWrap}>
                     <div className={styles.tagSelectTrigger} onClick={() => setBuOpen(v => !v)}>
-                      <span className={styles.dropdownPlaceholder}>Search</span>
+                      <span className="dd-placeholder">Search</span>
                       <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)' }}>expand_more</span>
                     </div>
                     {businessUnits.length > 0 && (
@@ -212,9 +212,9 @@ export default function ProfileEdit() {
                       </div>
                     )}
                     {buOpen && (
-                      <div className={styles.dropdown}>
+                      <div className="dd-menu">
                         {BU_OPTIONS.map(o => (
-                          <div key={o} className={`${styles.dropdownItem} ${businessUnits.includes(o) ? styles.dropdownItemSelected : ''}`} onClick={() => toggleBu(o)}>
+                          <div key={o} className={`dd-item${businessUnits.includes(o) ? ' dd-item-selected' : ''}`} onClick={() => toggleBu(o)}>
                             {businessUnits.includes(o) && <span className="material-icons-outlined" style={{ fontSize: 14, marginRight: 4 }}>check</span>}
                             {o}
                           </div>
@@ -229,7 +229,7 @@ export default function ProfileEdit() {
                   <label className={styles.editLabel}>Third Party Tags</label>
                   <div className={styles.tagSelectWrap}>
                     <div className={styles.tagSelectTrigger} onClick={() => setTagsOpen(v => !v)}>
-                      <span className={styles.dropdownPlaceholder}>Search</span>
+                      <span className="dd-placeholder">Search</span>
                       <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)' }}>expand_more</span>
                     </div>
                     {tags.length > 0 && (
@@ -240,9 +240,9 @@ export default function ProfileEdit() {
                       </div>
                     )}
                     {tagsOpen && (
-                      <div className={styles.dropdown}>
+                      <div className="dd-menu">
                         {TAG_OPTIONS.map(o => (
-                          <label key={o} className={styles.dropdownCheckItem}>
+                          <label key={o} className="dd-check-item">
                             <Checkbox checked={tags.includes(o)} onChange={() => toggleTag(o)} size="small" />
                             {o}
                           </label>
@@ -264,7 +264,7 @@ export default function ProfileEdit() {
                 <div className={styles.editField}>
                   <label className={styles.editLabel}>
                     Active
-                    <span className={styles.infoTip} title="Active status of this third party.">
+                    <span className="tooltip-info-icon" title="Active status of this third party.">
                       <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                     </span>
                   </label>
@@ -278,19 +278,19 @@ export default function ProfileEdit() {
                 <div className={styles.editField} ref={processRef}>
                   <label className={styles.editLabel}>
                     Process
-                    <span className={styles.infoTip} title="The process defines the compliance workflow applied to this third party.">
+                    <span className="tooltip-info-icon" title="The process defines the compliance workflow applied to this third party.">
                       <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                     </span>
                   </label>
-                  <div className={styles.dropdownWrap}>
-                    <div className={styles.dropdownTrigger} onClick={() => setProcessOpen(v => !v)}>
-                      <span className={styles.dropdownValueSelected}>{process}</span>
+                  <div className="dd-wrap">
+                    <div className="dd-trigger" onClick={() => setProcessOpen(v => !v)}>
+                      <span className="dd-value">{process}</span>
                       <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)' }}>expand_more</span>
                     </div>
                     {processOpen && (
-                      <div className={styles.dropdown}>
+                      <div className="dd-menu">
                         {PROCESS_OPTIONS.map(o => (
-                          <div key={o} className={`${styles.dropdownItem} ${process === o ? styles.dropdownItemSelected : ''}`} onClick={() => { setProcess(o); setProcessOpen(false); }}>
+                          <div key={o} className={`dd-item${process === o ? ' dd-item-selected' : ''}`} onClick={() => { setProcess(o); setProcessOpen(false); }}>
                             {process === o && <span className="material-icons-outlined" style={{ fontSize: 14, marginRight: 4 }}>check</span>}
                             {o}
                           </div>
@@ -304,19 +304,19 @@ export default function ProfileEdit() {
                 <div className={styles.editField} ref={policyRef}>
                   <label className={styles.editLabel}>
                     Screening &amp; Monitoring Policy <span className={styles.req}>*</span>
-                    <span className={styles.infoTip} title="The Screening & Monitoring Policy determines how the third party will be screened and monitored.">
+                    <span className="tooltip-info-icon" title="The Screening & Monitoring Policy determines how the third party will be screened and monitored.">
                       <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                     </span>
                   </label>
-                  <div className={styles.dropdownWrap}>
-                    <div className={styles.dropdownTrigger} onClick={() => setPolicyOpen(v => !v)}>
-                      <span className={policy ? styles.dropdownValueSelected : styles.dropdownPlaceholder}>{policy || 'Select a policy\u2026'}</span>
+                  <div className="dd-wrap">
+                    <div className="dd-trigger" onClick={() => setPolicyOpen(v => !v)}>
+                      <span className={policy ? "dd-value" : "dd-placeholder"}>{policy || 'Select a policy\u2026'}</span>
                       <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)' }}>expand_more</span>
                     </div>
                     {policyOpen && (
-                      <div className={styles.dropdown}>
+                      <div className="dd-menu">
                         {POLICY_OPTIONS.map(o => (
-                          <div key={o} className={`${styles.dropdownItem} ${policy === o ? styles.dropdownItemSelected : ''}`} onClick={() => { setPolicy(o); setPolicyOpen(false); }}>
+                          <div key={o} className={`dd-item${policy === o ? ' dd-item-selected' : ''}`} onClick={() => { setPolicy(o); setPolicyOpen(false); }}>
                             {policy === o && <span className="material-icons-outlined" style={{ fontSize: 14, marginRight: 4 }}>check</span>}
                             {o}
                           </div>

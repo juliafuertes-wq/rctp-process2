@@ -108,13 +108,13 @@ function Section({ title, rows, onMenuClick, onCheckOpen, onAllChecked }) {
 function ProtoModal({ onClose, onContinue }) {
   return (
     <motion.div
-      className={styles.deleteModalOverlay}
+      className="modal-card-overlay"
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       transition={{ duration: 0.18 }}
       onClick={onClose}
     >
       <motion.div
-        className={styles.deleteModal}
+        className="modal-card"
         initial={{ scale: 0.92, opacity: 0, y: 10 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.92, opacity: 0, y: 10 }}
@@ -123,21 +123,21 @@ function ProtoModal({ onClose, onContinue }) {
         role="dialog"
         aria-modal="true"
       >
-        <div className={styles.deleteModalHeader}>
-          <span className={styles.deleteModalTitle}>Prototype Notice</span>
-          <button className={styles.deleteModalClose} aria-label="Close" onClick={onClose} />
+        <div className="modal-card-header">
+          <span className="modal-card-title">Prototype Notice</span>
+          <button className="modal-card-close" aria-label="Close" onClick={onClose} />
         </div>
-        <div className={styles.deleteModalBody}>
-          <p className={styles.deleteModalQuestion}>
+        <div className="modal-card-body">
+          <p className="modal-card-question">
             This is a prototype and not a real site.
           </p>
-          <p className={styles.deleteModalConfirm}>
+          <p className="modal-card-desc">
             Click <strong>Continue</strong> to simulate mitigating this risk.
           </p>
         </div>
-        <div className={styles.deleteModalActions}>
-          <button className={`${styles.deleteModalBtn} ${styles.deleteModalCancel}`} onClick={onClose}>Cancel</button>
-          <button className={`${styles.deleteModalBtn} ${styles.deleteModalContinue}`} onClick={onContinue}>Continue</button>
+        <div className="modal-card-footer">
+          <button className="btn btn-outline-secondary" onClick={onClose}>Cancel</button>
+          <button className="btn btn-primary" onClick={onContinue}>Continue</button>
         </div>
       </motion.div>
     </motion.div>

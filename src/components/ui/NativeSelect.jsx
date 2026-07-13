@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import styles from './NativeSelect.module.css';
 
 export default function NativeSelect({
   label,
@@ -29,29 +28,34 @@ export default function NativeSelect({
   const selected = options.find(o => getVal(o) === value);
   const displayValue = selected ? getLbl(selected) : '';
 
+  let triggerClass = 'ns-trigger';
+  if (error) triggerClass += ' ns-trigger-error';
+  if (disabled) triggerClass += ' ns-trigger-disabled';
+  if (open) triggerClass += ' ns-trigger-open';
+
   return (
-    <div className={styles.wrap} {...rest}>
-      {label && <label className={styles.label}>{label}</label>}
+    <div className="ns-wrap" {...rest}>
+      {label && <label className="ns-label">{label}</label>}
       <div
         ref={ref}
-        className={`${styles.trigger} ${error ? styles.triggerError : ''} ${disabled ? styles.triggerDisabled : ''} ${open ? styles.triggerOpen : ''}`}
+        className={triggerClass}
         onClick={() => { if (!disabled) setOpen(v => !v); }}
       >
-        <span className={`${styles.display} ${!displayValue ? styles.displayPlaceholder : ''}`}>
+        <span className={`ns-display${!displayValue ? ' ns-display-placeholder' : ''}`}>
           {displayValue || placeholder || ''}
         </span>
-        <span className={`material-icons-outlined ${styles.caret} ${open ? styles.caretOpen : ''}`}>
+        <span className={`material-icons-outlined ns-caret${open ? ' ns-caret-open' : ''}`}>
           expand_more
         </span>
         {open && (
-          <div className={styles.dropdown}>
+          <div className="ns-dropdown">
             {options.map(opt => {
               const v = getVal(opt);
               const l = getLbl(opt);
               return (
                 <div
                   key={v}
-                  className={`${styles.item} ${value === v ? styles.itemSelected : ''}`}
+                  className={`ns-item${value === v ? ' ns-item-selected' : ''}`}
                   onMouseDown={e => { e.preventDefault(); onChange(v); setOpen(false); }}
                 >
                   {value === v && <span className="material-icons-outlined" style={{ fontSize: 14, marginRight: 4 }}>check</span>}

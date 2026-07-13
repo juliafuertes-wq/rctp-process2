@@ -1,31 +1,17 @@
-import styles from './Checkbox.module.css';
-
-/**
- * props:
- *   checked      boolean
- *   indeterminate boolean
- *   disabled     boolean
- *   error        boolean
- *   size         'default' | 'small'   (default: 'default')
- *   onChange     function
- */
 export default function Checkbox({ checked, indeterminate, disabled, error, size = 'default', onChange, ...rest }) {
   const small = size === 'small';
 
-  let containerClass = styles.container;
-  if (small) containerClass += ' ' + styles.containerSmall;
-
-  let boxClass = styles.box;
-  if (small) boxClass += ' ' + styles.boxSmall;
+  let boxClass = 'checkbox-box';
+  if (small) boxClass += ' checkbox-box-sm';
 
   if (error) {
-    boxClass += checked || indeterminate ? ' ' + styles.boxError : ' ' + styles.boxErrorEmpty;
+    boxClass += checked || indeterminate ? ' checkbox-box-error' : ' checkbox-box-error-empty';
   } else if (disabled) {
-    boxClass += checked || indeterminate ? ' ' + styles.boxDisabledChecked : ' ' + styles.boxDisabledEmpty;
+    boxClass += checked || indeterminate ? ' checkbox-box-disabled-checked' : ' checkbox-box-disabled-empty';
   } else if (checked || indeterminate) {
-    boxClass += ' ' + styles.boxChecked;
+    boxClass += ' checkbox-box-checked';
   } else {
-    boxClass += ' ' + styles.boxEmpty;
+    boxClass += ' checkbox-box-empty';
   }
 
   function handleChange(e) {
@@ -34,10 +20,10 @@ export default function Checkbox({ checked, indeterminate, disabled, error, size
   }
 
   return (
-    <label className={`${containerClass}${disabled ? ' ' + styles.disabled : ''}`}>
+    <label className={`checkbox${disabled ? ' checkbox-disabled' : ''}`}>
       <input
         type="checkbox"
-        className={styles.hiddenInput}
+        className="checkbox-input"
         checked={checked || false}
         disabled={disabled}
         onChange={handleChange}
@@ -46,12 +32,12 @@ export default function Checkbox({ checked, indeterminate, disabled, error, size
       />
       <span className={boxClass}>
         {(checked && !indeterminate) && (
-          <svg className={`${styles.icon}${small ? ' ' + styles.iconSmall : ''}`} viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className={`checkbox-icon${small ? ' checkbox-icon-sm' : ''}`} viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 4L3.8 7L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         )}
         {indeterminate && (
-          <svg className={`${styles.icon}${small ? ' ' + styles.iconSmall : ''}`} viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className={`checkbox-icon${small ? ' checkbox-icon-sm' : ''}`} viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 1H9" stroke="white" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         )}

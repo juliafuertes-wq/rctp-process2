@@ -30,24 +30,24 @@ function ExternalDDModal({ profileId, onClose, onAfterSend }) {
 
   return (
     <motion.div
-      className={styles.deleteModalOverlay}
+      className="modal-card-overlay"
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       transition={{ duration: 0.15 }}
       onClick={onClose}
     >
       <motion.div
-        className={styles.deleteModal}
+        className="modal-card"
         style={{ width: 460 }}
         initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
         transition={{ duration: 0.18 }}
         onClick={e => e.stopPropagation()}
         role="dialog" aria-modal="true"
       >
-        <div className={styles.deleteModalHeader}>
-          <span className={styles.deleteModalTitle}>External Due Diligence — Send Invite</span>
-          <button className={styles.deleteModalClose} aria-label="Close" onClick={onClose} />
+        <div className="modal-card-header">
+          <span className="modal-card-title">External Due Diligence — Send Invite</span>
+          <button className="modal-card-close" aria-label="Close" onClick={onClose} />
         </div>
-        <div className={styles.deleteModalBody}>
+        <div className="modal-card-body">
           {['firstName', 'surname', 'email'].map(field => (
             <div key={field} className="modal-field">
               <label className="modal-label">
@@ -77,9 +77,9 @@ function ExternalDDModal({ profileId, onClose, onAfterSend }) {
             </select>
           </div>
         </div>
-        <div className={styles.deleteModalActions}>
-          <button className={`${styles.deleteModalBtn} ${styles.deleteModalCancel}`} onClick={onClose}>Close</button>
-          <button className={`${styles.deleteModalBtn} btn btn-primary`} onClick={handleSend}>Send Invite</button>
+        <div className="modal-card-footer">
+          <button className="btn btn-outline-secondary" onClick={onClose}>Close</button>
+          <button className="btn btn-primary" onClick={handleSend}>Send Invite</button>
         </div>
       </motion.div>
     </motion.div>

@@ -41,10 +41,8 @@ export default function Modal({
             transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
           >
             <div className="modal-header">
-              <h2 id="modal-title" className="modal-title">{title}</h2>
-              <button className="modal-close-btn" onClick={onClose} aria-label="Close">
-                <span className="material-icons-outlined" style={{ fontSize: 18 }}>close</span>
-              </button>
+              <span className="modal-title">{title}</span>
+              <button className="modal-close-btn" onClick={onClose} aria-label="Close" />
             </div>
 
             <div className="modal-content">

@@ -1,5 +1,3 @@
-import styles from './TextField.module.css';
-
 export default function TextField({
   label,
   value,
@@ -13,13 +11,17 @@ export default function TextField({
   disabled = false,
   ...rest
 }) {
+  let wrapClass = 'tf-input-wrap';
+  if (error) wrapClass += ' tf-input-wrap-error';
+  if (disabled) wrapClass += ' tf-input-wrap-disabled';
+
   return (
-    <div className={styles.wrap}>
-      {label && <label className={styles.label}>{label}</label>}
-      <div className={`${styles.inputWrap} ${error ? styles.inputWrapError : ''} ${disabled ? styles.inputWrapDisabled : ''}`}>
-        {icon && <span className={`material-icons-outlined ${styles.icon}`}>{icon}</span>}
+    <div className="tf-wrap">
+      {label && <label className="tf-label">{label}</label>}
+      <div className={wrapClass}>
+        {icon && <span className={`material-icons-outlined tf-icon`}>{icon}</span>}
         <input
-          className={styles.input}
+          className="tf-input"
           type={type}
           value={value}
           onChange={onChange}
@@ -28,8 +30,8 @@ export default function TextField({
           {...rest}
         />
       </div>
-      {error && errorText && <span className={styles.errorText}>{errorText}</span>}
-      {!error && helperText && <span className={styles.helperText}>{helperText}</span>}
+      {error && errorText && <span className="tf-error-text">{errorText}</span>}
+      {!error && helperText && <span className="tf-helper-text">{helperText}</span>}
     </div>
   );
 }

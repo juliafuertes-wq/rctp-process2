@@ -143,30 +143,30 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
       {profile.deleteModal && deleteModalOpen && (
         <motion.div
           key="delete-modal-overlay"
-          className={styles.deleteModalOverlay}
+          className="modal-card-overlay"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
           transition={mot.overlay}
           onClick={() => setDeleteModalOpen(false)}
         >
           <motion.div
-            className={styles.deleteModal}
+            className="modal-card"
             initial={{ scale: 0.92, opacity: 0, y: 10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.92, opacity: 0, y: 10 }}
             transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}
             onClick={e => e.stopPropagation()} role="dialog" aria-modal="true">
-            <div className={styles.deleteModalHeader}>
-              <span className={styles.deleteModalTitle}>Delete a Third party</span>
-              <button className={styles.deleteModalClose} aria-label="Close" onClick={() => setDeleteModalOpen(false)} />
+            <div className="modal-card-header">
+              <span className="modal-card-title">Delete a Third party</span>
+              <button className="modal-card-close" aria-label="Close" onClick={() => setDeleteModalOpen(false)} />
             </div>
-            <div className={styles.deleteModalBody}>
-              <p className={styles.deleteModalQuestion}>Are you sure you wish to delete the following Third Party?</p>
-              <p className={styles.deleteModalName}>{profile.shortName}</p>
-              <p className={styles.deleteModalConfirm}>Do you want to continue?</p>
+            <div className="modal-card-body">
+              <p className="modal-card-question">Are you sure you wish to delete the following Third Party?</p>
+              <p className="modal-card-name">{profile.shortName}</p>
+              <p className="modal-card-desc">Do you want to continue?</p>
             </div>
-            <div className={styles.deleteModalActions}>
-              <button className={`${styles.deleteModalBtn} ${styles.deleteModalCancel}`} onClick={() => setDeleteModalOpen(false)}>Cancel</button>
-              <button className={`${styles.deleteModalBtn} ${styles.deleteModalContinue}`} onClick={() => setDeleteModalOpen(false)}>Continue</button>
+            <div className="modal-card-footer">
+              <button className="btn btn-outline-secondary" onClick={() => setDeleteModalOpen(false)}>Cancel</button>
+              <button className="btn btn-primary" onClick={() => setDeleteModalOpen(false)}>Continue</button>
             </div>
           </motion.div>
         </motion.div>
@@ -209,9 +209,9 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                     </div>
                   );
                   return tip ? (
-                    <div className={styles.badgeTipWrap}>
+                    <div className="tooltip-trigger">
                       {badge}
-                      <span className={styles.badgeTip}>{tip}</span>
+                      <span className="tooltip-sm">{tip}</span>
                     </div>
                   ) : badge;
                 })()}
@@ -324,7 +324,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                         ) : f.overdue ? (
                           <div className={`${styles.fieldValue} ${['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom','dundermifflin'].includes(profile.id) ? styles.fieldValueWithAction : ''}`}>
                             {f.overdueTooltip ? (
-                              <div className={styles.badgeTipWrap}>
+                              <div className="tooltip-trigger">
                                 <span
                                   className={styles.fieldValueOverdue}
                                   style={{ cursor: 'pointer' }}
@@ -333,7 +333,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                                   <span className="material-icons-outlined" style={{ fontSize: 14 }}>warning</span>
                                   {f.value}
                                 </span>
-                                <span className={styles.badgeTip}>{f.overdueTooltip}</span>
+                                <span className="tooltip-sm">{f.overdueTooltip}</span>
                               </div>
                             ) : (
                               <span
@@ -532,9 +532,9 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               <div className={styles.sectionRow}>
                 <div className={styles.sectionTitleGroup}>
                   <h2 className={styles.cardTitle}>Open Tasks</h2>
-                  <span className={styles.infoIconWrap}>
+                  <span className="tooltip-trigger">
                     <span className={`material-icons-outlined ${styles.infoIcon}`}>info</span>
-                    <span className={styles.infoTooltip}>Tasks relating to this third party</span>
+                    <span className="tooltip-lg">Tasks relating to this third party</span>
                   </span>
                 </div>
               </div>
@@ -591,9 +591,9 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               <div className={styles.sectionRow}>
                 <div className={styles.sectionTitleGroup}>
                   <h2 className={styles.cardTitle}>Screening and Monitoring Associations</h2>
-                  <span className={styles.infoIconWrap}>
+                  <span className="tooltip-trigger">
                     <span className={`material-icons-outlined ${styles.infoIcon}`}>info</span>
-                    <span className={styles.infoTooltip}>Monitored Associations being continuously monitored against Risk and Compliance Database</span>
+                    <span className="tooltip-lg">Monitored Associations being continuously monitored against Risk and Compliance Database</span>
                   </span>
                 </div>
               </div>
@@ -762,33 +762,33 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
       {renewalModalOpen && (
         <motion.div
           key="renewal-modal-overlay"
-          className={styles.deleteModalOverlay}
+          className="modal-card-overlay"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
           transition={mot.overlay}
           onClick={() => setRenewalModalOpen(false)}
         >
           <motion.div
-            className={styles.deleteModal}
+            className="modal-card"
             initial={{ scale: 0.92, opacity: 0, y: 10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.92, opacity: 0, y: 10 }}
             transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}
             onClick={e => e.stopPropagation()} role="dialog" aria-modal="true"
           >
-            <div className={styles.deleteModalHeader}>
-              <span className={styles.deleteModalTitle}>Start Renewal</span>
-              <button className={styles.deleteModalClose} aria-label="Close" onClick={() => setRenewalModalOpen(false)} />
+            <div className="modal-card-header">
+              <span className="modal-card-title">Start Renewal</span>
+              <button className="modal-card-close" aria-label="Close" onClick={() => setRenewalModalOpen(false)} />
             </div>
-            <div className={styles.deleteModalBody}>
-              <p className={styles.deleteModalConfirm}>Are you sure you want to start the renewal process for this Third Party?</p>
+            <div className="modal-card-body">
+              <p className="modal-card-desc">Are you sure you want to start the renewal process for this Third Party?</p>
             </div>
-            <div className={styles.deleteModalActions}>
+            <div className="modal-card-footer">
               <button
-                className={`${styles.deleteModalBtn} ${styles.deleteModalCancel}`}
+                className="btn btn-outline-secondary"
                 onClick={() => setRenewalModalOpen(false)}
               >Cancel</button>
               <button
-                className={`${styles.deleteModalBtn} ${styles.deleteModalContinue}`}
+                className="btn btn-primary"
                 style={{ background: 'var(--primary-500)' }}
                 onClick={() => {
                   if (profile.id === 'dundermifflin') setDMFlow({ renewed: true, approved: false });
@@ -808,33 +808,33 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
       {cancelRenewalModalOpen && (
         <motion.div
           key="cancel-renewal-modal-overlay"
-          className={styles.deleteModalOverlay}
+          className="modal-card-overlay"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
           transition={mot.overlay}
           onClick={() => setCancelRenewalModalOpen(false)}
         >
           <motion.div
-            className={styles.deleteModal}
+            className="modal-card"
             initial={{ scale: 0.92, opacity: 0, y: 10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.92, opacity: 0, y: 10 }}
             transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}
             onClick={e => e.stopPropagation()} role="dialog" aria-modal="true"
           >
-            <div className={styles.deleteModalHeader}>
-              <span className={styles.deleteModalTitle}>Cancel Renewal</span>
-              <button className={styles.deleteModalClose} aria-label="Close" onClick={() => setCancelRenewalModalOpen(false)} />
+            <div className="modal-card-header">
+              <span className="modal-card-title">Cancel Renewal</span>
+              <button className="modal-card-close" aria-label="Close" onClick={() => setCancelRenewalModalOpen(false)} />
             </div>
-            <div className={styles.deleteModalBody}>
-              <p className={styles.deleteModalConfirm}>Are you sure you want to cancel the renewal process for this Third Party?</p>
+            <div className="modal-card-body">
+              <p className="modal-card-desc">Are you sure you want to cancel the renewal process for this Third Party?</p>
             </div>
-            <div className={styles.deleteModalActions}>
+            <div className="modal-card-footer">
               <button
-                className={`${styles.deleteModalBtn} ${styles.deleteModalCancel}`}
+                className="btn btn-outline-secondary"
                 onClick={() => setCancelRenewalModalOpen(false)}
               >Cancel</button>
               <button
-                className={`${styles.deleteModalBtn} ${styles.deleteModalContinue}`}
+                className="btn btn-primary"
                 style={{ background: 'var(--primary-500)' }}
                 onClick={() => {
                   if (profile.id === 'dundermifflin') { setDMFlow({ renewed: false, approved: false }); setCurrentStatus('Approved - Renewal Required'); }
@@ -1250,7 +1250,7 @@ function RenewalDetailsPanel({ renewalDate, renewalDescription, onClose }) {
 
   return (
     <>
-      <div className={styles.deleteModalOverlay} style={{ background: 'rgba(0,0,0,0.2)' }} onClick={onClose} />
+      <div className="modal-card-overlay" style={{ background: 'rgba(0,0,0,0.2)' }} onClick={onClose} />
       <motion.div
         className={styles.renewalDetailsPanel}
         initial={{ x: '100%' }}
@@ -1354,7 +1354,7 @@ function StatusPanel({ currentStatus, renewalDate, canRenew, renewalInProgress, 
 
   return (
     <>
-      <div className={styles.deleteModalOverlay} style={{ background: 'rgba(0,0,0,0.2)' }} onClick={onClose} />
+      <div className="modal-card-overlay" style={{ background: 'rgba(0,0,0,0.2)' }} onClick={onClose} />
       <motion.div
         className={styles.statusPanel}
         initial={{ x: '100%' }}

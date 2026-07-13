@@ -47,7 +47,7 @@ export default function ProfileIntegrityCheck() {
                   <span className={secStyles.poweredByLogo}>xapien</span>
                 </span>
               </div>
-              <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleCreateReport}>
+              <button className={"btn btn-primary"} onClick={handleCreateReport}>
                 Create New Report
               </button>
             </div>

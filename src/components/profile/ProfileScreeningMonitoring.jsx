@@ -78,7 +78,7 @@ export default function ProfileScreeningMonitoring() {
                   <div className={smStyles.activeToggleTrack}>{active ? 'Active' : 'Inactive'}</div>
                   <div className={smStyles.activeToggleThumb} />
                 </div>
-                <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleAdd}>Add</button>
+                <button className={"btn btn-primary"} onClick={handleAdd}>Add</button>
               </div>
             </div>
 

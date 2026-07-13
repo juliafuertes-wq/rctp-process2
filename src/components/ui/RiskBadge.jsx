@@ -1,17 +1,16 @@
 import { RiskLevelIcon } from '../profile/profileAssets';
-import styles from './RiskBadge.module.css';
 
 const config = {
-  high:    { cls: styles.high,    label: 'High Risk' },
-  medium:  { cls: styles.medium,  label: 'Medium Risk' },
-  low:     { cls: styles.low,     label: 'Low Risk' },
-  unknown: { cls: styles.unknown, label: 'Unknown' },
+  high:    { cls: 'badge-high',    label: 'High Risk' },
+  medium:  { cls: 'badge-medium',  label: 'Medium Risk' },
+  low:     { cls: 'badge-low',     label: 'Low Risk' },
+  unknown: { cls: 'badge-unknown', label: 'Unknown' },
 };
 
 export default function RiskBadge({ level }) {
   const { cls, label } = config[level] || config.low;
   return (
-    <span className={`${styles.badge} ${cls}`}>
+    <span className={`badge ${cls}`}>
       {label}
       <RiskLevelIcon level={level || 'low'} size={16} />
     </span>

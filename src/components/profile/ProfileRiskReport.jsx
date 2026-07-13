@@ -26,23 +26,20 @@ import styles from './profile.module.css';
 
 
 const STATUS_CONFIG = {
-  'Pending Approval':             { cls: 'statusPendingApproval', icon: 'pending' },
-  'Approved':                     { cls: 'statusApproved',        icon: 'check_circle' },
-  'Not Approved':                 { cls: 'statusNotApproved',     icon: 'dangerous' },
-  'Declined':                     { cls: 'statusDeclined',        icon: 'feedback' },
-  'Approved*':                    { cls: 'statusExpired',         icon: 'history_toggle_off' },
-  'Approved - Renewal Required': { cls: 'statusExpired',         icon: 'history_toggle_off' },
+  'Pending Approval':             { cls: 'badge-pending',      icon: 'pending' },
+  'Approved':                     { cls: 'badge-approved',     icon: 'check_circle' },
+  'Not Approved':                 { cls: 'badge-not-approved', icon: 'dangerous' },
+  'Declined':                     { cls: 'badge-declined',     icon: 'feedback' },
+  'Approved*':                    { cls: 'badge-expired',      icon: 'history_toggle_off' },
+  'Approved - Renewal Required': { cls: 'badge-expired',      icon: 'history_toggle_off' },
 };
 function getStatusConfig(label) {
-  return STATUS_CONFIG[label] ?? { cls: 'statusPendingApproval', icon: 'pending' };
+  return STATUS_CONFIG[label] ?? { cls: 'badge-pending', icon: 'pending' };
 }
 
 function RiskBadge({ level }) {
-  const cls = level === 'high' ? styles.badgeHigh
-    : level === 'medium' ? styles.badgeMedium
-    : styles.badgeLow;
   return (
-    <span className={`${styles.badge} ${cls}`}>
+    <span className={`badge badge-${level}`}>
       {level.toUpperCase()}
       <RiskLevelIcon level={level} size={14} />
     </span>
@@ -200,8 +197,8 @@ function AmendPanel({ currentLevel, riskReport, onClose, onSave }) {
       <div className={styles.amendHeader}>
         <h2 className={styles.amendTitle}>Amend Risk Level</h2>
         <div className={styles.amendHeaderActions}>
-          <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onClose}>Cancel</button>
-          <button className={`${styles.btn} ${styles.btnFilled}`} onClick={() => onSave(selectedLevel)}>Save</button>
+          <button className={"btn btn-outline-secondary"} onClick={onClose}>Cancel</button>
+          <button className={"btn btn-primary"} onClick={() => onSave(selectedLevel)}>Save</button>
         </div>
       </div>
       <div className={styles.amendBody}>
@@ -210,7 +207,7 @@ function AmendPanel({ currentLevel, riskReport, onClose, onSave }) {
           <div className={styles.amendField}>
             <div className={styles.amendLabel}>Current Risk Level :</div>
             <div>
-              <span className={`${styles.amendCurrentBadge} ${styles['amendBadgeSolid_' + currentLevel]}`}>
+              <span className={`badge badge-amend-${currentLevel}`} style={{ height: 37, padding: '0 14px', fontSize: 12, fontWeight: 500, letterSpacing: '0.5px', opacity: 0.85 }}>
                 {currentLevel.toUpperCase()}
               </span>
             </div>
@@ -269,7 +266,7 @@ function AmendPanel({ currentLevel, riskReport, onClose, onSave }) {
               Uploaded files will appear below. Allowed file types include: .csv,.pdf,.doc,.docx<br />
               Multiple uploads are permitted.
             </p>
-            <button className={`${styles.btn} ${styles.btnOutline} ${styles.amendUploadBtn}`}>Upload</button>
+            <button className={`btn btn-outline-secondary ${styles.amendUploadBtn}`}>Upload</button>
           </div>
         </div>
       </div>
@@ -355,10 +352,10 @@ export default function ProfileRiskReport() {
                 <div className={styles.rlrRow1}>
                   <h2 className={styles.cardTitle}>Current Risk Level Report</h2>
                   <div className={styles.cardHeaderRight}>
-                    <button className={`${styles.btn} ${styles.btnOutline}`} onClick={() => window.print()}>
+                    <button className={"btn btn-outline-secondary"} onClick={() => window.print()}>
                       Print <span className="material-icons-outlined" style={{ fontSize: 14 }}>print</span>
                     </button>
-                    <button className={`${styles.btn} ${styles.btnFilled}`} onClick={() => setShowAmend(true)}>Amend</button>
+                    <button className={"btn btn-primary"} onClick={() => setShowAmend(true)}>Amend</button>
                   </div>
                 </div>
 
@@ -369,7 +366,7 @@ export default function ProfileRiskReport() {
                       const label = profile.currentStatus?.label || 'Pending Approval';
                       const { cls, icon } = getStatusConfig(label);
                       return (
-                        <span className={`${styles.badge} ${styles[cls]}`}>
+                        <span className={`badge ${cls}`}>
                           {label}
                           <span className="material-icons-outlined" style={{ fontSize: 16 }}>{icon}</span>
                         </span>
@@ -378,7 +375,7 @@ export default function ProfileRiskReport() {
                   </div>
                   <div className={styles.rlrMetaItem}>
                     <span className={styles.rlrMetaLabel}>Risk Level:</span>
-                    <span className={`${styles.badge} ${styles['badge' + riskLevel.charAt(0).toUpperCase() + riskLevel.slice(1)]}`}>
+                    <span className={`badge badge-${riskLevel}`}>
                       {riskLevel.toUpperCase()}
                       <RiskLevelIcon level={riskLevel} size={14} />
                     </span>

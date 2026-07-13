@@ -446,7 +446,7 @@ export default function ComponentCatalog() {
             <div className={styles.sidebarHeader}>
               <p className={styles.sidebarTitle}>
                 {activeTab === 'Components' ? 'Components' : 'Patterns'}
-                <span className={styles.devBadge}>Dev</span>
+                <span className="badge badge-dev">Dev</span>
               </p>
             </div>
             {activeTab === 'Components'
@@ -963,10 +963,7 @@ export default function ComponentCatalog() {
                         : headerRisk === 'medium' ? profileStyles.tpTopStripMedium
                         : headerRisk === 'low' ? profileStyles.tpTopStripLow
                         : profileStyles.tpTopStripPending;
-                      const riskBadgeCls = headerRisk === 'high' ? profileStyles.badgeHigh
-                        : headerRisk === 'medium' ? profileStyles.badgeMedium
-                        : headerRisk === 'low' ? profileStyles.badgeLow
-                        : profileStyles.badgePending;
+                      const riskBadgeCls = headerRisk === 'pending' ? 'badge-pending' : `badge-${headerRisk}`;
                       return (
                         <div className={`${profileStyles.tpTopStrip} ${riskCls} ${headerScrolled ? profileStyles.tpTopStripScrolled : ''}`}>
                           <div className={profileStyles.tpPageHeader}>
@@ -984,14 +981,14 @@ export default function ComponentCatalog() {
                               <div className={profileStyles.tpBadges}>
                                 <div className={profileStyles.tpBadgeGroup}>
                                   <div className={profileStyles.tpBadgeLabel}>Current status:</div>
-                                  <div className={`${profileStyles.badge} ${headerRisk === 'pending' ? profileStyles.statusPendingApproval : profileStyles.statusApproved} ${profileStyles.badgeBtn}`}>
+                                  <div className={`badge ${headerRisk === 'pending' ? 'badge-pending' : 'badge-approved'} badge-btn`}>
                                     {headerRisk === 'pending' ? 'Pending Approval' : 'Approved'}
                                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>{headerRisk === 'pending' ? 'pending' : 'check_circle'}</span>
                                   </div>
                                 </div>
                                 <div className={profileStyles.tpBadgeGroup}>
                                   <div className={profileStyles.tpBadgeLabel}>Risk level:</div>
-                                  <div className={`${profileStyles.badge} ${riskBadgeCls} ${profileStyles.badgeBtn}`}>
+                                  <div className={`badge ${riskBadgeCls} badge-btn`}>
                                     {headerRisk === 'pending' ? 'Pending' : headerRisk.charAt(0).toUpperCase() + headerRisk.slice(1)}
                                     <RiskLevelIcon level={headerRisk === 'pending' ? 'low' : headerRisk} size={14} />
                                   </div>
@@ -1203,10 +1200,7 @@ export default function ComponentCatalog() {
                                   </div>
                                 </td>
                                 <td>
-                                  <span className={styles.statusBadge} style={{
-                                    background: r.status === 'Approved' ? 'var(--success-100)' : r.status === 'Not Approved' ? 'var(--alert-100)' : 'var(--neutral-50)',
-                                    color: r.status === 'Approved' ? 'var(--success-900)' : r.status === 'Not Approved' ? 'var(--alert-700)' : 'var(--text-normal)',
-                                  }}>{r.status}</span>
+                                  <span className={`badge ${r.status === 'Approved' ? 'badge-approved' : r.status === 'Not Approved' ? 'badge-not-approved' : 'badge-pending'}`}>{r.status}</span>
                                 </td>
                                 <td><RiskBadge level={r.risk} /></td>
                               </tr>
@@ -1389,7 +1383,7 @@ export default function ComponentCatalog() {
                                 <td>{r.field}</td>
                                 <td>
                                   {r.value
-                                    ? <span className={styles.statusBadge} style={{ background: 'var(--primary-08)', color: 'var(--primary-700)' }}>{r.value}</span>
+                                    ? <span className="badge" style={{ background: 'var(--primary-08)', color: 'var(--primary-700)' }}>{r.value}</span>
                                     : <span style={{ color: 'var(--neutral-300)' }}>—</span>}
                                 </td>
                                 <td style={{ textAlign: 'center' }}>
@@ -1399,7 +1393,7 @@ export default function ComponentCatalog() {
                                   {r.flag ? <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--alert-500)' }}>flag</span> : null}
                                 </td>
                                 <td style={{ textAlign: 'center', fontSize: 13, color: 'var(--text-normal)' }}>{r.score ?? <span style={{ color: 'var(--neutral-300)' }}>—</span>}</td>
-                                <td><span className={styles.statusBadge} style={{ background: 'var(--primary-08)', color: 'var(--primary-700)' }}>{r.tag}</span></td>
+                                <td><span className="badge" style={{ background: 'var(--primary-08)', color: 'var(--primary-700)' }}>{r.tag}</span></td>
                                 <td style={{ textAlign: 'center' }}>
                                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-light)', display: 'inline-flex', alignItems: 'center' }}>
                                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>edit</span>

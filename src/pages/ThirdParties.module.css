@@ -13,13 +13,6 @@
 }
 .title { font-size: 20px; font-weight: 500; color: var(--text-normal); font-family: var(--font-heading); }
 .titleActions { display: flex; align-items: center; gap: 8px; }
-.btnAdd {
-  display: inline-flex; align-items: center; gap: 4px; height: 32px; padding: 0 12px;
-  background: var(--primary-500); color: var(--neutral-25); border: none; border-radius: var(--rctp-radius-sm);
-  font-size: 12px; font-weight: 500; text-transform: uppercase;
-  letter-spacing: 0.5px; cursor: pointer; font-family: inherit; transition: background 0.2s; white-space: nowrap;
-}
-.btnAdd:hover { background: var(--primary-600); }
 
 .divider { height: 1px; background: var(--neutral-50); margin: 0 16px; }
 

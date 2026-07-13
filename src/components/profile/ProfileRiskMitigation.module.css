@@ -101,20 +101,3 @@
   background: var(--neutral-50);
   color: var(--text-normal);
 }
-
-.commentBadge {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--success-500);
-  color: var(--neutral-00);
-  font-size: 9px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}

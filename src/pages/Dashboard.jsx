@@ -23,10 +23,10 @@ const TASK_TYPE_CONFIG = {
 };
 
 const STATUS_CONFIG = {
-  'Not Started':     { cls: 'statusNotStarted' },
-  'In Progress':     { cls: 'statusInProgress' },
-  'Completed':       { cls: 'statusCompleted' },
-  'Action Required': { cls: 'statusActionRequired' },
+  'Not Started':     { cls: 'badge-not-started' },
+  'In Progress':     { cls: 'badge-in-progress' },
+  'Completed':       { cls: 'badge-completed-status' },
+  'Action Required': { cls: 'badge-action-required-status' },
 };
 
 // ── Actions tab data ────────────────────────────────────────────────────────
@@ -97,7 +97,7 @@ const MATCH_COLORS = [
 function TaskTypeBadge({ type }) {
   const cfg = TASK_TYPE_CONFIG[type] || { icon: TASK_ICONS.iconFactCheck };
   return (
-    <span className={styles.typeBadge}>
+    <span className="badge badge-type">
       <span className={styles.typeIcon}>
         <img src={cfg.icon} alt="" style={{ width: 12, height: 12 }} />
       </span>
@@ -108,7 +108,7 @@ function TaskTypeBadge({ type }) {
 
 function StatusBadge({ status }) {
   const cfg = STATUS_CONFIG[status] || STATUS_CONFIG['Not Started'];
-  return <span className={`${styles.statusBadge} ${styles[cfg.cls]}`}>{status}</span>;
+  return <span className={`badge ${cfg.cls}`}>{status}</span>;
 }
 
 function RiskChip({ risk }) {
@@ -353,7 +353,7 @@ function SMTable({ rows, search }) {
                   <div className={styles.smActionsCell}>
                     <button className={styles.smAlertBtn} title="Alerts">
                       <span className="material-icons-outlined" style={{ fontSize: 16 }}>notifications</span>
-                      {row.alertCount > 0 && <span className={styles.alertBadge}>{row.alertCount}</span>}
+                      {row.alertCount > 0 && <span className="badge badge-alert">{row.alertCount}</span>}
                     </button>
                   </div>
                 </td>
@@ -639,7 +639,7 @@ function EDDContent({ rows }) {
                     <td style={{ textAlign: 'center' }}>
                       <button className={styles.eddCommentBtn} title="Comments">
                         <span className="material-icons-outlined" style={{ fontSize: 16 }}>chat_bubble_outline</span>
-                        {row.commentCount > 0 && <span className={styles.alertBadge}>{row.commentCount}</span>}
+                        {row.commentCount > 0 && <span className="badge badge-alert">{row.commentCount}</span>}
                       </button>
                     </td>
                   </tr>

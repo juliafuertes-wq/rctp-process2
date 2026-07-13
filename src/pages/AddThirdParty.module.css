@@ -232,14 +232,6 @@
 /* Step footer */
 .acFooter { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--neutral-50); margin-top: 24px; }
 .acFooterRight { display: flex; align-items: center; gap: 8px; }
-.btnFilled { display: inline-flex; align-items: center; gap: 4px; height: 32px; padding: 0 8px; background: var(--primary-500); color: var(--neutral-00); border: none; border-radius: var(--rctp-radius-sm); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; font-family: inherit; transition: background 0.2s; white-space: nowrap; }
-.btnFilled:hover { background: var(--primary-600); }
-.btnFilled:disabled { opacity: 0.4; cursor: not-allowed; }
-.btnOutline { display: inline-flex; align-items: center; gap: 4px; height: 32px; padding: 0 8px; background: var(--neutral-00); border: 1px solid var(--neutral-300); color: var(--text-normal); border-radius: var(--rctp-radius-sm); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; font-family: inherit; white-space: nowrap; }
-.btnOutline:hover { background: var(--neutral-25); border-color: var(--neutral-400); }
-.btnOutlineActive { background: var(--neutral-25); border-color: var(--neutral-400); }
-.btnGhost { display: inline-flex; align-items: center; height: 32px; padding: 0 8px; background: none; border: none; color: var(--text-light); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; text-decoration: none; font-family: inherit; }
-.btnGhost:hover { color: var(--text-normal); background: var(--neutral-25); }
 
 /* Dup banner */
 .dupBanner { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: var(--warning-50); border: 1px solid var(--warning-500); border-radius: var(--rctp-radius-sm); margin-bottom: 24px; font-size: 13px; color: var(--warning-900); line-height: 1.5; }
@@ -260,8 +252,7 @@
 .moreBtn { background: none; border: none; cursor: pointer; color: var(--primary-600); font-size: 13px; font-weight: 500; font-family: inherit; padding: 0; white-space: nowrap; }
 .moreBtn:hover { text-decoration: underline; }
 
-/* Status badge for person dup table */
-.statusBadge { display: inline-flex; align-items: center; padding: 4px 8px; border-radius: var(--rctp-radius-xs); font-size: 11px; font-weight: 600; background: var(--neutral-50); color: var(--text-normal); }
+
 
 /* Verify intro text */
 .verifyIntroRow {
@@ -297,7 +288,7 @@
 .verifyUnselectBtn:hover { color: var(--alert-900); }
 .resultsHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-size: 12px; color: var(--text-light); }
 .emptyVerify { padding: 32px 16px; text-align: center; font-size: 13px; color: var(--text-light); border: 1px solid var(--neutral-100); border-radius: var(--rctp-radius-sm); background: var(--neutral-25); }
-.sourceBadge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 600; letter-spacing: 0.4px; padding: 2px 6px; border-radius: var(--rctp-radius-xs); background: var(--neutral-25); color: var(--neutral-500); text-transform: uppercase; }
+
 .skipOption { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-top: 12px; cursor: pointer; padding: 12px 0; }
 .skipOption:hover { color: var(--text-normal); }
 .skipOption input[type="checkbox"] { accent-color: var(--primary-500); }
@@ -433,7 +424,7 @@
 .langSearchInput { flex: 1; height: 34px; border: 1px solid var(--neutral-300); padding: 0 12px; font-size: 14px; font-family: inherit; color: var(--text-normal); outline: none; background: var(--neutral-00); border-radius: var(--rctp-radius-xs) 0 0 2px; }
 .langSearchInput::placeholder { color: var(--neutral-400); }
 .langSearchInput:focus { border-color: var(--primary-500); }
-.langSelectedBadge { display: flex; align-items: center; justify-content: center; height: 34px; padding: 0 16px; background: var(--success-500); color: var(--text-normal); font-size: 14px; font-weight: 500; border-radius: 0 2px 2px 0; white-space: nowrap; }
+
 .langDivider { height: 1px; background: var(--neutral-50); margin: 0 20px; flex-shrink: 0; }
 .langList { flex: 1; overflow-y: auto; padding: 0 20px 20px; }
 .langItem { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 10px 16px; border: 1px solid var(--neutral-50); border-top: none; cursor: pointer; }

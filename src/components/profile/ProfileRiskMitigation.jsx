@@ -74,7 +74,7 @@ function RiskTable({ rows, onMenuClick, onCheckOpen, onAllChecked }) {
                 <span className="material-icons-outlined" style={{ fontSize: 18 }}>
                   {row.comments > 0 ? 'mark_chat_read' : 'chat_bubble_outline'}
                 </span>
-                {row.comments > 0 && <span className={rmStyles.commentBadge}>{row.comments}</span>}
+                {row.comments > 0 && <span className="badge badge-comment">{row.comments}</span>}
               </button>
             </td>
           </tr>
@@ -214,7 +214,7 @@ export default function ProfileRiskMitigation() {
                 <h2 className={styles.cardTitle}>Risk Mitigation</h2>
                 <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', cursor: 'pointer' }}>info</span>
               </div>
-              <button className={`${styles.btn} ${styles.btnFilled} ${rmStyles.createBtn}`}>
+              <button className={`btn btn-primary ${rmStyles.createBtn}`}>
                 Create New Risk
                 <span className="material-icons-outlined" style={{ fontSize: 16 }}>arrow_drop_down</span>
               </button>

@@ -44,7 +44,7 @@ export default function ProfileProperties() {
                 <span className={propStyles.resultCount}>
                   Showing results 1 – {allFields.length} of {allFields.length}
                 </span>
-                <button className={`${styles.btn} ${styles.btnOutline} ${propStyles.filterBtn}`}>
+                <button className={`btn btn-outline-secondary ${propStyles.filterBtn}`}>
                   Filter
                   <span className="material-icons-outlined" style={{ fontSize: 16 }}>filter_list</span>
                 </button>
@@ -74,7 +74,7 @@ export default function ProfileProperties() {
                         <td>{field.label}</td>
                         <td>
                           {field.value
-                            ? <span className={propStyles.statusBadge}>{field.value}</span>
+                            ? <span className="badge badge-pending">{field.value}</span>
                             : <span className={propStyles.emptyValue}>—</span>
                           }
                         </td>
@@ -90,7 +90,7 @@ export default function ProfileProperties() {
                         </td>
                         <td>{prop.score ?? ''}</td>
                         <td>
-                          <span className={propStyles.statusBadge}>{tag}</span>
+                          <span className="badge badge-pending">{tag}</span>
                         </td>
                         <td>{prop.riskCategory || 'General'}</td>
                         <td className={propStyles.editCell}>

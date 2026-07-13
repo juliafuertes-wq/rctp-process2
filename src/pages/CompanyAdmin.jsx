@@ -761,16 +761,16 @@ export default function CompanyAdmin() {
                     </select>
                   </label>
                   {!isEditing && (
-                    <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleEdit}>
+                    <button className={"btn btn-primary"} onClick={handleEdit}>
                       Edit
                     </button>
                   )}
                   {isEditing && (
                     <>
-                      <button className={`${styles.btn} ${styles.btnOutline}`} onClick={handleCancel}>
+                      <button className={"btn btn-outline-secondary"} onClick={handleCancel}>
                         Cancel
                       </button>
-                      <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleSave}>
+                      <button className={"btn btn-primary"} onClick={handleSave}>
                         Save
                       </button>
                     </>
@@ -897,11 +897,11 @@ function SummaryPanel() {
         <div className={styles.contentActions}>
           {isEditing ? (
             <>
-              <button className={`${styles.btn} ${styles.btnOutline}`} onClick={handleCancel}>Cancel</button>
-              <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleSave}>Save</button>
+              <button className={"btn btn-outline-secondary"} onClick={handleCancel}>Cancel</button>
+              <button className={"btn btn-primary"} onClick={handleSave}>Save</button>
             </>
           ) : (
-            <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleEdit}>Edit</button>
+            <button className={"btn btn-primary"} onClick={handleEdit}>Edit</button>
           )}
         </div>
       </div>
@@ -1011,7 +1011,7 @@ function RolesPanel() {
           <span className={`material-icons-outlined ${styles.rolesTitleIcon}`}>info</span>
         </div>
         <div className={styles.contentActions}>
-          <button className={`${styles.btn} ${styles.btnFilled}`}>
+          <button className={"btn btn-primary"}>
             Add Role
           </button>
         </div>

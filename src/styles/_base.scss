@@ -31,6 +31,32 @@
     }
 }
 
+// Filled — matches the catalog filled button
+.btn-primary {
+    background-color: #02A3D5;
+    border-color: #02A3D5;
+    color: #FFFFFF;
+
+    &:hover:not(:disabled), &:focus {
+        background-color: #0289B3;
+        border-color: #0289B3;
+        color: #FFFFFF;
+    }
+
+    &:active:not(:disabled) {
+        background-color: #0289B3;
+        border-color: #02A3D5;
+        box-shadow: inset 0 0 0 3px #02A3D5;
+        color: #FFFFFF;
+    }
+
+    &:disabled {
+        background-color: #7BCFE9;
+        border-color: #7BCFE9;
+        color: #FFFFFF;
+    }
+}
+
 // Outline — white bg, gray border, dark ink text
 .btn-outline-secondary {
     background-color: #FFFFFF;
@@ -56,25 +82,23 @@
     }
 }
 
-// Filled (primary) — bergbluetint1
-.btn-primary {
-    background-color: #028FBB;
-    border-color: #028FBB;
-    color: #FFFFFF;
-    letter-spacing: 0.5px;
-    border-radius: 8px;
+// Danger — outline style, fills red on hover
+.btn-outline-danger {
+    background-color: #FFFFFF;
+    border: 1px solid #e53935;
+    color: #e53935;
 
-    &:hover:not(:disabled), &:focus {
-        background-color: #017295;
-        border-color: #017295;
+    &:hover:not(:disabled) {
+        background-color: #e53935;
+        border-color: #e53935;
         color: #FFFFFF;
     }
 
     &:disabled {
-        background-color: #7BCFE9;
-        border-color: #7BCFE9;
+        opacity: 0.5;
     }
 }
+
 
 // Soft — light cyan tint
 .btn-soft {
@@ -93,6 +117,24 @@
     }
 }
 
+// Connect — mid-teal filled
+.btn-connect {
+    background-color: #028FBB;
+    border-color: #028FBB;
+    color: #FFFFFF;
+
+    &:hover:not(:disabled) {
+        background-color: #017295;
+        border-color: #017295;
+        color: #FFFFFF;
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}
+
 // Ghost / text link button
 .btn-link {
     color: #0C2A31;
@@ -107,6 +149,196 @@
     &:disabled {
         color: #8D9CA9;
     }
+}
+
+// ── Badge base ──────────────────────────────────────────────────────────────
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "Simplon Norm", "Inter", ui-sans-serif, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    border-radius: 4px;
+    padding: 4px 8px;
+    line-height: 1;
+}
+
+// Risk level badges
+.badge-high    { background: #F7CDCF; color: #9A3438; }
+.badge-medium  { background: #FBEDCA; color: #564518; }
+.badge-low     { background: #BDF6DC; color: #07502E; }
+.badge-unknown { background: #DFE3E7; color: #0C2A31; }
+.badge-pending { background: #DFE3E7; color: #0C2A31; }
+
+// Status badges
+.badge-approved     { background: #AAF3D2; color: #07502E; }
+.badge-not-approved { background: #F5BFC1; color: #9A3438; }
+.badge-declined     { background: #F5BFC1; color: #9A3438; }
+.badge-expired      { background: #FAE8BB; color: #564518; }
+
+// Workflow step badges (used in Badge component)
+.badge-action-required { background: #E34C53; color: #FFFFFF; }
+.badge-no-action       { background: #8D9CA9; color: #FFFFFF; }
+.badge-incomplete      { background: #F0C043; color: #0C2A31; }
+.badge-not-initiated   { background: #B1BCC5; color: #FFFFFF; }
+.badge-completed       { background: #13DF81; color: #0C2A31; }
+.badge-confirmed       { background: #9A3438; color: #FFFFFF; }
+.badge-cleared         { background: #016F91; color: #FFFFFF; }
+
+// Size variants
+.badge-lg {
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.badge-round { border-radius: 999px; }
+.badge-square { border-radius: 2px; width: 16px; height: 16px; padding: 0; }
+.badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    padding: 0;
+}
+.badge-dot-md {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    padding: 0;
+}
+
+// Dashboard / workflow status badges
+.badge-not-started     { background: #DFE3E7; color: #0C2A31; }
+.badge-in-progress     { background: var(--primary-100); color: var(--primary-700); }
+.badge-completed-status { background: #AAF3D2; color: #07502E; }
+.badge-action-required-status { background: #F5BFC1; color: #9A3438; }
+
+// Employee registration badges
+.badge-registered     { background: #DFE3E7; color: #0C2A31; }
+.badge-not-registered { background: #F5BFC1; color: #9A3438; }
+
+// Amend risk badges (solid fill, used in risk report amend modal)
+.badge-amend-high   { background: var(--alert-300);   color: #FFFFFF; }
+.badge-amend-medium { background: #F0C043;             color: #0C2A31; }
+.badge-amend-low    { background: #13DF81;             color: #0C2A31; }
+
+// Type badge (Dashboard entity type label — no background, just text+icon)
+.badge-type {
+    background: none;
+    color: #0C2A31;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    padding: 0;
+    gap: 6px;
+}
+
+// Alert/comment dot badge (absolute-positioned count pip)
+.badge-alert {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    min-width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    background: #E34C53;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 0 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Comment badge (absolute-positioned on icon, 14×14)
+.badge-comment {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #13DF81;
+    color: #FFFFFF;
+    font-size: 9px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+// Source badge (e.g. "Dun & Bradstreet" label)
+.badge-source {
+    background: #F4F4F4;
+    color: #8D9CA9;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    padding: 2px 6px;
+    gap: 4px;
+    border-radius: 4px;
+}
+
+// Language selected badge (green pill in language picker)
+.badge-lang-selected {
+    background: #13DF81;
+    color: #0C2A31;
+    font-size: 14px;
+    font-weight: 500;
+    height: 34px;
+    padding: 0 16px;
+    border-radius: 0 2px 2px 0;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Stages badge (Settings — Approval Auto Start toggle)
+.badge-stages-active   { background: #13DF81; color: #FFFFFF; height: 32px; padding: 0 14px; font-size: 12px; font-weight: 500; }
+.badge-stages-inactive { background: rgba(227, 76, 83, 0.65); color: #FFFFFF; height: 32px; padding: 0 14px; font-size: 12px; font-weight: 500; }
+
+// Dev badge (ComponentCatalog only)
+.badge-dev {
+    background: #FAE8BB;
+    color: #564518;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+// Count badge (small pill used in Chip component)
+.badge-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    max-width: 34px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: #E34C53;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+// Clickable badge
+.badge-btn {
+    cursor: pointer;
+    transition: filter 140ms ease, box-shadow 140ms ease;
+    &:hover { filter: brightness(0.92); box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
 }
 
 #appContainer {

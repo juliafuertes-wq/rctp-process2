@@ -581,43 +581,6 @@
   min-width: 120px;
 }
 
-/* Buttons (reuse same spec as other pages) */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  height: 32px;
-  padding: 0 12px;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border-radius: var(--rctp-radius-sm);
-  cursor: pointer;
-  font-family: inherit;
-  white-space: nowrap;
-  transition: background 0.2s, border-color 0.15s, color 0.15s;
-}
-
-.btnOutline {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-300);
-  color: var(--text-light);
-}
-
-.btnOutline:hover {
-  border-color: var(--primary-500);
-  color: var(--primary-500);
-}
-
-.btnFilled {
-  background: var(--primary-500);
-  color: var(--neutral-25);
-  border: none;
-}
-
-.btnFilled:hover {
-  background: var(--primary-600);
-}
 
 /* Fields */
 .cagSection {
@@ -829,28 +792,4 @@
 .stagesFooterBadge {
   display: flex;
   align-items: center;
-}
-
-.stagesBadge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 32px;
-  padding: 0 14px;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border-radius: var(--rctp-radius-xs);
-  user-select: none;
-}
-
-.stagesBadgeInactive {
-  background: rgba(227, 76, 83, 0.65);
-  color: var(--neutral-00);
-}
-
-.stagesBadgeActive {
-  background: var(--success-500, #2ecc71);
-  color: var(--neutral-00);
 }

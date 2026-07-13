@@ -80,7 +80,7 @@ export default function ThirdParties() {
             <Button variant="outline" icon="arrow_drop_down">Standard View</Button>
             <Button variant="outline" icon="tune" />
             <Button variant="outline" icon="file_upload">Bulk Import</Button>
-            <Link to="/add-third-party" className={styles.btnAdd}>Add New</Link>
+            <Link to="/add-third-party" className="btn btn-primary">Add New</Link>
           </div>
         </div>
 

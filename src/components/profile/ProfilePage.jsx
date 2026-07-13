@@ -15,16 +15,16 @@ import Sidebar, { PartnerIcon } from './Sidebar';
 import Chip from '../ui/Chip';
 
 const STATUS_CONFIG = {
-  'Pending Approval':            { cls: 'statusPendingApproval', icon: 'pending', tooltip: 'Record has not yet had a first approval.' },
-  'Approved':                    { cls: 'statusApproved',        icon: 'check_circle' },
-  'Not Approved':                { cls: 'statusNotApproved',     icon: 'dangerous' },
-  'Declined':                    { cls: 'statusDeclined',        icon: 'feedback' },
-  'Approved*':                   { cls: 'statusExpired',         icon: 'history_toggle_off' },
-  'Approved - Renewal Required': { cls: 'statusExpired',         icon: 'history_toggle_off', tooltip: 'Renewal date reached' },
+  'Pending Approval':            { cls: 'badge-pending',      icon: 'pending', tooltip: 'Record has not yet had a first approval.' },
+  'Approved':                    { cls: 'badge-approved',     icon: 'check_circle' },
+  'Not Approved':                { cls: 'badge-not-approved', icon: 'dangerous' },
+  'Declined':                    { cls: 'badge-declined',     icon: 'feedback' },
+  'Approved*':                   { cls: 'badge-expired',      icon: 'history_toggle_off' },
+  'Approved - Renewal Required': { cls: 'badge-expired',      icon: 'history_toggle_off', tooltip: 'Renewal date reached' },
 };
 
 function getStatusConfig(label) {
-  return STATUS_CONFIG[label] ?? { cls: 'statusPendingApproval', icon: 'pending' };
+  return STATUS_CONFIG[label] ?? { cls: 'badge-pending', icon: 'pending' };
 }
 
 
@@ -201,7 +201,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   const badge = (
                     <div
                       ref={statusBadgeRef}
-                      className={`${styles.badge} ${styles[cls]} ${styles.badgeBtn}`}
+                      className={`badge ${cls} badge-btn`}
                       onClick={() => setStatusPanelOpen(true)}
                     >
                       {display ?? currentStatus}
@@ -221,7 +221,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                 <AnimatePresence mode="wait">
                 {profileLoading ? (
                   <motion.div key="loading-badge" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
-                    className={`${styles.badge} ${styles.badgePending} ${styles.badgeBtn}`}
+                    className="badge badge-pending badge-btn"
                   >
                     Unknown
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>help_outline</span>
@@ -229,7 +229,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                 ) : (
                   <Link to={`/profile/${profile.id}/risk-report`} style={{ textDecoration: 'none' }}>
                     <motion.div key="loaded-badge" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}
-                      className={`${styles.badge} ${styles['badge' + profile.riskLevel.level.charAt(0).toUpperCase() + profile.riskLevel.level.slice(1)]} ${styles.badgeBtn}`}
+                      className={`badge badge-${profile.riskLevel.level} badge-btn`}
                     >
                       {profile.riskLevel.label}
                       <RiskLevelIcon level={profile.riskLevel.level} />
@@ -258,8 +258,8 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   <span className={styles.activeText}>Active</span>
                   <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--success-700)' }}>verified</span>
                 </div>
-                <button className={`${styles.btn} ${styles.btnOutline}`} onClick={() => setShowNotes(true)}>Notes</button>
-                <button className={`${styles.btn} ${styles.btnFilled}`} onClick={() => navigate(`/profile/${profile.id}/edit`)}>Edit</button>
+                <button className={"btn btn-outline-secondary"} onClick={() => setShowNotes(true)}>Notes</button>
+                <button className={"btn btn-primary"} onClick={() => navigate(`/profile/${profile.id}/edit`)}>Edit</button>
               </div>
             </div>
 
@@ -439,8 +439,8 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   <div className={styles.connSubHeader}>
                     <h3 className={styles.connSectionTitle} style={{ marginBottom: 0 }}>Suggested Third Parties</h3>
                     <div className={styles.connActions}>
-                      <button className={`${styles.btn} ${styles.btnDiscard}`} disabled={selectedSuggested === null} onClick={handleDiscard}>Discard</button>
-                      <button className={`${styles.btn} ${styles.btnConnect}`} disabled={selectedSuggested === null} onClick={handleConnect}>Connect</button>
+                      <button className={"btn btn-outline-secondary"} disabled={selectedSuggested === null} onClick={handleDiscard}>Discard</button>
+                      <button className={"btn btn-connect"} disabled={selectedSuggested === null} onClick={handleConnect}>Connect</button>
                     </div>
                   </div>
 
@@ -512,7 +512,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                       <span className={`${styles.rcardVal} ${styles.valFlags}`}>{rc.flags}</span>
                       {!isScreening && <span className={`${styles.rcardVal} ${styles.valScore}`}>{rc.score}</span>}
                       <span className={styles.rcardBadge}>
-                        <span className={`${styles.badge} ${b.className}`} style={{ fontSize: 12, padding: '4px 8px' }}>
+                        <span className={b.className} style={{ fontSize: 12, padding: '4px 8px' }}>
                           {b.label}
                           <RiskLevelIcon level={rc.level} size={14} />
                         </span>
@@ -940,7 +940,7 @@ function EditConnectionPanel({ row, onClose, onSave }) {
       <div className={styles.connectPanel}><motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={mot.panel} style={{ height: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div className={styles.connectPanelHeader}>
           <span className={styles.connectPanelTitle}>Edit Connection</span>
-          <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onClose}>Close</button>
+          <button className={"btn btn-outline-secondary"} onClick={onClose}>Close</button>
         </div>
         <div className={styles.connectPanelBody}>
           <div className={styles.connectPanelInfo}>
@@ -966,9 +966,9 @@ function EditConnectionPanel({ row, onClose, onSave }) {
           </div>
         </div>
         <div className={styles.connectPanelFooter}>
-          <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onClose}>Cancel</button>
+          <button className={"btn btn-outline-secondary"} onClick={onClose}>Cancel</button>
           <button
-            className={`${styles.btn} ${styles.btnFilled}`}
+            className={"btn btn-primary"}
             disabled={!connType}
             onClick={() => onSave(connType)}
           >
@@ -1006,7 +1006,7 @@ function ConnectPanel({ row, onClose, onConfirm }) {
       <div className={styles.connectPanel}><motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={mot.panel} style={{ height: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div className={styles.connectPanelHeader}>
           <span className={styles.connectPanelTitle}>Connect Third Party</span>
-          <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onClose}>Close</button>
+          <button className={"btn btn-outline-secondary"} onClick={onClose}>Close</button>
         </div>
         <div className={styles.connectPanelBody}>
           <div className={styles.connectPanelInfo}>
@@ -1032,9 +1032,9 @@ function ConnectPanel({ row, onClose, onConfirm }) {
           </div>
         </div>
         <div className={styles.connectPanelFooter}>
-          <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onClose}>Cancel</button>
+          <button className={"btn btn-outline-secondary"} onClick={onClose}>Cancel</button>
           <button
-            className={`${styles.btn} ${styles.btnFilled}`}
+            className={"btn btn-primary"}
             disabled={!connType}
             onClick={() => onConfirm(row, connType)}
           >
@@ -1069,7 +1069,7 @@ function NotesPanel({ profileName, notes, noteText, onNoteTextChange, onAddNote,
       <div className={styles.notesPanel}><motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={mot.panel} style={{ height: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div className={styles.notesPanelHeader}>
           <h5 className={styles.notesPanelTitle}>Note - {profileName} / Available Threads</h5>
-          <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onClose}>Close</button>
+          <button className={"btn btn-outline-secondary"} onClick={onClose}>Close</button>
         </div>
         <div className={styles.notesPanelContent}>
           {notes.length === 0
@@ -1097,10 +1097,10 @@ function NotesPanel({ profileName, notes, noteText, onNoteTextChange, onAddNote,
             onChange={e => onNoteTextChange(e.target.value)}
           />
           <div className={styles.notesActions}>
-            <button className={`${styles.btn} ${styles.btnOutline}`} type="button">Include Internal User</button>
-            <button className={`${styles.btn} ${styles.btnOutline}`} type="button">Include External User</button>
-            <button className={`${styles.btn} ${styles.btnOutline}`} type="button">Add Attachment</button>
-            <button className={`${styles.btn} ${styles.btnFilled}`} type="button" onClick={onAddNote}>
+            <button className={"btn btn-outline-secondary"} type="button">Include Internal User</button>
+            <button className={"btn btn-outline-secondary"} type="button">Include External User</button>
+            <button className={"btn btn-outline-secondary"} type="button">Add Attachment</button>
+            <button className={"btn btn-primary"} type="button" onClick={onAddNote}>
               Add Note
             </button>
           </div>
@@ -1155,7 +1155,7 @@ function LookMorePanel({ onClose, onSelect }) {
       <div className={styles.lookMorePanel}><motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={mot.panel} style={{ height: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div className={styles.connectPanelHeader}>
           <span className={styles.connectPanelTitle}>Search for connections</span>
-          <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onClose}>Close</button>
+          <button className={"btn btn-outline-secondary"} onClick={onClose}>Close</button>
         </div>
 
         <div className={styles.connectPanelBody}>
@@ -1171,7 +1171,7 @@ function LookMorePanel({ onClose, onSelect }) {
                 onChange={e => setNameQuery(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleSearch()}
               />
-              <button className={`${styles.btn} ${styles.btnFilled}`} style={{ height: 40, padding: '0 16px' }} onClick={handleSearch}>
+              <button className={"btn btn-primary"} style={{ height: 40, padding: '0 16px' }} onClick={handleSearch}>
                 Search
               </button>
             </div>
@@ -1188,7 +1188,7 @@ function LookMorePanel({ onClose, onSelect }) {
                 <div className={styles.searchSuggestedHeader}>
                   <span className={styles.searchSuggestedTitle}>Search Results</span>
                   <div className={styles.connActions}>
-                    <button className={`${styles.btn} ${styles.btnConnect}`} disabled={selectedIndex === null} onClick={handleConnect}>Connect</button>
+                    <button className={"btn btn-connect"} disabled={selectedIndex === null} onClick={handleConnect}>Connect</button>
                   </div>
                 </div>
                 <div className={styles.connTableWrap}>
@@ -1221,7 +1221,7 @@ function LookMorePanel({ onClose, onSelect }) {
         </div>
 
         <div className={styles.connectPanelFooter}>
-          <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onClose}>Cancel</button>
+          <button className={"btn btn-outline-secondary"} onClick={onClose}>Cancel</button>
         </div>
       </motion.div></div>
     </>
@@ -1260,7 +1260,7 @@ function RenewalDetailsPanel({ renewalDate, renewalDescription, onClose }) {
       >
         <div className={styles.connectPanelHeader}>
           <span className={styles.connectPanelTitle}>Renewal Details</span>
-          <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onClose}>Close</button>
+          <button className={"btn btn-outline-secondary"} onClick={onClose}>Close</button>
         </div>
 
         <div className={styles.renewalDetailsBody}>
@@ -1282,7 +1282,7 @@ function RenewalDetailsPanel({ renewalDate, renewalDescription, onClose }) {
               </table>
               <div className={styles.connectPanelFooter} style={{ paddingInline: 0, borderTop: 'none', marginTop: 16 }}>
                 <button
-                  className={`${styles.btn} ${styles.btnFilled}`}
+                  className={"btn btn-primary"}
                   onClick={() => setShowForm(true)}
                 >Set New Renewal Date</button>
               </div>
@@ -1324,17 +1324,17 @@ function RenewalDetailsPanel({ renewalDate, renewalDescription, onClose }) {
           {showForm ? (
             <>
               <button
-                className={`${styles.btn} ${styles.btnOutline}`}
+                className={"btn btn-outline-secondary"}
                 onClick={() => setShowForm(false)}
               >Cancel</button>
               <button
-                className={`${styles.btn} ${styles.btnFilled}`}
+                className={"btn btn-primary"}
                 disabled={!canSave}
                 onClick={onClose}
               >Save</button>
             </>
           ) : (
-            <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onClose}>Cancel</button>
+            <button className={"btn btn-outline-secondary"} onClick={onClose}>Cancel</button>
           )}
         </div>
       </motion.div>
@@ -1372,7 +1372,7 @@ function StatusPanel({ currentStatus, renewalDate, canRenew, renewalInProgress, 
           <div className={styles.statusPanelSectionLabel}>Current Status</div>
           <div className={styles.statusPanelOptions}>
             <div className={styles.statusOption}>
-              <div className={`${styles.badge} ${styles[cls]}`}>
+              <div className={`badge ${cls}`}>
                 {display ?? currentStatus}
                 <span className="material-icons-outlined" style={{ fontSize: 16 }}>{icon}</span>
               </div>
@@ -1391,14 +1391,14 @@ function StatusPanel({ currentStatus, renewalDate, canRenew, renewalInProgress, 
 
         <div className={styles.statusPanelFooter}>
           {systemRenewalRequired && (
-            <button className={`${styles.btn} ${styles.btnOutline} ${styles.btnDanger}`} onClick={onCancelRenewal}>Cancel Renewal</button>
+            <button className={"btn btn-outline-danger"} onClick={onCancelRenewal}>Cancel Renewal</button>
           )}
           {!systemRenewalRequired && renewalDate && canRenew && (
             renewalInProgress
-              ? <button className={`${styles.btn} ${styles.btnOutline} ${styles.btnDanger}`} onClick={onCancelRenewal}>Cancel Renewal</button>
-              : <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onRenewal}>Start Renewal</button>
+              ? <button className={"btn btn-outline-danger"} onClick={onCancelRenewal}>Cancel Renewal</button>
+              : <button className={"btn btn-outline-secondary"} onClick={onRenewal}>Start Renewal</button>
           )}
-          <button className={`${styles.btn} ${styles.btnFilled}`} onClick={onDecline}>Decline</button>
+          <button className={"btn btn-primary"} onClick={onDecline}>Decline</button>
         </div>
       </motion.div>
     </>
@@ -1464,9 +1464,9 @@ function DeclinePanel({ onClose, onSave }) {
         </div>
 
         <div className={styles.statusPanelFooter}>
-          <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onClose}>Cancel</button>
+          <button className={"btn btn-outline-secondary"} onClick={onClose}>Cancel</button>
           <button
-            className={`${styles.btn} ${styles.btnFilled}`}
+            className={"btn btn-primary"}
             disabled={!reason.trim()}
             onClick={onSave}
           >

@@ -120,7 +120,7 @@ export default function ProfileEdit() {
                   const statusLabel = profile.currentStatus?.label ?? 'Pending Approval';
                   const { cls, icon } = STATUS_CONFIG[statusLabel] ?? STATUS_CONFIG['Pending Approval'];
                   return (
-                    <div className={`${profileStyles.badge} ${profileStyles[cls]} ${profileStyles.badgeBtn}`}>
+                    <div className={`badge ${cls} badge-btn`}>
                       {statusLabel}
                       <span className="material-icons-outlined" style={{ fontSize: 16 }}>{icon}</span>
                     </div>
@@ -129,7 +129,7 @@ export default function ProfileEdit() {
               </div>
               <div className={profileStyles.tpBadgeGroup}>
                 <div className={profileStyles.tpBadgeLabel}>Risk level:</div>
-                <div className={`${profileStyles.badge} ${profileStyles['badge' + profile.riskLevel.level.charAt(0).toUpperCase() + profile.riskLevel.level.slice(1)]} ${profileStyles.badgeBtn}`}>
+                <div className={`badge badge-${profile.riskLevel.level} badge-btn`}>
                   {profile.riskLevel.label}
                   <RiskLevelIcon level={profile.riskLevel.level} size={16} />
                 </div>
@@ -334,9 +334,9 @@ export default function ProfileEdit() {
 
             {/* Footer */}
             <div className={styles.formFooter}>
-              <button className={`${profileStyles.btn} ${profileStyles.btnOutline} ${profileStyles.btnDanger}`}>Delete</button>
-              <button className={`${profileStyles.btn} ${profileStyles.btnOutline}`} onClick={handleCancel}>Cancel</button>
-              <button className={`${profileStyles.btn} ${profileStyles.btnFilled}`} onClick={handleSave}>Save</button>
+              <button className="btn btn-outline-secondary">Delete</button>
+              <button className="btn btn-outline-secondary" onClick={handleCancel}>Cancel</button>
+              <button className="btn btn-primary" onClick={handleSave}>Save</button>
             </div>
           </div>
         </main>

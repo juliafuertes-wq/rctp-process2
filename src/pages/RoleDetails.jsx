@@ -267,15 +267,15 @@ export default function RoleDetails() {
           <div className={styles.headerActions}>
             {isEditing ? (
               <>
-                <button className={`${styles.btn} ${styles.btnOutline}`} onClick={handleCancel}>Cancel</button>
-                <button className={`${styles.btn} ${styles.btnOutline} ${styles.btnDanger}`} onClick={handleDelete}>Delete</button>
-                <button className={`${styles.btn} ${styles.btnOutline} ${styles.btnFilled}`} onClick={handleSave}>Save and close</button>
-                <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleSave}>Save</button>
+                <button className="btn btn-outline-secondary" onClick={handleCancel}>Cancel</button>
+                <button className="btn btn-outline-secondary" onClick={handleDelete}>Delete</button>
+                <button className="btn btn-primary" onClick={handleSave}>Save and close</button>
+                <button className="btn btn-primary" onClick={handleSave}>Save</button>
               </>
             ) : (
               <>
-                <button className={`${styles.btn} ${styles.btnOutline}`} onClick={() => navigate('/company-admin/roles')}>Back</button>
-                <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleEdit}>Edit</button>
+                <button className={"btn btn-outline-secondary"} onClick={() => navigate('/company-admin/roles')}>Back</button>
+                <button className={"btn btn-primary"} onClick={handleEdit}>Edit</button>
               </>
             )}
           </div>

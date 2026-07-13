@@ -284,9 +284,9 @@ export default function RenewalEdit() {
             <span className={styles.versionMeta}>— Version {version || 47}, Last Updated 11 Feb 2025, by Claudio Merino</span>
           </div>
           <div className={styles.expirationsActions}>
-            <button className={styles.btnOutline} onClick={() => navigate('/settings/general/renewals')}>Back</button>
-            <button className={styles.btnFilled}>Save</button>
-            <button className={styles.btnFilled}>Publish</button>
+            <button className="btn btn-outline-secondary" onClick={() => navigate('/settings/general/renewals')}>Back</button>
+            <button className="btn btn-primary">Save</button>
+            <button className="btn btn-primary">Publish</button>
           </div>
         </div>
       </div>

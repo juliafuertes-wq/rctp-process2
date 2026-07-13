@@ -48,21 +48,21 @@ export default function ProfileInternalDueDiligence() {
 
             <div className={secStyles.cardHeader}>
               <div className={secStyles.cardTitleRow}>
-                <span className={`${styles.btn} ${styles.btnFilled}`} style={{ minWidth: 28, padding: '0 10px', pointerEvents: 'none' }}>1</span>
+                <span className={"btn btn-primary"} style={{ minWidth: 28, padding: '0 10px', pointerEvents: 'none' }}>1</span>
                 <h2 className={styles.cardTitle}>DD Internal</h2>
               </div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleSubmit}>Submit</button>
-                <button className={`${styles.btn} ${styles.btnOutline}`}>Notes</button>
-                <button className={`${styles.btn} ${styles.btnOutline}`}>Reassign</button>
-                <button className={`${styles.btn} ${styles.btnOutline}`}>Properties</button>
+                <button className={"btn btn-primary"} onClick={handleSubmit}>Submit</button>
+                <button className={"btn btn-outline-secondary"}>Notes</button>
+                <button className={"btn btn-outline-secondary"}>Reassign</button>
+                <button className={"btn btn-outline-secondary"}>Properties</button>
                 <button
-                  className={`${styles.btn} ${styles.btnOutline}`}
+                  className={"btn btn-outline-secondary"}
                   onClick={() => navigate(`/profile/${profile.id}/due-diligence`)}
                 >
                   Cancel
                 </button>
-                <button className={`${styles.btn} ${styles.btnOutline}`}>Save</button>
+                <button className={"btn btn-outline-secondary"}>Save</button>
               </div>
             </div>
 

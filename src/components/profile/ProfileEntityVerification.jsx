@@ -68,7 +68,7 @@ export default function ProfileEntityVerification() {
                 </h2>
               </div>
               <div className={uboStyles.actions}>
-                <button className={`${styles.btn} ${styles.btnFilled}`}>Verify Entity</button>
+                <button className={"btn btn-primary"}>Verify Entity</button>
               </div>
             </div>
 

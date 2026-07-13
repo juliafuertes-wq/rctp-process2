@@ -40,7 +40,7 @@ const ROWS = [
 function StatusBadge({ status }) {
   const isReg = status === 'Registered';
   return (
-    <span className={`${styles.statusBadge} ${isReg ? styles.statusRegistered : styles.statusNotRegistered}`}>
+    <span className={`badge ${isReg ? 'badge-registered' : 'badge-not-registered'}`}>
       {status}
     </span>
   );

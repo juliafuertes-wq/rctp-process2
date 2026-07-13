@@ -1,36 +1,25 @@
-import styles from './Badge.module.css';
+const STYLE_MAP = {
+  'action-required': 'badge-action-required',
+  'no-action':       'badge-no-action',
+  'incomplete':      'badge-incomplete',
+  'not-initiated':   'badge-not-initiated',
+  'completed':       'badge-completed',
+  'confirmed':       'badge-confirmed',
+  'cleared':         'badge-cleared',
+};
 
-/**
- * props:
- *   label    string | number          (shown on large sizes only)
- *   style    'action-required' | 'no-action' | 'incomplete' | 'not-initiated' | 'completed' | 'confirmed' | 'cleared'
- *   size     'large' | 'medium' | 'small'   (default: 'large')
- *   shape    'round' | 'square'             (default: 'round', only applies to large)
- *   bgColor  string  optional — overrides the style-based background color
- *   textColor string optional — overrides the text color
- */
 export default function Badge({ label = '12', style = 'action-required', size = 'large', shape = 'round', bgColor, textColor }) {
-  const styleClass = bgColor ? '' : ({
-    'action-required': styles.actionRequired,
-    'no-action':       styles.noAction,
-    'incomplete':      styles.incomplete,
-    'not-initiated':   styles.notInitiated,
-    'completed':       styles.completed,
-    'confirmed':       styles.confirmed,
-    'cleared':         styles.cleared,
-  }[style] || styles.actionRequired);
+  const styleClass = bgColor ? '' : (STYLE_MAP[style] || 'badge-action-required');
 
-  const sizeClass = size === 'small' ? styles.small
-    : size === 'medium' ? styles.medium
-    : shape === 'square' ? styles.largeSquare
-    : styles.largeRound;
-
-  const lightText = !bgColor && (style === 'completed' || style === 'not-initiated' || style === 'incomplete');
+  const sizeClass = size === 'small' ? 'badge-dot'
+    : size === 'medium' ? 'badge-dot-md'
+    : shape === 'square' ? 'badge-lg badge-square'
+    : 'badge-lg badge-round';
 
   const inlineStyle = bgColor ? { background: bgColor, color: textColor || '#fff' } : undefined;
 
   return (
-    <span className={`${styles.badge} ${styleClass} ${sizeClass} ${lightText ? styles.textDark : styles.textLight}`} style={inlineStyle}>
+    <span className={`badge ${styleClass} ${sizeClass}`} style={inlineStyle}>
       {size === 'large' && label}
     </span>
   );

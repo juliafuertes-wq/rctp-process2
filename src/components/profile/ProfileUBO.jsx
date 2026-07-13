@@ -75,7 +75,7 @@ export default function ProfileUBO() {
               <div className={uboStyles.actions}>
                 <button className={uboStyles.btnSkip} onClick={() => isWaystar && navigate(`/profile/${profileId}/risk-mitigation`)}>Skip</button>
                 <button className={uboStyles.btnView}>View</button>
-                <button className={`${styles.btn} ${styles.btnFilled}`}>Get UBO Information</button>
+                <button className={"btn btn-primary"}>Get UBO Information</button>
               </div>
             </div>
 

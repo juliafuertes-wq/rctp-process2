@@ -79,7 +79,7 @@ export default function ProfileAudit() {
                 <span className={auditStyles.resultCount}>
                   Showing results 1 – {filtered.length} of {filtered.length}
                 </span>
-                <button className={`${styles.btn} ${styles.btnOutline} ${auditStyles.printBtn}`}>
+                <button className={`btn btn-outline-secondary ${auditStyles.printBtn}`}>
                   <span className="material-icons-outlined" style={{ fontSize: 15 }}>print</span>
                   Print
                 </button>
@@ -123,7 +123,7 @@ export default function ProfileAudit() {
                 onChange={e => setFilterSummary(e.target.value)}
               />
 
-              <button className={`${styles.btn} ${styles.btnFilled}`} style={{ height: 32, fontSize: 12, padding: '0 14px' }}>
+              <button className={"btn btn-primary"} style={{ height: 32, fontSize: 12, padding: '0 14px' }}>
                 Filter
               </button>
 

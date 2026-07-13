@@ -187,11 +187,11 @@ function StagesPanel() {
         <div className={styles.contentActions}>
           {isEditing ? (
             <>
-              <button className={`${styles.btn} ${styles.btnOutline}`} onClick={handleCancel}>Cancel</button>
-              <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleSave}>Save</button>
+              <button className={"btn btn-outline-secondary"} onClick={handleCancel}>Cancel</button>
+              <button className={"btn btn-primary"} onClick={handleSave}>Save</button>
             </>
           ) : (
-            <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleEdit}>Edit</button>
+            <button className={"btn btn-primary"} onClick={handleEdit}>Edit</button>
           )}
         </div>
       </div>
@@ -221,7 +221,7 @@ function StagesPanel() {
         </div>
         <div className={styles.stagesFooterBadge}>
           <div
-            className={`${styles.stagesBadge}${approvalAutoStart ? ' ' + styles.stagesBadgeActive : ' ' + styles.stagesBadgeInactive}`}
+            className={`badge ${approvalAutoStart ? 'badge-stages-active' : 'badge-stages-inactive'}`}
             onClick={() => isEditing && setApprovalAutoStart(v => !v)}
             style={{ cursor: isEditing ? 'pointer' : 'default' }}
           >
@@ -283,11 +283,11 @@ function CurrencyApprovalGroupsPanel() {
           </div>
           {isEditing ? (
             <>
-              <button className={`${styles.btn} ${styles.btnOutline}`} onClick={handleCancel}>Cancel</button>
-              <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleSave}>Save</button>
+              <button className={"btn btn-outline-secondary"} onClick={handleCancel}>Cancel</button>
+              <button className={"btn btn-primary"} onClick={handleSave}>Save</button>
             </>
           ) : (
-            <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleEdit}>Edit</button>
+            <button className={"btn btn-primary"} onClick={handleEdit}>Edit</button>
           )}
         </div>
       </div>

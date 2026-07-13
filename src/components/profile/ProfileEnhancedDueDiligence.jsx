@@ -94,7 +94,7 @@ export default function ProfileEnhancedDueDiligence() {
                 <h2 className={styles.cardTitle}>Enhanced Due Diligence Reports</h2>
                 <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', cursor: 'pointer' }}>info</span>
               </div>
-              <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleCreateReport}>
+              <button className={"btn btn-primary"} onClick={handleCreateReport}>
                 Create New Report
               </button>
             </div>

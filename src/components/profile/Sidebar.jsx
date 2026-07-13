@@ -79,7 +79,7 @@ function ExternalDDModal({ profileId, onClose, onAfterSend }) {
         </div>
         <div className={styles.deleteModalActions}>
           <button className={`${styles.deleteModalBtn} ${styles.deleteModalCancel}`} onClick={onClose}>Close</button>
-          <button className={`${styles.deleteModalBtn} ${styles.btnFilled}`} onClick={handleSend}>Send Invite</button>
+          <button className={`${styles.deleteModalBtn} btn btn-primary`} onClick={handleSend}>Send Invite</button>
         </div>
       </motion.div>
     </motion.div>

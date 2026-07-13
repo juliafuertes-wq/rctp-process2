@@ -89,14 +89,14 @@ export default function ProfileApprovalStage() {
               <div className={s.actionBar}>
                 <div className={s.actionLeft}>
                   <button
-                    className={`${styles.btn} ${styles.btnFilled}`}
+                    className={"btn btn-primary"}
                     onClick={handleApproved}
                     disabled={!isReady || currentStageDone}
                   >
                     Approved
                   </button>
                   <button
-                    className={`${styles.btn} ${styles.btnOutline}`}
+                    className={"btn btn-outline-secondary"}
                     style={{ color: 'var(--alert-500)', borderColor: 'var(--alert-500)' }}
                     onClick={handleNotApproved}
                     disabled={!isReady || currentStageDone}
@@ -105,11 +105,11 @@ export default function ProfileApprovalStage() {
                   </button>
                 </div>
                 <div className={s.actionRight}>
-                  <button className={`${styles.btn} ${styles.btnOutline}`}>Notes</button>
-                  <button className={`${styles.btn} ${styles.btnOutline}`}>Reassign</button>
-                  <button className={`${styles.btn} ${styles.btnOutline}`}>Properties</button>
-                  <button className={`${styles.btn} ${styles.btnOutline}`} onClick={() => navigate(`/profile/${profileId}/approval`)}>Cancel</button>
-                  <button className={`${styles.btn} ${styles.btnOutline}`}>Save</button>
+                  <button className={"btn btn-outline-secondary"}>Notes</button>
+                  <button className={"btn btn-outline-secondary"}>Reassign</button>
+                  <button className={"btn btn-outline-secondary"}>Properties</button>
+                  <button className={"btn btn-outline-secondary"} onClick={() => navigate(`/profile/${profileId}/approval`)}>Cancel</button>
+                  <button className={"btn btn-outline-secondary"}>Save</button>
                 </div>
               </div>
 

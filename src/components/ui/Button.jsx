@@ -4,7 +4,7 @@ export default function Button({ variant = 'outline', size = 'md', children, ico
     outline: 'btn btn-outline-secondary',
     text:    'btn btn-link',
     soft:    'btn btn-soft',
-    ghost:   'btn btn-link text-muted',
+    ghost:   'btn btn-link',
   }[variant] ?? 'btn btn-outline-secondary';
 
   const sizeClass = {

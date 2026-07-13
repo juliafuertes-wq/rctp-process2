@@ -74,23 +74,23 @@ export default function ProfileRiskAssessmentQuestionnaire() {
             <div className={raStyles.raHeaderActions}>
               <div className={raStyles.raNavGroup}>
                 <button
-                  className={`${styles.btn} ${styles.btnOutline}`}
+                  className={"btn btn-outline-secondary"}
                   onClick={() => navigate(`/profile/${profile.id}/risk-assessment`)}
                 >
                   <span className="material-icons-outlined" style={{ fontSize: 16, marginRight: 4 }}>chevron_left</span>
                   Previous
                 </button>
-                <button className={`${styles.btn} ${styles.btnFilled}`} onClick={handleNext}>
+                <button className={"btn btn-primary"} onClick={handleNext}>
                   Next
                   <span className="material-icons-outlined" style={{ fontSize: 16, marginLeft: 4 }}>chevron_right</span>
                 </button>
               </div>
               <div className={raStyles.raActionGroup}>
-                <button className={`${styles.btn} ${styles.btnOutline}`}>Notes</button>
-                <button className={`${styles.btn} ${styles.btnOutline}`}>Reassign</button>
-                <button className={`${styles.btn} ${styles.btnOutline}`}>Properties</button>
+                <button className={"btn btn-outline-secondary"}>Notes</button>
+                <button className={"btn btn-outline-secondary"}>Reassign</button>
+                <button className={"btn btn-outline-secondary"}>Properties</button>
                 <button
-                  className={`${styles.btn} ${styles.btnOutline}`}
+                  className={"btn btn-outline-secondary"}
                   onClick={() => navigate(`/profile/${profile.id}/risk-assessment`)}
                 >
                   Cancel

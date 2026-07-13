@@ -36,7 +36,7 @@ export default function Chip({
 
       {/* count badge — shown whenever count is provided, including 0 */}
       {count != null && (
-        <span className={styles.countBadge}>{count}</span>
+        <span className="badge badge-count">{count}</span>
       )}
 
       {/* close icon — only shown when unselected, no count, and showClose=true */}

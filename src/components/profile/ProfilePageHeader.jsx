@@ -5,12 +5,12 @@ import { RiskLevelIcon } from './profileAssets';
 import styles from './profile.module.css';
 
 export const STATUS_CONFIG = {
-  'Pending Approval':             { cls: 'statusPendingApproval', icon: 'pending' },
-  'Approved':                     { cls: 'statusApproved',        icon: 'check_circle' },
-  'Not Approved':                 { cls: 'statusNotApproved',     icon: 'dangerous' },
-  'Declined':                     { cls: 'statusDeclined',        icon: 'feedback' },
-  'Approved*':                    { cls: 'statusExpired',         icon: 'history_toggle_off' },
-  'Approved - Renewal Required': { cls: 'statusExpired',         icon: 'history_toggle_off' },
+  'Pending Approval':             { cls: 'badge-pending',      icon: 'pending' },
+  'Approved':                     { cls: 'badge-approved',     icon: 'check_circle' },
+  'Not Approved':                 { cls: 'badge-not-approved', icon: 'dangerous' },
+  'Declined':                     { cls: 'badge-declined',     icon: 'feedback' },
+  'Approved*':                    { cls: 'badge-expired',      icon: 'history_toggle_off' },
+  'Approved - Renewal Required': { cls: 'badge-expired',      icon: 'history_toggle_off' },
 };
 
 export default function ProfilePageHeader({ profile: profileProp }) {
@@ -30,8 +30,7 @@ export default function ProfilePageHeader({ profile: profileProp }) {
     : profile.riskLevel?.level === 'medium' ? ' ' + styles.tpTopStripMedium
     : ' ' + styles.tpTopStripLow;
 
-  const riskCapCls = 'badge' + (profile.riskLevel?.level ?? 'low').charAt(0).toUpperCase()
-    + (profile.riskLevel?.level ?? 'low').slice(1);
+  const riskCapCls = 'badge-' + (profile.riskLevel?.level ?? 'low');
 
   return (
     <div
@@ -52,7 +51,7 @@ export default function ProfilePageHeader({ profile: profileProp }) {
           <div className={styles.tpBadges}>
             <div className={styles.tpBadgeGroup}>
               <div className={styles.tpBadgeLabel}>Current status:</div>
-              <div className={`${styles.badge} ${styles[cls]} ${styles.badgeBtn}`}>
+              <div className={`badge ${cls} badge-btn`}>
                 {statusLabel}
                 <span className="material-icons-outlined" style={{ fontSize: 16 }}>{icon}</span>
               </div>
@@ -60,7 +59,7 @@ export default function ProfilePageHeader({ profile: profileProp }) {
             <div className={styles.tpBadgeGroup}>
               <div className={styles.tpBadgeLabel}>Risk level:</div>
               <Link to={`/profile/${profile.id}/risk-report`} style={{ textDecoration: 'none' }}>
-                <div className={`${styles.badge} ${styles[riskCapCls]} ${styles.badgeBtn}`}>
+                <div className={`badge ${riskCapCls} badge-btn`}>
                   {profile.riskLevel?.label}
                   <RiskLevelIcon level={profile.riskLevel?.level} />
                 </div>

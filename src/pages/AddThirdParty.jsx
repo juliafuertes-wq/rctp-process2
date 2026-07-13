@@ -422,7 +422,7 @@ export default function AddThirdParty() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 12, marginTop: 16 }}>
             {!tpType && <p className={styles.helperText} style={{ margin: 0 }}>Please select a Third Party Type and name before continue.</p>}
             <button
-              className={styles.btnFilled}
+              className="btn btn-primary"
               disabled={!tpType || !tpName.trim()}
               onClick={handleContinue}
               style={{ flexShrink: 0 }}
@@ -469,7 +469,7 @@ export default function AddThirdParty() {
                     <td>{r.owner}</td>
                     <td>{r.bu}</td>
                     <td>{r.process}</td>
-                    <td><span className={styles.statusBadge}>{r.status}</span></td>
+                    <td><span className="badge badge-pending">{r.status}</span></td>
                     <td>{r.ref}</td>
                     <td>{r.active}</td>
                     <td><button className={styles.moreBtn} onClick={() => setPropsPanel(r.name)}>View properties</button></td>
@@ -480,10 +480,10 @@ export default function AddThirdParty() {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 12, marginTop: 20 }}>
-            <button className={styles.btnOutline} onClick={() => setShowCancelModal(true)}>
+            <button className="btn btn-outline-secondary" onClick={() => setShowCancelModal(true)}>
               Cancel creation
             </button>
-            <button className={styles.btnFilled} onClick={() => {
+            <button className="btn btn-primary" onClick={() => {
               setDupConfirmed(true);
               const scrollTarget = tpType === 'entity' ? entityVerifyRef : summaryRef;
               setTimeout(() => scrollTarget.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 400);
@@ -519,7 +519,7 @@ export default function AddThirdParty() {
                 If you select an entity, corresponding properties will be prepopulated within the Third Party record.
               </p>
               <button
-                className={styles.btnFilled}
+                className="btn btn-primary"
                 onClick={() => setShowVerify(true)}
               >
                 <span className="material-icons-outlined" style={{ fontSize: 16 }}>verified</span>
@@ -544,7 +544,7 @@ export default function AddThirdParty() {
               </div>
               <div className={styles.resultsHeader}>
                 <span><strong>{filteredVerify.length}</strong> {filteredVerify.length === 1 ? 'result' : 'results'} found</span>
-                <span className={styles.sourceBadge}><span className="material-icons-outlined" style={{ fontSize: 12 }}>verified</span> Dun &amp; Bradstreet</span>
+                <span className="badge badge-source"><span className="material-icons-outlined" style={{ fontSize: 12 }}>verified</span> Dun &amp; Bradstreet</span>
               </div>
               {filteredVerify.length === 0 ? (
                 <div className={styles.emptyVerify}>No entities were found matching your search criteria.</div>
@@ -823,7 +823,7 @@ export default function AddThirdParty() {
           <div className={styles.sectionHeading}>
             <span>Onboarding Details</span>
             <div className={styles.sectionHeadingActions}>
-              <button className={styles.btnOutline} onClick={() => setShowLanguagePanel(true)}>
+              <button className="btn btn-outline-secondary" onClick={() => setShowLanguagePanel(true)}>
                 Questionnaire Language{obLanguage ? `: ${obLanguage}` : ''}
                 <span className="material-icons-outlined" style={{ fontSize: 16 }}>translate</span>
               </button>
@@ -1023,8 +1023,8 @@ export default function AddThirdParty() {
           exit={{ opacity: 0, y: 18 }}
           transition={{ ...mot.section, delay: 0.1 }}
         >
-          <a href="#" className={styles.btnOutline} onClick={handleCancel}>Cancel Creation</a>
-          <button className={styles.btnFilled} onClick={handleCreate}>
+          <a href="#" className="btn btn-outline-secondary" onClick={handleCancel}>Cancel Creation</a>
+          <button className="btn btn-primary" onClick={handleCreate}>
             Complete Creation
           </button>
         </motion.div>
@@ -1130,7 +1130,7 @@ function LanguagePanel({ selected, onSelect, onClose }) {
       <div className={styles.langPanel}><motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={mot.panel} style={{ height: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div className={styles.langPanelHeader}>
           <h5 className={styles.langPanelTitle}>Choose Language</h5>
-          <button className={styles.btnOutline} onClick={onClose}>Close</button>
+          <button className="btn btn-outline-secondary" onClick={onClose}>Close</button>
         </div>
         <div className={styles.langSearchRow}>
           <input
@@ -1140,7 +1140,7 @@ function LanguagePanel({ selected, onSelect, onClose }) {
             value={search}
             onChange={e => setSearch(e.target.value)}
           />
-          {selected && <span className={styles.langSelectedBadge}>{selected}</span>}
+          {selected && <span className="badge badge-lang-selected">{selected}</span>}
         </div>
         <div className={styles.langDivider} />
         <div className={styles.langList}>
@@ -1183,7 +1183,7 @@ function NotesPanel({ notes, noteText, onNoteTextChange, onAddNote, onClose }) {
       <div className={styles.notesPanel}><motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={mot.panel} style={{ height: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div className={styles.notesPanelHeader}>
           <h5 className={styles.notesPanelTitle}>Note - Onboarding / Available Threads</h5>
-          <button className={styles.btnOutline} onClick={onClose}>Close</button>
+          <button className="btn btn-outline-secondary" onClick={onClose}>Close</button>
         </div>
         <div className={styles.notesPanelContent}>
           {notes.length === 0
@@ -1211,10 +1211,10 @@ function NotesPanel({ notes, noteText, onNoteTextChange, onAddNote, onClose }) {
             onChange={e => onNoteTextChange(e.target.value)}
           />
           <div className={styles.notesActions}>
-            <button className={styles.btnOutline} type="button">Include Internal User</button>
-            <button className={styles.btnOutline} type="button">Include External User</button>
-            <button className={styles.btnOutline} type="button">Add Attachment</button>
-            <button className={styles.btnFilled} type="button" onClick={onAddNote}>
+            <button className="btn btn-outline-secondary" type="button">Include Internal User</button>
+            <button className="btn btn-outline-secondary" type="button">Include External User</button>
+            <button className="btn btn-outline-secondary" type="button">Add Attachment</button>
+            <button className="btn btn-primary" type="button" onClick={onAddNote}>
               Add Note
             </button>
           </div>
@@ -1275,7 +1275,7 @@ function PropertiesPanel({ name, onClose }) {
       <div className={styles.propsPanel}><motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={mot.panel} style={{ height: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div className={styles.propsPanelHeader}>
           <span className={styles.propsPanelTitle}>Properties — <span style={{ fontWeight: 400 }}>{name}</span></span>
-          <button className={styles.btnOutline} onClick={onClose}>Close</button>
+          <button className="btn btn-outline-secondary" onClick={onClose}>Close</button>
         </div>
         <div className={styles.propsPanelFilters}>
           <div>
@@ -1342,7 +1342,7 @@ function CancelModal({ onStay, onLeave }) {
           </div>
         </div>
         <div className={styles.cancelModalFooter}>
-          <button className={styles.btnOutline} onClick={onStay}>Stay on Page</button>
+          <button className="btn btn-outline-secondary" onClick={onStay}>Stay on Page</button>
           <a href="#/third-parties" className={styles.cancelModalConfirm} onClick={onLeave}>Yes, Cancel</a>
         </div>
       </motion.div>

@@ -15,19 +15,6 @@
   gap: 6px;
 }
 
-/* Chip style — matches AddThirdParty duplicate check "Current Status" badge exactly */
-.statusBadge {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 8px;
-  border-radius: var(--rctp-radius-xs);
-  font-size: 11px;
-  font-weight: 600;
-  background: var(--neutral-50);
-  color: var(--text-normal);
-  white-space: nowrap;
-}
-
 .emptyValue {
   color: var(--text-light);
 }

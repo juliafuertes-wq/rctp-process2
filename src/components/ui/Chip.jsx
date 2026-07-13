@@ -1,17 +1,3 @@
-import styles from './Chip.module.css';
-
-/**
- * Input Chip — matches Figma node 90:1605 (RCTP Styles & Components)
- *
- * Props:
- *   label        string                           chip label
- *   selected     boolean                          selected state
- *   count        number | null                    trailing count badge (shown when > 0)
- *   showClose    boolean                          show trailing × close icon (unselected only)
- *   onClick      () => void                       chip click handler
- *   onClose      () => void                       close icon click handler (optional)
- *   disabled     boolean
- */
 export default function Chip({
   label,
   selected = false,
@@ -28,21 +14,19 @@ export default function Chip({
   return (
     <button
       type="button"
-      className={`${styles.chip} ${selected ? styles.selected : styles.unselected} ${disabled ? styles.disabled : ''}`}
+      className={`chip ${selected ? 'chip-selected' : ''} ${disabled ? 'chip-disabled' : ''}`}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
     >
-      <span className={styles.label}>{label}</span>
+      <span>{label}</span>
 
-      {/* count badge — shown whenever count is provided, including 0 */}
       {count != null && (
         <span className="badge badge-count">{count}</span>
       )}
 
-      {/* close icon — only shown when unselected, no count, and showClose=true */}
       {!selected && showClose && count == null && (
         <span
-          className={`material-icons-outlined ${styles.closeIcon}`}
+          className={`material-icons-outlined chip-close-icon`}
           onClick={e => {
             e.stopPropagation();
             onClose?.();

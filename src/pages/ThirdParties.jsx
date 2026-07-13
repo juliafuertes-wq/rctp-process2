@@ -125,7 +125,7 @@ export default function ThirdParties() {
                     {row.tag && (
                       <div className={styles.tagList}>
                         {row.tag.split(',').map(t => t.trim()).filter(Boolean).map(t => (
-                          <span key={t} className={styles.tag}>{t}</span>
+                          <span key={t} className="tag">{t}</span>
                         ))}
                       </div>
                     )}

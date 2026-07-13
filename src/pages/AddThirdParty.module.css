@@ -38,9 +38,6 @@
 .tagSelectTrigger { display: flex; align-items: center; justify-content: space-between; height: 34px; border: 1px solid var(--neutral-300); border-radius: var(--rctp-radius-xs); padding: 0 10px; cursor: pointer; background: var(--neutral-00); }
 .tagSelectTrigger:hover { border-color: var(--primary-500); }
 .tagChips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.tagChip { display: inline-flex; align-items: center; background: var(--text-light); border: 1px solid var(--neutral-800); border-radius: var(--rctp-radius-sm); height: 24px; overflow: hidden; padding: 0 4px 0 8px; gap: 8px; font-size: 14px; font-weight: 400; color: var(--neutral-00); }
-.tagChip button { background: none; border: none; color: var(--neutral-00); cursor: pointer; font-size: 14px; line-height: 1; padding: 0; opacity: 0.8; display: flex; align-items: center; }
-.tagChip button:hover { opacity: 1; }
 
 /* ── Info tooltip ── */
 .infoTip { position: relative; display: inline-flex; align-items: center; margin-left: 4px; color: var(--text-light); vertical-align: middle; cursor: help; }

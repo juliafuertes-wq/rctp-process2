@@ -721,7 +721,7 @@ export default function AddThirdParty() {
                   {tags.length > 0 && (
                     <div className={styles.tagChips}>
                       {tags.map(t => (
-                        <span key={t} className={styles.tagChip}>{t}<button onClick={() => toggleTag(t)}>×</button></span>
+                        <span key={t} className="chip-tag">{t}<button onClick={() => toggleTag(t)}>×</button></span>
                       ))}
                     </div>
                   )}

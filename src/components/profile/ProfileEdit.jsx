@@ -191,7 +191,7 @@ export default function ProfileEdit() {
                   </div>
                   {owner && (
                     <div className={styles.tagChips}>
-                      <span className={styles.tagChip}>{owner}<button onClick={() => setOwner('')}>&times;</button></span>
+                      <span className="chip-tag">{owner}<button onClick={() => setOwner('')}>&times;</button></span>
                     </div>
                   )}
                 </div>
@@ -207,7 +207,7 @@ export default function ProfileEdit() {
                     {businessUnits.length > 0 && (
                       <div className={styles.tagChips}>
                         {businessUnits.map(b => (
-                          <span key={b} className={styles.tagChip}>{b}<button onClick={() => removeBu(b)}>&times;</button></span>
+                          <span key={b} className="chip-tag">{b}<button onClick={() => removeBu(b)}>&times;</button></span>
                         ))}
                       </div>
                     )}
@@ -235,7 +235,7 @@ export default function ProfileEdit() {
                     {tags.length > 0 && (
                       <div className={styles.tagChips}>
                         {tags.map(t => (
-                          <span key={t} className={styles.tagChip}>{t}<button onClick={() => toggleTag(t)}>&times;</button></span>
+                          <span key={t} className="chip-tag">{t}<button onClick={() => toggleTag(t)}>&times;</button></span>
                         ))}
                       </div>
                     )}

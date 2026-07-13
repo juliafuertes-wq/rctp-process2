@@ -2209,24 +2209,6 @@
   margin-bottom: 24px;
 }
 /* ── Decline panel ── */
-.declineStatusChip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--neutral-400);
-  border: 1px solid var(--neutral-400);
-  opacity: 0.65;
-  padding: 6px 16px;
-  border-radius: var(--rctp-radius-xs);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--text-normal);
-  margin-bottom: 20px;
-  width: 100%;
-}
-
 .declineFieldLabel {
   font-size: 11px;
   font-weight: 500;
@@ -2977,19 +2959,6 @@
   line-height: 1;
 }
 .navStepperRowNext .navStepperStatus { color: var(--text-light); }
-
-.navNextChip {
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--neutral-00);
-  background: var(--primary-500);
-  border-radius: var(--rctp-radius-pill);
-  padding: 1px 6px;
-  flex-shrink: 0;
-  line-height: 14px;
-}
 
 /* Sub-steps */
 .navStepperStatusRow {

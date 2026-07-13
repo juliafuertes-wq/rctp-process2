@@ -263,24 +263,6 @@
   flex-shrink: 0;
 }
 
-/* ── Risk chip (inline, matches Figma — text + icon) ── */
-.riskChip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 8px;
-  border-radius: var(--rctp-radius-xs);
-  font-size: 11px;
-  font-weight: 600;
-  white-space: nowrap;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-}
-.riskHigh    { background: var(--alert-100);   color: var(--alert-700); }
-.riskMedium  { background: var(--warning-100); color: var(--warning-900); }
-.riskLow     { background: var(--success-100); color: var(--success-900); }
-.riskUnknown { background: var(--neutral-50);  color: var(--text-light); }
-
 /* ── Screening & Monitoring Tasks layout ── */
 .smtWrap {
   padding: 0 16px 0;

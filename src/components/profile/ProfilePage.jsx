@@ -1430,7 +1430,7 @@ function DeclinePanel({ onClose, onSave }) {
 
         <div className={styles.statusPanelBody}>
           <div className={styles.statusPanelSectionLabel}>Current Status</div>
-          <div className={styles.declineStatusChip}>
+          <div className="chip-decline">
             <span>DECLINE</span>
           </div>
 

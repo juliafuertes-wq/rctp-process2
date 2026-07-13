@@ -1196,7 +1196,7 @@ export default function ComponentCatalog() {
                                 <td>{r.bu}</td>
                                 <td>
                                   <div className={styles.tagList}>
-                                    {r.tags.map(t => <span key={t} className={styles.tag}>{t}</span>)}
+                                    {r.tags.map(t => <span key={t} className="tag">{t}</span>)}
                                   </div>
                                 </td>
                                 <td>
@@ -1774,7 +1774,7 @@ export default function ComponentCatalog() {
                             </span>
                             <span className={profileStyles.navSubStepContent}>
                               <span className={profileStyles.navSubStepLabel}>Risk Assessment 2</span>
-                              <span className={profileStyles.navNextChip}>Next</span>
+                              <span className="chip-next">Next</span>
                             </span>
                           </div>
                           <div className={profileStyles.navSubStepsCloser} aria-hidden="true" />

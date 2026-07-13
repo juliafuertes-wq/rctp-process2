@@ -112,11 +112,11 @@ function StatusBadge({ status }) {
 }
 
 function RiskChip({ risk }) {
-  if (!risk) return <span className={`${styles.riskChip} ${styles.riskUnknown}`}>UNKNOWN <span className="material-icons-outlined" style={{ fontSize: 13 }}>help_outline</span></span>;
-  const map    = { high: styles.riskHigh, medium: styles.riskMedium, low: styles.riskLow };
+  if (!risk) return <span className="chip-risk chip-risk-unknown">UNKNOWN <span className="material-icons-outlined" style={{ fontSize: 13 }}>help_outline</span></span>;
+  const map    = { high: 'chip-risk-high', medium: 'chip-risk-medium', low: 'chip-risk-low' };
   const labels = { high: 'HIGH RISK', medium: 'MEDIUM RISK', low: 'LOW RISK' };
   return (
-    <span className={`${styles.riskChip} ${map[risk]}`}>
+    <span className={`chip-risk ${map[risk]}`}>
       {labels[risk]}
       <RiskLevelIcon level={risk} size={13} />
     </span>

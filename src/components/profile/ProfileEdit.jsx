@@ -100,22 +100,22 @@ export default function ProfileEdit() {
       ]} />
 
       {/* Top Strip */}
-      <div className={`${profileStyles.tpTopStrip}${profile.riskLevel.level === 'high' ? ' ' + profileStyles.tpTopStripHigh : profile.riskLevel.level === 'medium' ? ' ' + profileStyles.tpTopStripMedium : profile.riskLevel.level === 'low' ? ' ' + profileStyles.tpTopStripLow : ''}`}>
-        <div className={profileStyles.tpPageHeader}>
-          <Link to={`/profile/${profile.id}`} className={profileStyles.tpBack}>
+      <div className={`ph-strip ph-strip-${profile.riskLevel.level}`}>
+        <div className="ph-header">
+          <Link to={`/profile/${profile.id}`} className="ph-back">
             <span className="material-icons-outlined">chevron_left</span> Back
           </Link>
-          <div className={profileStyles.tpTitleRow}>
-            <div className={profileStyles.tpNameGroup}>
+          <div className="ph-title-row">
+            <div className="ph-name-group">
               <h1>{profile.name}</h1>
-              <span className={profileStyles.tpVerified}>
+              <span className="ph-verified">
                 <span className="material-icons-outlined">verified</span>
                 {profile.verifiedText}
               </span>
             </div>
-            <div className={profileStyles.tpBadges}>
-              <div className={profileStyles.tpBadgeGroup}>
-                <div className={profileStyles.tpBadgeLabel}>Current status:</div>
+            <div className="ph-badges">
+              <div className="ph-badge-group">
+                <div className="ph-badge-label">Current status:</div>
                 {(() => {
                   const statusLabel = profile.currentStatus?.label ?? 'Pending Approval';
                   const { cls, icon } = STATUS_CONFIG[statusLabel] ?? STATUS_CONFIG['Pending Approval'];
@@ -127,8 +127,8 @@ export default function ProfileEdit() {
                   );
                 })()}
               </div>
-              <div className={profileStyles.tpBadgeGroup}>
-                <div className={profileStyles.tpBadgeLabel}>Risk level:</div>
+              <div className="ph-badge-group">
+                <div className="ph-badge-label">Risk level:</div>
                 <div className={`badge badge-${profile.riskLevel.level} badge-btn`}>
                   {profile.riskLevel.label}
                   <RiskLevelIcon level={profile.riskLevel.level} size={16} />

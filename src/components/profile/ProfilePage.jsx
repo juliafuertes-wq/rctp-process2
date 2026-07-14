@@ -179,22 +179,22 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
       ]} />}
 
       {/* Top Strip */}
-      <div className={`${styles.tpTopStrip}${profileLoading ? ' ' + styles.tpTopStripPending : profile.riskLevel.level === 'high' ? ' ' + styles.tpTopStripHigh : profile.riskLevel.level === 'medium' ? ' ' + styles.tpTopStripMedium : profile.riskLevel.level === 'low' ? ' ' + styles.tpTopStripLow : profile.riskLevel.level === 'unknown' ? ' ' + styles.tpTopStripUnknown : ''}${scrolled ? ' ' + styles.tpTopStripScrolled : ''}`}>
-        <div className={styles.tpPageHeader}>
-          <Link to="/third-parties" className={styles.tpBack}>
+      <div className={`ph-strip${profileLoading ? ' ph-strip-pending' : ' ph-strip-' + profile.riskLevel.level}${scrolled ? ' ph-strip-scrolled' : ''}`}>
+        <div className="ph-header">
+          <Link to="/third-parties" className="ph-back">
             <span className="material-icons-outlined">chevron_left</span> Back
           </Link>
-          <div className={styles.tpTitleRow}>
-            <div className={styles.tpNameGroup}>
+          <div className="ph-title-row">
+            <div className="ph-name-group">
               <h1>{profile.name}</h1>
-              <span className={styles.tpVerified}>
+              <span className="ph-verified">
                 <span className="material-icons-outlined">verified</span>
                 {profile.verifiedText}
               </span>
             </div>
-            <div className={styles.tpBadges}>
-              <div className={styles.tpBadgeGroup}>
-                <div className={styles.tpBadgeLabel}>Current status:</div>
+            <div className="ph-badges">
+              <div className="ph-badge-group">
+                <div className="ph-badge-label">Current status:</div>
                 {(() => {
                   const { cls, icon, display, tooltip: configTooltip } = getStatusConfig(currentStatus);
                   const tip = profile.currentStatus?.tooltip ?? configTooltip;
@@ -216,8 +216,8 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   ) : badge;
                 })()}
               </div>
-              <div className={styles.tpBadgeGroup}>
-                <div className={styles.tpBadgeLabel}>Risk level:</div>
+              <div className="ph-badge-group">
+                <div className="ph-badge-label">Risk level:</div>
                 <AnimatePresence mode="wait">
                 {profileLoading ? (
                   <motion.div key="loading-badge" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}

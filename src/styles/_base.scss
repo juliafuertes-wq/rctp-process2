@@ -2504,6 +2504,19 @@
   background: linear-gradient(180deg, var(--neutral-400) 0%, var(--neutral-200) 100%);
   box-shadow: -2px 0 8px 0 rgba(150, 150, 150, 0.2);
 }
+.ph-strip-pending {
+  background-image:
+    linear-gradient(to left, rgba(150, 150, 150, 0.08) 0%, rgba(255, 255, 255, 0) 25%),
+    linear-gradient(182.718deg, rgba(150, 150, 150, 0.1) 0%, rgba(150, 150, 150, 0.04) 50%, transparent 100%);
+}
+.ph-strip-pending::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--neutral-400) 0%, var(--neutral-200) 100%);
+  box-shadow: -2px 0 8px 0 rgba(150, 150, 150, 0.2);
+}
 .ph-strip-scrolled {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   margin-bottom: 0;

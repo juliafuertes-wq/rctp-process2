@@ -959,35 +959,31 @@ export default function ComponentCatalog() {
                       ))}
                     </div>
                     {(() => {
-                      const riskCls = headerRisk === 'high' ? profileStyles.tpTopStripHigh
-                        : headerRisk === 'medium' ? profileStyles.tpTopStripMedium
-                        : headerRisk === 'low' ? profileStyles.tpTopStripLow
-                        : profileStyles.tpTopStripPending;
                       const riskBadgeCls = headerRisk === 'pending' ? 'badge-pending' : `badge-${headerRisk}`;
                       return (
-                        <div className={`${profileStyles.tpTopStrip} ${riskCls} ${headerScrolled ? profileStyles.tpTopStripScrolled : ''}`}>
-                          <div className={profileStyles.tpPageHeader}>
-                            <span className={profileStyles.tpBack}>
+                        <div className={`ph-strip ph-strip-${headerRisk}${headerScrolled ? ' ph-strip-scrolled' : ''}`}>
+                          <div className="ph-header">
+                            <span className="ph-back">
                               <span className="material-icons-outlined">chevron_left</span> Back
                             </span>
-                            <div className={profileStyles.tpTitleRow}>
-                              <div className={profileStyles.tpNameGroup}>
+                            <div className="ph-title-row">
+                              <div className="ph-name-group">
                                 <h1>Pied Piper Inc.</h1>
-                                <span className={profileStyles.tpVerified}>
+                                <span className="ph-verified">
                                   <span className="material-icons-outlined">verified</span>
                                   Entity Verified
                                 </span>
                               </div>
-                              <div className={profileStyles.tpBadges}>
-                                <div className={profileStyles.tpBadgeGroup}>
-                                  <div className={profileStyles.tpBadgeLabel}>Current status:</div>
+                              <div className="ph-badges">
+                                <div className="ph-badge-group">
+                                  <div className="ph-badge-label">Current status:</div>
                                   <div className={`badge ${headerRisk === 'pending' ? 'badge-pending' : 'badge-approved'} badge-btn`}>
                                     {headerRisk === 'pending' ? 'Pending Approval' : 'Approved'}
                                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>{headerRisk === 'pending' ? 'pending' : 'check_circle'}</span>
                                   </div>
                                 </div>
-                                <div className={profileStyles.tpBadgeGroup}>
-                                  <div className={profileStyles.tpBadgeLabel}>Risk level:</div>
+                                <div className="ph-badge-group">
+                                  <div className="ph-badge-label">Risk level:</div>
                                   <div className={`badge ${riskBadgeCls} badge-btn`}>
                                     {headerRisk === 'pending' ? 'Pending' : headerRisk.charAt(0).toUpperCase() + headerRisk.slice(1)}
                                     <RiskLevelIcon level={headerRisk === 'pending' ? 'low' : headerRisk} size={14} />

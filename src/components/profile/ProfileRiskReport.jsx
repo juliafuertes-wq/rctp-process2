@@ -254,19 +254,19 @@ function AmendPanel({ currentLevel, riskReport, onClose, onSave }) {
             />
           </div>
           <div className={styles.amendField}>
-            <div className={styles.amendFileRow}>
-              <span className={styles.amendFileName}>{fileName || 'CHOOSE FILE'}</span>
-              <label className={styles.amendBrowseBtn}>
+            <div className="fu-row">
+              <span className="fu-label">{fileName || 'CHOOSE FILE'}</span>
+              <label className="fu-browse">
                 Browse
                 <input type="file" accept=".csv,.pdf,.doc,.docx" style={{ display: 'none' }} onChange={handleFileChange} />
               </label>
             </div>
-            <p className={styles.amendHelper}>
+            <p className="fu-hint">
               Click the &apos;Choose Files&apos; button to browse for a file and then click the &apos;Upload&apos;.
               Uploaded files will appear below. Allowed file types include: .csv,.pdf,.doc,.docx<br />
               Multiple uploads are permitted.
             </p>
-            <button className={`btn btn-outline-secondary ${styles.amendUploadBtn}`}>Upload</button>
+            <button className="fu-upload">Upload</button>
           </div>
         </div>
       </div>

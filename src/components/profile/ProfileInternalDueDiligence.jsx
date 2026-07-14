@@ -116,9 +116,9 @@ export default function ProfileInternalDueDiligence() {
               <label style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-normal)' }}>
                 2. <span style={{ color: 'red' }}>*</span> Upload all supporting documentation gathered during the due diligence process.
               </label>
-              <div className={styles.declineFileRow}>
-                <span className={styles.declineFileLabel}>{fileName || 'Choose Files'}</span>
-                <button className={styles.declineBrowseBtn} onClick={() => fileRef.current?.click()}>Browse</button>
+              <div className="fu-row">
+                <span className="fu-label">{fileName || 'Choose Files'}</span>
+                <button className="fu-browse" onClick={() => fileRef.current?.click()}>Browse</button>
               </div>
               <input
                 ref={fileRef}
@@ -128,11 +128,11 @@ export default function ProfileInternalDueDiligence() {
                 style={{ display: 'none' }}
                 onChange={e => setFileName(e.target.files?.[0]?.name || '')}
               />
-              <p className={styles.declineFileHint}>
+              <p className="fu-hint">
                 Click the 'Choose Files' button to browse for a file and then click the 'Upload'. Uploaded files will appear below. Allowed file types include: <strong>.docx,.pdf,.jpeg,.jpg,.png</strong><br />
                 Multiple uploads are permitted
               </p>
-              <button className={styles.declineUploadBtn}>Upload</button>
+              <button className="fu-upload">Upload</button>
             </div>
 
           </section>

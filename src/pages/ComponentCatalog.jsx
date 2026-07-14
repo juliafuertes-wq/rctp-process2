@@ -823,21 +823,21 @@ export default function ComponentCatalog() {
                 demo={
                   <div className={styles.demoStageColumn}>
                     <div style={{ width: 520 }}>
-                      <div className={styles.fileUploadRow}>
-                        <span className={styles.fileUploadLabel}>{uploadName || 'Choose Files'}</span>
+                      <div className="fu-row">
+                        <span className="fu-label">{uploadName || 'Choose Files'}</span>
                         <button
-                          className={styles.fileUploadBrowse}
+                          className="fu-browse"
                           onClick={() => setUploadName(prev => prev ? '' : 'WaystarRoyco-DD-Report.pdf')}
                         >
                           {uploadName ? 'Clear' : 'Browse'}
                         </button>
                       </div>
-                      <p className={styles.fileUploadHint}>
+                      <p className="fu-hint">
                         Click the 'Choose Files' button to browse for a file and then click the 'Upload'. Uploaded files will appear below.
                         Allowed file types include: <strong>.docx,.pdf,.jpeg,.jpg,.png</strong><br />
                         Multiple uploads are permitted
                       </p>
-                      <button className={styles.fileUploadBtn} disabled={!uploadName}>Upload</button>
+                      <button className="fu-upload" disabled={!uploadName}>Upload</button>
                     </div>
                   </div>
                 }

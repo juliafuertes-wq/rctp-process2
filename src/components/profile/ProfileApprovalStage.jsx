@@ -175,9 +175,9 @@ export default function ProfileApprovalStage() {
                     <span>If you have any supporting documentation to support your decision on this action please upload.</span>
                   </div>
 
-                  <div className={s.fileRow}>
-                    <span className={s.fileLabel}>{fileName || 'Choose Files'}</span>
-                    <button className={s.browseBtn} onClick={() => fileRef.current?.click()} disabled={currentStageDone}>
+                  <div className="fu-row">
+                    <span className="fu-label">{fileName || 'Choose Files'}</span>
+                    <button className="fu-browse" onClick={() => fileRef.current?.click()} disabled={currentStageDone}>
                       Browse
                     </button>
                   </div>
@@ -189,12 +189,12 @@ export default function ProfileApprovalStage() {
                     style={{ display: 'none' }}
                     onChange={e => setFileName(e.target.files?.[0]?.name || '')}
                   />
-                  <p className={s.fileHint}>
+                  <p className="fu-hint">
                     Click the 'Choose Files' button to browse for a file and then click the 'Upload'. Uploaded files will appear below.
                     Allowed file types include: <strong>.txt,.rtf,.odt,.docx,.doc,.pdf,.wpd,.wps,.jpeg,.jpg,.gif,.png,.bmp,.psd,.ai,.xlr,.xls,.xlsx,.ppt,.pptx,.zip</strong>
                     <br />Multiple uploads are permitted
                   </p>
-                  <button className={s.uploadBtn} disabled={currentStageDone}>Upload</button>
+                  <button className="fu-upload" disabled={currentStageDone}>Upload</button>
                 </div>
               </div>
             )}

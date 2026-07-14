@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { patchInitechProfile } from '../../utils/initechFlow';
 import { RiskLevelIcon } from './profileAssets';
-import styles from './profile.module.css';
 
 export const STATUS_CONFIG = {
   'Pending Approval':             { cls: 'badge-pending',      icon: 'pending' },
@@ -26,42 +25,38 @@ export default function ProfilePageHeader({ profile: profileProp }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const riskLevelCls = profile.riskLevel?.level === 'high'   ? ' ' + styles.tpTopStripHigh
-    : profile.riskLevel?.level === 'medium' ? ' ' + styles.tpTopStripMedium
-    : ' ' + styles.tpTopStripLow;
-
-  const riskCapCls = 'badge-' + (profile.riskLevel?.level ?? 'low');
+  const level = profile.riskLevel?.level ?? 'low';
+  const stripCls = `ph-strip ph-strip-${level}${scrolled ? ' ph-strip-scrolled' : ''}`;
+  const riskCapCls = 'badge-' + level;
 
   return (
-    <div
-      className={`${styles.tpTopStrip}${riskLevelCls}${scrolled ? ' ' + styles.tpTopStripScrolled : ''}`}
-    >
-      <div className={styles.tpPageHeader}>
-        <Link to={`/profile/${profile.id}`} className={styles.tpBack}>
+    <div className={stripCls}>
+      <div className="ph-header">
+        <Link to={`/profile/${profile.id}`} className="ph-back">
           <span className="material-icons-outlined">chevron_left</span> Back
         </Link>
-        <div className={styles.tpTitleRow}>
-          <div className={styles.tpNameGroup}>
+        <div className="ph-title-row">
+          <div className="ph-name-group">
             <h1>{profile.name}</h1>
-            <span className={styles.tpVerified}>
+            <span className="ph-verified">
               <span className="material-icons-outlined">verified</span>
               {profile.verifiedText}
             </span>
           </div>
-          <div className={styles.tpBadges}>
-            <div className={styles.tpBadgeGroup}>
-              <div className={styles.tpBadgeLabel}>Current status:</div>
+          <div className="ph-badges">
+            <div className="ph-badge-group">
+              <div className="ph-badge-label">Current status:</div>
               <div className={`badge ${cls} badge-btn`}>
                 {statusLabel}
                 <span className="material-icons-outlined" style={{ fontSize: 16 }}>{icon}</span>
               </div>
             </div>
-            <div className={styles.tpBadgeGroup}>
-              <div className={styles.tpBadgeLabel}>Risk level:</div>
+            <div className="ph-badge-group">
+              <div className="ph-badge-label">Risk level:</div>
               <Link to={`/profile/${profile.id}/risk-report`} style={{ textDecoration: 'none' }}>
                 <div className={`badge ${riskCapCls} badge-btn`}>
                   {profile.riskLevel?.label}
-                  <RiskLevelIcon level={profile.riskLevel?.level} />
+                  <RiskLevelIcon level={level} />
                 </div>
               </Link>
             </div>

@@ -61,27 +61,29 @@ export default function ProfileDocuments() {
               </table>
             </div>
 
-            <div className={styles.docPagination}>
-              <select className={styles.pageSize}>
-                <option>20</option>
-                <option>50</option>
-                <option>100</option>
-              </select>
-              <span>Showing results 1 – {Math.min(20, totalDocs)} of {totalDocs}</span>
-              <div className={styles.pageControls}>
-                <button className={styles.pageBtn} disabled>
+            <div className="pag-wrap">
+              <div className="pag-left">
+                <select className="pag-size">
+                  <option>20</option>
+                  <option>50</option>
+                  <option>100</option>
+                </select>
+                <span className="pag-info">Showing results 1 – {Math.min(20, totalDocs)} of {totalDocs}</span>
+              </div>
+              <div className="pag-right">
+                <button className="pag-btn" disabled>
                   <span className="material-icons-outlined" style={{ fontSize: 20 }}>first_page</span>
                 </button>
-                <button className={styles.pageBtn} disabled>
+                <button className="pag-btn" disabled>
                   <span className="material-icons-outlined" style={{ fontSize: 20 }}>chevron_left</span>
                 </button>
-                <span className={styles.pageLabel}>Page</span>
-                <input type="number" defaultValue={1} min={1} max={totalPages} className={styles.pageInput} />
-                <span className={styles.pageLabel}>of {totalPages}</span>
-                <button className={styles.pageBtn} disabled={totalPages <= 1}>
+                <span className="pag-info">Page</span>
+                <input type="number" defaultValue={1} min={1} max={totalPages} className="pag-input" />
+                <span className="pag-info">of {totalPages}</span>
+                <button className="pag-btn" disabled={totalPages <= 1}>
                   <span className="material-icons-outlined" style={{ fontSize: 20 }}>chevron_right</span>
                 </button>
-                <button className={styles.pageBtn} disabled={totalPages <= 1}>
+                <button className="pag-btn" disabled={totalPages <= 1}>
                   <span className="material-icons-outlined" style={{ fontSize: 20 }}>last_page</span>
                 </button>
               </div>

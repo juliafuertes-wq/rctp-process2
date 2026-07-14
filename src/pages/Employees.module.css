@@ -65,36 +65,4 @@
 .cellLink { color: var(--primary-600); font-weight: 500; cursor: pointer; }
 .cellLink:hover { text-decoration: underline; }
 
-/* ── Status badge ── */
-.statusBadge {
-  display: inline-flex; align-items: center;
-  padding: 3px 8px; border-radius: var(--rctp-radius-xs);
-  font-size: 11px; font-weight: 600; white-space: nowrap;
-}
-.statusRegistered    { background: var(--neutral-50);  color: var(--text-normal); }
-.statusNotRegistered { background: var(--alert-100);   color: var(--alert-700); }
 
-/* ── Pagination ── */
-.pagination {
-  display: flex; align-items: center; justify-content: flex-end;
-  gap: 8px; padding: 12px 16px;
-  font-size: 13px; color: var(--text-light);
-}
-.paginationLeft, .paginationRight { display: flex; align-items: center; gap: 8px; }
-.pageSize {
-  height: 32px; border: 1px solid var(--neutral-200); border-radius: var(--rctp-radius-xs);
-  padding: 0 8px; font-size: 13px; background: var(--neutral-00);
-  color: var(--text-normal); cursor: pointer;
-}
-.pageBtn {
-  width: 28px; height: 28px; display: inline-flex; align-items: center;
-  justify-content: center; border-radius: var(--rctp-radius-xs); border: none;
-  background: none; color: var(--text-light); cursor: pointer; font-size: 18px;
-}
-.pageBtn:hover:not(:disabled) { background: var(--neutral-25); color: var(--text-normal); }
-.pageBtn:disabled { opacity: 0.3; cursor: not-allowed; }
-.pageInput {
-  width: 44px; height: 32px;
-  border: 1px solid var(--neutral-200); border-radius: var(--rctp-radius-xs);
-  text-align: center; font-size: 13px;
-}

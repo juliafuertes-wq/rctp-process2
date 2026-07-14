@@ -171,29 +171,29 @@ export default function ProfileAudit() {
             </div>
 
             {/* Pagination */}
-            <div className={auditStyles.pagination}>
-              <div className={auditStyles.paginationLeft}>
-                <select className={auditStyles.perPageSelect} defaultValue="100">
+            <div className="pag-wrap">
+              <div className="pag-left">
+                <select className="pag-size" defaultValue="100">
                   <option value="25">25</option>
                   <option value="50">50</option>
                   <option value="100">100</option>
                 </select>
-              </div>
-              <div className={auditStyles.paginationRight}>
-                <span className={auditStyles.pageInfo}>
+                <span className="pag-info">
                   Showing results 1 – {filtered.length} of {filtered.length}
                 </span>
-                <button className={auditStyles.pageBtn} disabled>
+              </div>
+              <div className="pag-right">
+                <button className="pag-btn" disabled>
                   <span className="material-icons-outlined" style={{ fontSize: 16 }}>first_page</span>
                 </button>
-                <button className={auditStyles.pageBtn} disabled>
+                <button className="pag-btn" disabled>
                   <span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_left</span>
                 </button>
-                <span className={auditStyles.pageInfo}>Page 1 of 1</span>
-                <button className={auditStyles.pageBtn} disabled>
+                <span className="pag-info">Page 1 of 1</span>
+                <button className="pag-btn" disabled>
                   <span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_right</span>
                 </button>
-                <button className={auditStyles.pageBtn} disabled>
+                <button className="pag-btn" disabled>
                   <span className="material-icons-outlined" style={{ fontSize: 16 }}>last_page</span>
                 </button>
               </div>

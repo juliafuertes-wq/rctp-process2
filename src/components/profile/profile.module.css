@@ -1118,74 +1118,7 @@
   overflow-x: auto;
 }
 
-.docPagination {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-  border-top: 1px solid var(--neutral-50);
-  font-size: 13px;
-  color: var(--text-light);
-}
 
-.pageSize {
-  height: 32px;
-  padding: 0 24px 0 8px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
-  font-size: 14px;
-  color: var(--text-light-alt);
-  background: var(--neutral-00);
-  cursor: pointer;
-  font-family: inherit;
-}
-
-.pageControls {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.pageBtn {
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--rctp-radius-xs);
-  border: none;
-  background: none;
-  color: var(--text-light);
-  cursor: pointer;
-  padding: 0;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-.pageBtn:hover:not(:disabled) {
-  background: var(--neutral-25);
-  color: var(--text-normal);
-}
-.pageBtn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.pageLabel {
-  font-size: 13px;
-  color: var(--text-light);
-  padding: 0 2px;
-}
-
-.pageInput {
-  width: 40px;
-  height: 28px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
-  text-align: center;
-  font-size: 13px;
-  font-family: inherit;
-  color: var(--text-normal);
-}
 
 /* ══════════════════════════════════════════════════════════════════════════
    ProfileRiskReport Styles
@@ -1726,49 +1659,7 @@
 }
 .amendTextarea:focus { border-color: var(--primary-500); }
 .amendTextarea::placeholder { color: var(--neutral-400); }
-.amendFileRow {
-  display: flex;
-  align-items: stretch;
-  border: 1px solid var(--neutral-300);
-  border-radius: var(--rctp-radius-xs);
-  overflow: hidden;
-  height: 35px;
-}
-.amendFileName {
-  flex: 1;
-  padding: 0 12px;
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-normal);
-  display: flex;
-  align-items: center;
-}
-.amendBrowseBtn {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 14px;
-  background: var(--neutral-25);
-  border: none;
-  border-left: 1px solid var(--neutral-300);
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-normal);
-  cursor: pointer;
-  font-family: inherit;
-  white-space: nowrap;
-}
-.amendBrowseBtn:hover { background: var(--neutral-100); }
-.amendUploadBtn { align-self: flex-start; }
-.amendHelper {
-  font-size: 12px;
-  color: var(--neutral-600);
-  line-height: 1.5;
-}
-.amendHelper strong { font-weight: 600; }
+
 
 /* ── Status side panel ── */
 .statusPanel {
@@ -1980,68 +1871,7 @@
   margin-bottom: 4px;
 }
 
-.declineFileRow {
-  display: flex;
-  align-items: stretch;
-  border: 1px solid var(--neutral-100);
-  border-radius: var(--rctp-radius-xs);
-  overflow: hidden;
-  margin-bottom: 10px;
-}
 
-.declineFileLabel {
-  flex: 1;
-  padding: 8px 12px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--text-normal);
-}
-
-.declineBrowseBtn {
-  background: var(--neutral-25);
-  border: none;
-  border-left: 1px solid var(--neutral-100);
-  padding: 8px 14px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--text-normal);
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.declineBrowseBtn:hover {
-  background: var(--neutral-50);
-}
-
-.declineFileHint {
-  font-size: 12px;
-  color: var(--neutral-500);
-  line-height: 1.5;
-  margin-bottom: 12px;
-}
-
-.declineUploadBtn {
-  border: 1px solid var(--primary-500);
-  background: none;
-  color: var(--primary-500);
-  padding: 8px 16px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-radius: var(--rctp-radius-xs);
-  transition: background 0.15s, color 0.15s;
-}
-
-.declineUploadBtn:hover {
-  background: var(--primary-500);
-  color: var(--neutral-00);
-}
 
 /* ── Third Party Workflow chevron strip ── */
 .workflowSection {

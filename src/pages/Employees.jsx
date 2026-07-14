@@ -127,21 +127,21 @@ export default function Employees() {
         </div>
 
         <div className={styles.divider} />
-        <div className={styles.pagination}>
-          <div className={styles.paginationLeft}>
-            <select className={styles.pageSize}>
+        <div className="pag-wrap">
+          <div className="pag-left">
+            <select className="pag-size">
               <option>20</option><option>50</option><option>100</option>
             </select>
-            <span>Showing results 1 – {filtered.length} of {filtered.length}</span>
+            <span className="pag-info">Showing results 1 – {filtered.length} of {filtered.length}</span>
           </div>
-          <div className={styles.paginationRight}>
-            <button className={styles.pageBtn} disabled><span className="material-icons-outlined">first_page</span></button>
-            <button className={styles.pageBtn} disabled><span className="material-icons-outlined">chevron_left</span></button>
-            <span>Page</span>
-            <input className={styles.pageInput} type="number" defaultValue={1} min={1} max={1} />
-            <span>of 1</span>
-            <button className={styles.pageBtn} disabled><span className="material-icons-outlined">chevron_right</span></button>
-            <button className={styles.pageBtn} disabled><span className="material-icons-outlined">last_page</span></button>
+          <div className="pag-right">
+            <button className="pag-btn" disabled><span className="material-icons-outlined">first_page</span></button>
+            <button className="pag-btn" disabled><span className="material-icons-outlined">chevron_left</span></button>
+            <span className="pag-info">Page</span>
+            <input className="pag-input" type="number" defaultValue={1} min={1} max={1} />
+            <span className="pag-info">of 1</span>
+            <button className="pag-btn" disabled><span className="material-icons-outlined">chevron_right</span></button>
+            <button className="pag-btn" disabled><span className="material-icons-outlined">last_page</span></button>
           </div>
         </div>
       </div>

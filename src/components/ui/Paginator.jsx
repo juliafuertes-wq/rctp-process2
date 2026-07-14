@@ -1,5 +1,3 @@
-import styles from './Paginator.module.css';
-
 export default function Paginator({
   page = 1,
   totalPages = 1,
@@ -13,28 +11,28 @@ export default function Paginator({
   const end = Math.min(page * pageSize, totalItems);
 
   return (
-    <div className={styles.paginator}>
-      <div className={styles.left}>
+    <div className="pag-wrap">
+      <div className="pag-left">
         <select
-          className={styles.sizeSelect}
+          className="pag-size"
           value={pageSize}
           onChange={e => onPageSizeChange?.(Number(e.target.value))}
         >
           {pageSizeOptions.map(n => <option key={n} value={n}>{n}</option>)}
         </select>
-        <span className={styles.info}>
+        <span className="pag-info">
           {totalItems === 0 ? 'No results' : `Showing results ${start} – ${end} of ${totalItems}`}
         </span>
       </div>
-      <div className={styles.right}>
-        <button className={styles.pageBtn} onClick={() => onPageChange?.(1)} disabled={page <= 1} aria-label="First page">
+      <div className="pag-right">
+        <button className="pag-btn" onClick={() => onPageChange?.(1)} disabled={page <= 1} aria-label="First page">
           <span className="material-icons-outlined" style={{ fontSize: 16 }}>first_page</span>
         </button>
-        <button className={styles.pageBtn} onClick={() => onPageChange?.(page - 1)} disabled={page <= 1} aria-label="Previous page">
+        <button className="pag-btn" onClick={() => onPageChange?.(page - 1)} disabled={page <= 1} aria-label="Previous page">
           <span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_left</span>
         </button>
         <input
-          className={styles.pageInput}
+          className="pag-input"
           type="number"
           min={1}
           max={totalPages}
@@ -45,11 +43,11 @@ export default function Paginator({
           }}
           aria-label="Page number"
         />
-        <span className={styles.info}>of {totalPages}</span>
-        <button className={styles.pageBtn} onClick={() => onPageChange?.(page + 1)} disabled={page >= totalPages} aria-label="Next page">
+        <span className="pag-info">of {totalPages}</span>
+        <button className="pag-btn" onClick={() => onPageChange?.(page + 1)} disabled={page >= totalPages} aria-label="Next page">
           <span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_right</span>
         </button>
-        <button className={styles.pageBtn} onClick={() => onPageChange?.(totalPages)} disabled={page >= totalPages} aria-label="Last page">
+        <button className="pag-btn" onClick={() => onPageChange?.(totalPages)} disabled={page >= totalPages} aria-label="Last page">
           <span className="material-icons-outlined" style={{ fontSize: 16 }}>last_page</span>
         </button>
       </div>

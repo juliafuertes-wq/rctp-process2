@@ -657,23 +657,23 @@ function EDDContent({ rows }) {
 
 function TablePagination({ count }) {
   return (
-    <div className={styles.pagination}>
-      <div className={styles.paginationLeft}>
-        <select className={styles.pageSize} defaultValue="100">
+    <div className="pag-wrap">
+      <div className="pag-left">
+        <select className="pag-size" defaultValue="100">
           <option value="25">25</option>
           <option value="50">50</option>
           <option value="100">100</option>
         </select>
-        <span>Showing results 1 – {count} of {count}</span>
+        <span className="pag-info">Showing results 1 – {count} of {count}</span>
       </div>
-      <div className={styles.paginationRight}>
-        <button className={styles.pageBtn} disabled><span className="material-icons-outlined">first_page</span></button>
-        <button className={styles.pageBtn} disabled><span className="material-icons-outlined">chevron_left</span></button>
-        <span>Page</span>
-        <input className={styles.pageInput} type="number" defaultValue={1} min={1} max={1} />
-        <span>of 1</span>
-        <button className={styles.pageBtn} disabled><span className="material-icons-outlined">chevron_right</span></button>
-        <button className={styles.pageBtn} disabled><span className="material-icons-outlined">last_page</span></button>
+      <div className="pag-right">
+        <button className="pag-btn" disabled><span className="material-icons-outlined">first_page</span></button>
+        <button className="pag-btn" disabled><span className="material-icons-outlined">chevron_left</span></button>
+        <span className="pag-info">Page</span>
+        <input className="pag-input" type="number" defaultValue={1} min={1} max={1} />
+        <span className="pag-info">of 1</span>
+        <button className="pag-btn" disabled><span className="material-icons-outlined">chevron_right</span></button>
+        <button className="pag-btn" disabled><span className="material-icons-outlined">last_page</span></button>
       </div>
     </div>
   );

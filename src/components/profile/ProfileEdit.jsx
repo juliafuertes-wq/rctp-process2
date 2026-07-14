@@ -268,9 +268,9 @@ export default function ProfileEdit() {
                       <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                     </span>
                   </label>
-                  <div className={`${styles.activeToggle} ${!active ? styles.activeToggleOff : ''}`} onClick={() => setActive(a => !a)}>
-                    <div className={styles.activeToggleTrack}>{active ? 'YES' : 'NO'}</div>
-                    <div className={styles.activeToggleThumb} />
+                  <div className={`toggle${!active ? ' toggle-off' : ''}`} onClick={() => setActive(a => !a)}>
+                    <div className="toggle-track">{active ? 'YES' : 'NO'}</div>
+                    <div className="toggle-thumb" />
                   </div>
                 </div>
 

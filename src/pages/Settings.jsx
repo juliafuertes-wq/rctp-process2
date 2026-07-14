@@ -457,14 +457,14 @@ export default function Settings() {
                 <span className="tooltip-lg">If set to Enabled renewal dates will be calculated for any records approved after the setting was set to enabled.</span>
               </span>
               <div
-                className={`${styles.activeToggle}${!renewalsEnabled ? ' ' + styles.activeToggleOff : ''}`}
+                className={`toggle${!renewalsEnabled ? ' toggle-off' : ''}`}
                 onClick={() => setRenewalsEnabled(v => !v)}
                 role="button"
                 tabIndex={0}
                 onKeyDown={e => e.key === 'Enter' && setRenewalsEnabled(v => !v)}
               >
-                <div className={styles.activeToggleTrack}>{renewalsEnabled ? 'Enabled' : 'Disabled'}</div>
-                <div className={styles.activeToggleThumb} />
+                <div className="toggle-track">{renewalsEnabled ? 'Enabled' : 'Disabled'}</div>
+                <div className="toggle-thumb" />
               </div>
             </div>
           </div>
@@ -529,11 +529,11 @@ export default function Settings() {
                   <div className={styles.reminderField} style={{ flex: '0 0 25%' }}>
                     <label className={styles.fieldLabel}>Owner</label>
                     <div
-                      className={`${styles.activeToggle}${!ownerNotifEnabled ? ' ' + styles.activeToggleOff : ''}`}
+                      className={`toggle${!ownerNotifEnabled ? ' toggle-off' : ''}`}
                       onClick={() => setOwnerNotifEnabled(v => !v)}
                     >
-                      <div className={styles.activeToggleTrack}>{ownerNotifEnabled ? 'Enabled' : 'Disabled'}</div>
-                      <div className={styles.activeToggleThumb} />
+                      <div className="toggle-track">{ownerNotifEnabled ? 'Enabled' : 'Disabled'}</div>
+                      <div className="toggle-thumb" />
                     </div>
                   </div>
                   {/* Renewals Notification Group — fills remaining space */}

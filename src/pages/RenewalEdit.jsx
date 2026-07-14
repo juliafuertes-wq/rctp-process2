@@ -405,14 +405,14 @@ export default function RenewalEdit() {
                 </div>
                 <div className={styles.detailsColStatus}>
                   <div
-                    className={`${styles.activeToggle}${!row.active ? ' ' + styles.activeToggleOff : ''}`}
+                    className={`toggle${!row.active ? ' toggle-off' : ''}`}
                     onClick={() => updateRow(i, 'active', !row.active)}
                     role="button"
                     tabIndex={0}
                     onKeyDown={e => e.key === 'Enter' && updateRow(i, 'active', !row.active)}
                   >
-                    <div className={styles.activeToggleTrack}>{row.active ? 'Active' : 'Inactive'}</div>
-                    <div className={styles.activeToggleThumb} />
+                    <div className="toggle-track">{row.active ? 'Active' : 'Inactive'}</div>
+                    <div className="toggle-thumb" />
                   </div>
                 </div>
                 <div className={styles.detailsColActions} ref={openRowMenu === i ? rowMenuRef : null}>

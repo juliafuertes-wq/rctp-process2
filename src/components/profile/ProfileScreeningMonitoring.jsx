@@ -72,11 +72,11 @@ export default function ProfileScreeningMonitoring() {
                   <span className={smStyles.helpIcon}>?</span>
                 </span>
                 <div
-                  className={`${smStyles.activeToggle}${!active ? ' ' + smStyles.activeToggleOff : ''}`}
+                  className={`toggle${!active ? ' toggle-off' : ''}`}
                   onClick={() => setActive(v => !v)}
                 >
-                  <div className={smStyles.activeToggleTrack}>{active ? 'Active' : 'Inactive'}</div>
-                  <div className={smStyles.activeToggleThumb} />
+                  <div className="toggle-track">{active ? 'Active' : 'Inactive'}</div>
+                  <div className="toggle-thumb" />
                 </div>
                 <button className={"btn btn-primary"} onClick={handleAdd}>Add</button>
               </div>

@@ -628,16 +628,16 @@ export default function AddThirdParty() {
         >
           <div className={styles.sectionHeading}>
             <span>Summary</span>
-            <div className={styles.activeToggleWrap}>
+            <div className="toggle-wrap">
               <div
-                className={`${styles.activeToggle} ${!isActive ? styles.activeToggleOff : ''}`}
+                className={`toggle${!isActive ? ' toggle-off' : ''}`}
                 onClick={() => setIsActive(v => !v)}
                 role="button"
                 tabIndex={0}
                 onKeyDown={e => e.key === 'Enter' && setIsActive(v => !v)}
               >
-                <div className={styles.activeToggleTrack}>{isActive ? 'Active' : 'Inactive'}</div>
-                <div className={styles.activeToggleThumb} />
+                <div className="toggle-track">{isActive ? 'Active' : 'Inactive'}</div>
+                <div className="toggle-thumb" />
               </div>
             </div>
           </div>

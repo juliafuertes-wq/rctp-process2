@@ -1,5 +1,3 @@
-import styles from './Toggle.module.css';
-
 export default function Toggle({
   value = false,
   onChange,
@@ -7,17 +5,21 @@ export default function Toggle({
   labelOff = 'Inactive',
   disabled = false,
 }) {
+  let cls = 'toggle';
+  if (!value) cls += ' toggle-off';
+  if (disabled) cls += ' toggle-disabled';
+
   return (
     <div
-      className={`${styles.toggle} ${!value ? styles.toggleOff : ''} ${disabled ? styles.toggleDisabled : ''}`}
+      className={cls}
       role="button"
       tabIndex={disabled ? -1 : 0}
       onClick={() => { if (!disabled) onChange?.(!value); }}
       onKeyDown={e => { if (!disabled && (e.key === 'Enter' || e.key === ' ')) onChange?.(!value); }}
       aria-pressed={value}
     >
-      <div className={styles.track}>{value ? labelOn : labelOff}</div>
-      <div className={styles.thumb} />
+      <div className="toggle-track">{value ? labelOn : labelOff}</div>
+      <div className="toggle-thumb" />
     </div>
   );
 }

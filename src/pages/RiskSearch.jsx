@@ -48,11 +48,11 @@ export default function RiskSearch() {
           {/* Searching For toggle */}
           <div className={styles.searchGroup}>
             <span className={styles.fieldLabel}>Searching For:</span>
-            <div className={styles.toggleGroup}>
+            <div className="btn-group" role="group">
               {ENTITY_TYPES.map(t => (
                 <button
                   key={t}
-                  className={`${styles.toggleBtn} ${entityType === t ? styles.toggleBtnActive : ''}`}
+                  className={`btn ${entityType === t ? 'btn-primary' : 'btn-outline-secondary'}`}
                   onClick={() => setEntityType(t)}
                 >
                   {t}

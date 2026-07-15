@@ -116,9 +116,8 @@ function PartnerIcon({ partner, tooltip }) {
   );
   if (tooltip) {
     return (
-      <span className="tooltip-trigger">
+      <span data-toggle="tooltip" title={tooltip}>
         {icon}
-        <span className="tooltip-sm">{tooltip}</span>
       </span>
     );
   }
@@ -223,11 +222,8 @@ export default function Sidebar({ profile: profileProp, profileLoading = false, 
       <div className={styles.navProgress}>
         <div className={styles.navProgressHeader}>
           <span className={styles.navProgressTitle}>Workflow</span>
-          <span className="tooltip-trigger-down">
+          <span data-toggle="tooltip" data-placement="bottom" title="Track third party progress through each workflow stage. Click a stage below to open its page.">
             <span className={`material-icons-outlined ${styles.navProgressInfoIcon}`}>info</span>
-            <span className="tooltip-lg">
-              Track third party progress through each workflow stage. Click a stage below to open its page.
-            </span>
           </span>
           <button
             className={styles.navExpandAllBtn}

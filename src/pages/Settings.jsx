@@ -317,9 +317,8 @@ function CurrencyApprovalGroupsPanel() {
             {label}
             {required && <span className={styles.cagReq}> *</span>}
             {tooltip ? (
-              <span className="tooltip-trigger">
+              <span data-toggle="tooltip" title={tooltip}>
                 <span className={`material-icons-outlined ${styles.cagInfoIcon}`}>info</span>
-                <span className="tooltip-lg">{tooltip}</span>
               </span>
             ) : (
               <span className={`material-icons-outlined ${styles.cagInfoIcon}`}>info</span>
@@ -452,9 +451,8 @@ export default function Settings() {
             <h2 className={styles.contentTitle}>Renewals</h2>
             <div className={styles.contentHeaderRight}>
               <span className={styles.renewalsStateLabel}>Renewals current state</span>
-              <span className="tooltip-trigger">
+              <span data-toggle="tooltip" title="If set to Enabled renewal dates will be calculated for any records approved after the setting was set to enabled.">
                 <span className={`material-icons-outlined ${styles.infoIcon}`}>info</span>
-                <span className="tooltip-lg">If set to Enabled renewal dates will be calculated for any records approved after the setting was set to enabled.</span>
               </span>
               <div
                 className={`toggle${!renewalsEnabled ? ' toggle-off' : ''}`}

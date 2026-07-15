@@ -947,13 +947,6 @@
 .sPillNotStarted   { background: var(--neutral-25);  color: var(--neutral-600); border: 1px solid var(--neutral-200); }
 
 /* ── Field grid specimen ── */
-.fieldGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px 42px;
-  padding: 20px;
-}
-
 .fieldLabel {
   font-size: 11px;
   font-weight: 500;

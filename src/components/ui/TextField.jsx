@@ -11,17 +11,29 @@ export default function TextField({
   disabled = false,
   ...rest
 }) {
-  let wrapClass = 'tf-input-wrap';
-  if (error) wrapClass += ' tf-input-wrap-error';
-  if (disabled) wrapClass += ' tf-input-wrap-disabled';
-
   return (
-    <div className="tf-wrap">
-      {label && <label className="tf-label">{label}</label>}
-      <div className={wrapClass}>
-        {icon && <span className={`material-icons-outlined tf-icon`}>{icon}</span>}
+    <div className="form-group mb-0">
+      {label && <label className="form-label">{label}</label>}
+      {icon ? (
+        <div className="input-group">
+          <div className="input-group-prepend">
+            <span className="input-group-text">
+              <span className="material-icons-outlined" style={{ fontSize: 16 }}>{icon}</span>
+            </span>
+          </div>
+          <input
+            className={`form-control${error ? ' is-invalid' : ''}`}
+            type={type}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            disabled={disabled}
+            {...rest}
+          />
+        </div>
+      ) : (
         <input
-          className="tf-input"
+          className={`form-control${error ? ' is-invalid' : ''}`}
           type={type}
           value={value}
           onChange={onChange}
@@ -29,9 +41,9 @@ export default function TextField({
           disabled={disabled}
           {...rest}
         />
-      </div>
-      {error && errorText && <span className="tf-error-text">{errorText}</span>}
-      {!error && helperText && <span className="tf-helper-text">{helperText}</span>}
+      )}
+      {error && errorText && <div className="invalid-feedback d-block">{errorText}</div>}
+      {!error && helperText && <small className="form-text text-muted">{helperText}</small>}
     </div>
   );
 }

@@ -599,30 +599,26 @@ export default function ComponentCatalog() {
                       <div style={{ display:'flex', gap:48, alignItems:'center', paddingTop:8, paddingBottom:8 }}>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>top</span>
-                          <div className="tooltip-trigger">
+                          <div data-toggle="tooltip" data-placement="top" title="Approved">
                             <div style={{ width:16, height:16, borderRadius:'50%', background:'var(--success-500)' }} />
-                            <div className="tooltip-sm">Approved</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>bottom</span>
-                          <div className="tooltip-trigger">
+                          <div data-toggle="tooltip" data-placement="bottom" title="Approved">
                             <div style={{ width:16, height:16, borderRadius:'50%', background:'var(--success-500)' }} />
-                            <div className="tooltip-sm tooltip-bottom">Approved</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>left</span>
-                          <div className="tooltip-trigger">
+                          <div data-toggle="tooltip" data-placement="left" title="Approved">
                             <div style={{ width:16, height:16, borderRadius:'50%', background:'var(--success-500)' }} />
-                            <div className="tooltip-sm tooltip-left">Approved</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>right</span>
-                          <div className="tooltip-trigger">
+                          <div data-toggle="tooltip" data-placement="right" title="Approved">
                             <div style={{ width:16, height:16, borderRadius:'50%', background:'var(--success-500)' }} />
-                            <div className="tooltip-sm tooltip-right">Approved</div>
                           </div>
                         </div>
                       </div>
@@ -633,30 +629,26 @@ export default function ComponentCatalog() {
                       <div style={{ display:'flex', gap:48, alignItems:'center', paddingTop:8, paddingBottom:8 }}>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>top</span>
-                          <div className="tooltip-trigger">
+                          <div data-toggle="tooltip" data-placement="top" title="Monitored associations being continuously monitored against Risk and Compliance Database">
                             <span className="material-icons-outlined" style={{ fontSize:18, color:'var(--text-light)', display:'block', width:18, height:18, lineHeight:'18px' }}>info_outline</span>
-                            <div className="tooltip-lg">Monitored associations being continuously monitored against Risk and Compliance Database</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>bottom</span>
-                          <div className="tooltip-trigger">
+                          <div data-toggle="tooltip" data-placement="bottom" title="Monitored associations being continuously monitored against Risk and Compliance Database">
                             <span className="material-icons-outlined" style={{ fontSize:18, color:'var(--text-light)', display:'block', width:18, height:18, lineHeight:'18px' }}>info_outline</span>
-                            <div className="tooltip-lg tooltip-bottom">Monitored associations being continuously monitored against Risk and Compliance Database</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>left</span>
-                          <div className="tooltip-trigger">
+                          <div data-toggle="tooltip" data-placement="left" title="Monitored associations being continuously monitored against Risk and Compliance Database">
                             <span className="material-icons-outlined" style={{ fontSize:18, color:'var(--text-light)', display:'block', width:18, height:18, lineHeight:'18px' }}>info_outline</span>
-                            <div className="tooltip-lg tooltip-left">Monitored associations being continuously monitored against Risk and Compliance Database</div>
                           </div>
                         </div>
                         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:6 }}>
                           <span style={{ fontSize:10, color:'var(--text-light)' }}>right</span>
-                          <div className="tooltip-trigger">
+                          <div data-toggle="tooltip" data-placement="right" title="Monitored associations being continuously monitored against Risk and Compliance Database">
                             <span className="material-icons-outlined" style={{ fontSize:18, color:'var(--text-light)', display:'block', width:18, height:18, lineHeight:'18px' }}>info_outline</span>
-                            <div className="tooltip-lg tooltip-right">Monitored associations being continuously monitored against Risk and Compliance Database</div>
                           </div>
                         </div>
                       </div>
@@ -903,12 +895,11 @@ export default function ComponentCatalog() {
                     </div>
                     <div style={{ display:'flex', flexWrap:'wrap', gap:8, alignItems:'flex-start' }}>
                       {STATUS_ENTRIES.map(s => (
-                        <div key={s.label} className="tooltip-trigger">
+                        <div key={s.label} data-toggle="tooltip" title={s.tooltip}>
                           <span className={styles.demoStatusBadge} style={{ background: s.bg, color: s.color }}>
                             {s.label}
                             <span className="material-icons-outlined" style={{ fontSize: 14, display:'block', width:14, height:14, lineHeight:'14px' }}>{s.icon}</span>
                           </span>
-                          <div className="tooltip-lg">{s.tooltip}</div>
                         </div>
                       ))}
                     </div>
@@ -1005,7 +996,7 @@ export default function ComponentCatalog() {
                 title="Field Grid"
                 description="4-column label/value grid used in the Overview tab of the TP profile. Labels are small-caps primary-500; values are 16px text-normal. Renders empty fields as em-dashes."
                 demo={
-                  <div className={styles.fieldGrid}>
+                  <div className="row">
                     {[
                       { label: 'Entity Legal Name', value: 'Pied Piper Inc.' },
                       { label: 'Registered Country', value: '🇺🇸 United States' },
@@ -1016,7 +1007,7 @@ export default function ComponentCatalog() {
                       { label: 'Tags', value: 'SaaS, US, Regional' },
                       { label: 'Internal Reference', value: <span className={styles.fieldValueLight}>—</span> },
                     ].map(f => (
-                      <div key={f.label}>
+                      <div key={f.label} className="col-3 mb-3">
                         <div className={styles.fieldLabel}>{f.label}</div>
                         <div className={styles.fieldValue}>{f.value}</div>
                       </div>
@@ -1642,22 +1633,20 @@ export default function ComponentCatalog() {
                         return (
                           <div key={i} className={styles.sidenavItem}>
                             {/* Dot with tooltip */}
-                            <span className="tooltip-trigger">
+                            <span data-toggle="tooltip" title={dotLabel}>
                               <span className={styles.sidenavDot} style={{ background: dotBg }} />
-                              <span className="tooltip-sm">{dotLabel}</span>
                             </span>
                             {/* Label */}
                             <span style={{ flex: 1 }}>{step.label}</span>
                             {/* Partner icon + tooltip */}
                             {step.partnerTooltip && (
-                              <span className="tooltip-trigger">
+                              <span data-toggle="tooltip" title={step.partnerTooltip}>
                                 <span className={styles.sidenavPartnerIcon}>
                                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <circle cx="8" cy="8" r="7.5" fill="white" stroke="#B1BCC5" />
                                     <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#4A6FA5" fontWeight="bold">P</text>
                                   </svg>
                                 </span>
-                                <span className="tooltip-sm">{step.partnerTooltip}</span>
                               </span>
                             )}
                             {/* New badge */}
@@ -1678,14 +1667,13 @@ export default function ComponentCatalog() {
                         <div key={i} className={i === 0 ? styles.sidenavSectionActive : styles.sidenavSection}>
                           <span style={{ flex: 1 }}>{sec.label}</span>
                           {sec.partnerTooltip && (
-                            <span className="tooltip-trigger">
+                            <span data-toggle="tooltip" title={sec.partnerTooltip}>
                               <span className={styles.sidenavPartnerIcon}>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                   <circle cx="8" cy="8" r="7.5" fill="white" stroke="#B1BCC5" />
                                   <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#4A6FA5" fontWeight="bold">P</text>
                                 </svg>
                               </span>
-                              <span className="tooltip-sm">{sec.partnerTooltip}</span>
                             </span>
                           )}
                         </div>

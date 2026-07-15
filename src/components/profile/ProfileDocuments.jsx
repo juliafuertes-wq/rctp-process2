@@ -61,32 +61,22 @@ export default function ProfileDocuments() {
               </table>
             </div>
 
-            <div className="pag-wrap">
-              <div className="pag-left">
-                <select className="pag-size">
-                  <option>20</option>
-                  <option>50</option>
-                  <option>100</option>
+            <div className="d-flex align-items-center justify-content-end flex-wrap" style={{ gap: 12, paddingTop: 12 }}>
+              <div className="d-flex align-items-center" style={{ gap: 8 }}>
+                <select className="form-control form-control-sm" style={{ width: 'auto' }}>
+                  <option>20</option><option>50</option><option>100</option>
                 </select>
-                <span className="pag-info">Showing results 1 – {Math.min(20, totalDocs)} of {totalDocs}</span>
+                <span className="text-muted small">Showing results 1 – {Math.min(20, totalDocs)} of {totalDocs}</span>
               </div>
-              <div className="pag-right">
-                <button className="pag-btn" disabled>
-                  <span className="material-icons-outlined" style={{ fontSize: 20 }}>first_page</span>
-                </button>
-                <button className="pag-btn" disabled>
-                  <span className="material-icons-outlined" style={{ fontSize: 20 }}>chevron_left</span>
-                </button>
-                <span className="pag-info">Page</span>
-                <input type="number" defaultValue={1} min={1} max={totalPages} className="pag-input" />
-                <span className="pag-info">of {totalPages}</span>
-                <button className="pag-btn" disabled={totalPages <= 1}>
-                  <span className="material-icons-outlined" style={{ fontSize: 20 }}>chevron_right</span>
-                </button>
-                <button className="pag-btn" disabled={totalPages <= 1}>
-                  <span className="material-icons-outlined" style={{ fontSize: 20 }}>last_page</span>
-                </button>
-              </div>
+              <ul className="pagination pagination-sm mb-0">
+                <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined" style={{ fontSize: 16 }}>first_page</span></button></li>
+                <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_left</span></button></li>
+                <li className="page-item disabled"><span className="page-link">Page</span></li>
+                <li className="page-item"><input type="number" defaultValue={1} min={1} max={totalPages} className="page-link form-control form-control-sm" style={{ width: 48, textAlign: 'center' }} /></li>
+                <li className="page-item disabled"><span className="page-link">of {totalPages}</span></li>
+                <li className={`page-item${totalPages <= 1 ? ' disabled' : ''}`}><button className="page-link" disabled={totalPages <= 1}><span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_right</span></button></li>
+                <li className={`page-item${totalPages <= 1 ? ' disabled' : ''}`}><button className="page-link" disabled={totalPages <= 1}><span className="material-icons-outlined" style={{ fontSize: 16 }}>last_page</span></button></li>
+              </ul>
             </div>
           </section>
         </main>

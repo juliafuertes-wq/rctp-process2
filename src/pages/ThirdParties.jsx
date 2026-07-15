@@ -142,17 +142,17 @@ export default function ThirdParties() {
         </div>
 
         <div className={styles.divider} />
-        <div className="pag-wrap">
-          <span className="pag-info">Showing results 1 – {ROWS.length} of {ROWS.length}</span>
-          <div className="pag-right">
-            <button className="pag-btn" disabled><span className="material-icons-outlined">first_page</span></button>
-            <button className="pag-btn" disabled><span className="material-icons-outlined">chevron_left</span></button>
-            <span className="pag-info">Page</span>
-            <input className="pag-input" type="number" defaultValue={1} min={1} max={1} />
-            <span className="pag-info">of 1</span>
-            <button className="pag-btn" disabled><span className="material-icons-outlined">chevron_right</span></button>
-            <button className="pag-btn" disabled><span className="material-icons-outlined">last_page</span></button>
-          </div>
+        <div className="d-flex align-items-center justify-content-end flex-wrap" style={{ gap: 12, paddingTop: 12 }}>
+          <span className="text-muted small">Showing results 1 – {ROWS.length} of {ROWS.length}</span>
+          <ul className="pagination pagination-sm mb-0">
+            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">first_page</span></button></li>
+            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">chevron_left</span></button></li>
+            <li className="page-item disabled"><span className="page-link">Page</span></li>
+            <li className="page-item"><input className="page-link form-control form-control-sm" type="number" defaultValue={1} min={1} max={1} style={{ width: 48, textAlign: 'center' }} /></li>
+            <li className="page-item disabled"><span className="page-link">of 1</span></li>
+            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">chevron_right</span></button></li>
+            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">last_page</span></button></li>
+          </ul>
         </div>
       </div>
     </PageLayout>

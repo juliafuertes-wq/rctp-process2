@@ -62,35 +62,6 @@
   letter-spacing: 0.5px;
 }
 
-/* ── Entity type toggle ── */
-.toggleGroup {
-  display: flex;
-}
-
-.toggleBtn {
-  height: 40px;
-  padding: 0 16px;
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-300);
-  font-size: 12px;
-  font-weight: 500;
-  font-family: inherit;
-  color: var(--text-light);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-.toggleBtn:first-child { border-radius: 4px 0 0 4px; }
-.toggleBtn:last-child  { border-radius: 0 4px 4px 0; }
-.toggleBtn:not(:first-child) { border-left: none; }
-.toggleBtn:hover:not(.toggleBtnActive) { background: var(--neutral-25); }
-
-.toggleBtnActive {
-  background: var(--primary-500);
-  border-color: var(--primary-500);
-  color: #fff;
-}
 
 /* ── Search name input ── */
 .searchInput {

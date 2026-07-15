@@ -654,7 +654,7 @@ export default function AddThirdParty() {
               <div className={`${styles.editField} ${errors.owner ? styles.hasError : ''}`} ref={ownerRef}>
                 <label className={styles.editLabel}>
                   Third Party Owner <span className={styles.req}>*</span>
-                  <span className="tooltip-info-trigger" data-tooltip="This person or group will be the representative of the third party relationship and can receive notifications and actions.">
+                  <span className="d-inline-flex align-items-center ml-1" data-toggle="tooltip" title="This person or group will be the representative of the third party relationship and can receive notifications and actions.">
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
@@ -663,14 +663,14 @@ export default function AddThirdParty() {
                     <button type="button" className={`${styles.ownerBtn} ${ownerMode === 'group' ? styles.ownerBtnActive : ''}`} onClick={() => setOwnerMode('group')}>Group</button>
                     <button type="button" className={`${styles.ownerBtn} ${ownerMode === 'user' ? styles.ownerBtnActive : ''}`} onClick={() => setOwnerMode('user')}>User</button>
                   </div>
-                  <div className="dd-wrap" style={{ flex: 1, minWidth: 0 }}>
-                    <div className="dd-trigger" style={{ padding: '0 10px', gap: 4 }}>
-                      <input className="dd-combo-input" value={ownerOpen ? ownerQuery : owner} placeholder="Type and select employee name" onChange={e => { setOwnerQuery(e.target.value); setOwnerOpen(true); }} onFocus={() => { setOwnerOpen(true); setOwnerQuery(''); }} />
-                      <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', flexShrink: 0, cursor: 'pointer' }} onClick={() => setOwnerOpen(v => !v)}>expand_more</span>
+                  <div className="dropdown" style={{ flex: 1, minWidth: 0 }}>
+                    <div className="input-group">
+                      <input className="form-control form-control-sm" value={ownerOpen ? ownerQuery : owner} placeholder="Type and select employee name" onChange={e => { setOwnerQuery(e.target.value); setOwnerOpen(true); }} onFocus={() => { setOwnerOpen(true); setOwnerQuery(''); }} />
+                      <div className="input-group-append"><span className="input-group-text" style={{ cursor: 'pointer' }} onClick={() => setOwnerOpen(v => !v)}><span className="material-icons-outlined" style={{ fontSize: 18 }}>expand_more</span></span></div>
                     </div>
                     {ownerOpen && (
-                      <div className="dd-menu">
-                        {OWNER_OPTIONS.filter(o => !ownerQuery || o.toLowerCase().includes(ownerQuery.toLowerCase())).map(o => <div key={o} className="dd-item" onClick={() => selectOwner(o)}>{o}</div>)}
+                      <div className="dropdown-menu show w-100">
+                        {OWNER_OPTIONS.filter(o => !ownerQuery || o.toLowerCase().includes(ownerQuery.toLowerCase())).map(o => <button key={o} className="dropdown-item" onClick={() => selectOwner(o)}>{o}</button>)}
                       </div>
                     )}
                   </div>
@@ -682,22 +682,22 @@ export default function AddThirdParty() {
               <div className={`${styles.editField} ${errors.bu ? styles.hasError : ''}`} ref={buRef}>
                 <label className={styles.editLabel}>
                   Business Unit <span className={styles.req}>*</span>
-                  <span className="tooltip-info-trigger" data-tooltip="The Business Unit defines where the Third Party sits within your organisational structure.">
+                  <span className="d-inline-flex align-items-center ml-1" data-toggle="tooltip" title="The Business Unit defines where the Third Party sits within your organisational structure.">
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
-                <div className="dd-wrap">
-                  <div className="dd-trigger" style={{ padding: '0 10px', gap: 4 }}>
-                    <input className="dd-combo-input" value={buOpen ? buQuery : businessUnit} placeholder="Select a business unit" onChange={e => { setBuQuery(e.target.value); setBuOpen(true); }} onFocus={() => { setBuOpen(true); setBuQuery(''); }} />
-                    <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', flexShrink: 0, cursor: 'pointer' }} onClick={() => setBuOpen(v => !v)}>expand_more</span>
+                <div className="dropdown">
+                  <div className="input-group">
+                    <input className="form-control form-control-sm" value={buOpen ? buQuery : businessUnit} placeholder="Select a business unit" onChange={e => { setBuQuery(e.target.value); setBuOpen(true); }} onFocus={() => { setBuOpen(true); setBuQuery(''); }} />
+                    <div className="input-group-append"><span className="input-group-text" style={{ cursor: 'pointer' }} onClick={() => setBuOpen(v => !v)}><span className="material-icons-outlined" style={{ fontSize: 18 }}>expand_more</span></span></div>
                   </div>
                   {buOpen && (
-                    <div className="dd-menu">
+                    <div className="dropdown-menu show w-100">
                       {BU_OPTIONS.filter(o => !buQuery || o.toLowerCase().includes(buQuery.toLowerCase())).map(o => (
-                        <div key={o} className={`dd-item${businessUnit === o ? ' dd-item-selected' : ''}`} onClick={() => selectBu(o)}>
+                        <button key={o} className={`dropdown-item${businessUnit === o ? ' active' : ''}`} onClick={() => selectBu(o)}>
                           {businessUnit === o && <span className="material-icons-outlined" style={{ fontSize: 14, marginRight: 4 }}>check</span>}
                           {o}
-                        </div>
+                        </button>
                       ))}
                     </div>
                   )}
@@ -709,13 +709,13 @@ export default function AddThirdParty() {
               <div className={styles.editField} ref={tagsRef}>
                 <label className={styles.editLabel}>
                   Third Party Tags
-                  <span className="tooltip-info-trigger" data-tooltip="Tag your Third Party to allow for faster searching or to allocate further relevant attributes.">
+                  <span className="d-inline-flex align-items-center ml-1" data-toggle="tooltip" title="Tag your Third Party to allow for faster searching or to allocate further relevant attributes.">
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
                 <div className={styles.tagSelectWrap}>
                   <div className={styles.tagSelectTrigger} onClick={() => setTagsOpen(v => !v)}>
-                    <span className="dd-placeholder">Search</span>
+                    <span className="text-muted">Search</span>
                     <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)' }}>expand_more</span>
                   </div>
                   {tags.length > 0 && (
@@ -726,10 +726,10 @@ export default function AddThirdParty() {
                     </div>
                   )}
                   {tagsOpen && (
-                    <div className="dd-menu">
-                      <div className="dd-search"><input className="dd-combo-input" placeholder="Search tags…" value={tagsQuery} onChange={e => setTagsQuery(e.target.value)} autoFocus /></div>
+                    <div className="dropdown-menu show w-100">
+                      <div className="px-2 pb-1"><input className="form-control form-control-sm" placeholder="Search tags…" value={tagsQuery} onChange={e => setTagsQuery(e.target.value)} autoFocus /></div>
                       {TAG_OPTIONS.filter(o => !tagsQuery || o.toLowerCase().includes(tagsQuery.toLowerCase())).map(o => (
-                        <label key={o} className="dd-check-item">
+                        <label key={o} className="dropdown-item d-flex align-items-center gap-2">
                           <Checkbox checked={tags.includes(o)} onChange={() => toggleTag(o)} size="small" />
                           {o}
                         </label>
@@ -748,22 +748,22 @@ export default function AddThirdParty() {
               <div className={`${styles.editField} ${errors.process ? styles.hasError : ''}`} ref={processRef}>
                 <label className={styles.editLabel}>
                   <span>Process <span className={styles.req}>*</span></span>
-                  <span className="tooltip-info-trigger" data-tooltip="The process defines the mandatory stages and actions within the Third Party workflow.">
+                  <span className="d-inline-flex align-items-center ml-1" data-toggle="tooltip" title="The process defines the mandatory stages and actions within the Third Party workflow.">
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
-                <div className="dd-wrap">
-                  <div className="dd-trigger" style={{ padding: '0 10px', gap: 4 }}>
-                    <input className="dd-combo-input" value={processOpen ? processQuery : process} placeholder="Select a process" onChange={e => { setProcessQuery(e.target.value); setProcessOpen(true); }} onFocus={() => { setProcessOpen(true); setProcessQuery(''); }} />
-                    <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', flexShrink: 0, cursor: 'pointer' }} onClick={() => setProcessOpen(v => !v)}>expand_more</span>
+                <div className="dropdown">
+                  <div className="input-group">
+                    <input className="form-control form-control-sm" value={processOpen ? processQuery : process} placeholder="Select a process" onChange={e => { setProcessQuery(e.target.value); setProcessOpen(true); }} onFocus={() => { setProcessOpen(true); setProcessQuery(''); }} />
+                    <div className="input-group-append"><span className="input-group-text" style={{ cursor: 'pointer' }} onClick={() => setProcessOpen(v => !v)}><span className="material-icons-outlined" style={{ fontSize: 18 }}>expand_more</span></span></div>
                   </div>
                   {processOpen && (
-                    <div className="dd-menu">
+                    <div className="dropdown-menu show w-100">
                       {PROCESS_OPTIONS.filter(o => !processQuery || o.toLowerCase().includes(processQuery.toLowerCase())).map(o => (
-                        <div key={o} className={`dd-item${process === o ? ' dd-item-selected' : ''}`} onClick={() => { setProcess(o); setPolicy(PROCESS_POLICIES[o]?.managed[0] || ''); setProcessOpen(false); setProcessQuery(''); }}>
+                        <button key={o} className={`dropdown-item${process === o ? ' active' : ''}`} onClick={() => { setProcess(o); setPolicy(PROCESS_POLICIES[o]?.managed[0] || ''); setProcessOpen(false); setProcessQuery(''); }}>
                           {process === o && <span className="material-icons-outlined" style={{ fontSize: 14, marginRight: 4 }}>check</span>}
                           {o}
-                        </div>
+                        </button>
                       ))}
                     </div>
                   )}
@@ -775,27 +775,27 @@ export default function AddThirdParty() {
               <div className={styles.editField} ref={policyRef}>
                 <label className={styles.editLabel}>
                   Screening &amp; Monitoring Policy <span className={styles.req}>*</span>
-                  <span className="tooltip-info-trigger" data-tooltip="The Screening & Monitoring Policy determines how the third party will be screened and monitored against the Dow Jones Risk and Compliance database. Only the process default or ad hoc policies can be selected.">
+                  <span className="d-inline-flex align-items-center ml-1" data-toggle="tooltip" title="The Screening & Monitoring Policy determines how the third party will be screened and monitored against the Dow Jones Risk and Compliance database. Only the process default or ad hoc policies can be selected.">
                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>info</span>
                   </span>
                 </label>
-                <div className="dd-wrap">
-                  <div className="dd-trigger" style={{ padding: '0 10px', gap: 4 }}>
-                    <input className="dd-combo-input" value={policyOpen ? policyQuery : policy} placeholder="Select a policy…" onChange={e => { setPolicyQuery(e.target.value); setPolicyOpen(true); }} onFocus={() => { setPolicyOpen(true); setPolicyQuery(''); }} />
-                    <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', flexShrink: 0, cursor: 'pointer' }} onClick={() => setPolicyOpen(v => !v)}>expand_more</span>
+                <div className="dropdown">
+                  <div className="input-group">
+                    <input className="form-control form-control-sm" value={policyOpen ? policyQuery : policy} placeholder="Select a policy…" onChange={e => { setPolicyQuery(e.target.value); setPolicyOpen(true); }} onFocus={() => { setPolicyOpen(true); setPolicyQuery(''); }} />
+                    <div className="input-group-append"><span className="input-group-text" style={{ cursor: 'pointer' }} onClick={() => setPolicyOpen(v => !v)}><span className="material-icons-outlined" style={{ fontSize: 18 }}>expand_more</span></span></div>
                   </div>
                   {policyOpen && (
-                    <div className="dd-menu">
+                    <div className="dropdown-menu show w-100">
                       {PROCESS_POLICIES[process].managed.filter(o => !policyQuery || o.toLowerCase().includes(policyQuery.toLowerCase())).length > 0 && <>
-                        <div className="dd-group">Process Managed Policies</div>
+                        <h6 className="dropdown-header">Process Managed Policies</h6>
                         {PROCESS_POLICIES[process].managed.filter(o => !policyQuery || o.toLowerCase().includes(policyQuery.toLowerCase())).map(o => (
-                          <div key={o} className="dd-item" onClick={() => { setPolicy(o); setPolicyOpen(false); setPolicyQuery(''); }}>{o}</div>
+                          <button key={o} className="dropdown-item" onClick={() => { setPolicy(o); setPolicyOpen(false); setPolicyQuery(''); }}>{o}</button>
                         ))}
                       </>}
                       {PROCESS_POLICIES[process].unmanaged.filter(o => !policyQuery || o.toLowerCase().includes(policyQuery.toLowerCase())).length > 0 && <>
-                        <div className="dd-group">Unmanaged Policies</div>
+                        <h6 className="dropdown-header">Unmanaged Policies</h6>
                         {PROCESS_POLICIES[process].unmanaged.filter(o => !policyQuery || o.toLowerCase().includes(policyQuery.toLowerCase())).map(o => (
-                          <div key={o} className="dd-item" onClick={() => { setPolicy(o); setPolicyOpen(false); setPolicyQuery(''); }}>{o}</div>
+                          <button key={o} className="dropdown-item" onClick={() => { setPolicy(o); setPolicyOpen(false); setPolicyQuery(''); }}>{o}</button>
                         ))}
                       </>}
                     </div>
@@ -1305,9 +1305,8 @@ function PropertiesPanel({ name, onClose }) {
                   <td className={styles.propIndicator}>
                     {p.value
                       ? (
-                        <span className="tooltip-trigger">
+                        <span data-toggle="tooltip" data-placement="left" title="High Risk Factors">
                           <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--primary-500)', display: 'block' }}>warning</span>
-                          <span className="tooltip-sm tooltip-left">High Risk Factors</span>
                         </span>
                       )
                       : <span className={styles.propDot} />
@@ -1364,18 +1363,18 @@ function ObSelect({ value, onChange, options, placeholder = 'Choose…', hasErro
   }, [open]);
   const filtered = query ? options.filter(o => o.toLowerCase().includes(query.toLowerCase())) : options;
   return (
-    <div className="dd-wrap" ref={ref}>
-      <div className={`dd-trigger${hasError ? ' dd-trigger-error' : ''}`} style={{ padding: '0 10px', gap: 4 }}>
-        <input className="dd-combo-input" value={open ? query : value} placeholder={placeholder} onChange={e => { setQuery(e.target.value); setOpen(true); }} onFocus={() => { setOpen(true); setQuery(''); }} />
-        <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', flexShrink: 0, cursor: 'pointer' }} onClick={() => setOpen(v => !v)}>expand_more</span>
+    <div className="dropdown" ref={ref}>
+      <div className={`input-group${hasError ? ' is-invalid' : ''}`}>
+        <input className={`form-control form-control-sm${hasError ? ' is-invalid' : ''}`} value={open ? query : value} placeholder={placeholder} onChange={e => { setQuery(e.target.value); setOpen(true); }} onFocus={() => { setOpen(true); setQuery(''); }} />
+        <div className="input-group-append"><span className="input-group-text" style={{ cursor: 'pointer' }} onClick={() => setOpen(v => !v)}><span className="material-icons-outlined" style={{ fontSize: 18 }}>expand_more</span></span></div>
       </div>
       {open && filtered.length > 0 && (
-        <div className="dd-menu">
+        <div className="dropdown-menu show w-100">
           {filtered.map(o => (
-            <div key={o} className={`dd-item${value === o ? ' dd-item-selected' : ''}`} onClick={() => { onChange(o); setOpen(false); setQuery(''); }}>
+            <button key={o} className={`dropdown-item${value === o ? ' active' : ''}`} onClick={() => { onChange(o); setOpen(false); setQuery(''); }}>
               {value === o && <span className="material-icons-outlined" style={{ fontSize: 14, marginRight: 4 }}>check</span>}
               {o}
-            </div>
+            </button>
           ))}
         </div>
       )}

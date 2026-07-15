@@ -171,32 +171,22 @@ export default function ProfileAudit() {
             </div>
 
             {/* Pagination */}
-            <div className="pag-wrap">
-              <div className="pag-left">
-                <select className="pag-size" defaultValue="100">
+            <div className="d-flex align-items-center justify-content-end flex-wrap" style={{ gap: 12, paddingTop: 12 }}>
+              <div className="d-flex align-items-center" style={{ gap: 8 }}>
+                <select className="form-control form-control-sm" style={{ width: 'auto' }} defaultValue="100">
                   <option value="25">25</option>
                   <option value="50">50</option>
                   <option value="100">100</option>
                 </select>
-                <span className="pag-info">
-                  Showing results 1 – {filtered.length} of {filtered.length}
-                </span>
+                <span className="text-muted small">Showing results 1 – {filtered.length} of {filtered.length}</span>
               </div>
-              <div className="pag-right">
-                <button className="pag-btn" disabled>
-                  <span className="material-icons-outlined" style={{ fontSize: 16 }}>first_page</span>
-                </button>
-                <button className="pag-btn" disabled>
-                  <span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_left</span>
-                </button>
-                <span className="pag-info">Page 1 of 1</span>
-                <button className="pag-btn" disabled>
-                  <span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_right</span>
-                </button>
-                <button className="pag-btn" disabled>
-                  <span className="material-icons-outlined" style={{ fontSize: 16 }}>last_page</span>
-                </button>
-              </div>
+              <ul className="pagination pagination-sm mb-0">
+                <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined" style={{ fontSize: 16 }}>first_page</span></button></li>
+                <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_left</span></button></li>
+                <li className="page-item disabled"><span className="page-link">Page 1 of 1</span></li>
+                <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_right</span></button></li>
+                <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined" style={{ fontSize: 16 }}>last_page</span></button></li>
+              </ul>
             </div>
 
           </section>

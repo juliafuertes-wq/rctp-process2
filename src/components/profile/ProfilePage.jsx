@@ -209,9 +209,8 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                     </div>
                   );
                   return tip ? (
-                    <div className="tooltip-trigger">
+                    <div data-toggle="tooltip" title={tip}>
                       {badge}
-                      <span className="tooltip-sm">{tip}</span>
                     </div>
                   ) : badge;
                 })()}
@@ -296,9 +295,9 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.18 }}
                 >
-                  <div className={styles.fieldGrid}>
+                  <div className="row">
                     {profile.overviewFields.map((f, i) => (
-                      <div key={i}>
+                      <div key={i} className="col-3 mb-3">
                         <div className={styles.fieldLabel}>{f.label}</div>
                         {f.flag ? (
                           <div className={`${styles.fieldValue} ${styles.fieldValueFlag}`}>
@@ -324,17 +323,16 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                         ) : f.overdue ? (
                           <div className={`${styles.fieldValue} ${['initech','lumon','ecomoda','gringotts','agencegrateau','gazprom','dundermifflin'].includes(profile.id) ? styles.fieldValueWithAction : ''}`}>
                             {f.overdueTooltip ? (
-                              <div className="tooltip-trigger">
-                                <span
-                                  className={styles.fieldValueOverdue}
-                                  style={{ cursor: 'pointer' }}
-                                  onClick={() => setRenewalModalOpen(true)}
-                                >
-                                  <span className="material-icons-outlined" style={{ fontSize: 14 }}>warning</span>
-                                  {f.value}
-                                </span>
-                                <span className="tooltip-sm">{f.overdueTooltip}</span>
-                              </div>
+                              <span
+                                className={styles.fieldValueOverdue}
+                                style={{ cursor: 'pointer' }}
+                                onClick={() => setRenewalModalOpen(true)}
+                                data-toggle="tooltip"
+                                title={f.overdueTooltip}
+                              >
+                                <span className="material-icons-outlined" style={{ fontSize: 14 }}>warning</span>
+                                {f.value}
+                              </span>
                             ) : (
                               <span
                                 className={styles.fieldValueOverdue}
@@ -377,9 +375,9 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.18 }}
                 >
-                  <div className={styles.fieldGrid}>
+                  <div className="row">
                     {profile.additionalFields.map((f, i) => (
-                      <div key={i}>
+                      <div key={i} className="col-3 mb-3">
                         <div className={styles.fieldLabel}>{f.label}</div>
                         <div className={styles.fieldValue}>
                           {f.link ? (
@@ -532,9 +530,8 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               <div className={styles.sectionRow}>
                 <div className={styles.sectionTitleGroup}>
                   <h2 className={styles.cardTitle}>Open Tasks</h2>
-                  <span className="tooltip-trigger">
+                  <span data-toggle="tooltip" title="Tasks relating to this third party">
                     <span className={`material-icons-outlined ${styles.infoIcon}`}>info</span>
-                    <span className="tooltip-lg">Tasks relating to this third party</span>
                   </span>
                 </div>
               </div>
@@ -591,9 +588,8 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               <div className={styles.sectionRow}>
                 <div className={styles.sectionTitleGroup}>
                   <h2 className={styles.cardTitle}>Screening and Monitoring Associations</h2>
-                  <span className="tooltip-trigger">
+                  <span data-toggle="tooltip" title="Monitored Associations being continuously monitored against Risk and Compliance Database">
                     <span className={`material-icons-outlined ${styles.infoIcon}`}>info</span>
-                    <span className="tooltip-lg">Monitored Associations being continuously monitored against Risk and Compliance Database</span>
                   </span>
                 </div>
               </div>

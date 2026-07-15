@@ -41,9 +41,10 @@ $softlightblue: #F4F9FC;
 
 // Bootstrap 5 variables not present in Bootstrap 4 — defined here so _base.scss can use them
 $border-radius-pill: 50rem;
+$font-weight-medium: 500;
 
 // Override Bootstrap default colours with DJ values
-$primary:   $bergblue  !default;
+$primary:   $bergbluetint1  !default;
 $secondary: $darkgrey  !default;
 $success:   $postive   !default;
 $info:      $tahitiblue !default;

@@ -64,7 +64,7 @@ export default function ProfileEntityVerification() {
               <div className={uboStyles.titleBlock}>
                 <h2 className={uboStyles.title}>
                   Entity Verification
-                  <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--primary-500)', verticalAlign: 'middle', marginLeft: 6 }}>info</span>
+                  <span className="material-icons-outlined" style={{ fontSize: 16, color: '#028FBB', verticalAlign: 'middle', marginLeft: 6 }}>info</span>
                 </h2>
               </div>
               <div className={uboStyles.actions}>
@@ -83,7 +83,7 @@ export default function ProfileEntityVerification() {
                 </div>
                 <div className={uboStyles.uboStatus} style={{ marginTop: 4 }}>
                   <span className={uboStyles.uboStatusLabel} style={{ fontSize: 12 }}>UBO Status</span>
-                  <span className="material-icons-outlined" style={{ fontSize: 14, color: uboStatusAvailable ? '#13df81' : 'var(--neutral-500)' }}>
+                  <span className="material-icons-outlined" style={{ fontSize: 14, color: uboStatusAvailable ? '#13df81' : '#8D9CA9' }}>
                     {uboStatusAvailable ? 'check_circle' : 'cancel'}
                   </span>
                 </div>
@@ -131,7 +131,7 @@ export default function ProfileEntityVerification() {
             <div className={uboStyles.verifiedSeparator} />
 
             <div className={uboStyles.verifiedSourceRow}>
-              <span className="material-icons-outlined" style={{ fontSize: 14, color: 'var(--neutral-500)' }}>info</span>
+              <span className="material-icons-outlined" style={{ fontSize: 14, color: '#8D9CA9' }}>info</span>
               <span className={uboStyles.verifiedSource}>SOURCE: DUN &amp; BRADSTREET</span>
             </div>
           </section>

@@ -1,6 +1,6 @@
 .resultCount {
   font-size: 13px;
-  color: var(--text-light);
+  color: #516267;
 }
 
 .printBtn {
@@ -27,38 +27,38 @@
 .filterSelect {
   height: 32px;
   padding: 0 10px;
-  border: 1px solid var(--neutral-100);
-  border-radius: var(--rctp-radius-sm);
+  border: 1px solid #D6DBE0;
+  border-radius: 4px;
   font-size: 13px;
   font-family: inherit;
-  color: var(--text-normal);
-  background: var(--neutral-00);
+  color: #0C2A31;
+  background: #FFFFFF;
   cursor: pointer;
   min-width: 120px;
 }
 .filterSelect:focus {
   outline: none;
-  border-color: var(--primary-400);
+  border-color: #02A3D5;
 }
 
 .filterInput {
   height: 32px;
   padding: 0 10px;
-  border: 1px solid var(--neutral-100);
-  border-radius: var(--rctp-radius-sm);
+  border: 1px solid #D6DBE0;
+  border-radius: 4px;
   font-size: 13px;
   font-family: inherit;
-  color: var(--text-normal);
-  background: var(--neutral-00);
+  color: #0C2A31;
+  background: #FFFFFF;
   flex: 1;
   min-width: 160px;
 }
 .filterInput::placeholder {
-  color: var(--text-light);
+  color: #516267;
 }
 .filterInput:focus {
   outline: none;
-  border-color: var(--primary-400);
+  border-color: #02A3D5;
 }
 
 .resetBtn {
@@ -66,14 +66,14 @@
   border: none;
   cursor: pointer;
   padding: 4px;
-  border-radius: var(--rctp-radius-sm);
-  color: var(--text-light);
+  border-radius: 4px;
+  color: #516267;
   display: inline-flex;
   align-items: center;
   transition: background 0.15s ease, color 0.15s ease;
 }
 .resetBtn:hover {
-  background: var(--neutral-50);
-  color: var(--text-normal);
+  background: #DFE3E7;
+  color: #0C2A31;
 }
 

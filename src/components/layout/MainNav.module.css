@@ -1,5 +1,5 @@
 .nav {
-  background-color: var(--primary-500);
+  background-color: #028FBB;
   height: 36px;
 }
 .inner {
@@ -23,12 +23,12 @@
   position: relative;
   transition: background 0.15s ease, color 0.15s ease;
 }
-.link:hover { background: var(--primary-600); color: var(--neutral-00); }
+.link:hover { background: #017295; color: #FFFFFF; }
 .link:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.7);
   outline-offset: -3px;
 }
 .active {
-  background: var(--primary-700);
-  color: var(--neutral-00);
+  background: #017295;
+  color: #FFFFFF;
 }

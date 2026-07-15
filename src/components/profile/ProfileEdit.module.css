@@ -2,20 +2,20 @@
 .adminContent {
   flex: 1;
   min-width: 0;
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-100);
-  border-top: 4px solid var(--primary-500);
-  box-shadow: var(--rctp-shadow-xs);
+  background: #FFFFFF;
+  border: 1px solid #D6DBE0;
+  border-top: 4px solid #028FBB;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
 /* ── Content section ── */
 .contentSection { padding: 20px 20px 0; }
 
 /* ── Content title ── */
-.contentTitle { font-size: 18px; font-weight: 500; color: var(--text-normal); font-family: var(--font-heading); margin-bottom: 16px; }
+.contentTitle { font-size: 18px; font-weight: 500; color: #0C2A31; font-family: inherit; margin-bottom: 16px; }
 
 /* ── Divider ── */
-.contentDivider { height: 1px; background: var(--neutral-50); margin: 0 16px; }
+.contentDivider { height: 1px; background: #DFE3E7; margin: 0 16px; }
 
 /* ── Two-column grid ── */
 .summaryGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; align-items: start; }
@@ -23,18 +23,18 @@
 
 /* ── Form field (same as AddThirdParty .editField / .editLabel / .editInput) ── */
 .editField { display: flex; flex-direction: column; gap: 6px; }
-.editLabel { font-size: 12px; font-weight: 500; color: var(--primary-500); text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
-.req { color: var(--alert-500); }
+.editLabel { font-size: 12px; font-weight: 500; color: #028FBB; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
+.req { color: #E34C53; }
 .editInput {
-  height: 34px; border: 1px solid var(--neutral-300); border-radius: var(--rctp-radius-xs);
+  height: 34px; border: 1px solid #B1BCC5; border-radius: 4px;
   padding: 0 10px; font-size: 14px; font-family: inherit;
-  color: var(--text-normal); background: var(--neutral-00); outline: none;
+  color: #0C2A31; background: #FFFFFF; outline: none;
   transition: border-color 0.15s; width: 100%; box-sizing: border-box;
 }
-.editInput:focus { border-color: var(--primary-500); }
+.editInput:focus { border-color: #028FBB; }
 
 /* ── Helper text ── */
-.helperText { font-size: 12px; color: var(--text-light); margin-top: 4px; line-height: 1.4; }
+.helperText { font-size: 12px; color: #516267; margin-top: 4px; line-height: 1.4; }
 
 
 
@@ -42,16 +42,16 @@
 .ownerInputRow { display: flex; align-items: center; gap: 8px; }
 .ownerInputRow .ownerToggle { margin-bottom: 0; flex-shrink: 0; }
 .ownerToggle { display: inline-flex; margin-bottom: 6px; }
-.ownerBtn { height: 34px; padding: 0 16px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; background: var(--neutral-00); color: var(--text-light); border: 1px solid var(--neutral-300); border-right: none; transition: background 0.15s, color 0.15s, border-color 0.15s; font-family: inherit; }
+.ownerBtn { height: 34px; padding: 0 16px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; background: #FFFFFF; color: #516267; border: 1px solid #B1BCC5; border-right: none; transition: background 0.15s, color 0.15s, border-color 0.15s; font-family: inherit; }
 .ownerBtn:first-child { border-radius: 4px 0 0 4px; }
-.ownerBtn:last-child { border-right: 1px solid var(--neutral-300); border-radius: 0 4px 4px 0; }
-.ownerBtnActive { background: var(--primary-500); color: var(--neutral-25); border-color: var(--primary-500); }
+.ownerBtn:last-child { border-right: 1px solid #B1BCC5; border-radius: 0 4px 4px 0; }
+.ownerBtnActive { background: #028FBB; color: #F4F4F4; border-color: #028FBB; }
 
 
 /* ── Tag select (same as AddThirdParty .tagSelectWrap / .tagChip) ── */
 .tagSelectWrap { position: relative; }
-.tagSelectTrigger { display: flex; align-items: center; justify-content: space-between; height: 34px; border: 1px solid var(--neutral-300); border-radius: var(--rctp-radius-xs); padding: 0 10px; cursor: pointer; background: var(--neutral-00); }
-.tagSelectTrigger:hover { border-color: var(--primary-500); }
+.tagSelectTrigger { display: flex; align-items: center; justify-content: space-between; height: 34px; border: 1px solid #B1BCC5; border-radius: 4px; padding: 0 10px; cursor: pointer; background: #FFFFFF; }
+.tagSelectTrigger:hover { border-color: #028FBB; }
 .tagChips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 
 /* ── Form footer ── */

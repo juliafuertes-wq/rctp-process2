@@ -73,7 +73,7 @@ export default function ProfileAudit() {
             <div className={`${styles.cardHeader} ${rmStyles.cardHeader}`}>
               <div className={rmStyles.cardTitleRow}>
                 <h2 className={styles.cardTitle}>Audit</h2>
-                <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)', cursor: 'pointer' }}>info</span>
+                <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267', cursor: 'pointer' }}>info</span>
               </div>
               <div className={styles.cardHeaderRight}>
                 <span className={auditStyles.resultCount}>
@@ -149,7 +149,7 @@ export default function ProfileAudit() {
                 <tbody>
                   {filtered.length === 0 ? (
                     <tr>
-                      <td colSpan={4} style={{ textAlign: 'center', color: 'var(--text-light)', padding: '24px 0' }}>
+                      <td colSpan={4} style={{ textAlign: 'center', color: '#516267', padding: '24px 0' }}>
                         No audit entries match the current filters.
                       </td>
                     </tr>

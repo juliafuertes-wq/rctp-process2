@@ -555,7 +555,7 @@ export default function AddThirdParty() {
                     <tbody>
                       {filteredVerify.map((r, i) => (
                         <tr key={i} className={selectedVerify === r.duns ? styles.rowSelected : ''}>
-                          <td style={{ fontWeight: 500, color: 'var(--text-normal)' }}>{r.name}</td>
+                          <td style={{ fontWeight: 500, color: '#0C2A31' }}>{r.name}</td>
                           <td style={{ fontFamily: 'monospace', fontSize: 12 }}>{r.duns}</td>
                           <td style={{ fontSize: 12, maxWidth: 240 }}>{r.address}</td>
                           <td>{r.country}</td>
@@ -716,7 +716,7 @@ export default function AddThirdParty() {
                 <div className={styles.tagSelectWrap}>
                   <div className={styles.tagSelectTrigger} onClick={() => setTagsOpen(v => !v)}>
                     <span className="text-muted">Search</span>
-                    <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-light)' }}>expand_more</span>
+                    <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267' }}>expand_more</span>
                   </div>
                   {tags.length > 0 && (
                     <div className={styles.tagChips}>
@@ -1306,7 +1306,7 @@ function PropertiesPanel({ name, onClose }) {
                     {p.value
                       ? (
                         <span data-toggle="tooltip" data-placement="left" title="High Risk Factors">
-                          <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--primary-500)', display: 'block' }}>warning</span>
+                          <span className="material-icons-outlined" style={{ fontSize: 16, color: '#028FBB', display: 'block' }}>warning</span>
                         </span>
                       )
                       : <span className={styles.propDot} />

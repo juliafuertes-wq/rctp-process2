@@ -58,7 +58,7 @@ function ExternalDDModal({ profileId, onClose, onAfterSend }) {
                 className="modal-input"
                 type={field === 'email' ? 'email' : 'text'}
                 placeholder={field === 'firstName' ? 'First Name' : field.charAt(0).toUpperCase() + field.slice(1)}
-                style={errors[field] ? { borderColor: 'var(--alert-500)' } : undefined}
+                style={errors[field] ? { borderColor: '#E34C53' } : undefined}
                 value={form[field]}
                 onChange={e => set(field, e.target.value)}
               />
@@ -68,7 +68,7 @@ function ExternalDDModal({ profileId, onClose, onAfterSend }) {
             <label className="modal-label">Language <span className="modal-required">*</span></label>
             <select
               className="modal-select"
-              style={errors.language ? { borderColor: 'var(--alert-500)' } : undefined}
+              style={errors.language ? { borderColor: '#E34C53' } : undefined}
               value={form.language}
               onChange={e => set('language', e.target.value)}
             >

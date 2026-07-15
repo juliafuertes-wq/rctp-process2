@@ -255,7 +255,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                 <div className={styles.statusInline}>
                   Third party STATUS:
                   <span className={styles.activeText}>Active</span>
-                  <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--success-700)' }}>verified</span>
+                  <span className="material-icons-outlined" style={{ fontSize: 16, color: '#0D9858' }}>verified</span>
                 </div>
                 <button className={"btn btn-outline-secondary"} onClick={() => setShowNotes(true)}>Notes</button>
                 <button className={"btn btn-primary"} onClick={() => navigate(`/profile/${profile.id}/edit`)}>Edit</button>
@@ -614,10 +614,10 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   {profileLoading ? (
                     <tr key="queued-loading">
                       <td><span className={styles.cellLink}>{profile.name ? profile.name.split(' ').slice(0,3).join(' ') : 'New Entity'}</span></td>
-                      <td><div className={styles.matchBadges}><Badge label="1" bgColor="var(--neutral-400)" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="var(--neutral-400)" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="var(--neutral-400)" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="var(--neutral-400)" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="var(--neutral-400)" textColor="#fff" size="large" shape="square" /></div></td>
+                      <td><div className={styles.matchBadges}><Badge label="1" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /></div></td>
                       <td>01 May 2026</td>
                       <td>Primary Entity</td>
-                      <td><div className={styles.assocStatus}><span className={styles.statusDot} style={{ background: 'var(--neutral-400)' }} />Queued</div></td>
+                      <td><div className={styles.assocStatus}><span className={styles.statusDot} style={{ background: '#9FACB7' }} />Queued</div></td>
                       <td></td>
                       <td>Entity</td>
                     </tr>
@@ -785,7 +785,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               >Cancel</button>
               <button
                 className="btn btn-primary"
-                style={{ background: 'var(--primary-500)' }}
+                style={{ background: '#028FBB' }}
                 onClick={() => {
                   if (profile.id === 'dundermifflin') setDMFlow({ renewed: true, approved: false });
                   if (profile.id === 'lumon') setLumonFlow({ renewed: true, approved: false });
@@ -831,7 +831,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               >Cancel</button>
               <button
                 className="btn btn-primary"
-                style={{ background: 'var(--primary-500)' }}
+                style={{ background: '#028FBB' }}
                 onClick={() => {
                   if (profile.id === 'dundermifflin') { setDMFlow({ renewed: false, approved: false }); setCurrentStatus('Approved - Renewal Required'); }
                   else if (profile.id === 'lumon') { setLumonFlow({ renewed: false, approved: false }); setCurrentStatus('Approved'); }
@@ -949,7 +949,7 @@ function EditConnectionPanel({ row, onClose, onSave }) {
           </div>
           <div className={styles.connectTypeSection}>
             <label className={styles.connectTypeLabel}>
-              Connection Type <span style={{ color: 'var(--alert-500)' }}>*</span>
+              Connection Type <span style={{ color: '#E34C53' }}>*</span>
             </label>
             <select
               className={styles.connectTypeSelect}
@@ -1015,7 +1015,7 @@ function ConnectPanel({ row, onClose, onConfirm }) {
           </div>
           <div className={styles.connectTypeSection}>
             <label className={styles.connectTypeLabel}>
-              Connection Type <span style={{ color: 'var(--alert-500)' }}>*</span>
+              Connection Type <span style={{ color: '#E34C53' }}>*</span>
             </label>
             <select
               className={styles.connectTypeSelect}
@@ -1176,7 +1176,7 @@ function LookMorePanel({ onClose, onSelect }) {
           {/* Results */}
           {results !== null && (
             results.length === 0 ? (
-              <div style={{ padding: '24px 0', textAlign: 'center', color: 'var(--text-light)', fontSize: 13 }}>
+              <div style={{ padding: '24px 0', textAlign: 'center', color: '#516267', fontSize: 13 }}>
                 No third parties found matching your search.
               </div>
             ) : (
@@ -1412,7 +1412,7 @@ function DeclinePanel({ onClose, onSave }) {
     <>
       <motion.div
         className={styles.statusPanel}
-        style={{ zIndex: 'calc(var(--z-panel) + 1)' }}
+        style={{ zIndex: '101' }}
         initial={{ x: '100%' }}
         animate={{ x: 0 }}
         exit={{ x: '100%' }}

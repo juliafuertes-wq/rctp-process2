@@ -81,7 +81,7 @@ export default function ProfileApprovalStage() {
               <div className={s.headerTop}>
                 <div className={s.headerTitleCol}>
                   <h2 className={s.title}>{stageLabel}</h2>
-                  <p className={s.subtitle}>Items marked with a <span style={{ color: 'var(--alert-500)' }}>*</span> are required</p>
+                  <p className={s.subtitle}>Items marked with a <span style={{ color: '#E34C53' }}>*</span> are required</p>
                 </div>
               </div>
 
@@ -97,7 +97,7 @@ export default function ProfileApprovalStage() {
                   </button>
                   <button
                     className={"btn btn-outline-secondary"}
-                    style={{ color: 'var(--alert-500)', borderColor: 'var(--alert-500)' }}
+                    style={{ color: '#E34C53', borderColor: '#E34C53' }}
                     onClick={handleNotApproved}
                     disabled={!isReady || currentStageDone}
                   >

@@ -74,11 +74,11 @@ export default function ProfileInternalDueDiligence() {
             <div style={{
               margin: '16px 0',
               padding: '14px 16px',
-              border: '1px solid var(--neutral-50)',
-              borderRadius: 'var(--rctp-radius-sm)',
+              border: '1px solid #DFE3E7',
+              borderRadius: '4px',
               fontSize: 13,
               lineHeight: 1.6,
-              color: 'var(--text-normal)',
+              color: '#0C2A31',
             }}>
               The Risk Assessment stage is now complete and it has been decided that additional due diligence is to be carried out internally. All information gathered relating to the Third Party can be reviewed within the Properties Section. Complete a full review of all the information gathered and complete the due diligence steps required by your internal policies and procedures. Ensure that you provide details of all due diligence activities completed and all supporting information is uploaded as required.
             </div>
@@ -86,14 +86,14 @@ export default function ProfileInternalDueDiligence() {
             {/* Q1 — Due diligence steps */}
             <div style={{
               padding: '16px',
-              border: '1px solid var(--neutral-50)',
-              borderRadius: 'var(--rctp-radius-sm)',
+              border: '1px solid #DFE3E7',
+              borderRadius: '4px',
               marginBottom: 16,
               display: 'flex',
               flexDirection: 'column',
               gap: 10,
             }}>
-              <label style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-normal)' }}>
+              <label style={{ fontSize: 14, fontWeight: 600, color: '#0C2A31' }}>
                 1. <span style={{ color: 'red' }}>*</span> Provide details of the due diligence steps completed.
               </label>
               <textarea
@@ -107,13 +107,13 @@ export default function ProfileInternalDueDiligence() {
             {/* Q2 — File upload */}
             <div style={{
               padding: '16px',
-              border: '1px solid var(--neutral-50)',
-              borderRadius: 'var(--rctp-radius-sm)',
+              border: '1px solid #DFE3E7',
+              borderRadius: '4px',
               display: 'flex',
               flexDirection: 'column',
               gap: 10,
             }}>
-              <label style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-normal)' }}>
+              <label style={{ fontSize: 14, fontWeight: 600, color: '#0C2A31' }}>
                 2. <span style={{ color: 'red' }}>*</span> Upload all supporting documentation gathered during the due diligence process.
               </label>
               <div className="fu-row">

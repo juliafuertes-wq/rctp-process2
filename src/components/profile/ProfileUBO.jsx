@@ -59,7 +59,7 @@ export default function ProfileUBO() {
               <div className={uboStyles.titleBlock}>
                 <h2 className={uboStyles.title}>
                   UBO (Ultimate Beneficial Ownership)
-                  <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--primary-500)', verticalAlign: 'middle', marginLeft: 6 }}>info</span>
+                  <span className="material-icons-outlined" style={{ fontSize: 16, color: '#028FBB', verticalAlign: 'middle', marginLeft: 6 }}>info</span>
                 </h2>
                 <div className={uboStyles.uboStatus}>
                   <span className={uboStyles.uboStatusLabel}>UBO Status:</span>

@@ -1,21 +1,21 @@
 /* ── Card ── */
 .card {
-  background: var(--neutral-00);
-  border-top: 3px solid var(--primary-600);
+  background: #FFFFFF;
+  border-top: 3px solid #017295;
   padding: 16px;
   min-height: 600px;
 }
 
 .cardHeader {
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid #DFE3E7;
   padding-bottom: 16px;
 }
 
 /* ── Blocker banner ── */
 .blocker {
   margin-top: 16px;
-  background: var(--alert-500);
-  border-radius: var(--rctp-radius-sm);
+  background: #E34C53;
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -45,25 +45,25 @@
 
 .blockerList {
   margin: 0 12px 12px;
-  border: 1px solid var(--alert-500);
-  border-radius: var(--rctp-radius-sm);
+  border: 1px solid #E34C53;
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .blockerItem {
-  background: var(--neutral-00);
+  background: #FFFFFF;
   padding: 14px 16px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-normal);
-  border-bottom: 1px solid var(--neutral-50);
+  color: #0C2A31;
+  border-bottom: 1px solid #DFE3E7;
 }
 .blockerItem:last-child {
   border-bottom: none;
 }
 
 .blockerLink {
-  color: var(--primary-600);
+  color: #017295;
   font-weight: 600;
   text-decoration: none;
 }
@@ -84,23 +84,23 @@
   gap: 12px;
   margin: 20px 16px;
   padding: 16px;
-  background: var(--neutral-25, #fafafa);
-  border: 1px solid var(--neutral-100);
-  border-radius: var(--rctp-radius-sm);
-  color: var(--text-light);
+  background: #F4F4F4;
+  border: 1px solid #D6DBE0;
+  border-radius: 4px;
+  color: #516267;
   text-align: center;
 }
 
 .unavailableTitle {
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-normal);
+  color: #0C2A31;
   margin-bottom: 4px;
 }
 
 .unavailableText {
   font-size: 13px;
-  color: var(--text-light);
+  color: #516267;
   line-height: 1.5;
 }
 
@@ -114,28 +114,28 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--text-light);
+  color: #516267;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 4px;
-  border-radius: var(--rctp-radius-sm);
+  border-radius: 4px;
   transition: background 0.15s ease, color 0.15s ease;
 }
 .playBtn:hover {
-  background: var(--neutral-50);
-  color: var(--text-normal);
+  background: #DFE3E7;
+  color: #0C2A31;
 }
 
 .menuDropdown {
   position: absolute;
   right: 0;
   top: calc(100% + 4px);
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: #FFFFFF;
+  border: 1px solid #DFE3E7;
   border-radius: 6px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  z-index: var(--z-dropdown);
+  z-index: 1000;
   min-width: 140px;
   overflow: hidden;
 }
@@ -150,11 +150,11 @@
   border: none;
   font-size: 13px;
   font-family: inherit;
-  color: var(--text-normal);
+  color: #0C2A31;
   cursor: pointer;
   text-align: left;
   transition: background 0.12s ease;
 }
 .menuItem:hover {
-  background: var(--primary-50);
+  background: #B8E5F3;
 }

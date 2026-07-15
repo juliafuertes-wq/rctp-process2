@@ -3,11 +3,11 @@
   align-items: center;
   gap: 6px;
   padding: 8px 0 8px 16px;
-  font-size: var(--body-small-size);
+  font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: var(--label-medium-tracking);
+  letter-spacing: 0.50px;
 }
-.homeLink, .link { color: var(--primary-500); display: flex; align-items: center; }
+.homeLink, .link { color: #028FBB; display: flex; align-items: center; }
 .homeLink:hover, .link:hover { text-decoration: underline; }
-.sep { color: var(--text-light); font-size: 14px; text-transform: none; letter-spacing: 0; }
-.current { color: var(--text-light); }
+.sep { color: #516267; font-size: 14px; text-transform: none; letter-spacing: 0; }
+.current { color: #516267; }

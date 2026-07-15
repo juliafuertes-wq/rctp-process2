@@ -101,7 +101,7 @@ export default function ProfileRiskAssessmentQuestionnaire() {
 
           {/* Instruction banner */}
           <div className={raStyles.raBanner}>
-            <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--primary-500)', flexShrink: 0 }}>info</span>
+            <span className="material-icons-outlined" style={{ fontSize: 18, color: '#028FBB', flexShrink: 0 }}>info</span>
             Please complete the following sections.
           </div>
 

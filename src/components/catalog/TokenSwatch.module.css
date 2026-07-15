@@ -8,21 +8,21 @@
 .swatch {
   width: 36px;
   height: 20px;
-  border-radius: var(--rctp-radius-xs);
+  border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   flex-shrink: 0;
 }
 
 .name {
-  font-family: var(--font-mono, 'Source Code Pro', monospace);
+  font-family: 'Source Code Pro', monospace;
   font-size: 12px;
-  color: var(--primary-700);
+  color: #017295;
   min-width: 180px;
 }
 
 .value {
-  font-family: var(--font-mono, 'Source Code Pro', monospace);
+  font-family: 'Source Code Pro', monospace;
   font-size: 12px;
-  color: var(--text-light);
+  color: #516267;
   white-space: nowrap;
 }

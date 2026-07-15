@@ -6,7 +6,7 @@
 
 .resultCount {
   font-size: 13px;
-  color: var(--text-light);
+  color: #516267;
 }
 
 .filterBtn {
@@ -16,7 +16,7 @@
 }
 
 .emptyValue {
-  color: var(--text-light);
+  color: #516267;
 }
 
 /* Key Risk / Red Flag icon columns — centred */
@@ -34,13 +34,13 @@
   border: none;
   cursor: pointer;
   padding: 4px;
-  border-radius: var(--rctp-radius-sm);
-  color: var(--primary-600);
+  border-radius: 4px;
+  color: #017295;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: background 0.15s ease;
 }
 .editBtn:hover {
-  background: var(--primary-50);
+  background: #B8E5F3;
 }

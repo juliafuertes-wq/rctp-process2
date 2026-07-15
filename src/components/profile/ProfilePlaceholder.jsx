@@ -23,9 +23,9 @@ export default function ProfilePlaceholder({ title }) {
       <div className={styles.pageBody}>
         <Sidebar profile={profile} />
         <main className={styles.mainContent}>
-          <div style={{ background: 'var(--neutral-00)', borderTop: '3px solid var(--primary-600)', minHeight: 600, padding: '60px 0', textAlign: 'center', color: 'var(--text-light)' }}>
+          <div style={{ background: '#FFFFFF', borderTop: '3px solid #017295', minHeight: 600, padding: '60px 0', textAlign: 'center', color: '#516267' }}>
             <span className="material-icons-outlined" style={{ fontSize: 48, display: 'block', marginBottom: 12 }}>construction</span>
-            <h2 style={{ fontSize: 20, fontWeight: 500, color: 'var(--text-normal)' }}>{title}</h2>
+            <h2 style={{ fontSize: 20, fontWeight: 500, color: '#0C2A31' }}>{title}</h2>
             <p style={{ marginTop: 8, fontSize: 13 }}>This page is under construction.</p>
           </div>
         </main>

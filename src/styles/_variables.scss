@@ -1,17 +1,17 @@
 @use "sass:map";
 
-// Bootstrap base colours
-$white:    #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black:    #000 !default;
+// Bootstrap gray scale — overridden with DJ brand blue-grays for visual consistency
+$white:    #FFFFFF;
+$gray-100: #F4F4F4;   // --neutral-25
+$gray-200: #DFE3E7;   // --neutral-50
+$gray-300: #D6DBE0;   // --neutral-100
+$gray-400: #C4CCD2;   // --neutral-200  (was #ced4da)  → borders, inputs
+$gray-500: #9FACB7;   // --neutral-400  (was #adb5bd)  → placeholders, icons
+$gray-600: #516267;   // --text-light   (was #6c757d)  → secondary labels
+$gray-700: #394859;   // --neutral-800 approx
+$gray-800: #1F2D33;
+$gray-900: #0C2A31;   // --text-normal  = $darkcharc
+$black:    #000000;
 
 // DJ colours
 $bergblue:      #02A3D5;
@@ -44,7 +44,7 @@ $border-radius-pill: 50rem;
 $font-weight-medium: 500;
 
 // Override Bootstrap default colours with DJ values
-$primary:   $bergbluetint1  !default;
+$primary:   $bergblue  !default;
 $secondary: $darkgrey  !default;
 $success:   $postive   !default;
 $info:      $tahitiblue !default;

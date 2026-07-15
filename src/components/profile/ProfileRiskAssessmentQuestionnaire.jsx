@@ -5,8 +5,8 @@ import PageLayout from '../layout/PageLayout';
 import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
 import { patchInitechProfile, getWaystarFlow, setWaystarFlow } from '../../utils/initechFlow';
-import styles from './profile.module.css';
-import raStyles from './ProfileRiskAssessment.module.css';
+import styles from './profile.module.scss';
+import raStyles from './ProfileRiskAssessment.module.scss';
 
 const DEFAULT_SECTIONS = [
   { id: 'legal-structure',      label: 'Legal Structure',       status: 'pending' },
@@ -101,7 +101,7 @@ export default function ProfileRiskAssessmentQuestionnaire() {
 
           {/* Instruction banner */}
           <div className={raStyles.raBanner}>
-            <span className="material-icons-outlined" style={{ fontSize: 18, color: '#028FBB', flexShrink: 0 }}>info</span>
+            <span className="material-icons-outlined" className="text-primary-600" style={{ fontSize: 18, flexShrink: 0 }}>info</span>
             Please complete the following sections.
           </div>
 

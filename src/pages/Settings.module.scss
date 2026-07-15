@@ -1,7 +1,9 @@
+@import '../styles/variables';
+
 /* ── Page header card ── */
 .pageHeaderCard {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   height: 64px;
   display: flex;
   align-items: center;
@@ -12,28 +14,28 @@
 .pageHeaderTitle {
   font-size: 20px;
   font-weight: 500;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
 }
 
 .pageHeaderInfo {
   font-size: 18px;
-  color: var(--neutral-500);
+  color: $neutral-500;
   display: flex;
   align-items: center;
 }
 
 /* ── Top tabs bar ── */
 .topTabsBar {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   padding: 0 20px;
 }
 
 .topTabs {
   display: flex;
   gap: 26px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .topTab {
@@ -41,7 +43,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1px;
-  color: var(--text-light);
+  color: $gray-600;
   padding: 12px 0 10px;
   cursor: pointer;
   transition: color 0.25s ease;
@@ -50,11 +52,11 @@
 }
 
 .topTab:hover {
-  color: var(--text-normal);
+  color: $gray-900;
 }
 
 .topTabActive {
-  color: var(--text-normal);
+  color: $gray-900;
 }
 
 .topTabIndicator {
@@ -63,7 +65,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--primary-600);
+  background: $primary-600;
   border-radius: 1px;
 }
 
@@ -83,8 +85,8 @@
 .adminNav {
   width: 226px;
   flex-shrink: 0;
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   display: flex;
   flex-direction: column;
 }
@@ -95,10 +97,10 @@
   height: 40px;
   padding: 0 16px;
   font-size: 14px;
-  color: var(--text-light);
+  color: $gray-600;
   background: none;
   border: none;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
   text-align: left;
   cursor: pointer;
   font-family: inherit;
@@ -112,19 +114,19 @@
 /* Process picker at top of sidebar */
 .processPickerWrap {
   padding: 6px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .processPicker {
   width: 100%;
   height: 34px;
   padding: 0 10px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
-  background: var(--neutral-00);
+  border: 1px solid $gray-400;
+  border-radius: $radius-xs;
+  background: $white;
   font-size: 14px;
   font-family: inherit;
-  color: var(--text-normal);
+  color: $gray-900;
   outline: none;
   cursor: pointer;
   box-sizing: border-box;
@@ -132,17 +134,17 @@
 }
 
 .processPicker:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 .adminNavItem:hover:not(.adminNavItemActive) {
-  background: var(--neutral-25);
-  color: var(--text-normal);
+  background: $gray-100;
+  color: $gray-900;
 }
 
 .adminNavItemActive {
-  background: var(--primary-500);
-  color: var(--neutral-00);
+  background: $bergbluetint1;
+  color: $white;
 }
 
 /* ── Right column: stacked cards ── */
@@ -156,9 +158,9 @@
 
 /* ── Card 1: title + toggle ── */
 .cardTitle {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-100);
-  border-top: 4px solid var(--primary-500);
+  background: $white;
+  border: 1px solid $gray-300;
+  border-top: 4px solid $bergbluetint1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -169,8 +171,8 @@
 .contentTitle {
   font-size: 18px;
   font-weight: 500;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
   margin: 0;
 }
 
@@ -182,12 +184,12 @@
 
 .renewalsStateLabel {
   font-size: 12px;
-  color: var(--text-light);
+  color: $gray-600;
 }
 
 .infoIcon {
   font-size: 16px;
-  color: var(--neutral-400);
+  color: $gray-500;
   display: flex;
   align-items: center;
   margin-right: 4px;
@@ -196,8 +198,8 @@
 
 /* ── Card 2: settings ── */
 .cardSettings {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-100);
+  background: $white;
+  border: 1px solid $gray-300;
   padding: 16px;
 }
 
@@ -210,7 +212,7 @@
 .settingsBlockReminder {
   flex-shrink: 0;
   padding-right: 24px;
-  border-right: 1px solid var(--neutral-50);
+  border-right: 1px solid $gray-200;
 }
 
 .settingsBlockNotification {
@@ -222,8 +224,8 @@
 .settingsBlockTitle {
   font-size: 16px;
   font-weight: 500;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
   margin: 0 0 16px;
 }
 
@@ -251,7 +253,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   display: flex;
   align-items: center;
   gap: 2px;
@@ -271,11 +273,11 @@
 .fieldInput {
   height: 34px;
   padding: 0 8px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
-  background: var(--neutral-00);
+  border: 1px solid $gray-400;
+  border-radius: $radius-xs;
+  background: $white;
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   font-family: inherit;
   width: 193px;
   box-sizing: border-box;
@@ -287,17 +289,17 @@
 }
 
 .fieldInput:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 .fieldSelect {
   height: 34px;
   padding: 0 24px 0 8px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
-  background: var(--neutral-00);
+  border: 1px solid $gray-400;
+  border-radius: $radius-xs;
+  background: $white;
   font-size: 13px;
-  color: var(--text-normal);
+  color: $gray-900;
   font-family: inherit;
   width: 155px;
   box-sizing: border-box;
@@ -310,7 +312,7 @@
 }
 
 .fieldSelect:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 .fieldSelectNotification {
@@ -328,10 +330,10 @@
   gap: 4px;
   height: 32px;
   padding: 0 12px;
-  background: var(--primary-500);
+  background: $bergbluetint1;
   border: none;
-  border-radius: var(--rctp-radius-sm);
-  color: var(--neutral-25);
+  border-radius: $radius-sm;
+  color: $gray-100;
   font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
@@ -343,13 +345,13 @@
 }
 
 .saveBtn:hover {
-  background: var(--primary-600);
+  background: $primary-600;
 }
 
 /* ── Card 3: Table ── */
 .cardTable {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-100);
+  background: $white;
+  border: 1px solid $gray-300;
 }
 
 .tableWrap {
@@ -361,20 +363,20 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 13px;
-  color: var(--text-normal);
+  color: $gray-900;
 }
 
 .table thead th {
-  background: var(--neutral-25);
+  background: $gray-100;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-light);
+  color: $gray-600;
   padding: 0 12px;
   height: 38px;
   text-align: left;
-  border: 1px solid var(--neutral-50);
+  border: 1px solid $gray-200;
   white-space: nowrap;
 }
 
@@ -385,8 +387,8 @@
 .table tbody td {
   padding: 0 12px;
   height: 40px;
-  border: 1px solid var(--neutral-50);
-  color: var(--text-normal);
+  border: 1px solid $gray-200;
+  color: $gray-900;
   font-size: 13px;
 }
 
@@ -400,12 +402,12 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--neutral-300);
+  background: $neutral-300;
   vertical-align: middle;
 }
 
 .statusDotPublished {
-  background: var(--success-500);
+  background: $success;
 }
 
 /* ── Action button ── */
@@ -418,13 +420,13 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--primary-500);
-  border-radius: var(--rctp-radius-sm);
+  color: $bergbluetint1;
+  border-radius: $radius-sm;
   transition: background 0.15s;
 }
 
 .actionBtn:hover {
-  background: var(--primary-08);
+  background: $primary-08;
 }
 
 .actionBtn .material-icons-outlined {
@@ -441,8 +443,8 @@
   position: absolute;
   right: 0;
   top: calc(100% + 4px);
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   border-radius: 6px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   z-index: 100;
@@ -460,20 +462,20 @@
   border: none;
   font-size: 13px;
   font-family: inherit;
-  color: var(--text-normal);
+  color: $gray-900;
   cursor: pointer;
   text-align: left;
   transition: background 0.12s ease;
 }
 .renewalMenuItem:hover {
-  background: var(--primary-50);
+  background: $primary-50;
 }
 
 /* ── Currency & Approval Groups panel ── */
 .cagPanel {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-100);
-  border-top: 4px solid var(--primary-500);
+  background: $white;
+  border: 1px solid $gray-300;
+  border-top: 4px solid $bergbluetint1;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   padding-bottom: 28px;
 }
@@ -483,7 +485,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .cagHeaderRight {
@@ -497,8 +499,8 @@
   display: flex;
   align-items: stretch;
   height: 34px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
+  border: 1px solid $gray-400;
+  border-radius: $radius-xs;
   overflow: hidden;
 }
 
@@ -507,9 +509,9 @@
   align-items: center;
   justify-content: center;
   width: 40px;
-  background: var(--neutral-50);
-  border-right: 1px solid var(--neutral-200);
-  color: var(--text-normal);
+  background: $gray-200;
+  border-right: 1px solid $gray-400;
+  color: $gray-900;
   flex-shrink: 0;
 }
 
@@ -518,17 +520,17 @@
   align-items: center;
   padding: 0 12px;
   font-size: 14px;
-  color: var(--text-normal);
-  background: var(--neutral-00);
+  color: $gray-900;
+  background: $white;
   min-width: 120px;
 }
 
 .langSelect {
   border: none;
-  background: var(--neutral-00);
+  background: $white;
   font-size: 14px;
   font-family: inherit;
-  color: var(--text-normal);
+  color: $gray-900;
   padding: 0 12px;
   outline: none;
   cursor: pointer;
@@ -549,26 +551,26 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--primary-500);
-  font-family: var(--font-heading);
+  color: $bergbluetint1;
+  font-family: inherit;
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
 .cagReq {
-  color: var(--alert-500, #e53935);
+  color: $danger;
 }
 
 .cagInfoIcon {
   font-size: 14px;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   cursor: help;
 }
 
 .cagValue {
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   padding: 4px 0;
   min-height: 24px;
 }
@@ -576,19 +578,19 @@
 .cagSelect {
   height: 34px;
   padding: 0 10px;
-  border: 1px solid var(--neutral-300);
-  border-radius: var(--rctp-radius-xs);
-  background: var(--neutral-00);
+  border: 1px solid $neutral-300;
+  border-radius: $radius-xs;
+  background: $white;
   font-size: 14px;
   font-family: inherit;
-  color: var(--text-normal);
+  color: $gray-900;
   outline: none;
   max-width: 400px;
   transition: border-color 0.15s;
 }
 
 .cagSelect:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 .cagDivider {
@@ -599,9 +601,9 @@
 
 /* ── Stages panel ── */
 .stagesPanel {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-100);
-  border-top: 4px solid var(--primary-500);
+  background: $white;
+  border: 1px solid $gray-300;
+  border-top: 4px solid $bergbluetint1;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
 
@@ -619,7 +621,7 @@
 
 .stagesTableWrap {
   overflow-x: auto;
-  border-top: 1px solid var(--neutral-50);
+  border-top: 1px solid $gray-200;
 }
 
 .stagesTable {
@@ -630,14 +632,14 @@
 }
 
 .stagesTable thead th {
-  background: var(--neutral-25);
-  border: 1px solid var(--neutral-50);
+  background: $gray-100;
+  border: 1px solid $gray-200;
   padding: 10px 12px;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-light);
+  color: $gray-600;
   white-space: nowrap;
 }
 
@@ -651,13 +653,13 @@
   width: 110px;
 }
 
-.stagesTable tbody tr:nth-child(odd)  { background: var(--primary-08); }
-.stagesTable tbody tr:nth-child(even) { background: var(--neutral-00); }
+.stagesTable tbody tr:nth-child(odd)  { background: $primary-08; }
+.stagesTable tbody tr:nth-child(even) { background: $white; }
 .stagesTable tbody tr { transition: background 100ms ease; }
-.stagesTable tbody tr:hover { background: var(--row-hover); }
+.stagesTable tbody tr:hover { background: $row-hover; }
 
 .stagesTable tbody td {
-  border: 1px solid var(--neutral-50);
+  border: 1px solid $gray-200;
   padding: 10px 12px;
   vertical-align: middle;
 }
@@ -668,7 +670,7 @@
 
 .stagesTdName {
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
 }
 
 .stagesTdNameInner {
@@ -679,7 +681,7 @@
 
 .stagesChevron {
   font-size: 16px;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   cursor: pointer;
   transition: transform 0.2s ease;
   transform: rotate(0deg);
@@ -698,7 +700,7 @@
 
 .stagesInfoIcon {
   font-size: 14px;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   cursor: help;
   flex-shrink: 0;
 }
@@ -709,29 +711,29 @@
 
 .stagesCheck {
   font-size: 18px;
-  color: var(--success-500, #2ecc71);
+  color: $success;
 }
 
 .stagesPeriodText {
   font-size: 13px;
-  color: var(--text-normal);
+  color: $gray-900;
 }
 
 .stagesCheckbox {
   width: 16px;
   height: 16px;
   cursor: pointer;
-  accent-color: var(--primary-500);
+  accent-color: $bergbluetint1;
 }
 
 /* Footer row */
 .stagesFooter {
   display: flex;
   align-items: center;
-  border-top: 1px solid var(--neutral-50);
+  border-top: 1px solid $gray-200;
   padding: 12px 12px 12px 12px;
   gap: 24px;
-  background: var(--neutral-00);
+  background: $white;
 }
 
 .stagesFooterCell {
@@ -739,7 +741,7 @@
   align-items: center;
   gap: 6px;
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   min-width: 200px;
 }
 

@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 /* ── Outer page wrapper (full-width, no sidebar) ── */
 .pageWrap {
   padding: 0 16px 40px;
@@ -5,8 +7,8 @@
 
 /* ── Main card ── */
 .card {
-  background: #FFFFFF;
-  border-top: 3px solid #017295;
+  background: $white;
+  border-top: 3px solid $bergbluetint2;
   min-height: 600px;
 }
 
@@ -15,8 +17,8 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: #FFFFFF;
-  border-bottom: 1px solid #DFE3E7;
+  background: $white;
+  border-bottom: 1px solid $gray-200;
   padding: 14px 20px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
@@ -37,7 +39,7 @@
 .title {
   font-size: 16px;
   font-weight: 500;
-  color: #0C2A31;
+  color: $gray-900;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -46,7 +48,7 @@
 
 .subtitle {
   font-size: 12px;
-  color: #516267;
+  color: $gray-600;
   margin: 0;
 }
 
@@ -87,7 +89,7 @@
   padding: 8px 14px 10px;
   font-size: 13px;
   font-weight: 500;
-  color: #516267;
+  color: $gray-600;
   cursor: pointer;
   border-bottom: 2px solid transparent;
   transition: color 0.15s;
@@ -99,12 +101,12 @@
 }
 
 .stepTab:hover {
-  color: #0C2A31;
+  color: $gray-900;
 }
 
 .stepTabActive {
-  color: #017295;
-  border-bottom-color: #017295;
+  color: $bergbluetint2;
+  border-bottom-color: $bergbluetint2;
 }
 
 .stepPill {
@@ -116,31 +118,31 @@
   border-radius: 50%;
   font-size: 12px;
   font-weight: 600;
-  background: #D6DBE0;
-  color: #516267;
+  background: $gray-300;
+  color: $gray-600;
   transition: background 0.15s, color 0.15s;
 }
 
 .stepTabActive .stepPill {
-  background: #028FBB;
+  background: $bergbluetint1;
   color: #fff;
 }
 
 .stepPillDone {
-  background: #13DF81 !important;
+  background: $success !important;
   color: #fff !important;
 }
 
 /* ── Progress bar (below tabs) ── */
 .progressBar {
   height: 3px;
-  background: #DFE3E7;
+  background: $gray-200;
   margin: 0 -20px;
 }
 
 .progressBarFill {
   height: 3px;
-  background: #028FBB;
+  background: $bergbluetint1;
   transition: width 0.3s ease;
 }
 
@@ -154,17 +156,17 @@
 
 /* ── Section block (card within card) ── */
 .section {
-  border: 1px solid #DFE3E7;
+  border: 1px solid $gray-200;
   border-radius: 4px;
   padding: 20px;
-  background: #FFFFFF;
+  background: $white;
   margin-bottom: 16px;
 }
 
 .sectionLabel {
   font-size: 14px;
   font-weight: 600;
-  color: #0C2A31;
+  color: $gray-900;
   margin-bottom: 14px;
   display: flex;
   gap: 6px;
@@ -175,12 +177,12 @@
 .sectionNum {
   font-size: 14px;
   font-weight: 700;
-  color: #0C2A31;
+  color: $gray-900;
   flex-shrink: 0;
 }
 
 .required {
-  color: #E34C53;
+  color: $danger;
   margin-left: 2px;
 }
 
@@ -189,11 +191,11 @@
   width: 100%;
   box-sizing: border-box;
   padding: 10px 12px;
-  border: 1px solid #D6DBE0;
+  border: 1px solid $gray-300;
   border-radius: 4px;
   font-family: inherit;
   font-size: 13px;
-  color: #0C2A31;
+  color: $gray-900;
   resize: vertical;
   min-height: 120px;
   outline: none;
@@ -201,7 +203,7 @@
 }
 
 .textarea:focus {
-  border-color: #02A3D5;
+  border-color: $primary;
 }
 
 
@@ -209,11 +211,11 @@
 .notReadyBanner {
   margin: 20px;
   padding: 16px;
-  background: #F4F4F4;
-  border: 1px solid #D6DBE0;
+  background: $gray-100;
+  border: 1px solid $gray-300;
   border-radius: 4px;
   font-size: 13px;
-  color: #516267;
+  color: $gray-600;
   line-height: 1.5;
   text-align: center;
 }

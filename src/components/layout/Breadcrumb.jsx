@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from './Breadcrumb.module.css';
+import styles from './Breadcrumb.module.scss';
 
 export default function Breadcrumb({ items }) {
   return (

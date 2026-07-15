@@ -6,8 +6,8 @@ import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
 import { patchInitechProfile, setWaystarFlow } from '../../utils/initechFlow';
-import styles from './profile.module.css';
-import secStyles from './ProfileProcessSection.module.css';
+import styles from './profile.module.scss';
+import secStyles from './ProfileProcessSection.module.scss';
 
 export default function ProfileInternalDueDiligence() {
   const { profileId } = useParams();
@@ -93,7 +93,7 @@ export default function ProfileInternalDueDiligence() {
               flexDirection: 'column',
               gap: 10,
             }}>
-              <label style={{ fontSize: 14, fontWeight: 600, color: '#0C2A31' }}>
+              <label className="text-body" style={{ fontSize: 14, fontWeight: 600 }}>
                 1. <span style={{ color: 'red' }}>*</span> Provide details of the due diligence steps completed.
               </label>
               <textarea
@@ -113,7 +113,7 @@ export default function ProfileInternalDueDiligence() {
               flexDirection: 'column',
               gap: 10,
             }}>
-              <label style={{ fontSize: 14, fontWeight: 600, color: '#0C2A31' }}>
+              <label className="text-body" style={{ fontSize: 14, fontWeight: 600 }}>
                 2. <span style={{ color: 'red' }}>*</span> Upload all supporting documentation gathered during the due diligence process.
               </label>
               <div className="fu-row">

@@ -6,8 +6,8 @@ import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
-import styles from './profile.module.css';
-import apStyles from './ProfileApproval.module.css';
+import styles from './profile.module.scss';
+import apStyles from './ProfileApproval.module.scss';
 import { getFlow, setFlow, getDMFlow, setDMFlow, getLumonFlow, setLumonFlow, patchInitechProfile } from '../../utils/initechFlow';
 
 const STEPS_BEFORE_APPROVAL = [

@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
-import styles from './CompanyAdmin.module.css';
+import styles from './CompanyAdmin.module.scss';
 
 const ROUTED_NAV = {
   'Summary':             '/company-admin/summary',

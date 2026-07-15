@@ -9,7 +9,7 @@ import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import PageLayout from '../layout/PageLayout';
 import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
-import styles from './profile.module.css';
+import styles from './profile.module.scss';
 import { TASK_ICONS, riskBadge as riskBadgeFn, RiskLevelIcon } from './profileAssets';
 import Sidebar, { PartnerIcon } from './Sidebar';
 import Chip from '../ui/Chip';
@@ -255,7 +255,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                 <div className={styles.statusInline}>
                   Third party STATUS:
                   <span className={styles.activeText}>Active</span>
-                  <span className="material-icons-outlined" style={{ fontSize: 16, color: '#0D9858' }}>verified</span>
+                  <span className="material-icons-outlined text-success-700" style={{ fontSize: 16 }}>verified</span>
                 </div>
                 <button className={"btn btn-outline-secondary"} onClick={() => setShowNotes(true)}>Notes</button>
                 <button className={"btn btn-primary"} onClick={() => navigate(`/profile/${profile.id}/edit`)}>Edit</button>
@@ -617,7 +617,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                       <td><div className={styles.matchBadges}><Badge label="1" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /></div></td>
                       <td>01 May 2026</td>
                       <td>Primary Entity</td>
-                      <td><div className={styles.assocStatus}><span className={styles.statusDot} style={{ background: '#9FACB7' }} />Queued</div></td>
+                      <td><div className={styles.assocStatus}><span className={`${styles.statusDot} bg-neutral-500`} />Queued</div></td>
                       <td></td>
                       <td>Entity</td>
                     </tr>
@@ -785,7 +785,6 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               >Cancel</button>
               <button
                 className="btn btn-primary"
-                style={{ background: '#028FBB' }}
                 onClick={() => {
                   if (profile.id === 'dundermifflin') setDMFlow({ renewed: true, approved: false });
                   if (profile.id === 'lumon') setLumonFlow({ renewed: true, approved: false });
@@ -831,7 +830,6 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               >Cancel</button>
               <button
                 className="btn btn-primary"
-                style={{ background: '#028FBB' }}
                 onClick={() => {
                   if (profile.id === 'dundermifflin') { setDMFlow({ renewed: false, approved: false }); setCurrentStatus('Approved - Renewal Required'); }
                   else if (profile.id === 'lumon') { setLumonFlow({ renewed: false, approved: false }); setCurrentStatus('Approved'); }
@@ -949,7 +947,7 @@ function EditConnectionPanel({ row, onClose, onSave }) {
           </div>
           <div className={styles.connectTypeSection}>
             <label className={styles.connectTypeLabel}>
-              Connection Type <span style={{ color: '#E34C53' }}>*</span>
+              Connection Type <span className="text-danger">*</span>
             </label>
             <select
               className={styles.connectTypeSelect}
@@ -1015,7 +1013,7 @@ function ConnectPanel({ row, onClose, onConfirm }) {
           </div>
           <div className={styles.connectTypeSection}>
             <label className={styles.connectTypeLabel}>
-              Connection Type <span style={{ color: '#E34C53' }}>*</span>
+              Connection Type <span className="text-danger">*</span>
             </label>
             <select
               className={styles.connectTypeSelect}
@@ -1176,7 +1174,7 @@ function LookMorePanel({ onClose, onSelect }) {
           {/* Results */}
           {results !== null && (
             results.length === 0 ? (
-              <div style={{ padding: '24px 0', textAlign: 'center', color: '#516267', fontSize: 13 }}>
+              <div className="text-muted" style={{ padding: '24px 0', textAlign: 'center', fontSize: 13 }}>
                 No third parties found matching your search.
               </div>
             ) : (

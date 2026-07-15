@@ -1,5 +1,7 @@
+@import '../../styles/variables';
+
 .nav {
-  background-color: #028FBB;
+  background-color: $bergbluetint1;
   height: 36px;
 }
 .inner {
@@ -23,12 +25,12 @@
   position: relative;
   transition: background 0.15s ease, color 0.15s ease;
 }
-.link:hover { background: #017295; color: #FFFFFF; }
+.link:hover { background: $bergbluetint2; color: $white; }
 .link:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.7);
   outline-offset: -3px;
 }
 .active {
-  background: #017295;
-  color: #FFFFFF;
+  background: $bergbluetint2;
+  color: $white;
 }

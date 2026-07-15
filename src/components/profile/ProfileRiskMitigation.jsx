@@ -7,8 +7,8 @@ import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import Checkbox from '../ui/Checkbox';
 import ProfilePageHeader from './ProfilePageHeader';
-import styles from './profile.module.css';
-import rmStyles from './ProfileRiskMitigation.module.css';
+import styles from './profile.module.scss';
+import rmStyles from './ProfileRiskMitigation.module.scss';
 import { getFlow, setFlow, patchInitechProfile, getWaystarFlow, setWaystarFlow } from '../../utils/initechFlow';
 
 function RiskTable({ rows, onMenuClick, onCheckOpen, onAllChecked }) {
@@ -212,7 +212,7 @@ export default function ProfileRiskMitigation() {
             <div className={`${styles.cardHeader} ${rmStyles.cardHeader}`}>
               <div className={rmStyles.cardTitleRow}>
                 <h2 className={styles.cardTitle}>Risk Mitigation</h2>
-                <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267', cursor: 'pointer' }}>info</span>
+                <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18, cursor: 'pointer' }}>info</span>
               </div>
               <button className={`btn btn-primary ${rmStyles.createBtn}`}>
                 Create New Risk

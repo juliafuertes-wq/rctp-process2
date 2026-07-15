@@ -1,7 +1,9 @@
+@import '../../styles/variables';
+
 .header {
-  background-color: #0C2A31;
+  background-color: $gray-900;
   height: 44px;
-  color: #FFFFFF;
+  color: $white;
   flex-shrink: 0;
 }
 
@@ -25,7 +27,7 @@
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 1px;
-  color: #FFFFFF;
+  color: $white;
   font-family: inherit;
 }
 
@@ -36,7 +38,7 @@
 }
 
 .brandProduct {
-  color: #02A3D5;
+  color: $primary;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -62,9 +64,9 @@
   cursor: pointer;
   transition: color 0.15s ease;
 }
-.actionLink:hover { color: #FFFFFF; }
+.actionLink:hover { color: $white; }
 .actionLink:focus-visible {
-  outline: 2px solid #02A3D5;
+  outline: 2px solid $primary;
   outline-offset: -2px;
   border-radius: 4px;
 }
@@ -83,8 +85,8 @@
   transition: background 0.15s ease, color 0.15s ease;
 }
 .iconBtn .material-icons-outlined { font-size: 18px; }
-.iconBtn:hover { background: rgba(255, 255, 255, 0.08); color: #FFFFFF; }
+.iconBtn:hover { background: rgba(255, 255, 255, 0.08); color: $white; }
 .iconBtn:focus-visible {
-  outline: 2px solid #02A3D5;
+  outline: 2px solid $primary;
   outline-offset: -2px;
 }

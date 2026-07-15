@@ -2083,3 +2083,39 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+// ── Brand color utilities (supplement Bootstrap's built-ins) ──────────────
+// Text colors
+.text-primary-600 { color: $primary-600; }
+.text-primary-800 { color: $bergbluetint2; }  // #017295 — deep accent link
+.text-muted       { color: $gray-600 !important; }  // reinforce Bootstrap's .text-muted
+.text-body        { color: $gray-900 !important; }
+.text-neutral-300 { color: $neutral-300; }
+.text-neutral-500 { color: $neutral-500; }
+.text-success-700 { color: $success-700; }
+.text-warning-500 { color: $warning; }
+.text-warning-700 { color: $warning-700; }
+.text-warning-900 { color: $warning-900; }
+.text-danger-700  { color: $alert-700; }
+.text-danger-900  { color: $alert-900; }
+
+// Background colors
+.bg-primary-08    { background-color: $primary-08; }
+.bg-primary-50    { background-color: $primary-50; }
+.bg-primary       { background-color: $primary; }
+.bg-primary-600   { background-color: $bergbluetint1; }  // #028FBB
+.bg-warning-50    { background-color: $warning-50; }
+.bg-warning-100   { background-color: $warning-100; }
+.bg-alert-50      { background-color: $alert-50; }
+.bg-alert-100     { background-color: $alert-100; }
+.bg-success-50    { background-color: $success-50; }
+.bg-success-300   { background-color: $success-300; }
+.bg-neutral-25    { background-color: $gray-100; }
+.bg-neutral-100   { background-color: $gray-300; }
+.bg-neutral-500   { background-color: $neutral-500; }
+
+// Border colors
+.border-primary-200  { border-color: $primary-200 !important; }
+.border-warning-300  { border-color: $warning-300 !important; }
+.border-alert-300    { border-color: $alert-300 !important; }
+.border-success-300  { border-color: $success-300 !important; }

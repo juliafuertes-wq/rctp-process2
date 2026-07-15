@@ -7,8 +7,8 @@ import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
 import { patchInitechProfile, getWaystarFlow, setWaystarFlow } from '../../utils/initechFlow';
-import styles from './profile.module.css';
-import s from './ProfileApprovalStage.module.css';
+import styles from './profile.module.scss';
+import s from './ProfileApprovalStage.module.scss';
 
 export default function ProfileApprovalStage() {
   const { profileId, stageNum } = useParams();
@@ -81,7 +81,7 @@ export default function ProfileApprovalStage() {
               <div className={s.headerTop}>
                 <div className={s.headerTitleCol}>
                   <h2 className={s.title}>{stageLabel}</h2>
-                  <p className={s.subtitle}>Items marked with a <span style={{ color: '#E34C53' }}>*</span> are required</p>
+                  <p className={s.subtitle}>Items marked with a <span className="text-danger">*</span> are required</p>
                 </div>
               </div>
 
@@ -96,8 +96,7 @@ export default function ProfileApprovalStage() {
                     Approved
                   </button>
                   <button
-                    className={"btn btn-outline-secondary"}
-                    style={{ color: '#E34C53', borderColor: '#E34C53' }}
+                    className="btn btn-outline-danger"
                     onClick={handleNotApproved}
                     disabled={!isReady || currentStageDone}
                   >

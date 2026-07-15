@@ -8,7 +8,7 @@ import Flag from '../components/ui/Flag';
 import Chip from '../components/ui/Chip';
 import Checkbox from '../components/ui/Checkbox';
 import { RiskLevelIcon, TASK_ICONS } from '../components/profile/profileAssets';
-import styles from './Dashboard.module.css';
+import styles from './Dashboard.module.scss';
 
 const TABS = ['Actions', 'Screening & Monitoring', 'Screening & Monitoring Tasks', 'Enhanced Due Diligence Reports'];
 
@@ -165,12 +165,12 @@ function UpcomingTable({ rows, search, selected, onSelect }) {
               <th>Task Status <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
               <th>Current Risk Level <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
               <th>Owner <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
-              <th>Due Date <span className="material-icons-outlined" style={{ fontSize: 12, color: 'var(--primary-600)' }}>arrow_drop_down</span></th>
+              <th>Due Date <span className="material-icons-outlined" className="text-primary-600" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
             </tr>
           </thead>
           <tbody>
             {filtered.length === 0 ? (
-              <tr><td colSpan={8} style={{ textAlign: 'center', color: 'var(--text-light)', padding: '32px 0' }}>No actions found.</td></tr>
+              <tr><td colSpan={8} className="text-muted" style={{ textAlign: 'center', padding: '32px 0' }}>No actions found.</td></tr>
             ) : filtered.map((row, i) => (
               <tr key={i}>
                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}><Checkbox checked={selected.has(i)} onChange={() => toggleRow(i)} /></td>
@@ -246,7 +246,7 @@ function ActionsTable({ rows, search, selected, onSelect }) {
           </thead>
           <tbody>
             {filtered.length === 0 ? (
-              <tr><td colSpan={9} style={{ textAlign: 'center', color: 'var(--text-light)', padding: '32px 0' }}>No actions found.</td></tr>
+              <tr><td colSpan={9} className="text-muted" style={{ textAlign: 'center', padding: '32px 0' }}>No actions found.</td></tr>
             ) : filtered.map((row, i) => (
               <tr key={i}>
                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}><Checkbox checked={selected.has(i)} onChange={() => toggleRow(i)} /></td>
@@ -293,7 +293,7 @@ function SMTable({ rows, search }) {
           <thead>
             <tr>
               <th style={{ width: 44 }}>
-                <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--alert-500)', verticalAlign: 'middle' }}>notifications</span>
+                <span className="material-icons-outlined" className="text-danger" style={{ fontSize: 16, verticalAlign: 'middle' }}>notifications</span>
               </th>
               <th>Third Party Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
               <th>Short Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
@@ -308,12 +308,12 @@ function SMTable({ rows, search }) {
           </thead>
           <tbody>
             {filtered.length === 0 ? (
-              <tr><td colSpan={10} style={{ textAlign: 'center', color: 'var(--text-light)', padding: '32px 0' }}>No results found.</td></tr>
+              <tr><td colSpan={10} className="text-muted" style={{ textAlign: 'center', padding: '32px 0' }}>No results found.</td></tr>
             ) : filtered.map((row, i) => (
               <tr key={i}>
                 <td style={{ textAlign: 'center' }}>
                   {row.alert && (
-                    <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--alert-500)' }}>notifications_active</span>
+                    <span className="material-icons-outlined" className="text-danger" style={{ fontSize: 16 }}>notifications_active</span>
                   )}
                 </td>
                 <td>
@@ -415,7 +415,7 @@ function SMTContent({ rows }) {
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
-            <span className="material-icons-outlined" style={{ position: 'absolute', right: 8, color: 'var(--text-light)', fontSize: 18, pointerEvents: 'none' }}>search</span>
+            <span className="material-icons-outlined" className="text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
           </div>
           <button className={styles.refreshBtn} title="Reset" onClick={() => setSearch('')}>
             <span className="material-icons-outlined" style={{ fontSize: 18 }}>refresh</span>
@@ -427,7 +427,7 @@ function SMTContent({ rows }) {
         <div className={styles.smtToolbarRight}>
           <button className={styles.smtExportBtn}>
             Export
-            <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--neutral-300)' }}>download</span>
+            <span className="material-icons-outlined" className="text-neutral-300" style={{ fontSize: 16 }}>download</span>
           </button>
           <button className={`${styles.smtSaveBtn}`}>Save</button>
           <button className={`${styles.smtSaveBtn}`}>Save As</button>
@@ -437,7 +437,7 @@ function SMTContent({ rows }) {
       {/* Empty state or table */}
       {filtered.length === 0 ? (
         <div className={styles.smtEmptyBanner}>
-          <span className="material-icons-outlined" style={{ fontSize: 18, color: 'var(--text-normal)', flexShrink: 0 }}>warning</span>
+          <span className="material-icons-outlined" className="text-body" style={{ fontSize: 18, flexShrink: 0 }}>warning</span>
           <span>Currently we do not have records matching your search criteria.</span>
         </div>
       ) : (
@@ -492,10 +492,10 @@ function SMTContent({ rows }) {
 
 // ── Enhanced Due Diligence Reports layout ────────────────────────────────────
 const EDD_STATUS_CONFIG = {
-  draft:      { bg: 'var(--neutral-50)',    color: 'var(--text-normal)' },
-  submitted:  { bg: 'var(--primary-500)',   color: '#fff' },
-  delivered:  { bg: 'var(--success-500)',   color: '#fff' },
-  cancelled:  { bg: 'var(--neutral-300)',   color: 'var(--text-normal)' },
+  draft:      { bg: '#DFE3E7', color: '#0C2A31' },
+  submitted:  { bg: '#028FBB', color: '#fff' },
+  delivered:  { bg: '#13DF81', color: '#fff' },
+  cancelled:  { bg: '#B1BCC5', color: '#0C2A31' },
 };
 
 const EDD_TABLE_ROWS = [
@@ -575,7 +575,7 @@ function EDDContent({ rows }) {
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
-            <span className="material-icons-outlined" style={{ position: 'absolute', right: 8, color: 'var(--text-light)', fontSize: 18, pointerEvents: 'none' }}>search</span>
+            <span className="material-icons-outlined" className="text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
           </div>
           <button className={styles.refreshBtn} title="Reset" onClick={() => setSearch('')}>
             <span className="material-icons-outlined" style={{ fontSize: 18 }}>refresh</span>
@@ -587,7 +587,7 @@ function EDDContent({ rows }) {
         <div className={styles.smtToolbarRight}>
           <button className={styles.smtExportBtn}>
             Export
-            <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--neutral-300)' }}>download</span>
+            <span className="material-icons-outlined" className="text-neutral-300" style={{ fontSize: 16 }}>download</span>
           </button>
           <button className={styles.smtSaveBtn}>Save</button>
           <button className={styles.smtSaveBtn}>Save As</button>
@@ -750,7 +750,7 @@ export default function Dashboard() {
             <div className={styles.headerRow}>
               <h1 className={styles.title}>
                 {activeTab} Dashboard
-                <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--primary-500)', marginLeft: 6, verticalAlign: 'middle' }}>info</span>
+                <span className="material-icons-outlined" className="text-primary-600" style={{ fontSize: 16, marginLeft: 6, verticalAlign: 'middle' }}>info</span>
               </h1>
               <div className={styles.headerRight}>
                 <span className={styles.recentLabel}>
@@ -770,7 +770,7 @@ export default function Dashboard() {
                   value={search}
                   onChange={e => setSearch(e.target.value)}
                 />
-                <span className="material-icons-outlined" style={{ position: 'absolute', right: 8, color: 'var(--text-light)', fontSize: 18, pointerEvents: 'none' }}>search</span>
+                <span className="material-icons-outlined" className="text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
               </div>
               <button className={styles.refreshBtn} title="Refresh" onClick={() => setSearch('')}>
                 <span className="material-icons-outlined" style={{ fontSize: 18 }}>refresh</span>

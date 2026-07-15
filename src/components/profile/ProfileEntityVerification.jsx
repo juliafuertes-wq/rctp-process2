@@ -4,8 +4,8 @@ import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
-import styles from './profile.module.css';
-import uboStyles from './ProfileUBO.module.css';
+import styles from './profile.module.scss';
+import uboStyles from './ProfileUBO.module.scss';
 
 function getField(fields, label) {
   return (fields || []).find(f => f.label === label)?.value || '—';
@@ -16,7 +16,7 @@ function VerifiedField({ label, value }) {
     <div className={uboStyles.field}>
       <div className={uboStyles.fieldLabel}>{label}</div>
       <div className={uboStyles.fieldValue}>
-        <span className={`material-icons-outlined`} style={{ fontSize: 16, color: '#13df81', verticalAlign: 'middle', marginRight: 6 }}>check_circle</span>
+        <span className={`material-icons-outlined`} className="text-success" style={{ fontSize: 16, verticalAlign: 'middle', marginRight: 6 }}>check_circle</span>
         {value}
       </div>
     </div>
@@ -64,7 +64,7 @@ export default function ProfileEntityVerification() {
               <div className={uboStyles.titleBlock}>
                 <h2 className={uboStyles.title}>
                   Entity Verification
-                  <span className="material-icons-outlined" style={{ fontSize: 16, color: '#028FBB', verticalAlign: 'middle', marginLeft: 6 }}>info</span>
+                  <span className="material-icons-outlined text-primary-600" style={{ fontSize: 16, verticalAlign: 'middle', marginLeft: 6 }}>info</span>
                 </h2>
               </div>
               <div className={uboStyles.actions}>
@@ -78,12 +78,12 @@ export default function ProfileEntityVerification() {
               <div className={uboStyles.field}>
                 <div className={uboStyles.fieldLabel}>Name</div>
                 <div className={uboStyles.fieldValue}>
-                  <span className="material-icons-outlined" style={{ fontSize: 16, color: '#13df81', verticalAlign: 'middle', marginRight: 6 }}>check_circle</span>
+                  <span className="material-icons-outlined" className="text-success" style={{ fontSize: 16, verticalAlign: 'middle', marginRight: 6 }}>check_circle</span>
                   {name}
                 </div>
                 <div className={uboStyles.uboStatus} style={{ marginTop: 4 }}>
                   <span className={uboStyles.uboStatusLabel} style={{ fontSize: 12 }}>UBO Status</span>
-                  <span className="material-icons-outlined" style={{ fontSize: 14, color: uboStatusAvailable ? '#13df81' : '#8D9CA9' }}>
+                  <span className={`material-icons-outlined ${uboStatusAvailable ? 'text-success' : 'text-neutral-500'}`} style={{ fontSize: 14 }}>
                     {uboStatusAvailable ? 'check_circle' : 'cancel'}
                   </span>
                 </div>
@@ -92,7 +92,7 @@ export default function ProfileEntityVerification() {
               <div className={uboStyles.field} style={{ flex: 2 }}>
                 <div className={uboStyles.fieldLabel}>Address</div>
                 <div className={uboStyles.fieldValue}>
-                  <span className="material-icons-outlined" style={{ fontSize: 16, color: '#13df81', verticalAlign: 'middle', marginRight: 6 }}>check_circle</span>
+                  <span className="material-icons-outlined" className="text-success" style={{ fontSize: 16, verticalAlign: 'middle', marginRight: 6 }}>check_circle</span>
                   {address}
                 </div>
               </div>
@@ -131,7 +131,7 @@ export default function ProfileEntityVerification() {
             <div className={uboStyles.verifiedSeparator} />
 
             <div className={uboStyles.verifiedSourceRow}>
-              <span className="material-icons-outlined" style={{ fontSize: 14, color: '#8D9CA9' }}>info</span>
+              <span className="material-icons-outlined text-neutral-500" style={{ fontSize: 14 }}>info</span>
               <span className={uboStyles.verifiedSource}>SOURCE: DUN &amp; BRADSTREET</span>
             </div>
           </section>

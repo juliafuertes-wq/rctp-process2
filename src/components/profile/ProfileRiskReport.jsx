@@ -22,7 +22,7 @@ const PROCESS_STATUS_MAP = {
 function normaliseProcessStatus(s) { return PROCESS_STATUS_MAP[s] ?? s; }
 import Badge from '../ui/Badge';
 import Flag from '../ui/Flag';
-import styles from './profile.module.css';
+import styles from './profile.module.scss';
 
 
 const STATUS_CONFIG = {

@@ -1,6 +1,8 @@
+@import '../../styles/variables';
+
 .wrap {
   overflow-x: auto;
-  border-top: 1px solid #DFE3E7;
+  border-top: 1px solid $gray-200;
 }
 
 .table {
@@ -11,23 +13,23 @@
 }
 
 .table thead th {
-  background: #F4F4F4;
-  color: #516267;
+  background: $gray-100;
+  color: $gray-600;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   padding: 8px 12px;
   text-align: left;
-  border-bottom: 1px solid #DFE3E7;
+  border-bottom: 1px solid $gray-200;
   white-space: nowrap;
 }
 
 .table tbody td {
   padding: 8px 12px;
-  border-bottom: 1px solid #DFE3E7;
+  border-bottom: 1px solid $gray-200;
   vertical-align: top;
-  color: #0C2A31;
+  color: $gray-900;
 }
 
 .table tbody tr:last-child td {
@@ -35,18 +37,18 @@
 }
 
 .table tbody tr:nth-child(odd) {
-  background: rgba(2,143,187,0.08);
+  background: rgba($bergbluetint1,0.08);
 }
 
 .table tbody tr:nth-child(even) {
-  background: #FFFFFF;
+  background: $white;
 }
 
 .code {
   font-family: 'Source Code Pro', monospace;
   font-size: 12px;
-  color: #017295;
-  background: rgba(2,143,187,0.08);
+  color: $bergbluetint2;
+  background: rgba($bergbluetint1,0.08);
   padding: 1px 5px;
   border-radius: 4px;
 }
@@ -54,21 +56,21 @@
 .type {
   font-family: 'Source Code Pro', monospace;
   font-size: 12px;
-  color: #516267;
+  color: $gray-600;
 }
 
 .def {
   font-family: 'Source Code Pro', monospace;
   font-size: 12px;
-  color: #516267;
+  color: $gray-600;
 }
 
 .req {
-  color: #B71C1C;
+  color: $alert-700;
   margin-left: 2px;
 }
 
 .desc {
-  color: #516267;
+  color: $gray-600;
   line-height: 1.5;
 }

@@ -18,8 +18,8 @@ import Breadcrumb from '../components/layout/Breadcrumb';
 import PropsTable from '../components/catalog/PropsTable';
 import AnatomyTable from '../components/catalog/AnatomyTable';
 import TokenSwatch from '../components/catalog/TokenSwatch';
-import styles from './ComponentCatalog.module.css';
-import profileStyles from '../components/profile/profile.module.css';
+import styles from './ComponentCatalog.module.scss';
+import profileStyles from '../components/profile/profile.module.scss';
 
 /* ── Props data ── */
 const PROPS = {
@@ -141,12 +141,12 @@ const PROPS = {
 };
 
 const STATUS_ENTRIES = [
-  { label: 'Pending Approval',             bg: 'var(--neutral-50)',  color: 'var(--text-normal)',  icon: 'pending',            tooltip: 'Record has not yet had a first approval.' },
-  { label: 'Approved',                     bg: 'var(--success-100)', color: 'var(--success-900)', icon: 'check_circle',       tooltip: 'This third party has been approved.' },
-  { label: 'Not Approved',                 bg: 'var(--alert-100)',   color: 'var(--alert-700)',   icon: 'dangerous',          tooltip: 'Approval was not granted for this third party.' },
-  { label: 'Declined',                     bg: 'var(--alert-100)',   color: 'var(--alert-700)',   icon: 'feedback',           tooltip: 'This third party has been declined.' },
-  { label: 'Approved*',                    bg: 'var(--warning-100)', color: 'var(--warning-900)', icon: 'history_toggle_off', tooltip: 'Renewal date reached.' },
-  { label: 'Approved - Renewal Required', bg: 'var(--warning-100)', color: 'var(--warning-900)', icon: 'history_toggle_off', tooltip: 'Renewal started manually.' },
+  { label: 'Pending Approval',             bg: 'var(--neutral-50)',  color: '#0C2A31',  icon: 'pending',            tooltip: 'Record has not yet had a first approval.' },
+  { label: 'Approved',                     bg: 'var(--success-100)', color: '#07502E', icon: 'check_circle',       tooltip: 'This third party has been approved.' },
+  { label: 'Not Approved',                 bg: 'var(--alert-100)',   color: '#9A3438',   icon: 'dangerous',          tooltip: 'Approval was not granted for this third party.' },
+  { label: 'Declined',                     bg: 'var(--alert-100)',   color: '#9A3438',   icon: 'feedback',           tooltip: 'This third party has been declined.' },
+  { label: 'Approved*',                    bg: 'var(--warning-100)', color: '#564518', icon: 'history_toggle_off', tooltip: 'Renewal date reached.' },
+  { label: 'Approved - Renewal Required', bg: 'var(--warning-100)', color: '#564518', icon: 'history_toggle_off', tooltip: 'Renewal started manually.' },
 ];
 
 const SIDEBAR_SECTIONS = [
@@ -673,7 +673,7 @@ export default function ComponentCatalog() {
                       confirmLabel="Confirm"
                       cancelLabel="Cancel"
                     >
-                      <p style={{ margin: 0, fontSize: 14, color: 'var(--text-light)', lineHeight: 1.6 }}>
+                      <p style={{ margin: 0, fontSize: 14, color: '#516267', lineHeight: 1.6 }}>
                         This is the modal body content. You can place any content here — forms, descriptions, warnings, etc.
                       </p>
                     </Modal>
@@ -726,11 +726,11 @@ export default function ComponentCatalog() {
                     </div>
                     <div className={styles.demoCheckboxCell}>
                       <Radio checked={false} disabled />
-                      <span style={{ color: 'var(--neutral-300)' }}>Disabled empty</span>
+                      <span style={{ color: '#B1BCC5' }}>Disabled empty</span>
                     </div>
                     <div className={styles.demoCheckboxCell}>
                       <Radio checked={true} disabled />
-                      <span style={{ color: 'var(--neutral-300)' }}>Disabled checked</span>
+                      <span style={{ color: '#B1BCC5' }}>Disabled checked</span>
                     </div>
                   </div>
                 }
@@ -871,7 +871,7 @@ export default function ComponentCatalog() {
                       onPageChange={setPaginatorPage}
                       onPageSizeChange={s => { setPaginatorSize(s); setPaginatorPage(1); }}
                     />
-                    <div style={{ fontSize: 12, color: 'var(--text-light)' }}>
+                    <div style={{ fontSize: 12, color: '#516267' }}>
                       Page {paginatorPage} of {Math.ceil(140 / paginatorSize)} · {paginatorSize} per page · 140 total items
                     </div>
                   </div>
@@ -1055,7 +1055,7 @@ export default function ComponentCatalog() {
                         <span className={styles.typeMetaLabel}>{spec.label}</span>
                         <span className={styles.typeMetaValues}>{spec.size} / {spec.lineHeight} / {spec.weight} / {spec.family}</span>
                       </div>
-                      <span style={{ fontSize: spec.size, lineHeight: spec.lineHeight, fontWeight: spec.weight, fontFamily: spec.family === 'Simplon Norm' ? 'var(--font-heading)' : 'var(--font-body)', color: 'var(--text-normal)' }}>
+                      <span style={{ fontSize: spec.size, lineHeight: spec.lineHeight, fontWeight: spec.weight, fontFamily: spec.family === 'Simplon Norm' ? 'var(--font-heading)' : 'var(--font-body)', color: '#0C2A31' }}>
                         {spec.sample}
                       </span>
                     </div>
@@ -1074,7 +1074,7 @@ export default function ComponentCatalog() {
                     <div key={s.name} className={styles.spacingRow}>
                       <span className={styles.spacingLabel}>{s.name}</span>
                       <div className={styles.spacingBar} style={{ width: s.px * 2 }} />
-                      <span style={{ fontSize: 11, color: 'var(--text-light)', fontFamily: 'var(--font-mono, monospace)' }}>{s.px}px</span>
+                      <span style={{ fontSize: 11, color: '#516267', fontFamily: 'monospace' }}>{s.px}px</span>
                     </div>
                   ))}
                 </div>
@@ -1221,44 +1221,44 @@ export default function ComponentCatalog() {
                               <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
-                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center', color: '#B1BCC5' }}>—</td>
                             </tr>
                             <tr>
                               <td>Risk Level</td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
-                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
-                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center', color: '#B1BCC5' }}>—</td>
+                              <td style={{ textAlign: 'center', color: '#B1BCC5' }}>—</td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
-                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center', color: '#B1BCC5' }}>—</td>
                             </tr>
                             <tr>
                               <td>
                                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                                  <span style={{ display: 'inline-block', width: 3, height: 16, background: 'var(--primary-300)', borderRadius: 'var(--rctp-radius-xs)', marginLeft: 12, marginRight: 4 }} />
+                                  <span style={{ display: 'inline-block', width: 3, height: 16, background: 'var(--primary-300)', borderRadius: 2, marginLeft: 12, marginRight: 4 }} />
                                   Due Diligence — Internal
                                 </span>
                               </td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
-                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center', color: '#B1BCC5' }}>—</td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
-                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center', color: '#B1BCC5' }}>—</td>
                             </tr>
                             <tr>
                               <td>
                                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                                  <span style={{ display: 'inline-block', width: 3, height: 16, background: 'var(--primary-300)', borderRadius: 'var(--rctp-radius-xs)', marginLeft: 12, marginRight: 4 }} />
+                                  <span style={{ display: 'inline-block', width: 3, height: 16, background: 'var(--primary-300)', borderRadius: 2, marginLeft: 12, marginRight: 4 }} />
                                   Due Diligence — External
                                 </span>
                               </td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
-                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
-                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
-                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
-                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center', color: '#B1BCC5' }}>—</td>
+                              <td style={{ textAlign: 'center', color: '#B1BCC5' }}>—</td>
+                              <td style={{ textAlign: 'center', color: '#B1BCC5' }}>—</td>
+                              <td style={{ textAlign: 'center', color: '#B1BCC5' }}>—</td>
                             </tr>
                             <tr>
                               <td>Documents</td>
@@ -1267,7 +1267,7 @@ export default function ComponentCatalog() {
                               <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} size="small" /></td>
                               <td style={{ textAlign: 'center' }}><Checkbox checked={true} onChange={() => {}} size="small" /></td>
-                              <td style={{ textAlign: 'center', color: 'var(--neutral-300)' }}>—</td>
+                              <td style={{ textAlign: 'center', color: '#B1BCC5' }}>—</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1297,7 +1297,7 @@ export default function ComponentCatalog() {
                             ].map((r, i) => (
                               <tr key={i} style={{ cursor: 'pointer' }}>
                                 <td style={{ textAlign: 'center' }}>
-                                  <input type="radio" name="rel-demo" readOnly style={{ accentColor: 'var(--primary-500)', cursor: 'pointer' }} />
+                                  <input type="radio" name="rel-demo" readOnly style={{ accentColor: '#028FBB', cursor: 'pointer' }} />
                                 </td>
                                 <td><span className={styles.cellLink}>{r.name}</span></td>
                                 <td>{r.type}</td>
@@ -1332,7 +1332,7 @@ export default function ComponentCatalog() {
                               { date: '15 May 2026 16:48', by: 'System', source: 'Renewal', summary: 'Renewal reminder sent. Next renewal due: 15 Aug 2026.' },
                             ].map((r, i) => (
                               <tr key={i}>
-                                <td style={{ whiteSpace: 'nowrap', fontSize: 12, color: 'var(--text-light)' }}>{r.date}</td>
+                                <td style={{ whiteSpace: 'nowrap', fontSize: 12, color: '#516267' }}>{r.date}</td>
                                 <td>{r.by}</td>
                                 <td><span className={styles.cellLink}>{r.source}</span></td>
                                 <td style={{ whiteSpace: 'pre-line', fontSize: 13 }}>{r.summary}</td>
@@ -1370,19 +1370,19 @@ export default function ComponentCatalog() {
                                 <td>{r.field}</td>
                                 <td>
                                   {r.value
-                                    ? <span className="badge" style={{ background: 'var(--primary-08)', color: 'var(--primary-700)' }}>{r.value}</span>
-                                    : <span style={{ color: 'var(--neutral-300)' }}>—</span>}
+                                    ? <span className="badge" style={{ background: '#E8F9FE', color: '#017295' }}>{r.value}</span>
+                                    : <span style={{ color: '#B1BCC5' }}>—</span>}
                                 </td>
                                 <td style={{ textAlign: 'center' }}>
-                                  {r.keyRisk ? <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--warning-500)' }}>warning</span> : null}
+                                  {r.keyRisk ? <span className="material-icons-outlined" style={{ fontSize: 16, color: '#F0C043' }}>warning</span> : null}
                                 </td>
                                 <td style={{ textAlign: 'center' }}>
-                                  {r.flag ? <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--alert-500)' }}>flag</span> : null}
+                                  {r.flag ? <span className="material-icons-outlined" style={{ fontSize: 16, color: '#E34C53' }}>flag</span> : null}
                                 </td>
-                                <td style={{ textAlign: 'center', fontSize: 13, color: 'var(--text-normal)' }}>{r.score ?? <span style={{ color: 'var(--neutral-300)' }}>—</span>}</td>
-                                <td><span className="badge" style={{ background: 'var(--primary-08)', color: 'var(--primary-700)' }}>{r.tag}</span></td>
+                                <td style={{ textAlign: 'center', fontSize: 13, color: '#0C2A31' }}>{r.score ?? <span style={{ color: '#B1BCC5' }}>—</span>}</td>
+                                <td><span className="badge" style={{ background: '#E8F9FE', color: '#017295' }}>{r.tag}</span></td>
                                 <td style={{ textAlign: 'center' }}>
-                                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-light)', display: 'inline-flex', alignItems: 'center' }}>
+                                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#516267', display: 'inline-flex', alignItems: 'center' }}>
                                     <span className="material-icons-outlined" style={{ fontSize: 16 }}>edit</span>
                                   </button>
                                 </td>
@@ -1414,17 +1414,17 @@ export default function ComponentCatalog() {
                             ].map((r, i) => (
                               <tr key={i}>
                                 <td>
-                                  <div style={{ fontWeight: 500, color: 'var(--text-normal)', fontSize: 13 }}>{r.name}</div>
-                                  <div style={{ fontSize: 12, color: 'var(--text-light)', marginTop: 2 }}>{r.desc}</div>
+                                  <div style={{ fontWeight: 500, color: '#0C2A31', fontSize: 13 }}>{r.name}</div>
+                                  <div style={{ fontSize: 12, color: '#516267', marginTop: 2 }}>{r.desc}</div>
                                 </td>
                                 <td style={{ textAlign: 'center', fontSize: 13 }}>
-                                  {r.tps ? <span style={{ color: 'var(--success-700)' }}>Yes</span> : <span style={{ color: 'var(--neutral-400)' }}>No</span>}
+                                  {r.tps ? <span style={{ color: '#0D9858' }}>Yes</span> : <span style={{ color: '#9FACB7' }}>No</span>}
                                 </td>
                                 <td style={{ textAlign: 'center', fontSize: 13 }}>
-                                  {r.emp ? <span style={{ color: 'var(--success-700)' }}>Yes</span> : <span style={{ color: 'var(--neutral-400)' }}>No</span>}
+                                  {r.emp ? <span style={{ color: '#0D9858' }}>Yes</span> : <span style={{ color: '#9FACB7' }}>No</span>}
                                 </td>
                                 <td style={{ textAlign: 'center' }}>
-                                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-light)', display: 'inline-flex', alignItems: 'center' }}>
+                                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#516267', display: 'inline-flex', alignItems: 'center' }}>
                                     <span className="material-icons-outlined" style={{ fontSize: 18 }}>more_vert</span>
                                   </button>
                                 </td>
@@ -1541,8 +1541,8 @@ export default function ComponentCatalog() {
                         ))}
                       </div>
                     </div>
-                    <div style={{ padding: '16px 0 16px', fontSize: 13, color: 'var(--text-light)' }}>
-                      Active tab: <strong style={{ color: 'var(--text-normal)' }}>{patternTab}</strong>
+                    <div style={{ padding: '16px 0 16px', fontSize: 13, color: '#516267' }}>
+                      Active tab: <strong style={{ color: '#0C2A31' }}>{patternTab}</strong>
                     </div>
                   </div>
                 </div>
@@ -1556,16 +1556,16 @@ export default function ComponentCatalog() {
                 <div className={styles.demoShell}>
                   <div className={styles.demoLabel}>Live Demo</div>
                   <div style={{ padding: 16 }}>
-                    <div style={{ width: 226, border: '1px solid var(--neutral-50)', background: 'var(--neutral-00)' }}>
-                      <div style={{ padding: '10px 16px 6px', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.6px', color: 'var(--neutral-400)', borderBottom: '1px solid var(--neutral-50)' }}>General</div>
+                    <div style={{ width: 226, border: '1px solid #DFE3E7', background: '#FFFFFF' }}>
+                      <div style={{ padding: '10px 16px 6px', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.6px', color: '#9FACB7', borderBottom: '1px solid #DFE3E7' }}>General</div>
                       {['Currency & Approval Groups', 'Risk Scoring', 'Red Flags', 'Renewals'].map((item, i) => (
-                        <div key={item} style={{ display: 'flex', alignItems: 'center', height: 40, padding: '0 16px', fontSize: 14, borderBottom: '1px solid var(--neutral-50)', cursor: 'pointer', background: i === 0 ? 'var(--primary-500)' : 'transparent', color: i === 0 ? 'var(--neutral-00)' : 'var(--text-light)' }}>
+                        <div key={item} style={{ display: 'flex', alignItems: 'center', height: 40, padding: '0 16px', fontSize: 14, borderBottom: '1px solid #DFE3E7', cursor: 'pointer', background: i === 0 ? 'var(--primary-500)' : 'transparent', color: i === 0 ? 'var(--neutral-00)' : 'var(--text-light)' }}>
                           {item}
                         </div>
                       ))}
-                      <div style={{ padding: '10px 16px 6px', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.6px', color: 'var(--neutral-400)', borderBottom: '1px solid var(--neutral-50)' }}>Process</div>
+                      <div style={{ padding: '10px 16px 6px', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.6px', color: '#9FACB7', borderBottom: '1px solid #DFE3E7' }}>Process</div>
                       {['Stages', 'Questionnaires', 'Approval Groups'].map(item => (
-                        <div key={item} style={{ display: 'flex', alignItems: 'center', height: 40, padding: '0 16px', fontSize: 14, borderBottom: '1px solid var(--neutral-50)', cursor: 'pointer', color: 'var(--text-light)' }}>
+                        <div key={item} style={{ display: 'flex', alignItems: 'center', height: 40, padding: '0 16px', fontSize: 14, borderBottom: '1px solid #DFE3E7', cursor: 'pointer', color: '#516267' }}>
                           {item}
                         </div>
                       ))}
@@ -1687,10 +1687,10 @@ export default function ComponentCatalog() {
                       <div className={styles.sidenavLegendTitle}>Dot colors</div>
                       {[
                         { color: 'var(--success-500)', label: 'Complete' },
-                        { color: 'var(--warning-500)', label: 'Required — In Progress' },
-                        { color: 'var(--alert-500)',   label: 'Required — Not Started' },
-                        { color: 'var(--text-light)',  label: 'Not Required' },
-                        { color: 'var(--text-normal)', label: 'In Progress (system)' },
+                        { color: '#F0C043', label: 'Required — In Progress' },
+                        { color: '#E34C53',   label: 'Required — Not Started' },
+                        { color: '#516267',  label: 'Not Required' },
+                        { color: '#0C2A31', label: 'In Progress (system)' },
                         { color: 'var(--neutral-200)', label: 'Blocked' },
                       ].map(d => (
                         <div key={d.label} className={styles.sidenavLegendRow}>
@@ -1713,7 +1713,7 @@ export default function ComponentCatalog() {
                   <div className={styles.demoLabel}>Live Demo</div>
                   <div style={{ padding: '20px 16px' }}>
                     {/* Specimen reuses the real Sidebar CSS classes from profile.module.css */}
-                    <aside style={{ width: 280, background: 'var(--neutral-00)', border: '1px solid var(--neutral-50)', borderRadius: 4 }}>
+                    <aside style={{ width: 280, background: '#FFFFFF', border: '1px solid #DFE3E7', borderRadius: 4 }}>
                       <div className={profileStyles.navStepper}>
                         {/* Risk Assessment — parent amber/next, expanded */}
                         <div
@@ -1846,7 +1846,7 @@ export default function ComponentCatalog() {
                     </aside>
                   </div>
                 </div>
-                <div style={{ marginTop: 16, padding: '12px 16px', background: 'var(--neutral-25)', borderRadius: 4, fontSize: 12, color: 'var(--text-light)' }}>
+                <div style={{ marginTop: 16, padding: '12px 16px', background: '#F4F4F4', borderRadius: 4, fontSize: 12, color: '#516267' }}>
                   Specimen reuses the real Sidebar CSS classes (<code>navStepper*</code> / <code>navSubSteps*</code> in <code>profile.module.css</code>) so it stays pixel-identical to production. Click the parent rows to expand / collapse — the blue trunk under Risk Assessment routes from the parent through to the first incomplete substep, which carries the <strong>Next</strong> chip.
                 </div>
               </div>
@@ -1972,29 +1972,29 @@ export default function ComponentCatalog() {
                 </div>
                 <div className={styles.demoShell}>
                   <div className={styles.demoStageColumn}>
-                    <div className={styles.banner} style={{ background: 'var(--warning-50)', borderColor: 'var(--warning-300)', color: 'var(--warning-900)' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--warning-700)' }}>warning_amber</span>
+                    <div className={styles.banner} style={{ background: '#FBEDCA', borderColor: '#F5D47F', color: '#564518' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#A3832E' }}>warning_amber</span>
                       <div>
                         <div className={styles.bannerTitle}>Warning — Potential duplicates found</div>
                         <div className={styles.bannerDesc}>10 existing records have a similar name. Review before continuing to avoid creating duplicate profiles.</div>
                       </div>
                     </div>
-                    <div className={styles.banner} style={{ background: 'var(--primary-08)', borderColor: 'var(--primary-200)', color: 'var(--text-normal)' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--primary-500)' }}>info</span>
+                    <div className={styles.banner} style={{ background: '#E8F9FE', borderColor: '#7BCFE9', color: '#0C2A31' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#028FBB' }}>info</span>
                       <div>
                         <div className={styles.bannerTitle}>Info — Pre-populated from verification</div>
                         <div className={styles.bannerDesc}>Some fields have been pre-filled from the entity verification step. Review and adjust as needed.</div>
                       </div>
                     </div>
-                    <div className={styles.banner} style={{ background: 'var(--alert-50)', borderColor: 'var(--alert-300)', color: 'var(--alert-900)' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--alert-700)' }}>error_outline</span>
+                    <div className={styles.banner} style={{ background: '#F7CDCF', borderColor: '#EC858A', color: '#521B1E' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#9A3438' }}>error_outline</span>
                       <div>
                         <div className={styles.bannerTitle}>Error — Required fields missing</div>
                         <div className={styles.bannerDesc}>Please fill in all required fields before continuing. Highlighted fields are mandatory.</div>
                       </div>
                     </div>
-                    <div className={styles.banner} style={{ background: 'var(--success-50)', borderColor: 'var(--success-300)', color: 'var(--success-900)' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--success-700)' }}>check_circle_outline</span>
+                    <div className={styles.banner} style={{ background: '#BDF6DC', borderColor: '#5FE9A9', color: '#07502E' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#0D9858' }}>check_circle_outline</span>
                       <div>
                         <div className={styles.bannerTitle}>Success — Third party approved</div>
                         <div className={styles.bannerDesc}>The third party has been successfully approved and is now active in the system.</div>
@@ -2012,12 +2012,12 @@ export default function ComponentCatalog() {
                 </div>
                 <div className={styles.demoShell}>
                   <div className={styles.demoStageColumn}>
-                    <div className={styles.bannerToast} style={{ background: 'var(--success-300)', color: 'var(--success-900)' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--success-900)' }}>check_circle</span>
+                    <div className={styles.bannerToast} style={{ background: '#5FE9A9', color: '#07502E' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#07502E' }}>check_circle</span>
                       <span>Connection saved successfully</span>
                     </div>
-                    <div className={styles.bannerToast} style={{ background: 'var(--warning-100)', color: 'var(--warning-900)' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--warning-900)' }}>remove_circle</span>
+                    <div className={styles.bannerToast} style={{ background: '#FAE8BB', color: '#564518' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#564518' }}>remove_circle</span>
                       <span>Connection discarded</span>
                     </div>
                   </div>
@@ -2032,12 +2032,12 @@ export default function ComponentCatalog() {
                 </div>
                 <div className={styles.demoShell}>
                   <div className={styles.demoStageColumn}>
-                    <div className={styles.bannerInline} style={{ background: 'var(--alert-100)', color: 'var(--alert-700)' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--alert-700)' }}>error_outline</span>
+                    <div className={styles.bannerInline} style={{ background: '#F5BFC1', color: '#9A3438' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#9A3438' }}>error_outline</span>
                       <span>This third party has open risk mitigation tasks. Resolve all tasks before approving.</span>
                     </div>
-                    <div className={styles.bannerInline} style={{ background: 'var(--warning-50)', color: 'var(--warning-900)' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: 'var(--warning-700)' }}>warning_amber</span>
+                    <div className={styles.bannerInline} style={{ background: '#FBEDCA', color: '#564518' }}>
+                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#A3832E' }}>warning_amber</span>
                       <span>Renewal is due in 14 days. Schedule a review meeting with the owner.</span>
                     </div>
                   </div>
@@ -2092,7 +2092,7 @@ export default function ComponentCatalog() {
                             </div>
                             <div className={styles.accordionHeaderRight}>
                               <span className={styles.accordionScore}>
-                                Category Risk Score: <strong style={{ fontWeight: 700, color: 'var(--text-normal)' }}>{item.score}</strong>
+                                Category Risk Score: <strong style={{ fontWeight: 700, color: '#0C2A31' }}>{item.score}</strong>
                               </span>
                               <RiskBadge level={item.level} />
                               <span className={`material-icons-outlined ${styles.accordionCaret} ${accordionOpen[item.id] ? styles.accordionCaretOpen : styles.accordionCaretClosed}`}>
@@ -2102,7 +2102,7 @@ export default function ComponentCatalog() {
                           </div>
                           {accordionOpen[item.id] && (
                             <div className={styles.accordionBody}>
-                              <p style={{ margin: 0, fontSize: 13, color: 'var(--text-light)', lineHeight: 1.6 }}>
+                              <p style={{ margin: 0, fontSize: 13, color: '#516267', lineHeight: 1.6 }}>
                                 Accordion body content — typically a risk factors table (Property | Value | Score) or a screening results table for the Screening &amp; Monitoring section.
                               </p>
                             </div>
@@ -2152,7 +2152,7 @@ export default function ComponentCatalog() {
                       ))}
                     </div>
                     <div className={styles.panelDemo}>
-                      <div style={{ padding: 16, color: 'var(--text-light)', fontSize: 13 }}>Page content behind the overlay</div>
+                      <div style={{ padding: 16, color: '#516267', fontSize: 13 }}>Page content behind the overlay</div>
                       <AnimatePresence>
                         {panelSize && (() => {
                           const sizes = { sm: { pct: '35%', title: 'Current Status' }, md: { pct: '42%', title: 'Edit Connection' }, lg: { pct: '52%', title: 'Notes' }, xl: { pct: '72%', title: 'Look for More' } };

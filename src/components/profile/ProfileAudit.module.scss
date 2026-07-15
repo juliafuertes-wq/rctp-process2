@@ -1,6 +1,8 @@
+@import '../../styles/variables';
+
 .resultCount {
   font-size: 13px;
-  color: #516267;
+  color: $gray-600;
 }
 
 .printBtn {
@@ -27,38 +29,38 @@
 .filterSelect {
   height: 32px;
   padding: 0 10px;
-  border: 1px solid #D6DBE0;
+  border: 1px solid $gray-300;
   border-radius: 4px;
   font-size: 13px;
   font-family: inherit;
-  color: #0C2A31;
-  background: #FFFFFF;
+  color: $gray-900;
+  background: $white;
   cursor: pointer;
   min-width: 120px;
 }
 .filterSelect:focus {
   outline: none;
-  border-color: #02A3D5;
+  border-color: $primary;
 }
 
 .filterInput {
   height: 32px;
   padding: 0 10px;
-  border: 1px solid #D6DBE0;
+  border: 1px solid $gray-300;
   border-radius: 4px;
   font-size: 13px;
   font-family: inherit;
-  color: #0C2A31;
-  background: #FFFFFF;
+  color: $gray-900;
+  background: $white;
   flex: 1;
   min-width: 160px;
 }
 .filterInput::placeholder {
-  color: #516267;
+  color: $gray-600;
 }
 .filterInput:focus {
   outline: none;
-  border-color: #02A3D5;
+  border-color: $primary;
 }
 
 .resetBtn {
@@ -67,13 +69,13 @@
   cursor: pointer;
   padding: 4px;
   border-radius: 4px;
-  color: #516267;
+  color: $gray-600;
   display: inline-flex;
   align-items: center;
   transition: background 0.15s ease, color 0.15s ease;
 }
 .resetBtn:hover {
-  background: #DFE3E7;
-  color: #0C2A31;
+  background: $gray-200;
+  color: $gray-900;
 }
 

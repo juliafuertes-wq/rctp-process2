@@ -4,7 +4,7 @@ import Breadcrumb from '../components/layout/Breadcrumb';
 import RiskBadge from '../components/ui/RiskBadge';
 import Button from '../components/ui/Button';
 import { piedpiper, brucewayne, gazprom, initech, dundermifflin, lumon, waystar, ecomoda, lospollos, gringotts, agencegrateau, vought, ricksanchez, starkindustries, willywonka } from '../data/profiles';
-import styles from './ThirdParties.module.css';
+import styles from './ThirdParties.module.scss';
 
 function getOwner(p) { return p.overviewFields.find(f => f.label === 'Third Party Owner')?.value || ''; }
 function getBU(p) { return p.overviewFields.find(f => f.label === 'Business Unit')?.value || ''; }
@@ -90,7 +90,7 @@ export default function ThirdParties() {
           <div className={styles.toolbarLeft}>
             <div className={styles.searchWrap}>
               <input className={styles.searchInput} type="text" placeholder="Quick search" />
-              <span className="material-icons-outlined" style={{ position: 'absolute', right: 8, color: 'var(--text-light)', fontSize: 18, pointerEvents: 'none' }}>search</span>
+              <span className="material-icons-outlined" className="text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
             </div>
           </div>
           <div className={styles.toolbarRight}>

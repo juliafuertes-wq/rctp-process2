@@ -6,7 +6,7 @@ import iconFactCheck from '../../assets/icon-fact-check.svg';
 import iconFinanceMode from '../../assets/icon-finance-mode.svg';
 import iconFrame9 from '../../assets/icon-frame9.svg';
 import iconArmingCountdown from '../../assets/icon-arming-countdown.svg';
-import styles from './profile.module.css';
+import styles from './profile.module.scss';
 
 export const TASK_ICONS = { iconFlag, iconInactiveOrder, iconFactCheck, iconFinanceMode, iconFrame9, iconArmingCountdown };
 export const PARTNER_ICONS = { integrity: partnerIconIntegrity, ubo: partnerIconUbo };

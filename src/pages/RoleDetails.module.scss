@@ -1,11 +1,13 @@
+@import '../styles/variables';
+
 .gap { height: 8px; }
 
 /* ── Header card ── */
 .headerCard {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
-  border-top: 4px solid var(--primary-500);
-  box-shadow: var(--rctp-shadow-xs);
+  background: $white;
+  border: 1px solid $gray-200;
+  border-top: 4px solid $bergbluetint1;
+  box-shadow: $shadow-xs;
   padding: 20px 20px 20px;
 }
 
@@ -25,13 +27,13 @@
 .pageTitle {
   font-size: 20px;
   font-weight: 500;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
 }
 
 .titleIcon {
   font-size: 18px;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   cursor: help;
 }
 
@@ -63,23 +65,23 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--primary-500);
-  font-family: var(--font-heading);
+  color: $bergbluetint1;
+  font-family: inherit;
 }
 
 .required {
-  color: var(--alert-500, #e53935);
+  color: $danger;
 }
 
 .fieldInput {
   height: 34px;
   padding: 0 10px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
-  background: var(--neutral-25);
+  border: 1px solid $gray-400;
+  border-radius: $radius-xs;
+  background: $gray-100;
   font-size: 14px;
   font-family: inherit;
-  color: var(--text-normal);
+  color: $gray-900;
   outline: none;
   cursor: default;
   box-sizing: border-box;
@@ -87,13 +89,13 @@
 }
 
 .fieldInputEditable {
-  background: var(--neutral-00);
-  border-color: var(--neutral-300);
+  background: $white;
+  border-color: $neutral-300;
   cursor: text;
 }
 
 .fieldInputEditable:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 .checkboxRow {
@@ -109,7 +111,7 @@
   gap: 6px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-normal);
+  color: $gray-900;
   cursor: pointer;
 }
 
@@ -121,15 +123,15 @@
 
 /* ── Tab bar ── */
 .tabBar {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   padding: 0 20px;
 }
 
 .tabs {
   display: flex;
   gap: 26px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .tab {
@@ -137,7 +139,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1px;
-  color: var(--text-light);
+  color: $gray-600;
   padding: 12px 0 10px;
   cursor: pointer;
   transition: color 0.25s ease;
@@ -146,11 +148,11 @@
 }
 
 .tab:hover {
-  color: var(--text-normal);
+  color: $gray-900;
 }
 
 .tabActive {
-  color: var(--text-normal);
+  color: $gray-900;
 }
 
 .tabIndicator {
@@ -159,15 +161,15 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--primary-600);
+  background: $primary-600;
   border-radius: 1px;
 }
 
 /* ── Permissions table ── */
 .tableCard {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
-  box-shadow: var(--rctp-shadow-xs);
+  background: $white;
+  border: 1px solid $gray-200;
+  box-shadow: $shadow-xs;
 }
 
 .tableWrap {
@@ -183,14 +185,14 @@
 }
 
 .table thead th {
-  background: var(--neutral-25);
-  border: 1px solid var(--neutral-50);
-  border-bottom: 1px solid var(--neutral-100);
+  background: $gray-100;
+  border: 1px solid $gray-200;
+  border-bottom: 1px solid $gray-300;
   padding: 10px 12px;
   text-align: left;
   font-size: 11px;
   font-weight: 600;
-  color: var(--text-light);
+  color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
@@ -211,28 +213,28 @@
 }
 
 .naCell {
-  color: var(--neutral-300);
+  color: $neutral-300;
   font-size: 14px;
   display: block;
   text-align: center;
 }
 
-.table tbody tr:nth-child(odd)  { background: var(--primary-08); }
-.table tbody tr:nth-child(even) { background: var(--neutral-00); }
+.table tbody tr:nth-child(odd)  { background: $primary-08; }
+.table tbody tr:nth-child(even) { background: $white; }
 .table tbody tr { transition: background 100ms ease; }
-.table tbody tr:hover { background: var(--row-hover); }
+.table tbody tr:hover { background: $row-hover; }
 
 .table tbody td {
-  border: 1px solid var(--neutral-50);
+  border: 1px solid $gray-200;
   padding: 10px 12px;
   vertical-align: middle;
-  color: var(--text-light);
+  color: $gray-600;
   font-size: 13px;
 }
 
 .tdName {
   font-size: 14px;
-  color: var(--text-light);
+  color: $gray-600;
 }
 
 .tdNameInner {
@@ -243,7 +245,7 @@
 
 .rowInfoIcon {
   font-size: 14px;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   cursor: help;
   flex-shrink: 0;
 }
@@ -256,7 +258,7 @@
 
 /* Group (e.g. Standard RCTP) */
 .accordionGroup {
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .accordionGroup:last-child {
@@ -268,14 +270,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  background: var(--neutral-100);
+  background: $gray-300;
   cursor: pointer;
   user-select: none;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .accordionGroupHeader:hover {
-  background: var(--neutral-50);
+  background: $gray-200;
 }
 
 .accordionGroupTitle {
@@ -283,8 +285,8 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
 }
 
 .accordionGroupBody {
@@ -300,22 +302,22 @@
 .accordionExpandAll {
   font-size: 12px;
   font-weight: 500;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   text-transform: uppercase;
   letter-spacing: 0.4px;
   cursor: pointer;
   padding: 2px 6px;
-  border-radius: var(--rctp-radius-xs);
+  border-radius: $radius-xs;
   transition: background 0.15s ease;
 }
 
 .accordionExpandAll:hover {
-  background: var(--primary-50);
+  background: $primary-50;
 }
 
 /* Section inside a group */
 .accordionSection {
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .accordionSection:last-child {
@@ -327,14 +329,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 16px 10px 28px;
-  background: var(--neutral-25);
+  background: $gray-100;
   cursor: pointer;
   user-select: none;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .accordionHeader:hover {
-  background: var(--primary-08);
+  background: $primary-08;
 }
 
 .accordionTitle {
@@ -342,13 +344,13 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--primary-500);
-  font-family: var(--font-heading);
+  color: $bergbluetint1;
+  font-family: inherit;
 }
 
 .accordionChevron {
   font-size: 18px;
-  color: var(--text-light);
+  color: $gray-600;
   transition: transform 0.2s ease;
   transform: rotate(-90deg);
 }
@@ -362,12 +364,12 @@
 }
 
 .subAccordionRow {
-  background: var(--neutral-25);
+  background: $gray-100;
   cursor: pointer;
 }
 
 .subAccordionRow:hover {
-  background: var(--primary-08) !important;
+  background: $primary-08 !important;
 }
 
 .subAccordionHeader {
@@ -376,7 +378,7 @@
   gap: 6px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-light);
+  color: $gray-600;
   padding: 2px 0;
 }
 
@@ -384,8 +386,8 @@
   display: inline-block;
   width: 3px;
   height: 14px;
-  background: var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
+  background: $gray-400;
+  border-radius: $radius-xs;
   flex-shrink: 0;
 }
 

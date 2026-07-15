@@ -1,7 +1,9 @@
+@import '../styles/variables';
+
 /* ── Card ── */
 .card {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
 }
 
 .cardHeader {
@@ -14,14 +16,14 @@
 .cardTitle {
   font-size: 18px;
   font-weight: 500;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
   margin: 0;
 }
 
 .cardDivider {
   height: 1px;
-  background: var(--neutral-50);
+  background: $gray-200;
   margin: 0 0 16px;
 }
 
@@ -44,50 +46,50 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
 .req {
-  color: var(--alert-500);
+  color: $danger;
 }
 
 .infoIcon {
   font-size: 14px;
-  color: var(--neutral-400);
+  color: $gray-500;
 }
 
 .input {
   height: 36px;
   padding: 0 12px;
-  border: 1px solid var(--neutral-200);
-  background: var(--neutral-00);
+  border: 1px solid $gray-400;
+  background: $white;
   font-family: inherit;
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   outline: none;
-  border-radius: var(--rctp-radius-xs);
+  border-radius: $radius-xs;
   transition: border-color 0.15s;
   width: 100%;
   box-sizing: border-box;
 }
 
 .input:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 .select {
   height: 36px;
   padding: 0 28px 0 12px;
-  border: 1px solid var(--neutral-200);
-  background: var(--neutral-00);
+  border: 1px solid $gray-400;
+  background: $white;
   font-family: inherit;
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   outline: none;
-  border-radius: var(--rctp-radius-xs);
+  border-radius: $radius-xs;
   cursor: pointer;
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%238D9CA9'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
@@ -97,7 +99,7 @@
 }
 
 .select:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 .inputPair {
@@ -128,7 +130,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--neutral-500);
+  color: $neutral-500;
 }
 
 .expirationsActions {
@@ -139,8 +141,8 @@
 /* ── Two-panel layout ── */
 .panels {
   margin-top: 8px;
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   display: flex;
   align-items: flex-start;
 }
@@ -157,23 +159,23 @@
   align-items: center;
   justify-content: center;
   cursor: col-resize;
-  background: var(--neutral-25);
-  border-left: 1px solid var(--neutral-100);
-  border-right: 1px solid var(--neutral-100);
+  background: $gray-100;
+  border-left: 1px solid $gray-300;
+  border-right: 1px solid $gray-300;
   flex-shrink: 0;
   user-select: none;
 }
 
 .panelDivider:hover .panelDividerHandle,
 .panelDivider:active .panelDividerHandle {
-  background: var(--primary-500);
+  background: $bergbluetint1;
 }
 
 .panelDividerHandle {
   width: 2px;
   height: 32px;
-  border-radius: var(--rctp-radius-xs);
-  background: var(--neutral-300);
+  border-radius: $radius-xs;
+  background: $neutral-300;
   transition: background 0.15s;
 }
 
@@ -186,28 +188,28 @@
 .panelTitle {
   font-size: 16px;
   font-weight: 500;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
   margin: 0 0 12px;
 }
 
 /* ── Rules table ── */
 .rulesTable {
-  border: 1px solid var(--neutral-100);
+  border: 1px solid $gray-300;
 }
 
 .rulesHeader {
   display: grid;
   grid-template-columns: 56px 1fr 1fr;
-  background: var(--neutral-25);
-  border-bottom: 1px solid var(--neutral-100);
+  background: $gray-100;
+  border-bottom: 1px solid $gray-300;
 }
 
 .rulesDragCol {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid var(--neutral-100);
+  border-right: 1px solid $gray-300;
   cursor: grab;
   padding: 8px 0;
   user-select: none;
@@ -222,8 +224,8 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-light);
-  border-right: 1px solid var(--neutral-100);
+  color: $gray-600;
+  border-right: 1px solid $gray-300;
   position: relative;
 }
 
@@ -253,15 +255,15 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--neutral-400);
-  border-radius: var(--rctp-radius-xs);
+  color: $gray-500;
+  border-radius: $radius-xs;
   padding: 0;
   transition: background 0.15s, color 0.15s;
 }
 
 .colMenuBtn:hover {
-  background: var(--neutral-50);
-  color: var(--text-normal);
+  background: $gray-200;
+  color: $gray-900;
 }
 
 .colMenu {
@@ -269,9 +271,9 @@
   top: calc(100% + 4px);
   right: 0;
   z-index: var(--z-dropdown);
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-100);
-  border-radius: var(--rctp-radius-xs);
+  background: $white;
+  border: 1px solid $gray-300;
+  border-radius: $radius-xs;
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   min-width: 180px;
   padding: 4px 0;
@@ -284,7 +286,7 @@
   font-family: inherit;
   font-size: 14px;
   font-weight: 400;
-  color: var(--text-normal);
+  color: $gray-900;
   background: none;
   border: none;
   text-align: left;
@@ -295,17 +297,17 @@
 }
 
 .colMenuItem:hover:not(:disabled) {
-  background: var(--primary-08);
+  background: $primary-08;
 }
 
 .colMenuItem:disabled {
-  color: var(--neutral-300);
+  color: $neutral-300;
   cursor: default;
 }
 
 .ruleRowNum {
   font-size: 11px;
-  color: var(--text-light);
+  color: $gray-600;
   font-variant-numeric: tabular-nums;
   line-height: 1;
   margin-right: 2px;
@@ -314,7 +316,7 @@
 .ruleRow {
   display: grid;
   grid-template-columns: 56px 1fr 1fr;
-  border-bottom: 1px solid var(--neutral-100);
+  border-bottom: 1px solid $gray-300;
   height: 46px;
   transition: background 0.1s;
 }
@@ -324,19 +326,19 @@
 }
 
 .ruleRow:hover {
-  background: var(--primary-08);
+  background: $primary-08;
 }
 
 .ruleRowActive {
 }
 
 .ruleRowDropTarget {
-  border-top: 2px solid var(--primary-500);
+  border-top: 2px solid $bergbluetint1;
 }
 
 .ruleCell {
   padding: 5px 6px;
-  border-right: 1px solid var(--neutral-100);
+  border-right: 1px solid $gray-300;
   display: flex;
   align-items: center;
 }
@@ -351,9 +353,9 @@
   align-items: center;
   height: 34px;
   width: 100%;
-  border: 1px solid var(--neutral-200);
-  background: var(--neutral-00);
-  border-radius: var(--rctp-radius-xs);
+  border: 1px solid $gray-400;
+  background: $white;
+  border-radius: $radius-xs;
   overflow: hidden;
 }
 
@@ -361,13 +363,13 @@
   padding: 0 8px;
   font-size: 11px;
   font-weight: 500;
-  color: var(--text-normal);
+  color: $gray-900;
   white-space: nowrap;
-  background: var(--neutral-25);
+  background: $gray-100;
   height: 100%;
   display: flex;
   align-items: center;
-  border-right: 1px solid var(--neutral-200);
+  border-right: 1px solid $gray-400;
   flex-shrink: 0;
 }
 
@@ -378,7 +380,7 @@
   background: none;
   font-family: inherit;
   font-size: 13px;
-  color: var(--neutral-500);
+  color: $neutral-500;
   padding: 0 8px;
   outline: none;
   cursor: pointer;
@@ -400,25 +402,25 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   padding: 0;
   transition: color 0.15s;
 }
 
 .addRulesBtn:hover {
-  color: var(--primary-600);
+  color: $primary-600;
 }
 
 /* ── Details table ── */
 .detailsTable {
-  border: 1px solid var(--neutral-100);
+  border: 1px solid $gray-300;
 }
 
 .detailsHeader {
   display: grid;
   grid-template-columns: 1fr 120px 36px;
-  background: var(--neutral-25);
-  border-bottom: 1px solid var(--neutral-100);
+  background: $gray-100;
+  border-bottom: 1px solid $gray-300;
   min-height: 42px;
 }
 
@@ -430,8 +432,8 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-light);
-  border-right: 1px solid var(--neutral-100);
+  color: $gray-600;
+  border-right: 1px solid $gray-300;
   gap: 6px;
 }
 
@@ -444,13 +446,13 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-light);
+  color: $gray-600;
 }
 
 .detailRow {
   display: grid;
   grid-template-columns: 1fr 120px 36px;
-  border-bottom: 1px solid var(--neutral-100);
+  border-bottom: 1px solid $gray-300;
   height: 46px;
   transition: background 0.1s;
 }
@@ -460,7 +462,7 @@
 }
 
 .detailRow:hover {
-  background: var(--primary-08);
+  background: $primary-08;
 }
 
 .detailRowActive {
@@ -478,17 +480,17 @@
   height: 34px;
   min-width: 0;
   padding: 0 8px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
+  border: 1px solid $gray-400;
+  border-radius: $radius-xs;
   font-family: inherit;
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   outline: none;
-  background: var(--neutral-00);
+  background: $white;
 }
 
 .periodInput:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 .periodSelect {
@@ -496,13 +498,13 @@
   height: 34px;
   min-width: 0;
   padding: 0 24px 0 8px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
+  border: 1px solid $gray-400;
+  border-radius: $radius-xs;
   font-family: inherit;
   font-size: 13px;
-  color: var(--text-normal);
+  color: $gray-900;
   outline: none;
-  background: var(--neutral-00);
+  background: $white;
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%238D9CA9'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -511,14 +513,14 @@
 }
 
 .periodSelect:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 .detailsColActions {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 1px solid var(--neutral-100);
+  border-left: 1px solid $gray-300;
   position: relative;
 }
 
@@ -531,15 +533,15 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--neutral-400);
-  border-radius: var(--rctp-radius-xs);
+  color: $gray-500;
+  border-radius: $radius-xs;
   padding: 0;
   transition: background 0.15s, color 0.15s;
 }
 
 .rowMenuBtn:hover {
-  background: var(--neutral-50);
-  color: var(--text-normal);
+  background: $gray-200;
+  color: $gray-900;
 }
 
 .rowMenu {
@@ -547,9 +549,9 @@
   top: calc(100% + 4px);
   right: 0;
   z-index: var(--z-dropdown);
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-100);
-  border-radius: var(--rctp-radius-xs);
+  background: $white;
+  border: 1px solid $gray-300;
+  border-radius: $radius-xs;
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   min-width: 160px;
   padding: 4px 0;
@@ -578,8 +580,8 @@
   bottom: 0;
   width: 640px;
   z-index: var(--z-alert);
-  background: var(--neutral-00);
-  border-left: 1px solid var(--neutral-100);
+  background: $white;
+  border-left: 1px solid $gray-300;
   display: flex;
   flex-direction: column;
   box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
@@ -596,15 +598,15 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
   flex-shrink: 0;
 }
 
 .pickerTitle {
   font-size: 18px;
   font-weight: 500;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
 }
 
 .pickerClose {
@@ -616,21 +618,21 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--neutral-500);
-  border-radius: var(--rctp-radius-xs);
+  color: $neutral-500;
+  border-radius: $radius-xs;
   transition: background 0.15s, color 0.15s;
 }
 
 .pickerClose:hover {
-  background: var(--neutral-25);
-  color: var(--text-normal);
+  background: $gray-100;
+  color: $gray-900;
 }
 
 .pickerSearchWrap {
   position: relative;
   padding: 12px 20px;
   flex-shrink: 0;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .pickerSearchIcon {
@@ -639,7 +641,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 18px;
-  color: var(--neutral-400);
+  color: $gray-500;
   pointer-events: none;
 }
 
@@ -647,18 +649,18 @@
   width: 100%;
   height: 36px;
   padding: 0 12px 0 36px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
+  border: 1px solid $gray-400;
+  border-radius: $radius-xs;
   font-family: inherit;
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.15s;
 }
 
 .pickerSearchInput:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 .pickerTableWrap {
@@ -671,8 +673,8 @@
 }
 
 .pickerTableWrap::-webkit-scrollbar-thumb {
-  background: var(--neutral-200);
-  border-radius: var(--rctp-radius-sm);
+  background: $gray-400;
+  border-radius: $radius-sm;
 }
 
 .pickerTable {
@@ -685,16 +687,16 @@
 .pickerTable thead th {
   position: sticky;
   top: 0;
-  background: var(--neutral-25);
+  background: $gray-100;
   font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-light);
+  color: $gray-600;
   padding: 10px 16px;
   text-align: left;
-  border-bottom: 1px solid var(--neutral-100);
-  border-right: 1px solid var(--neutral-100);
+  border-bottom: 1px solid $gray-300;
+  border-right: 1px solid $gray-300;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -708,15 +710,15 @@
 }
 
 .pickerRow:hover {
-  background: var(--primary-08);
+  background: $primary-08;
 }
 
 .pickerRow td {
   padding: 12px 16px;
   font-size: 14px;
-  color: var(--text-normal);
-  border-bottom: 1px solid var(--neutral-50);
-  border-right: 1px solid var(--neutral-50);
+  color: $gray-900;
+  border-bottom: 1px solid $gray-200;
+  border-right: 1px solid $gray-200;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -724,6 +726,6 @@
 
 .pickerRow td:last-child {
   border-right: none;
-  color: var(--text-light);
+  color: $gray-600;
   font-size: 13px;
 }

@@ -4,8 +4,8 @@ import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
-import styles from './profile.module.css';
-import uboStyles from './ProfileUBO.module.css';
+import styles from './profile.module.scss';
+import uboStyles from './ProfileUBO.module.scss';
 
 function getField(fields, label) {
   return (fields || []).find(f => f.label === label)?.value || '—';
@@ -59,7 +59,7 @@ export default function ProfileUBO() {
               <div className={uboStyles.titleBlock}>
                 <h2 className={uboStyles.title}>
                   UBO (Ultimate Beneficial Ownership)
-                  <span className="material-icons-outlined" style={{ fontSize: 16, color: '#028FBB', verticalAlign: 'middle', marginLeft: 6 }}>info</span>
+                  <span className="material-icons-outlined text-primary-600" style={{ fontSize: 16, verticalAlign: 'middle', marginLeft: 6 }}>info</span>
                 </h2>
                 <div className={uboStyles.uboStatus}>
                   <span className={uboStyles.uboStatusLabel}>UBO Status:</span>

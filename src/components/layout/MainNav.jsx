@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import styles from './MainNav.module.css';
+import styles from './MainNav.module.scss';
 
 const links = [
   { label: 'Dashboard',     to: '/',              match: (p) => p === '/' },

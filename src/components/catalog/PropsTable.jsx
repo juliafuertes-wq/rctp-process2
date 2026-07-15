@@ -1,4 +1,4 @@
-import styles from './PropsTable.module.css';
+import styles from './PropsTable.module.scss';
 
 export default function PropsTable({ rows }) {
   return (

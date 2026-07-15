@@ -7,8 +7,8 @@ import { Sidebar } from './ProfilePage';
 import { STATUS_CONFIG } from './ProfilePageHeader';
 import { RiskLevelIcon } from './profileAssets';
 import Checkbox from '../ui/Checkbox';
-import styles from './ProfileEdit.module.css';
-import profileStyles from './profile.module.css';
+import styles from './ProfileEdit.module.scss';
+import profileStyles from './profile.module.scss';
 
 /* ── Static data (mirroring AddThirdParty) ── */
 const OWNER_OPTIONS = ['Not Approval Group','Sed Bibendum Felis A Posuere Consectetur','Test','Test 4','This Is The Name Of My Default Group','Ut Condimentum Rutrum Posuere','Vivamus Sed Sodales Erat','Tamara Knoetschke','Miruna Menzopol (Admin)','Emily Forbes'];
@@ -180,7 +180,7 @@ export default function ProfileEdit() {
                     <div className="dropdown" style={{ flex: 1, minWidth: 0 }}>
                       <div className="dropdown-toggle btn btn-outline-secondary w-100 d-flex align-items-center justify-content-between" onClick={() => setOwnerOpen(v => !v)}>
                         <span className={owner ? "text-dark" : "text-muted"}>{owner || 'Type And Select Employee Name'}</span>
-                        <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267' }}>expand_more</span>
+                        <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18 }}>expand_more</span>
                       </div>
                       {ownerOpen && (
                         <div className="dropdown-menu show w-100">
@@ -202,7 +202,7 @@ export default function ProfileEdit() {
                   <div className={styles.tagSelectWrap}>
                     <div className={styles.tagSelectTrigger} onClick={() => setBuOpen(v => !v)}>
                       <span className="text-muted">Search</span>
-                      <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267' }}>expand_more</span>
+                      <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18 }}>expand_more</span>
                     </div>
                     {businessUnits.length > 0 && (
                       <div className={styles.tagChips}>
@@ -230,7 +230,7 @@ export default function ProfileEdit() {
                   <div className={styles.tagSelectWrap}>
                     <div className={styles.tagSelectTrigger} onClick={() => setTagsOpen(v => !v)}>
                       <span className="text-muted">Search</span>
-                      <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267' }}>expand_more</span>
+                      <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18 }}>expand_more</span>
                     </div>
                     {tags.length > 0 && (
                       <div className={styles.tagChips}>
@@ -285,7 +285,7 @@ export default function ProfileEdit() {
                   <div className="dropdown">
                     <div className="dropdown-toggle btn btn-outline-secondary w-100 d-flex align-items-center justify-content-between" onClick={() => setProcessOpen(v => !v)}>
                       <span className="text-dark">{process}</span>
-                      <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267' }}>expand_more</span>
+                      <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18 }}>expand_more</span>
                     </div>
                     {processOpen && (
                       <div className="dropdown-menu show w-100">
@@ -311,7 +311,7 @@ export default function ProfileEdit() {
                   <div className="dropdown">
                     <div className="dropdown-toggle btn btn-outline-secondary w-100 d-flex align-items-center justify-content-between" onClick={() => setPolicyOpen(v => !v)}>
                       <span className={policy ? "text-dark" : "text-muted"}>{policy || 'Select a policy\u2026'}</span>
-                      <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267' }}>expand_more</span>
+                      <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18 }}>expand_more</span>
                     </div>
                     {policyOpen && (
                       <div className="dropdown-menu show w-100">

@@ -5,8 +5,8 @@ import { profiles } from '../../data/profiles';
 import { setWaystarFlow } from '../../utils/initechFlow';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
-import styles from './profile.module.css';
-import secStyles from './ProfileProcessSection.module.css';
+import styles from './profile.module.scss';
+import secStyles from './ProfileProcessSection.module.scss';
 
 export default function ProfileIntegrityCheck() {
   const { profileId } = useParams();

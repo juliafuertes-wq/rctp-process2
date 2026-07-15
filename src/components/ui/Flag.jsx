@@ -1,4 +1,4 @@
-import styles from './Flag.module.css';
+import styles from './Flag.module.scss';
 
 /*
  * Flag component — screening / watchlist flag chips

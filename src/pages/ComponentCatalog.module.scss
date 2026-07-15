@@ -1,3 +1,16 @@
+@import '../styles/variables';
+
+// Risk-level card tints (one-off blends used in catalog specimen cards)
+$level-low-border:    #c4e8d6;
+$level-medium-border: #e8dfc4;
+$level-high-border:   #e8c4c6;
+$rcard-low-start:     #e8f5e9;
+$rcard-low-end:       #c8e6c9;
+$rcard-medium-start:  #fff8e1;
+$rcard-medium-end:    #ffecb3;
+$rcard-high-start:    #ffebee;
+$rcard-high-end:      #ffcdd2;
+
 /* ── Page wrapper ── */
 .page {
   padding: 16px;
@@ -6,8 +19,8 @@
 
 /* ── Top tabs bar ── */
 .topTabsBar {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   padding: 0 20px;
   margin-bottom: 16px;
 }
@@ -15,7 +28,7 @@
 .topTabs {
   display: flex;
   gap: 26px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .topTab {
@@ -23,7 +36,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1px;
-  color: var(--text-light);
+  color: $gray-600;
   padding: 12px 0 10px;
   cursor: pointer;
   transition: color 0.25s ease;
@@ -32,9 +45,9 @@
   position: relative;
 }
 
-.topTab:hover { color: var(--text-normal); }
+.topTab:hover { color: $gray-900; }
 
-.topTabActive { color: var(--text-normal); }
+.topTabActive { color: $gray-900; }
 
 .topTabIndicator {
   position: absolute;
@@ -42,7 +55,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--primary-600);
+  background: $primary-600;
   border-radius: 1px;
 }
 
@@ -52,10 +65,10 @@
   align-items: flex-start;
   gap: 12px;
   padding: 14px 16px;
-  border-radius: var(--rctp-radius-sm);
+  border-radius: $radius-sm;
   border: 1px solid transparent;
   font-size: 14px;
-  font-family: var(--font-body, Roboto, sans-serif);
+  font-family: inherit;
   width: 100%;
 }
 
@@ -79,7 +92,7 @@
   padding: 0 16px;
   font-size: 14px;
   font-weight: 500;
-  font-family: var(--font-body, Roboto, sans-serif);
+  font-family: inherit;
   width: 100%;
 }
 .bannerToast .bannerIcon { margin-top: 0; font-size: 20px; }
@@ -90,10 +103,10 @@
   align-items: flex-start;
   gap: 10px;
   padding: 12px 16px;
-  border-radius: var(--rctp-radius-sm);
+  border-radius: $radius-sm;
   font-size: 13px;
   line-height: 1.5;
-  font-family: var(--font-body, Roboto, sans-serif);
+  font-family: inherit;
   width: 100%;
 }
 .bannerInline .bannerIcon { margin-top: 1px; font-size: 18px; }
@@ -107,14 +120,14 @@
 
 /* ── Patterns: card specimens ── */
 .patternCard {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   border-radius: 4px;
   overflow: hidden;
 }
 
 .patternCardAccent {
-  border-top: 4px solid var(--primary-500);
+  border-top: 4px solid $bergbluetint1;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
 }
 
@@ -123,21 +136,21 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .patternCardTitle {
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
   margin: 0;
 }
 
 .patternCardBody {
   padding: 16px;
   font-size: 13px;
-  color: var(--text-light);
+  color: $gray-600;
   line-height: 1.6;
 }
 
@@ -152,16 +165,16 @@
   cursor: pointer;
 }
 
-.rcardLow    { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); }
-.rcardMedium { background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); }
-.rcardHigh   { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); }
+.rcardLow    { background: linear-gradient(135deg, $rcard-low-start 0%, $rcard-low-end 100%); }
+.rcardMedium { background: linear-gradient(135deg, $rcard-medium-start 0%, $rcard-medium-end 100%); }
+.rcardHigh   { background: linear-gradient(135deg, $rcard-high-start 0%, $rcard-high-end 100%); }
 
 .rcardTitle {
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-light);
+  color: $gray-600;
 }
 
 .rcardBottom {
@@ -173,15 +186,15 @@
 .rcardVal {
   font-size: 22px;
   font-weight: 700;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
 }
 
 /* ── Patterns: table specimen — mirrors ThirdParties.module.css exactly ── */
 .tableCard {
-  background: var(--neutral-00);
+  background: $white;
   border-radius: 4px;
-  box-shadow: var(--shadow-card);
+  box-shadow: $shadow-card;
   overflow: hidden;
 }
 
@@ -195,8 +208,8 @@
 .tableCardTitle {
   font-size: 20px;
   font-weight: 500;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
   margin: 0;
 }
 
@@ -208,7 +221,7 @@
 
 .tableDivider {
   height: 1px;
-  background: var(--neutral-50);
+  background: $gray-200;
   margin: 0 16px;
 }
 
@@ -234,18 +247,18 @@
 .searchInput {
   height: 32px;
   width: 280px;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid $gray-400;
   border-radius: 2px;
   padding: 0 36px 0 10px;
   font-size: 13px;
   font-family: inherit;
-  color: var(--text-normal);
-  background: var(--neutral-00);
+  color: $gray-900;
+  background: $white;
   outline: none;
 }
 
-.searchInput::placeholder { color: var(--text-light-alt); }
-.searchInput:focus { border-color: var(--primary-500); }
+.searchInput::placeholder { color: $text-light-alt; }
+.searchInput:focus { border-color: $bergbluetint1; }
 
 .tableWrap {
   overflow-x: auto;
@@ -257,19 +270,19 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 13px;
-  font-family: var(--font-body, Roboto, sans-serif);
+  font-family: inherit;
   min-width: 700px;
 }
 
 .specimenTable thead th {
-  background: var(--neutral-25);
-  border: 1px solid var(--neutral-50);
-  border-bottom: 1px solid var(--neutral-100);
+  background: $gray-100;
+  border: 1px solid $gray-200;
+  border-bottom: 1px solid $gray-300;
   padding: 10px 28px 10px 12px;
   text-align: left;
   font-size: 11px;
   font-weight: 600;
-  color: var(--text-light);
+  color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
@@ -285,19 +298,19 @@
   line-height: 1;
 }
 
-.specimenTable tbody tr:nth-child(odd)  { background: var(--primary-08); }
-.specimenTable tbody tr:nth-child(even) { background: var(--neutral-00); }
-.specimenTable tbody tr:hover { background: var(--row-hover); }
+.specimenTable tbody tr:nth-child(odd)  { background: $primary-08; }
+.specimenTable tbody tr:nth-child(even) { background: $white; }
+.specimenTable tbody tr:hover { background: $row-hover; }
 
 .specimenTable tbody td {
   padding: 10px 12px;
   vertical-align: middle;
-  color: var(--text-light);
-  border: 1px solid var(--neutral-50);
+  color: $gray-600;
+  border: 1px solid $gray-200;
 }
 
 .cellLink {
-  color: var(--primary-600);
+  color: $primary-600;
   font-weight: 500;
   cursor: pointer;
   text-decoration: none;
@@ -319,7 +332,7 @@
   gap: 8px;
   padding: 12px 16px;
   font-size: 13px;
-  color: var(--text-light);
+  color: $gray-600;
 }
 
 .tablePaginationRight {
@@ -337,18 +350,18 @@
   border-radius: 3px;
   border: none;
   background: none;
-  color: var(--text-light);
+  color: $gray-600;
   cursor: pointer;
   font-size: 18px;
 }
 
-.tablePageBtn:hover:not(:disabled) { background: var(--neutral-25); color: var(--text-normal); }
+.tablePageBtn:hover:not(:disabled) { background: $gray-100; color: $gray-900; }
 .tablePageBtn:disabled { opacity: 0.3; cursor: not-allowed; }
 
 .tablePageInput {
   width: 44px;
   height: 32px;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid $gray-400;
   border-radius: 2px;
   text-align: center;
   font-size: 13px;
@@ -358,20 +371,20 @@
 .emptyState {
   text-align: center;
   padding: 40px 16px;
-  color: var(--text-light);
+  color: $gray-600;
   font-size: 14px;
 }
 
 .emptyStateIcon {
   font-size: 36px;
-  color: var(--neutral-200);
+  color: $gray-400;
   display: block;
   margin-bottom: 8px;
 }
 
 /* ── Patterns: tab bar specimen ── */
 .tabBarWrap {
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .tabBar {
@@ -385,7 +398,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1px;
-  color: var(--text-light);
+  color: $gray-600;
   padding: 12px 0 10px;
   cursor: pointer;
   position: relative;
@@ -393,8 +406,8 @@
   transition: color 0.2s;
 }
 
-.tabItem:hover { color: var(--text-normal); }
-.tabItemActive { color: var(--text-normal); }
+.tabItem:hover { color: $gray-900; }
+.tabItemActive { color: $gray-900; }
 
 .tabIndicator {
   position: absolute;
@@ -402,7 +415,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--primary-600);
+  background: $primary-600;
   border-radius: 1px;
 }
 
@@ -419,8 +432,8 @@
   flex-shrink: 0;
   position: sticky;
   top: 52px;
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - 68px);
@@ -429,19 +442,19 @@
 
 .sidebarHeader {
   padding: 12px 16px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .sidebarTitle {
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
   margin: 0;
 }
 
 .sidebarGroup {
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .sidebarGroupLabel {
@@ -449,7 +462,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  color: var(--neutral-400);
+  color: $gray-500;
   padding: 8px 16px 4px;
 }
 
@@ -459,10 +472,10 @@
   height: 36px;
   padding: 0 16px 0 24px;
   font-size: 13px;
-  color: var(--text-light);
+  color: $gray-600;
   background: none;
   border: none;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
   text-align: left;
   cursor: pointer;
   font-family: inherit;
@@ -475,13 +488,13 @@
 }
 
 .sidebarItem:hover:not(.sidebarItemActive) {
-  background: var(--neutral-25);
-  color: var(--text-normal);
+  background: $gray-100;
+  color: $gray-900;
 }
 
 .sidebarItemActive {
-  background: var(--primary-500);
-  color: var(--neutral-00);
+  background: $bergbluetint1;
+  color: $white;
 }
 
 /* ── Content column ── */
@@ -506,44 +519,44 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: var(--neutral-400);
+  color: $gray-500;
   margin: 0;
   padding: 0 0 4px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 /* ── Component entry card ── */
 .entryCard {
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   border-radius: 4px;
 }
 
 .entryHeader {
   padding: 16px 16px 12px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .entryTitle {
   font-size: 16px;
   font-weight: 600;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
   margin: 0 0 4px;
 }
 
 .entryDesc {
   font-size: 13px;
-  color: var(--text-light);
+  color: $gray-600;
   margin: 0;
   line-height: 1.5;
 }
 
 /* ── Demo shell ── */
 .demoShell {
-  border-top: 4px solid var(--primary-500);
-  border-bottom: 1px solid var(--neutral-50);
-  background: var(--neutral-25);
+  border-top: 4px solid $bergbluetint1;
+  border-bottom: 1px solid $gray-200;
+  background: $gray-100;
 }
 
 .demoLabel {
@@ -551,7 +564,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  color: var(--neutral-400);
+  color: $gray-500;
   padding: 8px 16px 0;
 }
 
@@ -572,7 +585,7 @@
 
 .demoNote {
   font-size: 11px;
-  color: var(--neutral-400);
+  color: $gray-500;
   padding: 6px 16px 10px;
   font-style: italic;
 }
@@ -588,7 +601,7 @@
 .demoGroupLabel {
   font-size: 11px;
   font-weight: 600;
-  color: var(--text-light);
+  color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.4px;
   min-width: 80px;
@@ -609,32 +622,32 @@
 .btnSegmented {
   height: 34px;
   padding: 0 16px;
-  background: var(--neutral-00);
-  border: 1px solid var(--neutral-300);
+  background: $white;
+  border: 1px solid $neutral-300;
   border-right: none;
   font-size: 12px;
   font-weight: 600;
   font-family: inherit;
-  color: var(--text-light);
+  color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   cursor: pointer;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 .btnSegmented:last-child {
-  border-right: 1px solid var(--neutral-300);
+  border-right: 1px solid $neutral-300;
   border-radius: 0 4px 4px 0;
 }
 .btnSegmented:first-child {
   border-radius: 4px 0 0 4px;
 }
 .btnSegmented:hover:not(.btnSegmentedActive) {
-  background: var(--neutral-25);
+  background: $gray-100;
 }
 .btnSegmentedActive {
-  background: var(--primary-500);
-  border-color: var(--primary-500);
-  color: var(--neutral-00);
+  background: $bergbluetint1;
+  border-color: $bergbluetint1;
+  color: $white;
 }
 
 .demoCheckboxGroup {
@@ -648,7 +661,7 @@
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  color: var(--text-light);
+  color: $gray-600;
 }
 
 .demoFlagGrid {
@@ -672,8 +685,8 @@
 
 .demoTaskLabel {
   font-size: 10px;
-  color: var(--text-light);
-  font-family: var(--font-mono, monospace);
+  color: $gray-600;
+  font-family: $font-mono;
 }
 
 .demoStatusBadge {
@@ -700,7 +713,7 @@
 
 .demoPreviewNote {
   font-size: 11px;
-  color: var(--neutral-400);
+  color: $gray-500;
   font-style: italic;
   margin-top: 6px;
 }
@@ -715,7 +728,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-light);
+  color: $gray-600;
   margin: 16px 0 8px;
 }
 
@@ -734,7 +747,7 @@
   align-items: baseline;
   gap: 16px;
   padding: 6px 0;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .typeSpecimenMeta {
@@ -747,15 +760,15 @@
 .typeMetaLabel {
   font-size: 11px;
   font-weight: 600;
-  color: var(--text-light);
+  color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.4px;
 }
 
 .typeMetaValues {
   font-size: 11px;
-  color: var(--neutral-400);
-  font-family: var(--font-mono, monospace);
+  color: $gray-500;
+  font-family: $font-mono;
 }
 
 .spacingRow {
@@ -766,7 +779,7 @@
 }
 
 .spacingBar {
-  background: var(--primary-200);
+  background: $primary-200;
   height: 16px;
   border-radius: 2px;
   flex-shrink: 0;
@@ -774,8 +787,8 @@
 
 .spacingLabel {
   font-size: 11px;
-  font-family: var(--font-mono, monospace);
-  color: var(--text-light);
+  font-family: $font-mono;
+  color: $gray-600;
   min-width: 120px;
 }
 
@@ -784,13 +797,13 @@
   align-items: center;
   gap: 16px;
   padding: 8px 0;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .shadowBox {
   width: 80px;
   height: 40px;
-  background: var(--neutral-00);
+  background: $white;
   border-radius: 4px;
   flex-shrink: 0;
 }
@@ -804,14 +817,14 @@
 .shadowName {
   font-size: 12px;
   font-weight: 600;
-  color: var(--text-normal);
-  font-family: var(--font-mono, monospace);
+  color: $gray-900;
+  font-family: $font-mono;
 }
 
 .shadowValue {
   font-size: 11px;
-  color: var(--neutral-400);
-  font-family: var(--font-mono, monospace);
+  color: $gray-500;
+  font-family: $font-mono;
 }
 
 .radiiRow {
@@ -831,14 +844,14 @@
 .radiiBox {
   width: 64px;
   height: 40px;
-  background: var(--primary-100);
-  border: 1px solid var(--primary-300);
+  background: $primary-100;
+  border: 1px solid $primary-300;
 }
 
 .radiiLabel {
   font-size: 11px;
-  font-family: var(--font-mono, monospace);
-  color: var(--text-light);
+  font-family: $font-mono;
+  color: $gray-600;
   text-align: center;
 }
 
@@ -847,28 +860,28 @@
   align-items: center;
   gap: 12px;
   padding: 5px 0;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
 }
 
 .zIndexName {
   font-size: 12px;
-  font-family: var(--font-mono, monospace);
-  color: var(--primary-700);
+  font-family: $font-mono;
+  color: $bergbluetint2;
   min-width: 140px;
 }
 
 .zIndexValue {
   font-size: 12px;
-  font-family: var(--font-mono, monospace);
-  color: var(--text-light);
+  font-family: $font-mono;
+  color: $gray-600;
 }
 
 /* ── Profile Page Header specimen ── */
 .tpStrip {
-  background: var(--neutral-00);
+  background: $white;
   padding: 0 16px;
   position: relative;
-  border: 1px solid var(--neutral-50);
+  border: 1px solid $gray-200;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -897,7 +910,7 @@
   position: absolute;
   top: 0; right: 0;
   width: 4px; height: 100%;
-  background: linear-gradient(180deg, var(--warning-500) 0%, var(--warning-300) 100%);
+  background: linear-gradient(180deg, $warning 0%, $warning-300 100%);
   box-shadow: -2px 0 8px 0 rgba(240, 192, 67, 0.3);
 }
 
@@ -911,7 +924,7 @@
   position: absolute;
   top: 0; right: 0;
   width: 4px; height: 100%;
-  background: linear-gradient(180deg, var(--success-700) 0%, var(--success-500) 100%);
+  background: linear-gradient(180deg, $success-700 0%, $success 100%);
   box-shadow: -2px 0 8px 0 rgba(19, 223, 129, 0.3);
 }
 
@@ -925,7 +938,7 @@
   position: absolute;
   top: 0; right: 0;
   width: 4px; height: 100%;
-  background: linear-gradient(180deg, var(--neutral-500) 0%, var(--neutral-300) 100%);
+  background: linear-gradient(180deg, $neutral-500 0%, $neutral-300 100%);
   box-shadow: -2px 0 8px 0 rgba(141, 156, 169, 0.3);
 }
 
@@ -941,16 +954,16 @@
   letter-spacing: 0.3px;
   white-space: nowrap;
 }
-.sPillCompleted    { background: var(--success-50);  color: var(--success-900); }
-.sPillInProgress   { background: var(--primary-08);  color: var(--primary-700); border: 1px solid var(--primary-100); }
-.sPillAction       { background: var(--warning-50);  color: var(--warning-900); }
-.sPillNotStarted   { background: var(--neutral-25);  color: var(--neutral-600); border: 1px solid var(--neutral-200); }
+.sPillCompleted    { background: $success-50;  color: $success-900; }
+.sPillInProgress   { background: $primary-08;  color: $bergbluetint2; border: 1px solid $primary-100; }
+.sPillAction       { background: $warning-50;  color: $warning-900; }
+.sPillNotStarted   { background: $gray-100;  color: $neutral-600; border: 1px solid $gray-400; }
 
 /* ── Field grid specimen ── */
 .fieldLabel {
   font-size: 11px;
   font-weight: 500;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 4px;
@@ -958,13 +971,13 @@
 
 .fieldValue {
   font-size: 16px;
-  color: var(--text-normal);
+  color: $gray-900;
   line-height: 24px;
 }
 
 .fieldValueLight {
   font-size: 16px;
-  color: var(--text-light);
+  color: $gray-600;
   line-height: 24px;
   font-style: italic;
 }
@@ -987,30 +1000,30 @@
   justify-content: space-between;
   height: 48px;
   padding: 0 14px 0 12px;
-  background: var(--primary-08);
+  background: $primary-08;
   cursor: pointer;
   user-select: none;
-  border: 1px solid var(--neutral-50);
+  border: 1px solid $gray-200;
   border-radius: 2px;
   transition: background 0.2s;
 }
-.accordionHeader:hover { background: var(--primary-50); }
+.accordionHeader:hover { background: $primary-50; }
 
 .accordionHeaderLow {
   background: linear-gradient(201.532deg, rgba(19,223,129,0.20) 0%, rgba(19,223,129,0.10) 20.673%, rgba(255,255,255,0) 100%);
-  border-color: #c4e8d6;
+  border-color: $level-low-border;
 }
 .accordionHeaderLow:hover { background: linear-gradient(201.532deg, rgba(19,223,129,0.30) 0%, rgba(19,223,129,0.15) 20.673%, rgba(255,255,255,0) 100%); }
 
 .accordionHeaderMedium {
   background: linear-gradient(201.532deg, rgba(240,192,67,0.20) 0%, rgba(240,192,67,0.10) 12.019%, rgba(255,255,255,0) 100%);
-  border-color: #e8dfc4;
+  border-color: $level-medium-border;
 }
 .accordionHeaderMedium:hover { background: linear-gradient(201.532deg, rgba(240,192,67,0.30) 0%, rgba(240,192,67,0.15) 12.019%, rgba(255,255,255,0) 100%); }
 
 .accordionHeaderHigh {
   background: linear-gradient(253.768deg, rgba(227,76,83,0.12) 2.805%, rgba(227,76,83,0.06) 14.955%, rgba(227,76,83,0) 75.008%);
-  border-color: #e8c4c6;
+  border-color: $level-high-border;
 }
 .accordionHeaderHigh:hover { background: linear-gradient(253.768deg, rgba(227,76,83,0.20) 2.805%, rgba(227,76,83,0.10) 14.955%, rgba(227,76,83,0) 75.008%); }
 
@@ -1023,14 +1036,14 @@
 .accordionLabel {
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-normal);
+  color: $gray-900;
   letter-spacing: 0.1px;
 }
 
 .accordionCount {
   font-size: 11px;
   font-weight: 500;
-  color: var(--text-light);
+  color: $gray-600;
   background: rgba(0,0,0,0.06);
   padding: 2px 8px;
   border-radius: 10px;
@@ -1045,15 +1058,15 @@
 
 .accordionScore {
   font-size: 12px;
-  color: var(--text-light);
+  color: $gray-600;
   letter-spacing: 0.2px;
   padding-right: 12px;
-  border-right: 1px solid var(--neutral-200);
+  border-right: 1px solid $gray-400;
 }
 
 .accordionCaret {
   font-size: 20px;
-  color: var(--text-light);
+  color: $gray-600;
   transition: transform 0.3s ease;
 }
 .accordionCaretOpen {
@@ -1064,12 +1077,12 @@
 }
 
 .accordionBody {
-  border: 1px solid var(--neutral-50);
+  border: 1px solid $gray-200;
   border-top: none;
-  background: var(--neutral-00);
+  background: $white;
   padding: 16px 20px;
   font-size: 13px;
-  color: var(--text-light);
+  color: $gray-600;
   line-height: 1.6;
 }
 
@@ -1081,7 +1094,7 @@
 }
 
 .typeCard {
-  border: 2px solid var(--neutral-50);
+  border: 2px solid $gray-200;
   border-radius: 4px;
   padding: 20px 16px 18px;
   cursor: pointer;
@@ -1092,31 +1105,31 @@
   gap: 10px;
   user-select: none;
 }
-.typeCard:hover { border-color: var(--primary-200); background: var(--primary-08); }
-.typeCardSelected { border-color: var(--primary-500); background: var(--primary-08); box-shadow: 0 2px 16px rgba(2,163,213,0.18); }
+.typeCard:hover { border-color: $primary-200; background: $primary-08; }
+.typeCardSelected { border-color: $bergbluetint1; background: $primary-08; box-shadow: 0 2px 16px rgba($primary,0.18); }
 
 .typeCheck {
   position: absolute;
   top: 14px; right: 14px;
   font-size: 20px;
-  color: var(--primary-500);
+  color: $bergbluetint1;
 }
 
 .typeIconWrap {
   width: 48px; height: 48px;
   border-radius: 12px;
-  background: var(--neutral-25);
+  background: $gray-100;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--neutral-400);
+  color: $gray-500;
   transition: background 0.2s;
 }
 .typeCard:hover .typeIconWrap,
-.typeCardSelected .typeIconWrap { background: var(--primary-500); color: var(--neutral-00); }
+.typeCardSelected .typeIconWrap { background: $bergbluetint1; color: $white; }
 
-.typeTitle { font-size: 16px; font-weight: 600; color: var(--text-normal); }
-.typeDesc  { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+.typeTitle { font-size: 16px; font-weight: 600; color: $gray-900; }
+.typeDesc  { font-size: 13px; color: $gray-600; line-height: 1.5; }
 
 /* ── Risk level card (rcard) specimen ── */
 .riskCardRow {
@@ -1129,7 +1142,7 @@
   position: relative;
   flex: 1 1 140px;
   height: 123px;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid $gray-400;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -1149,7 +1162,7 @@
   top: 8px;
   font-size: 15px;
   font-weight: 500;
-  color: var(--primary-600);
+  color: $primary-600;
   line-height: 24px;
   letter-spacing: 0.3px;
   right: 70px;
@@ -1164,7 +1177,7 @@
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-dark);
+  color: $text-dark;
   letter-spacing: 1px;
   line-height: 16.5px;
 }
@@ -1173,7 +1186,7 @@
   position: absolute;
   right: 16px;
   font-size: 13px;
-  color: var(--text-normal);
+  color: $gray-900;
   text-align: right;
   line-height: 16px;
 }
@@ -1188,7 +1201,7 @@
 .panelDemo {
   position: relative;
   height: 320px;
-  background: var(--neutral-25);
+  background: $gray-100;
   border-radius: 2px;
   overflow: hidden;
   display: flex;
@@ -1206,9 +1219,9 @@
   position: relative;
   width: 42%;
   height: 100%;
-  background: var(--neutral-00);
-  border-top: 4px solid var(--primary-500);
-  border-left: 1px solid var(--neutral-50);
+  background: $white;
+  border-top: 4px solid $bergbluetint1;
+  border-left: 1px solid $gray-200;
   box-shadow: -4px 0 20px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
@@ -1220,15 +1233,15 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 16px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
   flex-shrink: 0;
 }
 
 .panelDemoTitle {
   font-size: 16px;
   font-weight: 600;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
 }
 
 .panelDemoBody {
@@ -1243,14 +1256,14 @@
   justify-content: flex-end;
   gap: 8px;
   padding: 12px 16px;
-  border-top: 1px solid var(--neutral-50);
+  border-top: 1px solid $gray-200;
   flex-shrink: 0;
 }
 
 .panelFieldLabel {
   font-size: 11px;
   font-weight: 500;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 3px;
@@ -1258,7 +1271,7 @@
 
 .panelFieldValue {
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   margin-bottom: 14px;
 }
 
@@ -1266,7 +1279,7 @@
 .tableVariantTabs {
   display: flex;
   gap: 20px;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
   margin-bottom: 16px;
 }
 
@@ -1275,7 +1288,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--text-light);
+  color: $gray-600;
   padding: 10px 0 8px;
   cursor: pointer;
   white-space: nowrap;
@@ -1284,11 +1297,11 @@
 }
 
 .tableVariantTab:hover {
-  color: var(--text-normal);
+  color: $gray-900;
 }
 
 .tableVariantTabActive {
-  color: var(--primary-600);
+  color: $primary-600;
 }
 
 .tableVariantIndicator {
@@ -1297,13 +1310,13 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--primary-600);
+  background: $primary-600;
   border-radius: 1px;
 }
 
 .variantDesc {
   font-size: 13px;
-  color: var(--text-light);
+  color: $gray-600;
   margin: 0 0 12px;
   line-height: 1.5;
 }
@@ -1312,7 +1325,7 @@
 .sidenavSpecimen {
   width: 256px;
   flex-shrink: 0;
-  background: var(--neutral-25);
+  background: $gray-100;
   padding: 0;
 }
 
@@ -1322,11 +1335,11 @@
   align-items: center;
   gap: 12px;
   padding: 8px 16px;
-  background: var(--neutral-100);
+  background: $gray-300;
   border-radius: 4px;
   font-weight: 500;
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
 }
 
 .sidenavItem {
@@ -1337,7 +1350,7 @@
   padding: 8px 16px;
   border-radius: 4px;
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   cursor: pointer;
   transition: background 0.2s ease;
 }
@@ -1345,7 +1358,7 @@
 
 .sidenavDivider {
   height: 1px;
-  background: var(--neutral-50);
+  background: $gray-200;
   margin: 8px 16px;
 }
 
@@ -1356,7 +1369,7 @@
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--neutral-800);
+  color: $gray-700;
   cursor: pointer;
   transition: background 0.2s ease;
   border-radius: 4px;
@@ -1370,8 +1383,8 @@
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-normal);
-  background: var(--neutral-100);
+  color: $gray-900;
+  background: $gray-300;
   border-radius: 4px;
 }
 
@@ -1411,8 +1424,8 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--neutral-00);
-  background: var(--primary-500);
+  color: $white;
+  background: $bergbluetint1;
   border-radius: 100px;
   padding: 1px 6px;
   flex-shrink: 0;
@@ -1431,7 +1444,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--text-light);
+  color: $gray-600;
   margin-bottom: 2px;
 }
 .sidenavLegendRow {
@@ -1439,7 +1452,7 @@
   align-items: center;
   gap: 10px;
   font-size: 13px;
-  color: var(--text-normal);
+  color: $gray-900;
 }
 
 /* ════════════════════════════════════════════════════════════════════════ */

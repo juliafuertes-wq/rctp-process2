@@ -8,9 +8,9 @@ import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
 import Badge from '../ui/Badge';
 import Flag from '../ui/Flag';
-import styles from './profile.module.css';
-import rmStyles from './ProfileRiskMitigation.module.css';
-import smStyles from './ProfileScreeningMonitoring.module.css';
+import styles from './profile.module.scss';
+import rmStyles from './ProfileRiskMitigation.module.scss';
+import smStyles from './ProfileScreeningMonitoring.module.scss';
 
 
 export default function ProfileScreeningMonitoring() {
@@ -60,7 +60,7 @@ export default function ProfileScreeningMonitoring() {
             <div className={`${styles.cardHeader} ${rmStyles.cardHeader}`}>
               <div className={rmStyles.cardTitleRow}>
                 <h2 className={styles.cardTitle}>Screening &amp; Monitoring</h2>
-                <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267', cursor: 'pointer' }}>info</span>
+                <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18, cursor: 'pointer' }}>info</span>
               </div>
               <div className={smStyles.headerActions}>
                 <span className={smStyles.policyLink}>
@@ -92,7 +92,7 @@ export default function ProfileScreeningMonitoring() {
                     <th>Type <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
                     <th>Match Results</th>
                     <th>Assoc Status <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
-                    <th><span className="material-icons-outlined" style={{ fontSize: 14, color: '#E34C53' }}>notifications</span></th>
+                    <th><span className="material-icons-outlined" className="text-danger" style={{ fontSize: 14 }}>notifications</span></th>
                     <th>Inherent Risk Level</th>
                     <th>Match Titles</th>
                     <th style={{ width: 40 }} />

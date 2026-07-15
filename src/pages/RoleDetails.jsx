@@ -5,7 +5,7 @@ import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
 import { ROLES_DATA } from './CompanyAdmin';
 import Checkbox from '../components/ui/Checkbox';
-import styles from './RoleDetails.module.css';
+import styles from './RoleDetails.module.scss';
 
 const PERMISSION_TABS = ['Dashboard', 'Third parties', 'Employees', 'Risk Search', 'Company Admin', 'Settings', 'Reports'];
 

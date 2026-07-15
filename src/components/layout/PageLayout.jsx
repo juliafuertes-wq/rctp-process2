@@ -1,7 +1,7 @@
 import Header from './Header';
 import MainNav from './MainNav';
 import Footer from './Footer';
-import styles from './PageLayout.module.css';
+import styles from './PageLayout.module.scss';
 
 export default function PageLayout({ children }) {
   return (

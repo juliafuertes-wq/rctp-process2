@@ -33,7 +33,7 @@ const ProfileEntityVerification         = lazy(() => import('./components/profil
 const ProfileAudit                      = lazy(() => import('./components/profile/ProfileAudit'));
 
 function Loading() {
-  return <div style={{ padding: 40, textAlign: 'center', color: '#516267', fontFamily: 'Roboto, sans-serif' }}>Loading…</div>;
+  return <div className="text-muted" style={{ padding: 40, textAlign: 'center' }}>Loading…</div>;
 }
 
 function ScrollToTop() {

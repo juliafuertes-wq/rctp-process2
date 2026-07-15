@@ -5,8 +5,8 @@ import { profiles } from '../../data/profiles';
 import { setWaystarFlow } from '../../utils/initechFlow';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
-import styles from './profile.module.css';
-import rmStyles from './ProfileRiskMitigation.module.css';
+import styles from './profile.module.scss';
+import rmStyles from './ProfileRiskMitigation.module.scss';
 
 const REPORT_GROUPS = [
   { key: 'draft',     label: 'Draft Reports',     emptyMsg: 'Currently there are no draft reports.' },
@@ -92,7 +92,7 @@ export default function ProfileEnhancedDueDiligence() {
             <div className={`${styles.cardHeader} ${rmStyles.cardHeader}`}>
               <div className={rmStyles.cardTitleRow}>
                 <h2 className={styles.cardTitle}>Enhanced Due Diligence Reports</h2>
-                <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267', cursor: 'pointer' }}>info</span>
+                <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18, cursor: 'pointer' }}>info</span>
               </div>
               <button className={"btn btn-primary"} onClick={handleCreateReport}>
                 Create New Report

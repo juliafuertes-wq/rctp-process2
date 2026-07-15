@@ -4,9 +4,9 @@ import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
-import styles from './profile.module.css';
-import rmStyles from './ProfileRiskMitigation.module.css';
-import propStyles from './ProfileProperties.module.css';
+import styles from './profile.module.scss';
+import rmStyles from './ProfileRiskMitigation.module.scss';
+import propStyles from './ProfileProperties.module.scss';
 
 const PROPERTY_TAGS = ['RCTP', 'EDD', 'Scoring', 'RISK CENTER Third Parties'];
 
@@ -38,7 +38,7 @@ export default function ProfileProperties() {
             <div className={`${styles.cardHeader} ${rmStyles.cardHeader}`}>
               <div className={rmStyles.cardTitleRow}>
                 <h2 className={styles.cardTitle}>Properties</h2>
-                <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267', cursor: 'pointer' }}>info</span>
+                <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18, cursor: 'pointer' }}>info</span>
               </div>
               <div className={propStyles.headerRight}>
                 <span className={propStyles.resultCount}>
@@ -80,12 +80,12 @@ export default function ProfileProperties() {
                         </td>
                         <td className={propStyles.iconCell}>
                           {prop.keyRisk
-                            ? <span className="material-icons-outlined" style={{ fontSize: 18, color: '#F0C043' }}>warning</span>
+                            ? <span className="material-icons-outlined" className="text-warning-500" style={{ fontSize: 18 }}>warning</span>
                             : null}
                         </td>
                         <td className={propStyles.iconCell}>
                           {prop.redFlag
-                            ? <span className="material-icons-outlined" style={{ fontSize: 18, color: '#E34C53' }}>flag</span>
+                            ? <span className="material-icons-outlined" className="text-danger" style={{ fontSize: 18 }}>flag</span>
                             : null}
                         </td>
                         <td>{prop.score ?? ''}</td>

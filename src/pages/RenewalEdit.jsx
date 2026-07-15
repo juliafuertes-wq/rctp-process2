@@ -2,7 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
-import styles from './RenewalEdit.module.css';
+import styles from './RenewalEdit.module.scss';
 
 const RENEWAL_PERIOD_UNITS = ['Day(s)', 'Week(s)', 'Month(s)', 'Year(s)'];
 
@@ -342,7 +342,7 @@ export default function RenewalEdit() {
                   onDragEnd={onRowDragEnd}
                 >
                   <span className={styles.ruleRowNum}>{i + 1}</span>
-                  <span className="material-icons-outlined" style={{ fontSize: 16, color: 'var(--neutral-400)', cursor: 'grab' }}>drag_indicator</span>
+                  <span className="material-icons-outlined" className="text-neutral-300" style={{ fontSize: 16, cursor: 'grab' }}>drag_indicator</span>
                 </div>
                 {cols.map(col => (
                   <div key={col.id} className={styles.ruleCell}>

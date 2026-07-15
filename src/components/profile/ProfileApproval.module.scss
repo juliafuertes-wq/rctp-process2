@@ -1,20 +1,22 @@
+@import '../../styles/variables';
+
 /* ── Card ── */
 .card {
-  background: #FFFFFF;
-  border-top: 3px solid #017295;
+  background: $white;
+  border-top: 3px solid $bergbluetint2;
   padding: 16px;
   min-height: 600px;
 }
 
 .cardHeader {
-  border-bottom: 1px solid #DFE3E7;
+  border-bottom: 1px solid $gray-200;
   padding-bottom: 16px;
 }
 
 /* ── Blocker banner ── */
 .blocker {
   margin-top: 16px;
-  background: #E34C53;
+  background: $danger;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -45,25 +47,25 @@
 
 .blockerList {
   margin: 0 12px 12px;
-  border: 1px solid #E34C53;
+  border: 1px solid $danger;
   border-radius: 4px;
   overflow: hidden;
 }
 
 .blockerItem {
-  background: #FFFFFF;
+  background: $white;
   padding: 14px 16px;
   font-size: 13px;
   font-weight: 500;
-  color: #0C2A31;
-  border-bottom: 1px solid #DFE3E7;
+  color: $gray-900;
+  border-bottom: 1px solid $gray-200;
 }
 .blockerItem:last-child {
   border-bottom: none;
 }
 
 .blockerLink {
-  color: #017295;
+  color: $bergbluetint2;
   font-weight: 600;
   text-decoration: none;
 }
@@ -84,23 +86,23 @@
   gap: 12px;
   margin: 20px 16px;
   padding: 16px;
-  background: #F4F4F4;
-  border: 1px solid #D6DBE0;
+  background: $gray-100;
+  border: 1px solid $gray-300;
   border-radius: 4px;
-  color: #516267;
+  color: $gray-600;
   text-align: center;
 }
 
 .unavailableTitle {
   font-size: 14px;
   font-weight: 600;
-  color: #0C2A31;
+  color: $gray-900;
   margin-bottom: 4px;
 }
 
 .unavailableText {
   font-size: 13px;
-  color: #516267;
+  color: $gray-600;
   line-height: 1.5;
 }
 
@@ -114,7 +116,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #516267;
+  color: $gray-600;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -123,16 +125,16 @@
   transition: background 0.15s ease, color 0.15s ease;
 }
 .playBtn:hover {
-  background: #DFE3E7;
-  color: #0C2A31;
+  background: $gray-200;
+  color: $gray-900;
 }
 
 .menuDropdown {
   position: absolute;
   right: 0;
   top: calc(100% + 4px);
-  background: #FFFFFF;
-  border: 1px solid #DFE3E7;
+  background: $white;
+  border: 1px solid $gray-200;
   border-radius: 6px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   z-index: 1000;
@@ -150,11 +152,11 @@
   border: none;
   font-size: 13px;
   font-family: inherit;
-  color: #0C2A31;
+  color: $gray-900;
   cursor: pointer;
   text-align: left;
   transition: background 0.12s ease;
 }
 .menuItem:hover {
-  background: #B8E5F3;
+  background: $primary-50;
 }

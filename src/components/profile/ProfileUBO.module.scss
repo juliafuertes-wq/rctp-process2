@@ -1,8 +1,10 @@
+@import '../../styles/variables';
+
 /* UBO page */
 
 .card {
-  background: #FFFFFF;
-  border-top: 3px solid #017295;
+  background: $white;
+  border-top: 3px solid $bergbluetint2;
   box-shadow: 0 1px 2px rgba(0,0,0,0.07);
   padding: 16px;
 }
@@ -25,7 +27,7 @@
 .title {
   font-size: 20px;
   font-weight: 500;
-  color: #0C2A31;
+  color: $gray-900;
   margin: 0;
   display: flex;
   align-items: center;
@@ -41,26 +43,26 @@
 }
 
 .uboStatusLabel {
-  color: #0C2A31;
+  color: $gray-900;
   font-weight: 500;
 }
 
 .uboStatusAvailable {
-  color: #0d9858;
+  color: $success-700;
   font-weight: 500;
 }
 
 .uboStatusUnavailable {
-  color: #8D9CA9;
+  color: $neutral-500;
   font-weight: 500;
 }
 
 .uboStatusIconGreen {
-  color: #0d9858;
+  color: $success-700;
 }
 
 .uboStatusIconGrey {
-  color: #8D9CA9;
+  color: $neutral-500;
 }
 
 .actions {
@@ -81,15 +83,15 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
-  border: 1px solid #8D9CA9;
+  border: 1px solid $neutral-500;
   background: none;
-  color: #8D9CA9;
+  color: $neutral-500;
 }
 .btnSkip:hover,
 .btnView:hover {
-  background: #DFE3E7;
-  color: #0C2A31;
-  border-color: #516267;
+  background: $gray-200;
+  color: $gray-900;
+  border-color: $gray-600;
 }
 
 .separator {
@@ -111,7 +113,7 @@
 .fieldLabel {
   font-size: 11px;
   font-weight: 600;
-  color: #028FBB;
+  color: $bergbluetint1;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 4px;
@@ -119,7 +121,7 @@
 
 .fieldValue {
   font-size: 16px;
-  color: #0C2A31;
+  color: $gray-900;
   line-height: 1.5;
 }
 
@@ -132,27 +134,27 @@
 .verifiedTitle {
   font-size: 20px;
   font-weight: 500;
-  color: #0C2A31;
+  color: $gray-900;
   margin: 0 0 4px;
 }
 
 .verifiedSource {
   font-size: 11px;
   font-weight: 600;
-  color: #516267;
+  color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .verifiedMeta {
   font-size: 12.8px;
-  color: #8D9CA9;
+  color: $neutral-500;
   margin: 10px 0 4px;
 }
 
 .verifiedDesc {
   font-size: 12.8px;
-  color: #8D9CA9;
+  color: $neutral-500;
   margin: 0 0 14px;
 }
 
@@ -166,12 +168,12 @@
 .verifiedName {
   font-size: 16px;
   font-weight: 600;
-  color: #0C2A31;
+  color: $gray-900;
 }
 
 .verifiedDuns {
   font-size: 12px;
-  color: #0C2A31;
+  color: $gray-900;
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
@@ -184,7 +186,7 @@
   font-size: 12.8px;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  color: #0C2A31;
+  color: $gray-900;
   margin-bottom: 16px;
 }
 
@@ -212,7 +214,7 @@
 
 .verifiedSource {
   font-size: 12px;
-  color: #8D9CA9;
+  color: $neutral-500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }

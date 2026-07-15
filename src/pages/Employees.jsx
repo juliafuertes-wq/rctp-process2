@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
 import Button from '../components/ui/Button';
-import styles from './Employees.module.css';
+import styles from './Employees.module.scss';
 
 const ROWS = [
   { name: 'Antonella Sassu',              tags: '', ref: '', bu: 'Europe',              restricted: 'No', active: 'Yes', status: 'Registered' },
@@ -82,9 +82,9 @@ export default function Employees() {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
               />
-              <span className="material-icons-outlined" style={{ position: 'absolute', right: 8, color: 'var(--text-light)', fontSize: 18, pointerEvents: 'none' }}>search</span>
+              <span className="material-icons-outlined" className="text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
             </div>
-            <span style={{ fontSize: 13, color: 'var(--text-light)', whiteSpace: 'nowrap' }}>
+            <span className="text-muted" style={{ fontSize: 13, whiteSpace: 'nowrap' }}>
               Showing results 1 – {filtered.length} of {filtered.length}
             </span>
           </div>
@@ -110,7 +110,7 @@ export default function Employees() {
             </thead>
             <tbody>
               {filtered.length === 0 ? (
-                <tr><td colSpan={7} style={{ textAlign: 'center', color: 'var(--text-light)', padding: '32px 0' }}>No employees found.</td></tr>
+                <tr><td colSpan={7} className="text-muted" style={{ textAlign: 'center', padding: '32px 0' }}>No employees found.</td></tr>
               ) : filtered.map((row, i) => (
                 <tr key={i}>
                   <td><span className={styles.cellLink}>{row.name}</span></td>

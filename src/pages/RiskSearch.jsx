@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
 import Button from '../components/ui/Button';
-import styles from './RiskSearch.module.css';
+import styles from './RiskSearch.module.scss';
 
 const ENTITY_TYPES = ['Entity', 'Person', 'Unknown'];
 

@@ -4,7 +4,7 @@ import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
-import styles from './profile.module.css';
+import styles from './profile.module.scss';
 
 export default function ProfilePlaceholder({ title }) {
   const { profileId } = useParams();
@@ -23,9 +23,9 @@ export default function ProfilePlaceholder({ title }) {
       <div className={styles.pageBody}>
         <Sidebar profile={profile} />
         <main className={styles.mainContent}>
-          <div style={{ background: '#FFFFFF', borderTop: '3px solid #017295', minHeight: 600, padding: '60px 0', textAlign: 'center', color: '#516267' }}>
+          <div className="bg-white text-muted" style={{ borderTop: '3px solid #028FBB', minHeight: 600, padding: '60px 0', textAlign: 'center' }}>
             <span className="material-icons-outlined" style={{ fontSize: 48, display: 'block', marginBottom: 12 }}>construction</span>
-            <h2 style={{ fontSize: 20, fontWeight: 500, color: '#0C2A31' }}>{title}</h2>
+            <h2 className="text-body" style={{ fontSize: 20, fontWeight: 500 }}>{title}</h2>
             <p style={{ marginTop: 8, fontSize: 13 }}>This page is under construction.</p>
           </div>
         </main>

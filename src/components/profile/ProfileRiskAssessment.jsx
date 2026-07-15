@@ -4,8 +4,8 @@ import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
-import styles from './profile.module.css';
-import secStyles from './ProfileProcessSection.module.css';
+import styles from './profile.module.scss';
+import secStyles from './ProfileProcessSection.module.scss';
 
 export default function ProfileRiskAssessment() {
   const { profileId } = useParams();

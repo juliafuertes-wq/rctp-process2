@@ -1,7 +1,9 @@
+@import '../styles/variables';
+
 /* ── Page header card ── */
 .pageHeaderCard {
-  background: #FFFFFF;
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   height: 64px;
   display: flex;
   align-items: center;
@@ -12,13 +14,13 @@
 .pageHeaderTitle {
   font-size: 20px;
   font-weight: 500;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
 }
 
 .pageHeaderInfo {
   font-size: 18px;
-  color: var(--neutral-500);
+  color: $neutral-500;
   display: flex;
   align-items: center;
 }
@@ -43,8 +45,8 @@
 .adminNav {
   width: 226px;
   flex-shrink: 0;
-  background: #FFFFFF;
-  border: 1px solid var(--neutral-50);
+  background: $white;
+  border: 1px solid $gray-200;
   display: flex;
   flex-direction: column;
 }
@@ -55,10 +57,10 @@
   height: 40px;
   padding: 0 16px;
   font-size: 14px;
-  color: var(--text-light);
+  color: $gray-600;
   background: none;
   border: none;
-  border-bottom: 1px solid var(--neutral-50);
+  border-bottom: 1px solid $gray-200;
   text-align: left;
   cursor: pointer;
   font-family: inherit;
@@ -70,23 +72,23 @@
 }
 
 .adminNavItem:hover:not(.adminNavItemActive) {
-  background: var(--neutral-25);
-  color: var(--text-normal);
+  background: $gray-100;
+  color: $gray-900;
 }
 
 .adminNavItemActive {
-  background: var(--primary-500);
-  color: #FFFFFF;
+  background: $bergbluetint1;
+  color: $white;
 }
 
 /* ── Right content card ── */
 .adminContent {
   flex: 1;
   min-width: 0;
-  background: #FFFFFF;
-  border: 1px solid var(--neutral-100);
-  border-top: 4px solid var(--primary-500);
-  box-shadow: var(--rctp-shadow-xs);
+  background: $white;
+  border: 1px solid $gray-300;
+  border-top: 4px solid $bergbluetint1;
+  box-shadow: $shadow-xs;
 }
 
 
@@ -101,8 +103,8 @@
 .contentTitle {
   font-size: 18px;
   font-weight: 500;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
 }
 
 .contentActions {
@@ -118,7 +120,7 @@
   margin-right: 8px;
   font-size: 12px;
   font-weight: 500;
-  color: var(--text-light);
+  color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.4px;
 }
@@ -126,25 +128,25 @@
 .processSelect {
   height: 32px;
   padding: 0 28px 0 10px;
-  border: 1px solid var(--neutral-100);
-  border-radius: var(--rctp-radius-sm);
-  background: #FFFFFF url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23516267' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 10px center;
+  border: 1px solid $gray-300;
+  border-radius: $radius-sm;
+  background: $white url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23516267' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 10px center;
   font-size: 13px;
   font-family: inherit;
-  color: var(--text-normal);
+  color: $gray-900;
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   transition: border-color 0.15s ease;
 }
-.processSelect:hover { border-color: var(--neutral-300); }
-.processSelect:focus { outline: none; border-color: var(--primary-400); }
+.processSelect:hover { border-color: $neutral-300; }
+.processSelect:focus { outline: none; border-color: $primary; }
 
 /* ── Divider ── */
 .contentDivider {
   height: 1px;
-  background: var(--neutral-50);
+  background: $gray-200;
   margin: 0 16px;
 }
 
@@ -161,14 +163,14 @@
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.5px;
-  color: var(--text-normal);
-  font-family: var(--font-heading);
+  color: $gray-900;
+  font-family: inherit;
   margin-bottom: 4px;
 }
 
 .sectionDesc {
   font-size: 14px;
-  color: var(--text-light-alt);
+  color: $text-light-alt;
   margin-bottom: 16px;
 }
 
@@ -188,7 +190,7 @@
 .slotOptionLabel {
   font-size: 12px;
   font-weight: 500;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   line-height: 16px;
@@ -197,13 +199,13 @@
 }
 
 .slotOptionLabelReadonly {
-  color: var(--neutral-400);
+  color: $gray-500;
 }
 
 /* ── Helper text for readonly slots (edit mode only) ── */
 .slotHelperText {
   font-size: 11px;
-  color: var(--neutral-500);
+  color: $neutral-500;
   font-style: italic;
   line-height: 14px;
   margin-top: 4px;
@@ -220,12 +222,12 @@
   width: 100%;
   height: 34px;
   padding: 0 9px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--rctp-radius-xs);
-  background: var(--neutral-25);
+  border: 1px solid $gray-400;
+  border-radius: $radius-xs;
+  background: $gray-100;
   font-family: inherit;
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   cursor: default;
   outline: none;
   -webkit-appearance: none;
@@ -237,27 +239,27 @@
 }
 
 .comboInput::placeholder {
-  color: var(--neutral-400);
+  color: $gray-500;
   font-style: italic;
 }
 
 .comboInputEditing {
-  background: #FFFFFF;
+  background: $white;
   cursor: text;
   padding-right: 28px;
 }
 
 .comboInputEditing:hover {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 .comboInputEditing:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }
 
 /* ── Readonly slot in edit mode — keep greyed out ── */
 .slotReadonly .comboInput {
-  background: var(--neutral-25);
+  background: $gray-100;
   cursor: default;
 }
 
@@ -267,7 +269,7 @@
   right: 5px;
   top: 5px;
   font-size: 22px;
-  color: var(--neutral-500);
+  color: $neutral-500;
   cursor: pointer;
   user-select: none;
 }
@@ -277,7 +279,7 @@
   display: flex;
   gap: 0;
   padding: 0 20px;
-  background: #FFFFFF;
+  background: $white;
 }
 
 .detailTab {
@@ -286,7 +288,7 @@
   padding: 0 20px;
   font-size: 14px;
   font-weight: 400;
-  color: var(--text-light);
+  color: $gray-600;
   background: none;
   border: none;
   cursor: pointer;
@@ -297,11 +299,11 @@
 }
 
 .detailTab:hover {
-  color: var(--text-normal);
+  color: $gray-900;
 }
 
 .detailTabActive {
-  color: var(--primary-500);
+  color: $bergbluetint1;
   font-weight: 500;
 }
 
@@ -311,7 +313,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--primary-500);
+  background: $bergbluetint1;
   border-radius: 1px;
 }
 
@@ -324,7 +326,7 @@
 
 .rolesTitleIcon {
   font-size: 18px;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   cursor: help;
 }
 
@@ -336,18 +338,18 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 13px;
-  border: 1px solid var(--neutral-50);
+  border: 1px solid $gray-200;
 }
 
 .rolesTable thead th {
-  background: var(--neutral-25);
-  border: 1px solid var(--neutral-50);
-  border-bottom: 1px solid var(--neutral-100);
+  background: $gray-100;
+  border: 1px solid $gray-200;
+  border-bottom: 1px solid $gray-300;
   padding: 8px 12px;
   text-align: left;
   font-size: 11px;
   font-weight: 600;
-  color: var(--text-light);
+  color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
@@ -362,48 +364,48 @@
 }
 
 .rolesRowOdd {
-  background: var(--primary-08);
+  background: $primary-08;
 }
 
 .rolesRowEven {
-  background: #FFFFFF;
+  background: $white;
 }
 
 .rolesRowOdd:hover,
 .rolesRowEven:hover {
-  background: var(--primary-50);
+  background: $primary-50;
 }
 
 .rolesTdName {
   padding: 10px 12px;
-  border: 1px solid var(--neutral-50);
+  border: 1px solid $gray-200;
   vertical-align: middle;
 }
 
 .rolesRoleName {
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   line-height: 1.4;
 }
 
 .rolesRoleDesc {
   font-size: 12px;
-  color: var(--text-light);
+  color: $gray-600;
   line-height: 1.4;
   margin-top: 2px;
 }
 
 .rolesTd {
   padding: 10px 12px;
-  border: 1px solid var(--neutral-50);
+  border: 1px solid $gray-200;
   vertical-align: middle;
-  color: var(--text-light);
+  color: $gray-600;
   font-size: 13px;
 }
 
 .rolesTdAction {
   padding: 0;
-  border: 1px solid var(--neutral-50);
+  border: 1px solid $gray-200;
   vertical-align: middle;
   text-align: center;
   width: 40px;
@@ -420,27 +422,27 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--text-light);
+  color: $gray-600;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: var(--rctp-radius-sm);
+  border-radius: $radius-sm;
 }
 
 .rolesMenuBtn:hover {
-  background: var(--neutral-25);
-  color: var(--text-normal);
+  background: $gray-100;
+  color: $gray-900;
 }
 
 .rolesMenuDropdown {
   position: absolute;
   right: 0;
   top: calc(100% + 2px);
-  background: #FFFFFF;
-  border: 1px solid var(--neutral-100);
-  border-radius: var(--rctp-radius-sm);
+  background: $white;
+  border: 1px solid $gray-300;
+  border-radius: $radius-sm;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   z-index: var(--z-modal);
   min-width: 100px;
@@ -455,14 +457,14 @@
   border: none;
   text-align: left;
   font-size: 14px;
-  color: var(--primary-600);
+  color: $primary-600;
   cursor: pointer;
   font-family: inherit;
   line-height: 1.5;
 }
 
 .rolesMenuItem:hover {
-  background: var(--primary-08);
+  background: $primary-08;
 }
 
 /* ── Alert toast ── */
@@ -480,18 +482,18 @@
 }
 
 .pageAlertSuccess {
-  background: var(--success-300);
+  background: $success-300;
 }
 
 .pageAlertIcon {
   font-size: 20px;
-  color: var(--success-900);
+  color: $success-900;
 }
 
 .pageAlertText {
   font-size: 14px;
   font-weight: 500;
-  color: var(--success-900);
+  color: $success-900;
 }
 
 /* ── Summary panel ── */
@@ -507,7 +509,7 @@
 
 .summaryInfoIcon {
   font-size: 16px;
-  color: var(--primary-500);
+  color: $bergbluetint1;
   cursor: help;
 }
 
@@ -536,34 +538,34 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--primary-500);
-  font-family: var(--font-heading);
+  color: $bergbluetint1;
+  font-family: inherit;
 }
 
 .summaryReq {
-  color: #E34C53;
+  color: $danger;
 }
 
 .summaryValue {
   font-size: 14px;
-  color: var(--text-normal);
+  color: $gray-900;
   min-height: 24px;
   padding: 4px 0;
 }
 
 .summaryEmpty {
-  color: var(--neutral-300);
+  color: $neutral-300;
 }
 
 .summaryInput {
   height: 34px;
   padding: 0 10px;
-  border: 1px solid var(--neutral-300);
-  border-radius: var(--rctp-radius-xs);
-  background: #FFFFFF;
+  border: 1px solid $neutral-300;
+  border-radius: $radius-xs;
+  background: $white;
   font-size: 14px;
   font-family: inherit;
-  color: var(--text-normal);
+  color: $gray-900;
   outline: none;
   box-sizing: border-box;
   width: 100%;
@@ -571,5 +573,5 @@
 }
 
 .summaryInput:focus {
-  border-color: var(--primary-500);
+  border-color: $bergbluetint1;
 }

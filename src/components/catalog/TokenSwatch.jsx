@@ -1,4 +1,4 @@
-import styles from './TokenSwatch.module.css';
+import styles from './TokenSwatch.module.scss';
 
 export default function TokenSwatch({ name, value }) {
   return (

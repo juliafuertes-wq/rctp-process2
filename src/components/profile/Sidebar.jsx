@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { patchInitechProfile, setExternalDDFlow, getExternalDDFlow } from '../../utils/initechFlow';
 import { PARTNER_ICONS } from './profileAssets';
-import styles from './profile.module.css';
+import styles from './profile.module.scss';
 
 const LANGUAGES = ['English', 'Spanish', 'French', 'German', 'Portuguese', 'Italian', 'Chinese', 'Japanese'];
 

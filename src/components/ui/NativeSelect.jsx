@@ -33,14 +33,14 @@ export default function NativeSelect({
       {label && <label className="form-label">{label}</label>}
       <div ref={ref} style={{ position: 'relative' }}>
         <div
-          className={`form-control d-flex align-items-center justify-content-between${error ? ' is-invalid' : ''}`}
-          style={{ cursor: disabled ? 'not-allowed' : 'pointer', userSelect: 'none', background: disabled ? '#f4f4f4' : undefined }}
+          className={`form-control d-flex align-items-center justify-content-between${error ? ' is-invalid' : ''}${disabled ? ' bg-light' : ''}`}
+          style={{ cursor: disabled ? 'not-allowed' : 'pointer', userSelect: 'none' }}
           onClick={() => { if (!disabled) setOpen(v => !v); }}
         >
-          <span style={{ color: displayValue ? undefined : '#adb5bd' }}>
+          <span className={displayValue ? '' : 'text-muted'}>
             {displayValue || placeholder || ''}
           </span>
-          <span className="material-icons-outlined" style={{ fontSize: 18, color: '#adb5bd', transition: 'transform 0.15s', transform: open ? 'rotate(180deg)' : 'none' }}>
+          <span className="material-icons-outlined text-muted" style={{ fontSize: 18, transition: 'transform 0.15s', transform: open ? 'rotate(180deg)' : 'none' }}>
             expand_more
           </span>
         </div>

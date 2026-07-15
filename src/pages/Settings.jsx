@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
-import styles from './Settings.module.css';
+import styles from './Settings.module.scss';
 
 const SIDEBAR_ITEMS = {
   General: [

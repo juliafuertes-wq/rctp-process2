@@ -5,9 +5,9 @@ import Breadcrumb from '../layout/Breadcrumb';
 import { profiles } from '../../data/profiles';
 import { Sidebar } from './ProfilePage';
 import ProfilePageHeader from './ProfilePageHeader';
-import styles from './profile.module.css';
-import rmStyles from './ProfileRiskMitigation.module.css';
-import auditStyles from './ProfileAudit.module.css';
+import styles from './profile.module.scss';
+import rmStyles from './ProfileRiskMitigation.module.scss';
+import auditStyles from './ProfileAudit.module.scss';
 
 const DEFAULT_AUDIT_ROWS = [
   { date: '29 Jan 2026', addedBy: 'Claudio Merino', source: 'Integrity Check', summary: 'Integrity Check Report request created' },
@@ -73,7 +73,7 @@ export default function ProfileAudit() {
             <div className={`${styles.cardHeader} ${rmStyles.cardHeader}`}>
               <div className={rmStyles.cardTitleRow}>
                 <h2 className={styles.cardTitle}>Audit</h2>
-                <span className="material-icons-outlined" style={{ fontSize: 18, color: '#516267', cursor: 'pointer' }}>info</span>
+                <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18, cursor: 'pointer' }}>info</span>
               </div>
               <div className={styles.cardHeaderRight}>
                 <span className={auditStyles.resultCount}>
@@ -149,7 +149,7 @@ export default function ProfileAudit() {
                 <tbody>
                   {filtered.length === 0 ? (
                     <tr>
-                      <td colSpan={4} style={{ textAlign: 'center', color: '#516267', padding: '24px 0' }}>
+                      <td colSpan={4} className="text-muted" style={{ textAlign: 'center', padding: '24px 0' }}>
                         No audit entries match the current filters.
                       </td>
                     </tr>

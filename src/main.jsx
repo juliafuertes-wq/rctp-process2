@@ -5,11 +5,10 @@ import './styles/globals.css'
 import './styles/main.scss'
 import App from './App.jsx'
 
-// Init Bootstrap tooltips on any element with data-toggle="tooltip"
-$(document).on('DOMNodeInserted', () => {
-  $('[data-toggle="tooltip"]').tooltip({ boundary: 'window' });
-});
-$('[data-toggle="tooltip"]').tooltip({ boundary: 'window' });
+// Init Bootstrap tooltips — re-run after every React render via MutationObserver
+const initTooltips = () => $('[data-toggle="tooltip"]:not([data-bs-original-title])').tooltip({ boundary: 'window' });
+const observer = new MutationObserver(initTooltips);
+observer.observe(document.body, { childList: true, subtree: true });
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -92,7 +92,7 @@ export default function ProfileEnhancedDueDiligence() {
             <div className={`${styles.cardHeader} ${rmStyles.cardHeader}`}>
               <div className={rmStyles.cardTitleRow}>
                 <h2 className={styles.cardTitle}>Enhanced Due Diligence Reports</h2>
-                <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18, cursor: 'pointer' }}>info</span>
+                <span className="material-icons-outlined text-muted" style={{ fontSize: 18, cursor: 'pointer' }}>info</span>
               </div>
               <button className={"btn btn-primary"} onClick={handleCreateReport}>
                 Create New Report

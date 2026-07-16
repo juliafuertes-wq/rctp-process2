@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
 import Button from '../components/ui/Button';
+import Paginator from '../components/ui/Paginator';
 import styles from './Employees.module.scss';
 
 const ROWS = [
@@ -82,7 +83,7 @@ export default function Employees() {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
               />
-              <span className="material-icons-outlined" className="text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
+              <span className="material-icons-outlined text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
             </div>
             <span className="text-muted" style={{ fontSize: 13, whiteSpace: 'nowrap' }}>
               Showing results 1 – {filtered.length} of {filtered.length}
@@ -127,23 +128,12 @@ export default function Employees() {
         </div>
 
         <div className={styles.divider} />
-        <div className="d-flex align-items-center justify-content-end flex-wrap" style={{ gap: 12, paddingTop: 12 }}>
-          <div className="d-flex align-items-center" style={{ gap: 8 }}>
-            <select className="form-control form-control-sm" style={{ width: 'auto' }}>
-              <option>20</option><option>50</option><option>100</option>
-            </select>
-            <span className="text-muted small">Showing results 1 – {filtered.length} of {filtered.length}</span>
-          </div>
-          <ul className="pagination pagination-sm mb-0">
-            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">first_page</span></button></li>
-            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">chevron_left</span></button></li>
-            <li className="page-item disabled"><span className="page-link">Page</span></li>
-            <li className="page-item"><input className="page-link form-control form-control-sm" type="number" defaultValue={1} min={1} max={1} style={{ width: 48, textAlign: 'center' }} /></li>
-            <li className="page-item disabled"><span className="page-link">of 1</span></li>
-            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">chevron_right</span></button></li>
-            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">last_page</span></button></li>
-          </ul>
-        </div>
+        <Paginator
+          page={1}
+          totalPages={1}
+          pageSize={20}
+          totalItems={filtered.length}
+        />
       </div>
     </PageLayout>
   );

@@ -2119,3 +2119,100 @@
 .border-warning-300  { border-color: $warning-300 !important; }
 .border-alert-300    { border-color: $alert-300 !important; }
 .border-success-300  { border-color: $success-300 !important; }
+
+// ── Paginator ─────────────────────────────────────────────────────────────
+.paginator {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 69px;
+  padding: 12px 16px 12px;
+  font-size: 14px;
+  color: $gray-900;
+  font-family: "Simplon Norm", "Roboto", sans-serif;
+}
+
+.paginator-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.paginator-size-select {
+  height: 28px;
+  padding: 0 24px 0 13px;
+  border: 1px solid $gray-400;
+  border-radius: $radius-xs;
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+  color: $gray-900;
+  background: $white;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238D9CA9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  cursor: pointer;
+}
+.paginator-size-select:focus {
+  outline: none;
+  border-color: $primary;
+}
+
+.paginator-count {
+  font-size: 14px;
+  color: $gray-900;
+  white-space: nowrap;
+}
+
+.paginator-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.paginator-nav-btn {
+  background: none;
+  border: none;
+  padding: 0 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $neutral-500;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+  transition: color 0.12s;
+}
+.paginator-nav-btn:hover:not(:disabled) { color: $primary; }
+.paginator-nav-btn:disabled { color: $neutral-500; cursor: default; }
+.paginator-nav-btn.active { color: $primary; }
+
+.paginator-label {
+  font-size: 14px;
+  color: $gray-900;
+  padding: 0 2px;
+  white-space: nowrap;
+}
+// 12px total gap (4px gap + 8px margin) between arrow buttons and Page/of labels
+.paginator-nav-btn + .paginator-label { margin-left: 8px; }
+.paginator-label + .paginator-nav-btn  { margin-left: 8px; }
+
+.paginator-input {
+  width: 40px;
+  height: 30px;
+  border: 1px solid $gray-200;
+  border-radius: 0;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Simplon Norm", "Roboto", sans-serif;
+  color: $gray-900;
+  background: $white;
+  padding: 0;
+  -moz-appearance: textfield;
+}
+.paginator-input::-webkit-inner-spin-button,
+.paginator-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.paginator-input:focus { outline: none; border-color: $primary; }

@@ -3,6 +3,7 @@ import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
 import RiskBadge from '../components/ui/RiskBadge';
 import Button from '../components/ui/Button';
+import Paginator from '../components/ui/Paginator';
 import { piedpiper, brucewayne, gazprom, initech, dundermifflin, lumon, waystar, ecomoda, lospollos, gringotts, agencegrateau, vought, ricksanchez, starkindustries, willywonka } from '../data/profiles';
 import styles from './ThirdParties.module.scss';
 
@@ -90,7 +91,7 @@ export default function ThirdParties() {
           <div className={styles.toolbarLeft}>
             <div className={styles.searchWrap}>
               <input className={styles.searchInput} type="text" placeholder="Quick search" />
-              <span className="material-icons-outlined" className="text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
+              <span className="material-icons-outlined text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
             </div>
           </div>
           <div className={styles.toolbarRight}>
@@ -142,18 +143,12 @@ export default function ThirdParties() {
         </div>
 
         <div className={styles.divider} />
-        <div className="d-flex align-items-center justify-content-end flex-wrap" style={{ gap: 12, paddingTop: 12 }}>
-          <span className="text-muted small">Showing results 1 – {ROWS.length} of {ROWS.length}</span>
-          <ul className="pagination pagination-sm mb-0">
-            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">first_page</span></button></li>
-            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">chevron_left</span></button></li>
-            <li className="page-item disabled"><span className="page-link">Page</span></li>
-            <li className="page-item"><input className="page-link form-control form-control-sm" type="number" defaultValue={1} min={1} max={1} style={{ width: 48, textAlign: 'center' }} /></li>
-            <li className="page-item disabled"><span className="page-link">of 1</span></li>
-            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">chevron_right</span></button></li>
-            <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">last_page</span></button></li>
-          </ul>
-        </div>
+        <Paginator
+          page={1}
+          totalPages={1}
+          pageSize={20}
+          totalItems={ROWS.length}
+        />
       </div>
     </PageLayout>
   );

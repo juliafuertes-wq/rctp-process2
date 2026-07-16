@@ -78,7 +78,7 @@ export default function ProfileEntityVerification() {
               <div className={uboStyles.field}>
                 <div className={uboStyles.fieldLabel}>Name</div>
                 <div className={uboStyles.fieldValue}>
-                  <span className="material-icons-outlined" className="text-success" style={{ fontSize: 16, verticalAlign: 'middle', marginRight: 6 }}>check_circle</span>
+                  <span className="material-icons-outlined text-success" style={{ fontSize: 16, verticalAlign: 'middle', marginRight: 6 }}>check_circle</span>
                   {name}
                 </div>
                 <div className={uboStyles.uboStatus} style={{ marginTop: 4 }}>
@@ -92,7 +92,7 @@ export default function ProfileEntityVerification() {
               <div className={uboStyles.field} style={{ flex: 2 }}>
                 <div className={uboStyles.fieldLabel}>Address</div>
                 <div className={uboStyles.fieldValue}>
-                  <span className="material-icons-outlined" className="text-success" style={{ fontSize: 16, verticalAlign: 'middle', marginRight: 6 }}>check_circle</span>
+                  <span className="material-icons-outlined text-success" style={{ fontSize: 16, verticalAlign: 'middle', marginRight: 6 }}>check_circle</span>
                   {address}
                 </div>
               </div>

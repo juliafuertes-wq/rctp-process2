@@ -212,7 +212,7 @@ export default function ProfileRiskMitigation() {
             <div className={`${styles.cardHeader} ${rmStyles.cardHeader}`}>
               <div className={rmStyles.cardTitleRow}>
                 <h2 className={styles.cardTitle}>Risk Mitigation</h2>
-                <span className="material-icons-outlined" className="text-muted" style={{ fontSize: 18, cursor: 'pointer' }}>info</span>
+                <span className="material-icons-outlined text-muted" style={{ fontSize: 18, cursor: 'pointer' }}>info</span>
               </div>
               <button className={`btn btn-primary ${rmStyles.createBtn}`}>
                 Create New Risk

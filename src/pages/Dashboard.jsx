@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
+import Paginator from '../components/ui/Paginator';
 import Badge from '../components/ui/Badge';
 import Flag from '../components/ui/Flag';
 import Chip from '../components/ui/Chip';
@@ -165,7 +166,7 @@ function UpcomingTable({ rows, search, selected, onSelect }) {
               <th>Task Status <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
               <th>Current Risk Level <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
               <th>Owner <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
-              <th>Due Date <span className="material-icons-outlined" className="text-primary-600" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
+              <th>Due Date <span className="material-icons-outlined text-primary-600" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
             </tr>
           </thead>
           <tbody>
@@ -293,7 +294,7 @@ function SMTable({ rows, search }) {
           <thead>
             <tr>
               <th style={{ width: 44 }}>
-                <span className="material-icons-outlined" className="text-danger" style={{ fontSize: 16, verticalAlign: 'middle' }}>notifications</span>
+                <span className="material-icons-outlined text-danger" style={{ fontSize: 16, verticalAlign: 'middle' }}>notifications</span>
               </th>
               <th>Third Party Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
               <th>Short Name <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
@@ -313,7 +314,7 @@ function SMTable({ rows, search }) {
               <tr key={i}>
                 <td style={{ textAlign: 'center' }}>
                   {row.alert && (
-                    <span className="material-icons-outlined" className="text-danger" style={{ fontSize: 16 }}>notifications_active</span>
+                    <span className="material-icons-outlined text-danger" style={{ fontSize: 16 }}>notifications_active</span>
                   )}
                 </td>
                 <td>
@@ -415,7 +416,7 @@ function SMTContent({ rows }) {
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
-            <span className="material-icons-outlined" className="text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
+            <span className="material-icons-outlined text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
           </div>
           <button className={styles.refreshBtn} title="Reset" onClick={() => setSearch('')}>
             <span className="material-icons-outlined" style={{ fontSize: 18 }}>refresh</span>
@@ -427,7 +428,7 @@ function SMTContent({ rows }) {
         <div className={styles.smtToolbarRight}>
           <button className={styles.smtExportBtn}>
             Export
-            <span className="material-icons-outlined" className="text-neutral-300" style={{ fontSize: 16 }}>download</span>
+            <span className="material-icons-outlined text-neutral-300" style={{ fontSize: 16 }}>download</span>
           </button>
           <button className={`${styles.smtSaveBtn}`}>Save</button>
           <button className={`${styles.smtSaveBtn}`}>Save As</button>
@@ -437,7 +438,7 @@ function SMTContent({ rows }) {
       {/* Empty state or table */}
       {filtered.length === 0 ? (
         <div className={styles.smtEmptyBanner}>
-          <span className="material-icons-outlined" className="text-body" style={{ fontSize: 18, flexShrink: 0 }}>warning</span>
+          <span className="material-icons-outlined text-body" style={{ fontSize: 18, flexShrink: 0 }}>warning</span>
           <span>Currently we do not have records matching your search criteria.</span>
         </div>
       ) : (
@@ -575,7 +576,7 @@ function EDDContent({ rows }) {
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
-            <span className="material-icons-outlined" className="text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
+            <span className="material-icons-outlined text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
           </div>
           <button className={styles.refreshBtn} title="Reset" onClick={() => setSearch('')}>
             <span className="material-icons-outlined" style={{ fontSize: 18 }}>refresh</span>
@@ -587,7 +588,7 @@ function EDDContent({ rows }) {
         <div className={styles.smtToolbarRight}>
           <button className={styles.smtExportBtn}>
             Export
-            <span className="material-icons-outlined" className="text-neutral-300" style={{ fontSize: 16 }}>download</span>
+            <span className="material-icons-outlined text-neutral-300" style={{ fontSize: 16 }}>download</span>
           </button>
           <button className={styles.smtSaveBtn}>Save</button>
           <button className={styles.smtSaveBtn}>Save As</button>
@@ -657,25 +658,13 @@ function EDDContent({ rows }) {
 
 function TablePagination({ count }) {
   return (
-    <div className="d-flex align-items-center justify-content-end flex-wrap" style={{ gap: 12, paddingTop: 12 }}>
-      <div className="d-flex align-items-center" style={{ gap: 8 }}>
-        <select className="form-control form-control-sm" style={{ width: 'auto' }} defaultValue="100">
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
-        <span className="text-muted small">Showing results 1 – {count} of {count}</span>
-      </div>
-      <ul className="pagination pagination-sm mb-0">
-        <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">first_page</span></button></li>
-        <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">chevron_left</span></button></li>
-        <li className="page-item disabled"><span className="page-link">Page</span></li>
-        <li className="page-item"><input className="page-link form-control form-control-sm" type="number" defaultValue={1} min={1} max={1} style={{ width: 48, textAlign: 'center' }} /></li>
-        <li className="page-item disabled"><span className="page-link">of 1</span></li>
-        <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">chevron_right</span></button></li>
-        <li className="page-item disabled"><button className="page-link" disabled><span className="material-icons-outlined">last_page</span></button></li>
-      </ul>
-    </div>
+    <Paginator
+      page={1}
+      totalPages={1}
+      pageSize={100}
+      totalItems={count}
+      pageSizeOptions={[25, 50, 100]}
+    />
   );
 }
 
@@ -750,7 +739,7 @@ export default function Dashboard() {
             <div className={styles.headerRow}>
               <h1 className={styles.title}>
                 {activeTab} Dashboard
-                <span className="material-icons-outlined" className="text-primary-600" style={{ fontSize: 16, marginLeft: 6, verticalAlign: 'middle' }}>info</span>
+                <span className="material-icons-outlined text-primary-600" style={{ fontSize: 16, marginLeft: 6, verticalAlign: 'middle' }}>info</span>
               </h1>
               <div className={styles.headerRight}>
                 <span className={styles.recentLabel}>
@@ -770,7 +759,7 @@ export default function Dashboard() {
                   value={search}
                   onChange={e => setSearch(e.target.value)}
                 />
-                <span className="material-icons-outlined" className="text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
+                <span className="material-icons-outlined text-muted" style={{ position: 'absolute', right: 8, fontSize: 18, pointerEvents: 'none' }}>search</span>
               </div>
               <button className={styles.refreshBtn} title="Refresh" onClick={() => setSearch('')}>
                 <span className="material-icons-outlined" style={{ fontSize: 18 }}>refresh</span>

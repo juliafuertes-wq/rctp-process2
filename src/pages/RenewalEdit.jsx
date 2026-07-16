@@ -342,7 +342,7 @@ export default function RenewalEdit() {
                   onDragEnd={onRowDragEnd}
                 >
                   <span className={styles.ruleRowNum}>{i + 1}</span>
-                  <span className="material-icons-outlined" className="text-neutral-300" style={{ fontSize: 16, cursor: 'grab' }}>drag_indicator</span>
+                  <span className="material-icons-outlined text-neutral-300" style={{ fontSize: 16, cursor: 'grab' }}>drag_indicator</span>
                 </div>
                 {cols.map(col => (
                   <div key={col.id} className={styles.ruleCell}>

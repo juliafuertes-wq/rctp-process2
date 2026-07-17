@@ -83,19 +83,60 @@ $rcard-high-end:      #ffcdd2;
   margin-bottom: 2px;
 }
 
-/* Toast variant — single line, fixed-position style; rendered statically in catalog */
+/* Toast variant — full-width single-line bar, 56px */
 .bannerToast {
   display: flex;
   align-items: center;
   gap: 8px;
-  height: 40px;
-  padding: 0 16px;
+  height: 56px;
+  padding: 0 24px;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  font-family: inherit;
+  line-height: 16px;
   width: 100%;
+  border-radius: 0;
 }
-.bannerToast .bannerIcon { margin-top: 0; font-size: 20px; }
+.bannerToast .bannerIcon { margin-top: 0; font-size: 24px; flex-shrink: 0; }
+
+/* Confirm banner — two-line with action buttons, 72px */
+.bannerConfirm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 14px 24px;
+  width: 100%;
+  border-radius: 0;
+  gap: 16px;
+}
+.bannerConfirmLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 1;
+}
+.bannerConfirmIcon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.bannerConfirmBody { display: flex; flex-direction: column; gap: 4px; }
+.bannerConfirmTitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+.bannerConfirmDesc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.bannerConfirmActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
 
 /* Inline warning — single line, no title */
 .bannerInline {
@@ -106,7 +147,7 @@ $rcard-high-end:      #ffcdd2;
   border-radius: $radius-sm;
   font-size: 13px;
   line-height: 1.5;
-  font-family: inherit;
+  font-family: 'Roboto', sans-serif;
   width: 100%;
 }
 .bannerInline .bannerIcon { margin-top: 1px; font-size: 18px; }
@@ -961,24 +1002,32 @@ $rcard-high-end:      #ffcdd2;
 
 /* ── Field grid specimen ── */
 .fieldLabel {
+  font-family: 'Simplon Norm', 'Roboto', sans-serif;
   font-size: 11px;
   font-weight: 500;
   color: $bergbluetint1;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  line-height: 16px;
   margin-bottom: 4px;
 }
 
 .fieldValue {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-size: 16px;
+  font-weight: 400;
   color: $gray-900;
   line-height: 24px;
+  letter-spacing: 0.5px;
 }
 
 .fieldValueLight {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-size: 16px;
+  font-weight: 400;
   color: $gray-600;
   line-height: 24px;
+  letter-spacing: 0.5px;
   font-style: italic;
 }
 
@@ -998,16 +1047,17 @@ $rcard-high-end:      #ffcdd2;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 48px;
-  padding: 0 14px 0 12px;
-  background: $primary-08;
+  height: 40px;
+  padding: 0 8px;
+  background: $gray-300;
   cursor: pointer;
   user-select: none;
-  border: 1px solid $gray-200;
-  border-radius: 2px;
+  border-top: 1px solid $gray-400;
+  border-bottom: 1px solid $gray-400;
+  border-radius: 0;
   transition: background 0.2s;
 }
-.accordionHeader:hover { background: $primary-50; }
+.accordionHeader:hover { background: $gray-400; }
 
 .accordionHeaderLow {
   background: linear-gradient(201.532deg, rgba(19,223,129,0.20) 0%, rgba(19,223,129,0.10) 20.673%, rgba(255,255,255,0) 100%);
@@ -1034,10 +1084,12 @@ $rcard-high-end:      #ffcdd2;
 }
 
 .accordionLabel {
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: $gray-900;
-  letter-spacing: 0.1px;
+  line-height: 20px;
+  color: #000000;
+  letter-spacing: 0;
 }
 
 .accordionCount {
@@ -1065,9 +1117,10 @@ $rcard-high-end:      #ffcdd2;
 }
 
 .accordionCaret {
-  font-size: 20px;
+  font-size: 24px;
   color: $gray-600;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
+  transform: rotate(-180deg);
 }
 .accordionCaretOpen {
   transform: rotate(0deg);

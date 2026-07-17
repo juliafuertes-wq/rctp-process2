@@ -4,10 +4,11 @@ export default function Checkbox({ checked, indeterminate, disabled, error, size
   let boxClass = 'checkbox-box';
   if (small) boxClass += ' checkbox-box-sm';
 
-  if (error) {
-    boxClass += checked || indeterminate ? ' checkbox-box-error' : ' checkbox-box-error-empty';
-  } else if (disabled) {
+  if (disabled) {
+    // disabled wins over error — spec: disabled+error shows neutral fill, not red
     boxClass += checked || indeterminate ? ' checkbox-box-disabled-checked' : ' checkbox-box-disabled-empty';
+  } else if (error) {
+    boxClass += checked || indeterminate ? ' checkbox-box-error' : ' checkbox-box-error-empty';
   } else if (checked || indeterminate) {
     boxClass += ' checkbox-box-checked';
   } else {

@@ -2007,38 +2007,67 @@ export default function ComponentCatalog() {
               {/* Variant 2: Toast */}
               <div className={styles.entryCard}>
                 <div className={styles.entryHeader}>
-                  <h3 className={styles.entryTitle}>Toast — Single-line, Auto-dismiss</h3>
-                  <p className={styles.entryDesc}>Single-line notification rendered fixed-position at the top of the page (below the app header). Auto-dismisses after ~5 seconds. Used for transient confirmations and errors triggered by user actions. Source: <code>connAlert</code> in <code>profile.module.css</code>.</p>
+                  <h3 className={styles.entryTitle}>Toast — Full-width bar, 56px</h3>
+                  <p className={styles.entryDesc}>Full-width 56px bar. Used for transient confirmations triggered by user actions (save, approve, etc.). Icon 24px, label Roboto 500 14px. No border, no radius.</p>
                 </div>
                 <div className={styles.demoShell}>
                   <div className={styles.demoStageColumn}>
                     <div className={styles.bannerToast} style={{ background: '#5FE9A9', color: '#07502E' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#07502E' }}>check_circle</span>
-                      <span>Connection saved successfully</span>
+                      <span className="material-icons-outlined" style={{ fontSize: 24, flexShrink: 0, color: '#07502E' }}>check_circle</span>
+                      <span>Policy Updated Successfully</span>
                     </div>
-                    <div className={styles.bannerToast} style={{ background: '#FAE8BB', color: '#564518' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#564518' }}>remove_circle</span>
-                      <span>Connection discarded</span>
+                    <div className={styles.bannerToast} style={{ background: '#F5D47F', color: '#564518' }}>
+                      <span className="material-icons-outlined" style={{ fontSize: 24, flexShrink: 0, color: '#564518' }}>warning</span>
+                      <span>Changes saved with warnings</span>
+                    </div>
+                    <div className={styles.bannerToast} style={{ background: '#EC858A', color: '#521B1E' }}>
+                      <span className="material-icons-outlined" style={{ fontSize: 24, flexShrink: 0, color: '#521B1E' }}>error</span>
+                      <span>An error occurred. Please try again.</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Variant 3: Inline single-line */}
+              {/* Variant 3: Confirm banner */}
               <div className={styles.entryCard}>
                 <div className={styles.entryHeader}>
-                  <h3 className={styles.entryTitle}>Inline Warning — Single Line</h3>
-                  <p className={styles.entryDesc}>Compact inline notice without a title. Used for short contextual warnings inside form sections or accordions. Source: <code>warningBanner</code> in <code>ProfileRiskMitigation.module.css</code>.</p>
+                  <h3 className={styles.entryTitle}>Confirm Banner — Two-line with actions, 72px</h3>
+                  <p className={styles.entryDesc}>Full-width confirmation bar with a bold title (Roboto 500 16px) and supporting description (Roboto 400 14px). Action buttons right-aligned. Used for save confirmations that require acknowledgement.</p>
                 </div>
                 <div className={styles.demoShell}>
                   <div className={styles.demoStageColumn}>
-                    <div className={styles.bannerInline} style={{ background: '#F5BFC1', color: '#9A3438' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#9A3438' }}>error_outline</span>
+                    <div className={styles.bannerConfirm} style={{ background: '#F5D47F', color: '#564518' }}>
+                      <div className={styles.bannerConfirmLeft}>
+                        <span className="material-icons-outlined" style={{ fontSize: 24, flexShrink: 0, marginTop: 2, color: '#564518' }}>warning</span>
+                        <div className={styles.bannerConfirmBody}>
+                          <div className={styles.bannerConfirmTitle}>Are you sure you wish to Save?</div>
+                          <div className={styles.bannerConfirmDesc}>Please note: The monitoring Policy will be locked while the changes are applied to all Monitored Entities</div>
+                        </div>
+                      </div>
+                      <div className={styles.bannerConfirmActions}>
+                        <button className="btn-warning-outline">Cancel</button>
+                        <button className="btn-warning-outline">Continue</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Variant 4: Inline single-line */}
+              <div className={styles.entryCard}>
+                <div className={styles.entryHeader}>
+                  <h3 className={styles.entryTitle}>Inline Notice — Single Line</h3>
+                  <p className={styles.entryDesc}>Compact bordered inline notice without a title. Used for short contextual warnings inside form sections or accordions.</p>
+                </div>
+                <div className={styles.demoShell}>
+                  <div className={styles.demoStageColumn}>
+                    <div className={styles.bannerInline} style={{ background: '#F5BFC1', borderColor: '#EC858A', color: '#9A3438', border: '1px solid #EC858A' }}>
+                      <span className="material-icons-outlined" style={{ fontSize: 18, flexShrink: 0, marginTop: 1, color: '#9A3438' }}>error_outline</span>
                       <span>This third party has open risk mitigation tasks. Resolve all tasks before approving.</span>
                     </div>
-                    <div className={styles.bannerInline} style={{ background: '#FBEDCA', color: '#564518' }}>
-                      <span className={`material-icons-outlined ${styles.bannerIcon}`} style={{ color: '#A3832E' }}>warning_amber</span>
-                      <span>Renewal is due in 14 days. Schedule a review meeting with the owner.</span>
+                    <div className={styles.bannerInline} style={{ background: '#FBEDCA', borderColor: '#F5D47F', color: '#564518', border: '1px solid #F5D47F' }}>
+                      <span className="material-icons-outlined" style={{ fontSize: 18, flexShrink: 0, marginTop: 1, color: '#A3832E' }}>warning_amber</span>
+                      <span>Please review all monitoring policies and enable this private list for screening and monitoring where required</span>
                     </div>
                   </div>
                 </div>

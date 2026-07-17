@@ -1,153 +1,209 @@
 @import 'variables';
 
-// Button base — override Bootstrap defaults to match Figma spec
+// ── Button base ───────────────────────────────────────────────────────────────
+// Default size = S (32px) — matches spec "Size=S"
 .btn {
-    font-family: "Simplon Norm", "Inter", ui-sans-serif, sans-serif;
-    font-size: 13px;
+    font-family: $font-simplon;
+    font-size: 12px;           // Label/Medium
     font-weight: 500;
-    letter-spacing: 0.65px;
+    letter-spacing: 0.5px;
+    line-height: 16px;
     text-transform: uppercase;
     border-radius: 4px;
     height: 32px;
-    padding: 0 14px;
+    padding: 10px 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 4px;
     white-space: nowrap;
-    line-height: 1;
-    transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+    cursor: pointer;
+    transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, box-shadow 140ms ease;
 
-    &.btn-sm {
-        height: 26px;
-        padding: 0 10px;
-        font-size: 11px;
+    // Size M — 36px
+    &.btn-md {
+        height: 36px;
+        padding: 12px 16px;
+        font-size: 12px;       // Label/Medium
+        letter-spacing: 0.5px;
     }
 
+    // Size L — 40px
     &.btn-lg {
-        height: 38px;
-        padding: 0 18px;
-        font-size: 14px;
+        height: 40px;
+        padding: 14px 16px;
+        font-size: 14px;       // Label/Large
+        letter-spacing: 0.1px;
+    }
+
+    // Icon-only variants (no text label, square)
+    &.btn-icon {
+        padding: 14px 8px;
+        width: 40px;
+        height: 40px;
+    }
+    &.btn-icon-sm {
+        padding: 10px 4px;
+        width: 32px;
+        height: 32px;
     }
 }
 
-// Filled — matches the catalog filled button
+// ── Filled (Primary) ──────────────────────────────────────────────────────────
 .btn-primary {
-    background-color: #02A3D5;
-    border-color: #02A3D5;
-    color: #FFFFFF;
+    background-color: $bergblue;    // primary/500 #02A3D5
+    border-color: $bergblue;
+    color: $gray-100;               // neutral/25 #EFEFEF
 
-    &:hover:not(:disabled), &:focus {
-        background-color: #0289B3;
-        border-color: #0289B3;
-        color: #FFFFFF;
+    &:hover:not(:disabled), &:focus:not(:disabled) {
+        background-color: $primary-600;  // primary/600 #0289B3
+        border-color: $primary-600;
+        color: $gray-100;
     }
 
     &:active:not(:disabled) {
-        background-color: #0289B3;
-        border-color: #02A3D5;
-        box-shadow: inset 0 0 0 3px #02A3D5;
-        color: #FFFFFF;
+        background-color: $primary-600;
+        border: 3px solid $bergblue;     // primary/500 ring
+        color: $gray-100;
     }
 
-    &:disabled {
-        background-color: #7BCFE9;
-        border-color: #7BCFE9;
-        color: #FFFFFF;
-    }
-}
-
-// Outline — white bg, gray border, dark ink text
-.btn-outline-secondary {
-    background-color: #FFFFFF;
-    border: 1px solid #8D9CA9;
-    color: #1D1B20;
-
-    &:hover:not(:disabled) {
-        background-color: #F4F4F4;
-        border-color: #8D9CA9;
-        color: #1D1B20;
-    }
-
-    &:active:not(:disabled) {
-        background-color: #F4F4F4;
-        border-width: 2px;
-        color: #1D1B20;
-    }
-
-    &:disabled {
-        background-color: #FFFFFF;
-        border-color: #C4CCD2;
-        color: #C4CCD2;
-    }
-}
-
-// Danger — outline style, fills red on hover
-.btn-outline-danger {
-    background-color: #FFFFFF;
-    border: 1px solid #e53935;
-    color: #e53935;
-
-    &:hover:not(:disabled) {
-        background-color: #e53935;
-        border-color: #e53935;
-        color: #FFFFFF;
-    }
-
-    &:disabled {
-        opacity: 0.5;
-    }
-}
-
-
-// Soft — light cyan tint
-.btn-soft {
-    background-color: #E8F9FE;
-    border: 1px solid #7BCFE9;
-    color: #017295;
-
-    &:hover:not(:disabled) {
-        background-color: #B8E5F3;
-        border-color: #53C0E2;
-        color: #017295;
-    }
-
-    &:disabled {
-        opacity: 0.6;
-    }
-}
-
-// Connect — mid-teal filled
-.btn-connect {
-    background-color: #028FBB;
-    border-color: #028FBB;
-    color: #FFFFFF;
-
-    &:hover:not(:disabled) {
-        background-color: #017295;
-        border-color: #017295;
-        color: #FFFFFF;
-    }
-
-    &:disabled {
-        opacity: 0.4;
+    &:disabled, &.disabled {
+        background-color: $primary-200;  // primary/200 #7BCFE9
+        border-color: $primary-200;
+        color: $gray-100;
         cursor: not-allowed;
+        pointer-events: none;
     }
 }
 
-// Ghost / text link button
-.btn-link {
-    color: #0C2A31;
-    text-decoration: none;
-    padding: 0 8px;
+// ── Outlined ─────────────────────────────────────────────────────────────────
+.btn-outline-secondary {
+    background-color: $white;            // neutral/00
+    border: 1px solid $neutral-300;      // #B1BCC5
+    color: $gray-600;                    // text/light #516267
 
     &:hover:not(:disabled) {
-        color: #0289B3;
+        background-color: $gray-100;     // neutral/25 #EFEFEF
+        border-color: $neutral-300;
+        color: $gray-600;
+    }
+
+    &:active:not(:disabled) {
+        background-color: $gray-200;     // neutral/50 #DFE3E7
+        border: 3px solid $neutral-300;
+        color: $gray-600;
+    }
+
+    &:disabled, &.disabled {
+        background-color: $gray-100;     // neutral/25
+        border-color: $neutral-300;
+        color: $text-disabled;           // #A8B2B5
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+// ── Text (no bg / border) ────────────────────────────────────────────────────
+.btn-text {
+    background: none;
+    border: none;
+    color: $primary-600;                 // #0289B3
+    padding: 0;
+    height: auto;
+    line-height: inherit;
+
+    &:hover:not(:disabled) {
+        color: $primary-700;             // #016F91
+        background: none;
+        border: none;
         text-decoration: none;
     }
 
-    &:disabled {
-        color: #8D9CA9;
+    &:active:not(:disabled) {
+        color: $primary-700;
+        background: none;
+        border: none;
+    }
+
+    &:disabled, &.disabled {
+        color: $text-disabled;           // #A8B2B5
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+// ── Danger — outline style, fills red on hover ───────────────────────────────
+.btn-outline-danger {
+    background-color: $white;
+    border: 1px solid $negative;
+    color: $negative;
+
+    &:hover:not(:disabled) {
+        background-color: $negative;
+        border-color: $negative;
+        color: $white;
+    }
+
+    &:disabled, &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+// ── Soft — light cyan tint (kept for existing usages) ────────────────────────
+.btn-soft {
+    background-color: $primary-08;
+    border: 1px solid $primary-200;
+    color: $primary-800;
+
+    &:hover:not(:disabled) {
+        background-color: $primary-50;
+        border-color: $primary-300;
+        color: $primary-800;
+    }
+
+    &:disabled, &.disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+// ── Connect — mid-teal filled ────────────────────────────────────────────────
+.btn-connect {
+    background-color: $bergbluetint1;
+    border-color: $bergbluetint1;
+    color: $white;
+
+    &:hover:not(:disabled) {
+        background-color: $primary-800;
+        border-color: $primary-800;
+        color: $white;
+    }
+
+    &:disabled, &.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+// ── Link / ghost (kept for existing usages) ──────────────────────────────────
+.btn-link {
+    color: $primary-600;
+    text-decoration: none;
+    padding: 0 8px;
+    border: none;
+    background: none;
+
+    &:hover:not(:disabled) {
+        color: $primary-700;
+        text-decoration: none;
+    }
+
+    &:disabled, &.disabled {
+        color: $text-disabled;
     }
 }
 
@@ -158,7 +214,7 @@
     gap: 6px;
     font-size: 12px;
     font-weight: $font-weight-medium;
-    font-family: "Simplon Norm", "Inter", ui-sans-serif, sans-serif;
+    font-family: $font-simplon;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     white-space: nowrap;
@@ -256,6 +312,37 @@
     justify-content: center;
 }
 
+// ── Count badges — numbered pills used in table cells (match results, etc.) ──
+// Base: round pill, 16px height, SimplonNorm 500 11px uppercase
+.badge-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    min-width: 16px;
+    max-width: 34px;
+    padding: 4px;
+    font-family: $font-simplon;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-radius: 100px;
+}
+// Square variant (2px radius)
+.badge-count-sq { border-radius: 2px; padding: 4px 2px; }
+
+// Styles — one per workflow status
+.badge-count-action-required { background: $negative;   color: $white; }
+.badge-count-no-action       { background: $gray-600;   color: $white; }
+.badge-count-incomplete      { background: $warning;    color: $gray-900; }
+.badge-count-not-initiated   { background: $gray-400;   color: $gray-900; }
+.badge-count-completed       { background: $postive;    color: $gray-900; }
+.badge-count-confirmed       { background: $alert-700;  color: $white; }
+.badge-count-cleared         { background: $primary-700; color: $white; }
+
 // Comment badge (absolute-positioned on icon, 14×14)
 .badge-comment {
     position: absolute;
@@ -350,28 +437,32 @@
     gap: 8px;
     height: 32px;
     padding: 0 12px;
-    border-radius: $border-radius-pill;
-    font-size: $font-size-sm;
-    font-family: "Simplon Norm", "Inter", ui-sans-serif, sans-serif;
-    font-weight: $font-weight-normal;
+    border-radius: 8px;           // spec: 8px rounded rect, not a pill
+    font-family: $font-roboto;    // spec: body/medium — Roboto
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
     white-space: nowrap;
     cursor: pointer;
     user-select: none;
     transition: background 0.15s ease;
     outline: none;
-    border: 1px solid $gray-400;
-    background: transparent;
-    color: $gray-600;
-    &:hover:not(:disabled) { background: rgba($gray-700, 0.08); }
-    &:focus-visible { background: rgba($gray-700, 0.12); }
+    border: 1px solid $neutral-300;           // stroke #B1BCC5
+    background: $gray-300;                    // fill neutral/100 #D6DBE0
+    color: $gray-600;                         // text/light #516267
+    &:hover:not(:disabled) { background: darken($gray-300, 5%); }
+    &:focus-visible { background: darken($gray-300, 8%); }
+
+    // right padding tightens when trailing badge or icon is present
+    &.chip-has-trailing { padding-right: 8px; }
 }
 
 .chip-selected {
-    background: $gray-300;
+    background: #EFEFEF;          // neutral/25
     border-color: transparent;
-    color: $darkcharc;
-    &:hover:not(:disabled) { background: darken($gray-300, 5%); }
-    &:focus-visible { background: darken($gray-300, 10%); }
+    color: $darkcharc;            // text/normal #0C2A31
+    &:hover:not(:disabled) { background: $gray-300; }   // neutral/100 #D6DBE0
+    &:focus-visible { background: $gray-300; }
 }
 
 .chip-disabled {
@@ -380,40 +471,77 @@
 }
 
 .chip-close-icon {
-    font-size: 18px !important;
+    font-size: 20px !important;   // spec: 20×20 close icon
     color: $gray-600;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
+    flex-shrink: 0;
     transition: background 0.12s ease;
-    padding: 1px;
     margin-right: -4px;
-    &:hover { background: rgba($gray-700, 0.12); }
+    &:hover { background: rgba(73, 69, 79, 0.12); }
 }
 
-// Tag chip (removable pill in tag/owner/BU selectors)
+// Tag chip — select variant (removable pill in tag/owner/BU selectors)
+// Unselected: neutral-300 bg (#B1BCC5), border, text/light
 .chip-tag {
     display: inline-flex;
     align-items: center;
-    background: $gray-600;
-    border: 1px solid darken($gray-600, 8%);
-    border-radius: $border-radius;
+    background: $gray-300;                  // fill neutral/100 #D6DBE0
+    border: 1px solid $neutral-300;         // stroke #B1BCC5
+    border-radius: 4px;                     // spec: 4px for select chips
     height: 24px;
-    overflow: hidden;
     padding: 0 4px 0 8px;
     gap: 8px;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-normal;
+    font-family: $font-roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    white-space: nowrap;
+    color: $gray-600;                       // text/light #516267
+    button {
+        background: none;
+        border: none;
+        color: $gray-600;
+        cursor: pointer;
+        font-size: 18px;
+        line-height: 1;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        opacity: 0.8;
+        &:hover { opacity: 1; }
+    }
+}
+
+// Selected/confirmed tag chip — dark state (#516267 bg, white text)
+.chip-tag-selected {
+    display: inline-flex;
+    align-items: center;
+    background: $gray-600;                  // #516267 = text/light
+    border: 1px solid $neutral-800;         // #495158 = neutral/800
+    border-radius: 4px;
+    height: 24px;
+    padding: 0 4px 0 8px;
+    gap: 8px;
+    font-family: $font-roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    white-space: nowrap;
     color: $white;
     button {
         background: none;
         border: none;
         color: $white;
         cursor: pointer;
-        font-size: $font-size-sm;
+        font-size: 18px;
         line-height: 1;
         padding: 0;
-        opacity: 0.8;
+        opacity: 0.9;
         display: flex;
         align-items: center;
         &:hover { opacity: 1; }
@@ -1273,6 +1401,15 @@
 }
 
 
+// Ensure input-group-append matches form-control-sm height (34px)
+.input-group .form-control-sm ~ .input-group-append .input-group-text,
+.input-group .form-control-sm + .input-group-append .input-group-text {
+    height: 34px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: $font-size-sm;
+}
+
 .input-group {
     input[type='range'] {
         &:disabled {
@@ -1715,7 +1852,7 @@
 .checkbox-box {
     width: 16px;
     height: 16px;
-    border-radius: $border-radius-sm;
+    border-radius: 2px;           // spec: 2px default
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -1723,35 +1860,45 @@
     box-sizing: border-box;
     transition: background 0.15s, border-color 0.15s;
 }
-.checkbox-box-sm { width: 12px; height: 12px; }
+.checkbox-box-sm {
+    width: 12px;
+    height: 12px;
+    border-radius: 1.5px;         // spec: 1.5px small
+}
 
+// Unselected enabled — neutral/400 (#9FACB7) border
 .checkbox-box-empty {
-    border: 2px solid $gray-500;
+    border: 2px solid $gray-500;  // $gray-500 = #9FACB7 = neutral/400 ✓
     background: transparent;
 }
 .checkbox:not(.checkbox-disabled):hover .checkbox-box-empty { border-color: $primary; }
 
+// Selected / indeterminate enabled — primary/500 fill
 .checkbox-box-checked {
-    background: $primary;
+    background: $bergblue;        // primary/500 #02A3D5
     border: 2px solid transparent;
 }
-.checkbox:not(.checkbox-disabled):hover .checkbox-box-checked { background: darken($primary, 8%); }
+.checkbox:not(.checkbox-disabled):hover .checkbox-box-checked { background: $primary-600; }
 
+// Unselected disabled — neutral/200 (#C4CCD2) border
 .checkbox-box-disabled-empty {
-    border: 2px solid $gray-300;
+    border: 2px solid $gray-400;  // $gray-400 = #C4CCD2 = neutral/200 ✓
     background: transparent;
 }
+// Selected / indeterminate disabled — neutral/200 fill
 .checkbox-box-disabled-checked {
-    background: $gray-300;
+    background: $gray-400;        // neutral/200 #C4CCD2
     border: 2px solid transparent;
 }
 
+// Error selected / indeterminate enabled — alert/500 fill
 .checkbox-box-error {
-    background: $danger;
+    background: $negative;        // alert/500 #E34C53
     border: 2px solid transparent;
 }
+// Error unselected enabled — alert/500 border
 .checkbox-box-error-empty {
-    border: 2px solid $danger;
+    border: 2px solid $negative;
     background: transparent;
 }
 
@@ -1808,8 +1955,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: $font-simplon;
   font-size: 12px;
   font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   color: $darkcharc;
   padding-right: 14px;
@@ -2085,40 +2235,203 @@
 }
 
 // ── Brand color utilities (supplement Bootstrap's built-ins) ──────────────
-// Text colors
+// Text colors — primary
+.text-primary-300 { color: $primary-300; }
+.text-primary-400 { color: $primary-400; }
 .text-primary-600 { color: $primary-600; }
-.text-primary-800 { color: $bergbluetint2; }  // #017295 — deep accent link
-.text-muted       { color: $gray-600 !important; }  // reinforce Bootstrap's .text-muted
-.text-body        { color: $gray-900 !important; }
+.text-primary-700 { color: $primary-700; }
+.text-primary-800 { color: $primary-800; }
+.text-primary-900 { color: $primary-900; }
+// Text colors — neutral
 .text-neutral-300 { color: $neutral-300; }
 .text-neutral-500 { color: $neutral-500; }
+.text-neutral-600 { color: $neutral-600; }
+.text-neutral-700 { color: $neutral-700; }
+.text-neutral-800 { color: $neutral-800; }
+.text-neutral-900 { color: $neutral-900; }
+.text-disabled    { color: $text-disabled; }
+// Text colors — semantic
+.text-muted       { color: $gray-600 !important; }
+.text-body        { color: $gray-900 !important; }
+// Text colors — success
+.text-success-300 { color: $success-300; }
 .text-success-700 { color: $success-700; }
+.text-success-900 { color: $success-900; }
+// Text colors — warning
+.text-warning-300 { color: $warning-300; }
 .text-warning-500 { color: $warning; }
 .text-warning-700 { color: $warning-700; }
 .text-warning-900 { color: $warning-900; }
+// Text colors — danger/alert
+.text-danger-300  { color: $alert-300; }
 .text-danger-700  { color: $alert-700; }
 .text-danger-900  { color: $alert-900; }
 
-// Background colors
+// Background colors — primary
 .bg-primary-08    { background-color: $primary-08; }
 .bg-primary-50    { background-color: $primary-50; }
+.bg-primary-100   { background-color: $primary-100; }
+.bg-primary-200   { background-color: $primary-200; }
+.bg-primary-300   { background-color: $primary-300; }
+.bg-primary-400   { background-color: $primary-400; }
 .bg-primary       { background-color: $primary; }
-.bg-primary-600   { background-color: $bergbluetint1; }  // #028FBB
+.bg-primary-600   { background-color: $primary-600; }
+.bg-primary-700   { background-color: $primary-700; }
+.bg-primary-800   { background-color: $primary-800; }
+.bg-primary-900   { background-color: $primary-900; }
+// Background colors — neutral
+.bg-neutral-25    { background-color: $gray-100; }
+.bg-neutral-50    { background-color: $gray-200; }
+.bg-neutral-100   { background-color: $gray-300; }
+.bg-neutral-200   { background-color: $gray-400; }
+.bg-neutral-300   { background-color: $neutral-300; }
+.bg-neutral-500   { background-color: $neutral-500; }
+.bg-neutral-600   { background-color: $neutral-600; }
+.bg-neutral-700   { background-color: $neutral-700; }
+.bg-neutral-800   { background-color: $neutral-800; }
+.bg-neutral-900   { background-color: $neutral-900; }
+// Background colors — success
+.bg-success-50    { background-color: $success-50; }
+.bg-success-100   { background-color: $success-100; }
+.bg-success-300   { background-color: $success-300; }
+.bg-success-700   { background-color: $success-700; }
+.bg-success-900   { background-color: $success-900; }
+// Background colors — warning
 .bg-warning-50    { background-color: $warning-50; }
 .bg-warning-100   { background-color: $warning-100; }
+.bg-warning-300   { background-color: $warning-300; }
+.bg-warning-700   { background-color: $warning-700; }
+.bg-warning-900   { background-color: $warning-900; }
+// Background colors — alert/danger
 .bg-alert-50      { background-color: $alert-50; }
 .bg-alert-100     { background-color: $alert-100; }
-.bg-success-50    { background-color: $success-50; }
-.bg-success-300   { background-color: $success-300; }
-.bg-neutral-25    { background-color: $gray-100; }
-.bg-neutral-100   { background-color: $gray-300; }
-.bg-neutral-500   { background-color: $neutral-500; }
+.bg-alert-300     { background-color: $alert-300; }
+.bg-alert-700     { background-color: $alert-700; }
+.bg-alert-900     { background-color: $alert-900; }
 
 // Border colors
 .border-primary-200  { border-color: $primary-200 !important; }
+.border-primary-300  { border-color: $primary-300 !important; }
 .border-warning-300  { border-color: $warning-300 !important; }
 .border-alert-300    { border-color: $alert-300 !important; }
 .border-success-300  { border-color: $success-300 !important; }
+
+// ── Typography scale ───────────────────────────────────────────────────────
+// H1 is Light (300); H2–H6 inherit $headings-font-weight (500 Medium)
+h1, .h1 { font-weight: 300; line-height: calc(40 / 32); }
+h2, .h2 { line-height: calc(36 / 28); }
+h3, .h3 { line-height: calc(32 / 24); }
+h4, .h4 { line-height: calc(32 / 22); }
+h5, .h5 { line-height: calc(32 / 20); }
+h6, .h6 { line-height: calc(32 / 18); }
+
+// Label styles — SimplonNorm Medium, uppercase
+.label-large  { font-family: $font-simplon; font-size: 14px; font-weight: 500; line-height: 20px; text-transform: uppercase; letter-spacing: 0; }
+.label-medium { font-family: $font-simplon; font-size: 12px; font-weight: 500; line-height: 16px; text-transform: uppercase; letter-spacing: 0; }
+.label-small  { font-family: $font-simplon; font-size: 11px; font-weight: 500; line-height: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+// Body styles — Roboto
+.body-large         { font-family: $font-roboto; font-size: 16px; font-weight: 400; line-height: 24px; }
+.body-large-600     { font-family: $font-roboto; font-size: 16px; font-weight: 600; line-height: 24px; }
+.body-medium        { font-family: $font-roboto; font-size: 14px; font-weight: 400; line-height: 20px; }
+.body-medium-600    { font-family: $font-roboto; font-size: 14px; font-weight: 600; line-height: 20px; }
+.body-small         { font-family: $font-roboto; font-size: 12px; font-weight: 400; line-height: 16px; }
+.body-small-600     { font-family: $font-roboto; font-size: 12px; font-weight: 600; line-height: 16px; }
+.body-caption       { font-family: $font-roboto; font-size: 11px; font-weight: 400; line-height: 16px; }
+.body-caption-600   { font-family: $font-roboto; font-size: 11px; font-weight: 600; line-height: 16px; }
+
+// Utility / footer — SimplonNorm Regular
+.text-footer { font-family: $font-simplon; font-size: 11px; font-weight: 400; line-height: 14px; }
+
+// ── Alert banners ──────────────────────────────────────────────────────────
+// Toast: full-width 56px single-line bar
+.alert-toast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 56px;
+  padding: 0 24px;
+  font-family: $font-roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  width: 100%;
+  border-radius: 0;
+  border: none;
+
+  .material-icons-outlined { font-size: 24px; flex-shrink: 0; }
+}
+.alert-toast-success { background: $success-300; color: $success-900; }
+.alert-toast-warning { background: $warning-300; color: $warning-900; }
+.alert-toast-danger  { background: $alert-300;   color: $alert-900; }
+.alert-toast-info    { background: $primary-300; color: $primary-900; }
+
+// Confirm banner: two-line with action buttons, 72px min-height
+.alert-confirm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 14px 24px;
+  width: 100%;
+  border-radius: 0;
+  border: none;
+  gap: 16px;
+}
+.alert-confirm-left  { display: flex; align-items: flex-start; gap: 8px; flex: 1; }
+.alert-confirm-icon  { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.alert-confirm-body  { display: flex; flex-direction: column; gap: 4px; }
+.alert-confirm-title { font-family: $font-roboto; font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: 0.5px; }
+.alert-confirm-desc  { font-family: $font-roboto; font-size: 14px; font-weight: 400; line-height: 20px; }
+.alert-confirm-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+.alert-confirm-warning { background: $warning-300; color: $warning-900; }
+.alert-confirm-danger  { background: $alert-300;   color: $alert-900; }
+.alert-confirm-info    { background: $primary-100; color: $primary-900; }
+
+// Warning-toned button used inside alert-confirm banners
+.btn-warning-outline {
+  background: $warning-100;
+  border: 1px solid $warning-900;
+  color: $warning-900;
+  font-family: $font-simplon;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  height: 32px;
+  padding: 0 8px;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover:not(:disabled) { background: $warning-300; }
+  &:disabled { opacity: 0.5; cursor: default; }
+}
+
+// Inline notice — compact single-line, bordered
+.alert-inline {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: $radius-sm;
+  border: 1px solid transparent;
+  font-family: $font-roboto;
+  font-size: 13px;
+  line-height: 1.5;
+  width: 100%;
+
+  .material-icons-outlined { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+}
+.alert-inline-warning { background: $warning-50;  border-color: $warning-300; color: $warning-900; }
+.alert-inline-danger  { background: $alert-50;    border-color: $alert-300;   color: $alert-900; }
+.alert-inline-info    { background: $primary-08;  border-color: $primary-300; color: $primary-900; }
+.alert-inline-success { background: $success-50;  border-color: $success-300; color: $success-900; }
 
 // ── Paginator ─────────────────────────────────────────────────────────────
 .paginator {
@@ -2130,7 +2443,7 @@
   padding: 12px 16px 12px;
   font-size: 14px;
   color: $gray-900;
-  font-family: "Simplon Norm", "Roboto", sans-serif;
+  font-family: $font-simplon;
 }
 
 .paginator-left {
@@ -2207,7 +2520,7 @@
   border-radius: 0;
   text-align: center;
   font-size: 14px;
-  font-family: "Simplon Norm", "Roboto", sans-serif;
+  font-family: $font-simplon;
   color: $gray-900;
   background: $white;
   padding: 0;

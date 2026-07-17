@@ -49,7 +49,7 @@ export default function Flag({ type = 'pep', icon = 'person' }) {
 
   return (
     <span className={styles.flag} style={{ background: config.bg }}>
-      <span className={`material-icons-outlined ${styles.icon}`}>{iconName}</span>
+      <span className={`material-icons ${styles.icon}`}>{iconName}</span>
       <span className={`${styles.label} ${textClass}`}>{config.label}</span>
     </span>
   );

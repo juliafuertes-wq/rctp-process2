@@ -721,7 +721,7 @@ export default function AddThirdParty() {
                   {tags.length > 0 && (
                     <div className={styles.tagChips}>
                       {tags.map(t => (
-                        <span key={t} className="chip-tag">{t}<button onClick={() => toggleTag(t)}>×</button></span>
+                        <span key={t} className="chip-tag-selected">{t}<button onClick={() => toggleTag(t)}>×</button></span>
                       ))}
                     </div>
                   )}
@@ -835,7 +835,8 @@ export default function AddThirdParty() {
             <div className={styles.obWarningIntro}>
               <span className="material-icons-outlined">warning_amber</span>
               <div>
-                <strong>Entity Verification data available.</strong> The fields below have been pre-populated with the verified information. Modifying these details will override the verified data and the Entity Verification label will be lost.
+                <strong>Entity Verification data available.</strong>
+                <div>The fields below have been pre-populated with the verified information. Modifying these details will override the verified data and the Entity Verification label will be lost.</div>
               </div>
             </div>
           )}

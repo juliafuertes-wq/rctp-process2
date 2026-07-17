@@ -478,18 +478,23 @@ $primary-800: #01556F;
 
 /* ── Field Grid ── */
 .fieldLabel {
+  font-family: 'Simplon Norm', 'Roboto', sans-serif;
   font-size: 11px;
   font-weight: 500;
   color: $bergbluetint1;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  line-height: 16px;
   margin-bottom: 4px;
 }
 
 .fieldValue {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-size: 16px;
+  font-weight: 400;
   color: $gray-900;
   line-height: 24px;
+  letter-spacing: 0.5px;
 }
 
 .fieldValueFlag {
@@ -1017,16 +1022,17 @@ $primary-800: #01556F;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 48px;
-  padding: 0 14px 0 12px;
-  background: rgba($bergbluetint1,0.08);
+  height: 40px;
+  padding: 0 8px;
+  background: $gray-300;
   cursor: pointer;
   user-select: none;
-  transition: background 0.25s ease;
-  border: 1px solid $gray-200;
-  border-radius: 4px;
+  transition: background 0.2s ease;
+  border-top: 1px solid $gray-400;
+  border-bottom: 1px solid $gray-400;
+  border-radius: 0;
 }
-.accordionHeader:hover { background: $primary-50; }
+.accordionHeader:hover { background: $gray-400; }
 .levelLow {
   background: linear-gradient(201.532deg, rgba(19, 223, 129, 0.20) 0%, rgba(19, 223, 129, 0.10) 20.673%, rgba(255, 255, 255, 0) 100%);
   border-color: $level-low-border;
@@ -1048,10 +1054,12 @@ $primary-800: #01556F;
   gap: 10px;
 }
 .accordionLabel {
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: $gray-900;
-  letter-spacing: 0.1px;
+  line-height: 20px;
+  color: #000000;
+  letter-spacing: 0;
 }
 .accordionFactorCount {
   font-size: 11px;
@@ -1079,12 +1087,13 @@ $primary-800: #01556F;
   color: $gray-900;
 }
 .accordionCaret {
-  font-size: 20px;
+  font-size: 24px;
   color: $gray-600;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
+  transform: rotate(-180deg);
 }
 .accordionCaretCollapsed {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 .accordionBody {
   overflow: hidden;

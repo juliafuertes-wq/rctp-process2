@@ -16,7 +16,7 @@
 .tagChips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 
 /* ── Helper text ── */
-.helperText { font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 400; color: $text-light-alt; line-height: 16px; }
+.helperText { font-family: $font-roboto; font-size: 12px; font-weight: 400; color: $text-light-alt; line-height: 16px; }
 
 /* ── Profile side panel ── */
 .panelOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: var(--z-overlay); }
@@ -37,7 +37,7 @@
 .filterInput:focus { border-color: $bergbluetint1; }
 .filterSelect {
   width: 100%; height: 34px; border: 1px solid $neutral-300; border-radius: 2px;
-  padding: 0 36px 0 9px; font-size: 14px; font-family: 'Roboto', sans-serif;
+  padding: 0 36px 0 9px; font-size: 14px; font-family: $font-roboto;
   color: $text-light-alt; background: $white; outline: none; cursor: pointer;
   appearance: none; -webkit-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='%230C2A31'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
@@ -126,7 +126,7 @@
 }
 
 /* Type cards */
-.sectionHeading { font-family: 'Roboto', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: $gray-600; line-height: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid $gray-200; display: flex; align-items: center; justify-content: space-between; }
+.sectionHeading { font-family: $font-simplon; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: $gray-600; line-height: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid $gray-200; display: flex; align-items: center; justify-content: space-between; }
 .typeCards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 12px; }
 .typeError .typeCard { border-color: $danger; }
 .typeCard {
@@ -153,10 +153,10 @@
 /* Form fields */
 .editGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; margin-top: 16px; margin-bottom: 24px; }
 .editField { display: flex; flex-direction: column; gap: 8px; }
-.editLabel { font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; display: flex; align-items: center; gap: 4px; }
+.editLabel { font-family: $font-simplon; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; display: flex; align-items: center; gap: 4px; }
 .editInput {
   height: 34px; border: 1px solid $neutral-300; border-radius: 2px;
-  padding: 0 9px; font-size: 14px; font-family: 'Roboto', sans-serif;
+  padding: 0 9px; font-size: 14px; font-family: $font-roboto;
   color: $gray-900; background: $white; outline: none;
   transition: border-color 0.15s; width: 100%;
 }
@@ -248,10 +248,10 @@
 
 /* Field group */
 .fieldGroup { display: flex; flex-direction: column; gap: 6px; }
-.fieldLabel { font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; }
+.fieldLabel { font-family: $font-simplon; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; }
 .fieldSelect {
   height: 34px; border: 1px solid $neutral-300; border-radius: 2px;
-  padding: 0 36px 0 9px; font-size: 14px; font-family: 'Roboto', sans-serif;
+  padding: 0 36px 0 9px; font-size: 14px; font-family: $font-roboto;
   color: $gray-900; background: $white; width: 100%;
   appearance: none; -webkit-appearance: none; outline: none; cursor: pointer;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='%230C2A31'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
@@ -281,7 +281,7 @@
 /* Onboarding pre-fields (Notes + Language) */
 .obPreFields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; margin-bottom: 16px; }
 .obPreField { display: flex; flex-direction: column; gap: 6px; }
-.obPreLabel { font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; }
+.obPreLabel { font-family: $font-simplon; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; }
 
 /* Onboarding blocks */
 .obBlocks { display: flex; flex-direction: column; }
@@ -293,7 +293,7 @@
 .obBlockHead { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
 .obNum { font-size: 14px; font-weight: 700; color: $gray-900; min-width: 22px; }
 .obLabel { font-size: 14px; font-weight: 600; color: $gray-900; }
-.obInput { width: 100%; height: 34px; border: 1px solid $neutral-300; border-radius: 2px; padding: 0 9px; font-size: 14px; font-family: 'Roboto', sans-serif; color: $gray-900; background: $white; outline: none; transition: border-color 0.15s; }
+.obInput { width: 100%; height: 34px; border: 1px solid $neutral-300; border-radius: 2px; padding: 0 9px; font-size: 14px; font-family: $font-roboto; color: $gray-900; background: $white; outline: none; transition: border-color 0.15s; }
 .obInput:focus { border-color: $neutral-500; color: $gray-900; }
 .obInput::placeholder { color: $gray-500; }
 .obInput[readonly] { background: $neutral-25; color: $text-light-alt; cursor: default; }
@@ -308,7 +308,7 @@
 }
 .obError { font-size: 11px; color: $danger; margin-top: 4px; }
 .obSubGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.obSubLabel { font-family: 'Roboto', sans-serif; font-size: 11px; font-weight: 600; color: $gray-600; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; margin-bottom: 6px; }
+.obSubLabel { font-family: $font-simplon; font-size: 11px; font-weight: 600; color: $gray-600; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; margin-bottom: 6px; }
 
 /* Unknown TP description checkboxes */
 .obCheckboxGroup { display: flex; flex-direction: column; gap: 10px; padding: 4px 0; }

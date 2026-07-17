@@ -479,7 +479,7 @@ $primary-800: #01556F;
 
 /* ── Field Grid ── */
 .fieldLabel {
-  font-family: 'Simplon Norm', 'Roboto', sans-serif;
+  font-family: $font-simplon;
   font-size: 11px;
   font-weight: 500;
   color: $bergbluetint1;
@@ -490,7 +490,7 @@ $primary-800: #01556F;
 }
 
 .fieldValue {
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: $font-roboto;
   font-size: 16px;
   font-weight: 400;
   color: $gray-900;
@@ -1055,7 +1055,7 @@ $primary-800: #01556F;
   gap: 10px;
 }
 .accordionLabel {
-  font-family: 'Roboto', sans-serif;
+  font-family: $font-roboto;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;

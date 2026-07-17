@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
+import 'bootstrap'
 import './styles/globals.css'
 import './styles/main.scss'
 import App from './App.jsx'

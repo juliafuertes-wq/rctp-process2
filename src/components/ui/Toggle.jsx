@@ -4,8 +4,10 @@ export default function Toggle({
   labelOn = 'Active',
   labelOff = 'Inactive',
   disabled = false,
+  size = 'default',
 }) {
   let cls = 'toggle';
+  if (size === 'small') cls += ' toggle-sm';
   if (!value) cls += ' toggle-off';
   if (disabled) cls += ' toggle-disabled';
 

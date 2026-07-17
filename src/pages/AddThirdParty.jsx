@@ -569,7 +569,7 @@ export default function AddThirdParty() {
                                   setTimeout(() => summaryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
                                 }}
                               >
-                                Unselect
+                                Selected
                               </button>
                             ) : (
                               <button

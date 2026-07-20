@@ -175,20 +175,20 @@ function UpcomingTable({ rows, search, selected, onSelect }) {
             ) : filtered.map((row, i) => (
               <tr key={i}>
                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}><Checkbox checked={selected.has(i)} onChange={() => toggleRow(i)} /></td>
-                <td><TaskTypeBadge type={row.type} /></td>
-                <td>
+                <td className={styles.tdMedium}><TaskTypeBadge type={row.type} /></td>
+                <td className={styles.tdMedium}>
                   {row.tpId
                     ? <Link to={`/profile/${row.tpId}`} className={styles.cellLink}>{row.name}</Link>
                     : <span className={styles.cellLink}>{row.name}</span>}
                 </td>
-                <td>
+                <td className={styles.tdMedium}>
                   {row.tpId
                     ? <Link to={`/profile/${row.tpId}`} className={styles.cellLink}>{row.tp}</Link>
                     : <span className={styles.cellLink}>{row.tp}</span>}
                 </td>
-                <td><StatusBadge status={row.status} /></td>
-                <td><RiskChip risk={row.risk} /></td>
-                <td>{row.owner}</td>
+                <td className={styles.tdRegular}><StatusBadge status={row.status} /></td>
+                <td className={styles.tdSemibold}><RiskChip risk={row.risk} /></td>
+                <td className={styles.tdRegular}>{row.owner}</td>
                 <td>{row.dueDate}</td>
               </tr>
             ))}
@@ -251,20 +251,20 @@ function ActionsTable({ rows, search, selected, onSelect }) {
             ) : filtered.map((row, i) => (
               <tr key={i}>
                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}><Checkbox checked={selected.has(i)} onChange={() => toggleRow(i)} /></td>
-                <td><TaskTypeBadge type={row.type} /></td>
-                <td>
+                <td className={styles.tdMedium}><TaskTypeBadge type={row.type} /></td>
+                <td className={styles.tdMedium}>
                   {row.tpId
                     ? <Link to={`/profile/${row.tpId}`} className={styles.cellLink}>{row.name}</Link>
                     : <span className={styles.cellLink}>{row.name}</span>}
                 </td>
-                <td>
+                <td className={styles.tdMedium}>
                   {row.tpId
                     ? <Link to={`/profile/${row.tpId}`} className={styles.cellLink}>{row.tp}</Link>
                     : <span className={styles.cellLink}>{row.tp}</span>}
                 </td>
-                <td>{row.status}</td>
-                <td><RiskChip risk={row.risk} /></td>
-                <td>{row.owner}</td>
+                <td className={styles.tdRegular}>{row.status}</td>
+                <td className={styles.tdSemibold}><RiskChip risk={row.risk} /></td>
+                <td className={styles.tdRegular}>{row.owner}</td>
                 <td>{row.date}</td>
                 <td>{row.age}</td>
               </tr>
@@ -462,20 +462,20 @@ function SMTContent({ rows }) {
                 {filtered.map((row, i) => (
                   <tr key={i}>
                     <td style={{ width: 40, textAlign: 'center' }}><Checkbox checked={false} onChange={() => {}} /></td>
-                    <td><TaskTypeBadge type={row.type} /></td>
-                    <td>
+                    <td className={styles.tdMedium}><TaskTypeBadge type={row.type} /></td>
+                    <td className={styles.tdMedium}>
                       {row.tpId
                         ? <Link to={`/profile/${row.tpId}`} className={styles.cellLink}>{row.name}</Link>
                         : <span className={styles.cellLink}>{row.name}</span>}
                     </td>
-                    <td>
+                    <td className={styles.tdMedium}>
                       {row.tpId
                         ? <Link to={`/profile/${row.tpId}`} className={styles.cellLink}>{row.tp}</Link>
                         : <span className={styles.cellLink}>{row.tp}</span>}
                     </td>
-                    <td><StatusBadge status={row.status} /></td>
-                    <td><RiskChip risk={row.risk} /></td>
-                    <td>{row.owner}</td>
+                    <td className={styles.tdRegular}><StatusBadge status={row.status} /></td>
+                    <td className={styles.tdSemibold}><RiskChip risk={row.risk} /></td>
+                    <td className={styles.tdRegular}>{row.owner}</td>
                     <td>{row.date}</td>
                     <td>{row.age}</td>
                   </tr>

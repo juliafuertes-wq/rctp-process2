@@ -119,10 +119,10 @@ export default function ThirdParties() {
             <tbody>
               {ROWS.map((row, i) => (
                 <tr key={i}>
-                  <td><Link to={`/profile/${row.id}`} className={styles.cellLink}>{row.name}</Link></td>
-                  <td>{row.owner}</td>
-                  <td>{row.bu}</td>
-                  <td>
+                  <td className={styles.tdMedium}><Link to={`/profile/${row.id}`} className={styles.cellLink}>{row.name}</Link></td>
+                  <td className={styles.tdRegular}>{row.owner}</td>
+                  <td className={styles.tdRegular}>{row.bu}</td>
+                  <td className={styles.tdMedium11}>
                     {row.tag && (
                       <div className={styles.tagList}>
                         {row.tag.split(',').map(t => t.trim()).filter(Boolean).map(t => (
@@ -131,11 +131,11 @@ export default function ThirdParties() {
                       </div>
                     )}
                   </td>
-                  <td>{row.stage}</td>
-                  <td><RiskBadge level={row.risk} /></td>
-                  <td>{row.ref || ''}</td>
-                  <td>{row.status}</td>
-                  <td>Yes</td>
+                  <td className={styles.tdRegular}>{row.stage}</td>
+                  <td className={styles.tdMedium12}><RiskBadge level={row.risk} /></td>
+                  <td className={styles.tdRegular}>{row.ref || ''}</td>
+                  <td className={styles.tdRegular}>{row.status}</td>
+                  <td className={styles.tdRegular}>Yes</td>
                 </tr>
               ))}
             </tbody>

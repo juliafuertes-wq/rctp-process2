@@ -62,8 +62,13 @@
   color: $gray-600; border: 1px solid $gray-200;
 }
 
-.cellLink { color: $primary-600; font-weight: 500; }
+.cellLink { color: $primary-600; font-weight: inherit; }
 .cellLink:hover { text-decoration: underline; }
+
+.tdMedium      { font-family: $font-roboto; font-weight: 500; }
+.tdRegular     { font-family: $font-roboto; font-weight: 400; }
+.tdMedium11    { font-family: $font-roboto; font-weight: 500; font-size: 11px; }
+.tdMedium12    { font-family: $font-roboto; font-weight: 500; font-size: 12px; }
 
 .tagList {
   display: flex; flex-wrap: wrap; gap: 4px;

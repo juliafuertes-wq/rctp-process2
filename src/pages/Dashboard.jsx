@@ -186,8 +186,8 @@ function UpcomingTable({ rows, search, selected, onSelect }) {
                     ? <Link to={`/profile/${row.tpId}`} className={styles.cellLink}>{row.tp}</Link>
                     : <span className={styles.cellLink}>{row.tp}</span>}
                 </td>
-                <td>{row.status}</td>
-                <td>{RISK_LABELS[row.risk] ?? row.risk}</td>
+                <td><StatusBadge status={row.status} /></td>
+                <td><RiskChip risk={row.risk} /></td>
                 <td>{row.owner}</td>
                 <td>{row.dueDate}</td>
               </tr>

@@ -265,8 +265,8 @@ function ActionsTable({ rows, search, selected, onSelect }) {
                 <td className={styles.tdRegular}>{row.status}</td>
                 <td className={styles.tdSemibold}><RiskChip risk={row.risk} /></td>
                 <td className={styles.tdRegular}>{row.owner}</td>
-                <td>{row.date}</td>
-                <td>{row.age}</td>
+                <td className={styles.tdRegular}>{row.date}</td>
+                <td className={styles.tdRegular}>{row.age}</td>
               </tr>
             ))}
           </tbody>
@@ -476,8 +476,8 @@ function SMTContent({ rows }) {
                     <td className={styles.tdRegular}><StatusBadge status={row.status} /></td>
                     <td className={styles.tdSemibold}><RiskChip risk={row.risk} /></td>
                     <td className={styles.tdRegular}>{row.owner}</td>
-                    <td>{row.date}</td>
-                    <td>{row.age}</td>
+                    <td className={styles.tdRegular}>{row.date}</td>
+                    <td className={styles.tdRegular}>{row.age}</td>
                   </tr>
                 ))}
               </tbody>

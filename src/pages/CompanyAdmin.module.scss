@@ -117,7 +117,6 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-right: 8px;
   font-size: 12px;
   font-weight: 500;
   color: $gray-600;
@@ -127,8 +126,9 @@
 
 .processSelect {
   height: 32px;
+  box-sizing: border-box;
   padding: 0 28px 0 10px;
-  border: 1px solid $gray-300;
+  border: 1px solid $gray-300;  // #D6DBE0
   border-radius: $radius-sm;
   background: $white url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23516267' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 10px center;
   font-size: 13px;
@@ -138,6 +138,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  vertical-align: middle;
   transition: border-color 0.15s ease;
 }
 .processSelect:hover { border-color: $neutral-300; }

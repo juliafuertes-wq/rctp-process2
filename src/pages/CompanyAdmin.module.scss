@@ -347,12 +347,19 @@
   border-bottom: 1px solid $gray-300;
   padding: 8px 12px;
   text-align: left;
+  font-family: $font-roboto;
   font-size: 11px;
   font-weight: 600;
   color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
+}
+
+.rolesTable tbody td {
+  font-family: $font-roboto;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .rolesThName {

@@ -232,8 +232,9 @@ $primary-800: #01556F;
   border: 1px solid $gray-200;
   padding: 8px 28px 8px 8px;
   text-align: left;
+  font-family: $font-roboto;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -253,7 +254,9 @@ $primary-800: #01556F;
   padding: 8px;
   color: $gray-600;
   vertical-align: middle;
+  font-family: $font-roboto;
   font-size: 13px;
+  font-weight: 400;
 }
 
 .table tbody tr:nth-child(odd) td {
@@ -1125,8 +1128,9 @@ $primary-800: #01556F;
   border: 1px solid $gray-200;
   padding: 8px 28px 8px 8px;
   text-align: left;
+  font-family: $font-roboto;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1145,7 +1149,9 @@ $primary-800: #01556F;
   padding: 10px 12px;
   color: $gray-600;
   vertical-align: middle;
+  font-family: $font-roboto;
   font-size: 13px;
+  font-weight: 400;
 }
 .riskScoreCol {
   text-align: right;
@@ -1192,8 +1198,9 @@ $primary-800: #01556F;
   border: 1px solid $gray-200;
   padding: 8px 28px 8px 8px;
   text-align: left;
+  font-family: $font-roboto;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1212,6 +1219,9 @@ $primary-800: #01556F;
   padding: 8px;
   color: $gray-600;
   vertical-align: middle;
+  font-family: $font-roboto;
+  font-size: 13px;
+  font-weight: 400;
 }
 .genericTable tbody tr:nth-child(odd) td  { background: rgba($bergbluetint1,0.08); }
 .genericTable tbody tr:nth-child(even) td { background: $white; }

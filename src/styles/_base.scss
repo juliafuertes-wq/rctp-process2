@@ -1,5 +1,9 @@
 @import 'variables';
 
+// ── Remove browser focus outline on click (keep for keyboard via focus-visible) ──
+*:focus:not(:focus-visible) { outline: none !important; box-shadow: none !important; }
+button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
+
 // ── Button base ───────────────────────────────────────────────────────────────
 // Default size = S (32px) — matches spec "Size=S"
 .btn {

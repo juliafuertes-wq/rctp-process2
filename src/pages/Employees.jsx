@@ -114,13 +114,13 @@ export default function Employees() {
                 <tr><td colSpan={7} className="text-muted" style={{ textAlign: 'center', padding: '32px 0' }}>No employees found.</td></tr>
               ) : filtered.map((row, i) => (
                 <tr key={i}>
-                  <td><span className={styles.cellLink}>{row.name}</span></td>
-                  <td>{row.tags}</td>
-                  <td>{row.ref}</td>
-                  <td>{row.bu}</td>
-                  <td>{row.restricted}</td>
-                  <td>{row.active}</td>
-                  <td><StatusBadge status={row.status} /></td>
+                  <td className={styles.tdMedium}><span className={styles.cellLink}>{row.name}</span></td>
+                  <td className={styles.tdMedium11}>{row.tags}</td>
+                  <td className={styles.tdRegular}>{row.ref}</td>
+                  <td className={styles.tdRegular}>{row.bu}</td>
+                  <td className={styles.tdRegular}>{row.restricted}</td>
+                  <td className={styles.tdRegular}>{row.active}</td>
+                  <td className={styles.tdMedium11}><StatusBadge status={row.status} /></td>
                 </tr>
               ))}
             </tbody>

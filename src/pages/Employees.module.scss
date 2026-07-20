@@ -65,7 +65,11 @@
   color: $gray-600; border: 1px solid $gray-200;
 }
 
-.cellLink { color: $primary-600; font-weight: 500; cursor: pointer; }
+.cellLink { color: $primary-600; font-weight: inherit; cursor: pointer; }
 .cellLink:hover { text-decoration: underline; }
+
+.tdMedium   { font-family: $font-roboto; font-weight: 500; }
+.tdRegular  { font-family: $font-roboto; font-weight: 400; }
+.tdMedium11 { font-family: $font-roboto; font-weight: 500; font-size: 11px; }
 
 

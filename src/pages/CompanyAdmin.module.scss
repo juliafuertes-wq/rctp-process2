@@ -113,32 +113,30 @@
   align-items: center;
 }
 
-.processSelectLabel {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.processLabel {
   font-size: 12px;
   font-weight: 500;
-  color: $gray-600;
+  color: #516267;
   text-transform: uppercase;
   letter-spacing: 0.4px;
+  white-space: nowrap;
 }
 
 .processSelect {
+  width: 142px;
   height: 32px;
   box-sizing: border-box;
   padding: 0 28px 0 10px;
-  border: 1px solid $gray-300;  // #D6DBE0
+  border: 1px solid $gray-300;
   border-radius: $radius-sm;
   background: $white url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23516267' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 10px center;
   font-size: 13px;
   font-family: inherit;
   color: $gray-900;
   cursor: pointer;
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
-  vertical-align: middle;
   transition: border-color 0.15s ease;
 }
 .processSelect:hover { border-color: $neutral-300; }

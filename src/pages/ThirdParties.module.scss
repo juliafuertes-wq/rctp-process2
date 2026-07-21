@@ -65,10 +65,10 @@
 .cellLink { color: $primary-600; font-weight: inherit; }
 .cellLink:hover { text-decoration: underline; }
 
-.tdMedium      { font-family: $font-roboto; font-weight: 500; }
-.tdRegular     { font-family: $font-roboto; font-weight: 400; }
-.tdMedium11    { font-family: $font-roboto; font-weight: 500; font-size: 11px; }
-.tdMedium12    { font-family: $font-roboto; font-weight: 500; font-size: 12px; }
+.table tbody td.tdMedium   { font-family: $font-roboto; font-weight: 500; }
+.table tbody td.tdRegular  { font-family: $font-roboto; font-weight: 400; }
+.table tbody td.tdMedium11 { font-family: $font-roboto; font-weight: 500; font-size: 11px; }
+.table tbody td.tdMedium12 { font-family: $font-roboto; font-weight: 500; font-size: 12px; }
 
 .tagList {
   display: flex; flex-wrap: wrap; gap: 4px;

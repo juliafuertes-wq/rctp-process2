@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
+import Button from '../components/ui/Button';
 import styles from './Settings.module.scss';
 
 const SIDEBAR_ITEMS = {
@@ -187,11 +188,11 @@ function StagesPanel() {
         <div className={styles.contentActions}>
           {isEditing ? (
             <>
-              <button className={"btn btn-outline-secondary"} onClick={handleCancel}>Cancel</button>
-              <button className={"btn btn-primary"} onClick={handleSave}>Save</button>
+              <Button variant="outline" onClick={handleCancel}>Cancel</Button>
+              <Button variant="filled" onClick={handleSave}>Save</Button>
             </>
           ) : (
-            <button className={"btn btn-primary"} onClick={handleEdit}>Edit</button>
+            <Button variant="filled" onClick={handleEdit}>Edit</Button>
           )}
         </div>
       </div>
@@ -283,11 +284,11 @@ function CurrencyApprovalGroupsPanel() {
           </div>
           {isEditing ? (
             <>
-              <button className={"btn btn-outline-secondary"} onClick={handleCancel}>Cancel</button>
-              <button className={"btn btn-primary"} onClick={handleSave}>Save</button>
+              <Button variant="outline" onClick={handleCancel}>Cancel</Button>
+              <Button variant="filled" onClick={handleSave}>Save</Button>
             </>
           ) : (
-            <button className={"btn btn-primary"} onClick={handleEdit}>Edit</button>
+            <Button variant="filled" onClick={handleEdit}>Edit</Button>
           )}
         </div>
       </div>

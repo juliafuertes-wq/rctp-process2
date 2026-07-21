@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
+import Button from '../components/ui/Button';
 import styles from './CompanyAdmin.module.scss';
 
 const ROUTED_NAV = {
@@ -748,31 +749,23 @@ export default function CompanyAdmin() {
               <div className={styles.contentHeader}>
                 <div className={styles.contentTitle}>Third Party Details</div>
                 <div className={styles.contentActions}>
-                  <label className={styles.processSelectLabel}>
-                    <span>Process</span>
-                    <select
-                      className={styles.processSelect}
-                      value={activeProcess}
-                      onChange={e => handleProcessChange(e.target.value)}
-                    >
-                      {PROCESS_OPTIONS.map(opt => (
-                        <option key={opt.key} value={opt.key}>{opt.label}</option>
-                      ))}
-                    </select>
-                  </label>
+                  <span className={styles.processLabel}>Process</span>
+                  <select
+                    className={styles.processSelect}
+                    value={activeProcess}
+                    onChange={e => handleProcessChange(e.target.value)}
+                  >
+                    {PROCESS_OPTIONS.map(opt => (
+                      <option key={opt.key} value={opt.key}>{opt.label}</option>
+                    ))}
+                  </select>
                   {!isEditing && (
-                    <button className={"btn btn-primary"} onClick={handleEdit}>
-                      Edit
-                    </button>
+                    <Button variant="filled" onClick={handleEdit}>Edit</Button>
                   )}
                   {isEditing && (
                     <>
-                      <button className={"btn btn-outline-secondary"} onClick={handleCancel}>
-                        Cancel
-                      </button>
-                      <button className={"btn btn-primary"} onClick={handleSave}>
-                        Save
-                      </button>
+                      <Button variant="outline" onClick={handleCancel}>Cancel</Button>
+                      <Button variant="filled" onClick={handleSave}>Save</Button>
                     </>
                   )}
                 </div>
@@ -897,11 +890,11 @@ function SummaryPanel() {
         <div className={styles.contentActions}>
           {isEditing ? (
             <>
-              <button className={"btn btn-outline-secondary"} onClick={handleCancel}>Cancel</button>
-              <button className={"btn btn-primary"} onClick={handleSave}>Save</button>
+              <Button variant="outline" onClick={handleCancel}>Cancel</Button>
+              <Button variant="filled" onClick={handleSave}>Save</Button>
             </>
           ) : (
-            <button className={"btn btn-primary"} onClick={handleEdit}>Edit</button>
+            <Button variant="filled" onClick={handleEdit}>Edit</Button>
           )}
         </div>
       </div>
@@ -1011,9 +1004,7 @@ function RolesPanel() {
           <span className={`material-icons-outlined ${styles.rolesTitleIcon}`}>info</span>
         </div>
         <div className={styles.contentActions}>
-          <button className={"btn btn-primary"}>
-            Add Role
-          </button>
+          <Button variant="filled">Add Role</Button>
         </div>
       </div>
 

@@ -5,6 +5,7 @@ import PageLayout from '../components/layout/PageLayout';
 import Breadcrumb from '../components/layout/Breadcrumb';
 import { ROLES_DATA } from './CompanyAdmin';
 import Checkbox from '../components/ui/Checkbox';
+import Button from '../components/ui/Button';
 import styles from './RoleDetails.module.scss';
 
 const PERMISSION_TABS = ['Dashboard', 'Third parties', 'Employees', 'Risk Search', 'Company Admin', 'Settings', 'Reports'];
@@ -267,15 +268,15 @@ export default function RoleDetails() {
           <div className={styles.headerActions}>
             {isEditing ? (
               <>
-                <button className="btn btn-outline-secondary" onClick={handleCancel}>Cancel</button>
-                <button className="btn btn-outline-secondary" onClick={handleDelete}>Delete</button>
-                <button className="btn btn-primary" onClick={handleSave}>Save and close</button>
-                <button className="btn btn-primary" onClick={handleSave}>Save</button>
+                <Button variant="outline" onClick={handleCancel}>Cancel</Button>
+                <Button variant="danger" onClick={handleDelete}>Delete</Button>
+                <Button variant="filled" onClick={handleSave}>Save and close</Button>
+                <Button variant="filled" onClick={handleSave}>Save</Button>
               </>
             ) : (
               <>
-                <button className={"btn btn-outline-secondary"} onClick={() => navigate('/company-admin/roles')}>Back</button>
-                <button className={"btn btn-primary"} onClick={handleEdit}>Edit</button>
+                <Button variant="outline" onClick={() => navigate('/company-admin/roles')}>Back</Button>
+                <Button variant="filled" onClick={handleEdit}>Edit</Button>
               </>
             )}
           </div>
@@ -305,11 +306,11 @@ export default function RoleDetails() {
             <div className={styles.checkboxRow}>
               <label className={styles.checkboxLabel}>
                 <Checkbox checked={restrictTP} onChange={() => isEditing && setRestrictTP(v => !v)} disabled={!isEditing} />
-                Third parties
+                <span className={styles.checkboxText}>Third parties</span>
               </label>
               <label className={styles.checkboxLabel}>
                 <Checkbox checked={restrictEmp} onChange={() => isEditing && setRestrictEmp(v => !v)} disabled={!isEditing} />
-                Employees
+                <span className={styles.checkboxText}>Employees</span>
               </label>
             </div>
           </div>

@@ -2,6 +2,7 @@ export default function Button({ variant = 'outline', size = 'md', children, ico
   const variantClass = {
     filled:  'btn btn-primary',
     outline: 'btn btn-outline-secondary',
+    danger:  'btn btn-outline-danger',
     text:    'btn btn-link',
     soft:    'btn btn-soft',
     ghost:   'btn btn-link',

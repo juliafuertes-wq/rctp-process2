@@ -613,10 +613,10 @@ $primary-800: #01556F;
 /* ── Connect side panel ── */
 .connectOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 1040; }
 .connectPanel { position: fixed; top: 0; right: 0; width: 540px; max-width: 100vw; height: 100vh; background: $white; border-top: 4px solid $bergbluetint1; border-left: 1px solid $gray-200; box-shadow: -4px 0 20px rgba(0,0,0,0.1); z-index: 1041; display: flex; flex-direction: column; overflow: hidden; }
-.lookMorePanel { position: fixed; top: 0; right: 0; width: 940px; max-width: 100vw; height: 100vh; background: $white; border-top: 4px solid $bergbluetint1; border-left: 1px solid $gray-200; box-shadow: -4px 0 20px rgba(0,0,0,0.1); z-index: 100; display: flex; flex-direction: column; overflow: hidden; }
+.lookMorePanel { position: fixed; top: 0; right: 0; width: 940px; max-width: 100vw; height: 100vh; background: $white; border-top: 4px solid $bergbluetint1; border-left: 1px solid $gray-200; box-shadow: -4px 0 20px rgba(0,0,0,0.1); z-index: 1041; display: flex; flex-direction: column; overflow: hidden; }
 
 /* ── Notes side panel ── */
-.notesPanel { position: fixed; top: 0; right: 0; width: 650px; max-width: 100vw; height: 100vh; background: $white; border-left: 1px solid $gray-200; box-shadow: -4px 0 20px rgba(0,0,0,0.1); z-index: 100; display: flex; flex-direction: column; overflow: hidden; }
+.notesPanel { position: fixed; top: 0; right: 0; width: 650px; max-width: 100vw; height: 100vh; background: $white; border-left: 1px solid $gray-200; box-shadow: -4px 0 20px rgba(0,0,0,0.1); z-index: 1041; display: flex; flex-direction: column; overflow: hidden; }
 .notesPanelHeader { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 3px solid $bergbluetint1; flex-shrink: 0; }
 .notesPanelTitle { color: $gray-900; margin: 0; }
 .notesPanelContent { flex: 1; overflow-y: auto; padding: 16px 20px; }
@@ -1491,7 +1491,7 @@ $primary-800: #01556F;
   background: $white;
   border-left: 1px solid $gray-300;
   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  z-index: 1051;
   display: flex;
   flex-direction: column;
   overflow: hidden;

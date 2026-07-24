@@ -67,6 +67,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
   const [cancelRenewalModalOpen, setCancelRenewalModalOpen] = useState(false);
   const [renewalDetailsPanelOpen, setRenewalDetailsPanelOpen] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(profile?.currentStatus?.label || 'Pending Approval');
+  const [statusTooltip, setStatusTooltip] = useState(null);
 
   const [screeningReady, setScreeningReady] = useState(profile?.id !== 'starkindustries');
   useEffect(() => {
@@ -197,7 +198,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                 <div className="ph-badge-label">Current status:</div>
                 {(() => {
                   const { cls, icon, display, tooltip: configTooltip } = getStatusConfig(currentStatus);
-                  const tip = profile.currentStatus?.tooltip ?? configTooltip;
+                  const tip = statusTooltip ?? profile.currentStatus?.tooltip ?? configTooltip;
                   const badge = (
                     <div
                       ref={statusBadgeRef}
@@ -789,6 +790,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   if (profile.id === 'dundermifflin') setDMFlow({ renewed: true, approved: false });
                   if (profile.id === 'lumon') setLumonFlow({ renewed: true, approved: false });
                   setCurrentStatus('Approved - Renewal Required');
+                  setStatusTooltip('Renewal started manually.');
                   setRenewalModalOpen(false);
                 }}
               >Continue</button>

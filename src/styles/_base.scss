@@ -55,19 +55,19 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 
 // ── Filled (Primary) ──────────────────────────────────────────────────────────
 .btn-primary {
-    background-color: $bergbluetint1;  // #028FBB
-    border-color: $bergbluetint1;
+    background-color: $bergblue;  // #02A3D5
+    border-color: $bergblue;
     color: $white;
 
     &:hover:not(:disabled), &:focus:not(:disabled) {
-        background-color: $bergbluetint2;  // #017295
-        border-color: $bergbluetint2;
+        background-color: $bergbluetint1;  // #028FBB
+        border-color: $bergbluetint1;
         color: $white;
     }
 
     &:active:not(:disabled) {
-        background-color: $bergbluetint2;
-        border: 3px solid $bergbluetint1;
+        background-color: $bergbluetint1;
+        border: 3px solid $bergblue;
         color: $white;
     }
 

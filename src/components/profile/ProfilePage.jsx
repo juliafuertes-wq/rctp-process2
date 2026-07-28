@@ -541,7 +541,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               const rows = profileLoading ? [] : profile.openTasks;
               return (
                 <div className={styles.cardInner}>
-                  <table className={styles.table}>
+                  <table className={`${styles.table} ${styles.tasksTable}`}>
                     <thead>
                       <tr>
                         <th style={{ width: '20%' }}>Task Type <span className="material-icons-outlined" style={{ fontSize: 12 }}>arrow_drop_down</span></th>
@@ -599,7 +599,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
             {(
               <motion.div key={profileLoading ? 'screening-loading' : 'screening-loaded'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
             <div className={styles.cardInner}>
-              <table className={styles.table}>
+              <table className={`${styles.table} ${styles.screeningTable}`}>
                 <thead>
                   <tr>
                     <th>Name</th>

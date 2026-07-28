@@ -344,6 +344,9 @@ $primary-800: #01556F;
 .cellLink {
   color: $bergbluetint2;
   cursor: pointer;
+  font-family: $font-simplon;
+  font-size: 13px;
+  font-weight: 400;
 }
 .cellLink:hover { text-decoration: underline; }
 
@@ -366,6 +369,7 @@ $primary-800: #01556F;
   font-size: 14px;
   color: $text-light-alt;
   background: $white;
+  appearance: none;
 }
 
 /* ── Tabs ── */
@@ -482,7 +486,7 @@ $primary-800: #01556F;
 
 /* ── Field Grid ── */
 .fieldLabel {
-  font-family: $font-roboto;
+  font-family: $font-simplon;
   font-size: 11px;
   font-weight: 500;
   color: $bergbluetint1;
@@ -833,6 +837,7 @@ $primary-800: #01556F;
   display: flex;
   align-items: center;
   gap: 6px;
+  font-family: $font-simplon;
   font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
@@ -856,6 +861,20 @@ $primary-800: #01556F;
   width: 13.333px;
   height: 13.333px;
   display: block;
+}
+
+/* ── Screening table: all data cols Simplon Norm except Category (col 6) ── */
+.screeningTable tbody td:not(:nth-child(6)) {
+  font-family: $font-simplon;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* ── Tasks table: data columns use Simplon Norm ── */
+.tasksTable tbody td:not(:first-child) {
+  font-family: $font-simplon;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 /* ── Screening ── */

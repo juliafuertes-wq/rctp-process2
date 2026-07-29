@@ -232,9 +232,9 @@ $primary-800: #01556F;
   border: 1px solid $gray-200;
   padding: 8px 28px 8px 8px;
   text-align: left;
-  font-family: $font-roboto;
+  font-family: $font-simplon;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -357,6 +357,7 @@ $primary-800: #01556F;
   align-items: center;
   gap: 15px;
   padding-top: 16px;
+  font-family: $font-simplon;
   font-size: 13px;
   color: $gray-900;
 }
@@ -381,6 +382,7 @@ $primary-800: #01556F;
 }
 
 .tab {
+  font-family: $font-simplon;
   font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
@@ -461,9 +463,9 @@ $primary-800: #01556F;
 }
 
 .cardTitle {
+  font-family: $font-simplon;
   font-size: 20px;
   font-weight: 500;
-  font-family: inherit;
 }
 
 .cardHeaderRight {
@@ -743,6 +745,7 @@ $primary-800: #01556F;
   position: absolute;
   left: 16px;
   top: 8px;
+  font-family: $font-simplon;
   font-size: 16px;
   font-weight: 500;
   color: $bergbluetint2;
@@ -753,6 +756,7 @@ $primary-800: #01556F;
 .rcardLbl {
   position: absolute;
   left: 16px;
+  font-family: $font-simplon;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -767,6 +771,7 @@ $primary-800: #01556F;
 .rcardVal {
   position: absolute;
   right: 16px;
+  font-family: $font-simplon;
   font-size: 13px;
   color: $gray-900;
   text-align: right;
@@ -794,11 +799,11 @@ $primary-800: #01556F;
 }
 
 .sectionBar {
-  padding: 13px 16px 0;
+  padding: 29px 16px 0;
 }
 
 .sectionBarFlat {
-  padding: 16px 16px 0;
+  padding: 32px 16px 0;
 }
 
 .tasksTabBar {
@@ -824,6 +829,8 @@ $primary-800: #01556F;
   color: $neutral-300;
   font-size: 20px;
   cursor: help;
+  position: relative;
+  top: -1px;
 }
 
 .infoIconWrap {
@@ -1650,7 +1657,7 @@ $primary-800: #01556F;
   background: $white;
   border-left: 1px solid $gray-300;
   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-  z-index: 101;
+  z-index: 1051;
   display: flex;
   flex-direction: column;
   overflow: hidden;

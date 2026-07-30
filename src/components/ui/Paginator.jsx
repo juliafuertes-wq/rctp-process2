@@ -6,6 +6,7 @@ export default function Paginator({
   onPageChange,
   onPageSizeChange,
   pageSizeOptions = [20, 50, 100],
+  hideNav = false,
 }) {
   const start = totalItems === 0 ? 0 : (page - 1) * pageSize + 1;
   const end   = Math.min(page * pageSize, totalItems);
@@ -35,51 +36,53 @@ export default function Paginator({
         </span>
       </div>
 
-      <div className="paginator-nav">
-        <button
-          className={`paginator-nav-btn${atFirst ? '' : ' active'}`}
-          disabled={atFirst}
-          onClick={() => onPageChange?.(1)}
-          aria-label="First page"
-        >
-          |&lt;
-        </button>
-        <button
-          className={`paginator-nav-btn${atFirst ? '' : ' active'}`}
-          disabled={atFirst}
-          onClick={() => onPageChange?.(page - 1)}
-          aria-label="Previous page"
-        >
-          &lt;
-        </button>
-        <span className="paginator-label">Page</span>
-        <input
-          className="paginator-input"
-          type="number"
-          min={1}
-          max={totalPages}
-          value={page}
-          onChange={handlePageInput}
-          aria-label="Page number"
-        />
-        <span className="paginator-label">of {totalPages}</span>
-        <button
-          className={`paginator-nav-btn${atLast ? '' : ' active'}`}
-          disabled={atLast}
-          onClick={() => onPageChange?.(page + 1)}
-          aria-label="Next page"
-        >
-          &gt;
-        </button>
-        <button
-          className={`paginator-nav-btn${atLast ? '' : ' active'}`}
-          disabled={atLast}
-          onClick={() => onPageChange?.(totalPages)}
-          aria-label="Last page"
-        >
-          &gt;|
-        </button>
-      </div>
+      {!hideNav && (
+        <div className="paginator-nav">
+          <button
+            className={`paginator-nav-btn${atFirst ? '' : ' active'}`}
+            disabled={atFirst}
+            onClick={() => onPageChange?.(1)}
+            aria-label="First page"
+          >
+            |&lt;
+          </button>
+          <button
+            className={`paginator-nav-btn${atFirst ? '' : ' active'}`}
+            disabled={atFirst}
+            onClick={() => onPageChange?.(page - 1)}
+            aria-label="Previous page"
+          >
+            &lt;
+          </button>
+          <span className="paginator-label">Page</span>
+          <input
+            className="paginator-input"
+            type="number"
+            min={1}
+            max={totalPages}
+            value={page}
+            onChange={handlePageInput}
+            aria-label="Page number"
+          />
+          <span className="paginator-label">of {totalPages}</span>
+          <button
+            className={`paginator-nav-btn${atLast ? '' : ' active'}`}
+            disabled={atLast}
+            onClick={() => onPageChange?.(page + 1)}
+            aria-label="Next page"
+          >
+            &gt;
+          </button>
+          <button
+            className={`paginator-nav-btn${atLast ? '' : ' active'}`}
+            disabled={atLast}
+            onClick={() => onPageChange?.(totalPages)}
+            aria-label="Last page"
+          >
+            &gt;|
+          </button>
+        </div>
+      )}
     </div>
   );
 }

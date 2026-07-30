@@ -67,6 +67,7 @@ export default function ProfileDocuments() {
               totalPages={totalPages}
               pageSize={20}
               totalItems={totalDocs}
+              hideNav
             />
           </section>
         </main>

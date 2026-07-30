@@ -201,19 +201,25 @@ $primary-800: #01556F;
 .btnSearch {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   height: 36px;
-  padding: 0 16px;
-  border: 1px solid $neutral-300;
+  padding: 4px 16px 0;
+  border: 1px solid $gray-400;
   border-radius: 4px;
   background: $white;
   font-size: 13px;
   font-weight: 500;
-  color: $gray-600;
+  line-height: 1;
+  color: $gray-900;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: background 0.3s ease, border-color 0.3s ease;
+}
+.btnSearch .material-icons-outlined {
+  line-height: 1;
+  vertical-align: middle;
 }
 .btnSearch:hover {
   background: $gray-100;
@@ -232,7 +238,7 @@ $primary-800: #01556F;
   border: 1px solid $gray-200;
   padding: 8px 28px 8px 8px;
   text-align: left;
-  font-family: $font-simplon;
+  font-family: $font-roboto;
   font-size: 11px;
   font-weight: 500;
   color: $gray-600;
@@ -316,7 +322,7 @@ $primary-800: #01556F;
   -webkit-appearance: none;
   width: 14px;
   height: 14px;
-  border: 1.5px solid $neutral-300;
+  border: 1px solid $neutral-300;
   border-radius: 50%;
   background: $white;
   cursor: pointer;
@@ -344,7 +350,7 @@ $primary-800: #01556F;
 .cellLink {
   color: $bergbluetint2;
   cursor: pointer;
-  font-family: $font-simplon;
+  font-family: $font-roboto;
   font-size: 13px;
   font-weight: 400;
 }
@@ -357,20 +363,22 @@ $primary-800: #01556F;
   align-items: center;
   gap: 15px;
   padding-top: 16px;
-  font-family: $font-simplon;
+  font-family: $font-roboto;
   font-size: 13px;
   color: $gray-900;
 }
 
 .tablePagination select {
+  width: 70px;
   height: 32px;
-  padding: 0 24px 0 8px;
+  padding: 0 8px;
   border: 1px solid $gray-400;
-  border-radius: 4px;
+  border-radius: 2px;
   font-size: 14px;
   color: $text-light-alt;
   background: $white;
   appearance: none;
+  box-sizing: border-box;
 }
 
 /* ── Tabs ── */
@@ -466,6 +474,7 @@ $primary-800: #01556F;
   font-family: $font-simplon;
   font-size: 20px;
   font-weight: 500;
+  color: $gray-900;
 }
 
 .cardHeaderRight {
@@ -561,6 +570,7 @@ $primary-800: #01556F;
 
 /* ── Connections ── */
 .connSectionTitle {
+  font-family: $font-simplon;
   font-size: 16px;
   font-weight: 500;
   color: $gray-900;
@@ -585,6 +595,7 @@ $primary-800: #01556F;
 .connLookMore {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .moreMenu {
@@ -650,7 +661,7 @@ $primary-800: #01556F;
 .connectFieldValue { font-size: 14px; color: $gray-900; }
 .connectTypeSection { display: flex; flex-direction: column; gap: 8px; }
 .connectTypeLabel { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: $bergbluetint1; }
-.connectTypeSelect { width: 100%; height: 40px; border: 1px solid $gray-400; border-radius: 4px; padding: 0 28px 0 10px; font-size: 14px; font-family: inherit; color: $gray-900; background: $white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%238D9CA9'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 8px center; outline: none; appearance: none; -webkit-appearance: none; }
+.connectTypeSelect { width: 100%; height: 40px; border: 1px solid $gray-400; border-radius: 2px; padding: 0 28px 0 10px; font-size: 14px; font-family: inherit; color: $gray-900; background: $white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%238D9CA9'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 8px center; outline: none; appearance: none; -webkit-appearance: none; }
 .connectTypeSelect:focus { border-color: $bergbluetint1; }
 .connectPanelFooter { display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding: 14px 20px; border-top: 1px solid $gray-200; flex-shrink: 0; }
 .connectPanelFooter .btnFilled:disabled { opacity: 0.4; cursor: not-allowed; }
@@ -699,15 +710,16 @@ $primary-800: #01556F;
 }
 
 .linkText {
-  color: $bergbluetint2;
+  color: $primary-600;
   font-size: 14px;
   font-weight: 500;
+  font-family: $font-roboto;
   cursor: pointer;
   text-transform: uppercase;
   transition: color 0.3s ease;
   text-decoration: none;
 }
-.linkText:hover { color: $bergbluetint2; }
+.linkText:hover { color: $primary-600; }
 
 .riskRow {
   display: flex;
@@ -732,23 +744,23 @@ $primary-800: #01556F;
   .rcard { width: calc((100% - 38px) / 3); }
 }
 
-.rcard_low     { background: linear-gradient(201.532deg, rgba(19, 223, 129, 0.20) 0%, rgba(19, 223, 129, 0.10) 20.673%, rgba(255, 255, 255, 0) 100%); }
-.rcard_medium  { background: linear-gradient(201.532deg, rgba(240, 192, 67, 0.20) 0%, rgba(240, 192, 67, 0.10) 12.019%, rgba(255, 255, 255, 0) 100%); }
-.rcard_high    { background: linear-gradient(253.768deg, rgba(227, 76, 83, 0.12) 2.805%,  rgba(227, 76, 83, 0.06) 14.955%, rgba(227, 76, 83, 0) 75.008%); }
-.rcard_unknown { background: linear-gradient(201.532deg, rgba(150, 150, 150, 0.12) 0%, rgba(150, 150, 150, 0.06) 20.673%, rgba(255, 255, 255, 0) 100%); }
-.rcard_low:hover     { background: linear-gradient(201.532deg, rgba(19, 223, 129, 0.26) 0%, rgba(19, 223, 129, 0.13) 20.673%, rgba(255, 255, 255, 0) 100%); }
-.rcard_medium:hover  { background: linear-gradient(201.532deg, rgba(240, 192, 67, 0.26) 0%, rgba(240, 192, 67, 0.13) 12.019%, rgba(255, 255, 255, 0) 100%); }
-.rcard_high:hover    { background: linear-gradient(253.768deg, rgba(227, 76, 83, 0.17) 2.805%,  rgba(227, 76, 83, 0.09) 14.955%, rgba(227, 76, 83, 0) 75.008%); }
-.rcard_unknown:hover { background: linear-gradient(201.532deg, rgba(150, 150, 150, 0.18) 0%, rgba(150, 150, 150, 0.09) 20.673%, rgba(255, 255, 255, 0) 100%); }
+.rcard_low     { background: linear-gradient(225.29deg, rgba(19, 223, 129, 0.20) 0%, rgba(19, 223, 129, 0.10) 20.67%, rgba(19, 223, 129, 0) 100%); }
+.rcard_medium  { background: linear-gradient(225.29deg, rgba(240, 192, 67, 0.20) 0%, rgba(240, 192, 67, 0.10) 12.02%, rgba(240, 192, 67, 0) 100%); }
+.rcard_high    { background: linear-gradient(263.51deg, rgba(227, 76, 83, 0.12) 2.8%, rgba(227, 76, 83, 0.06) 14.96%, rgba(227, 76, 83, 0) 75.01%); }
+.rcard_unknown { background: linear-gradient(225.29deg, rgba(150, 150, 150, 0.12) 0%, rgba(150, 150, 150, 0.06) 20.67%, rgba(150, 150, 150, 0) 100%); }
+.rcard_low:hover     { background: linear-gradient(225.29deg, rgba(19, 223, 129, 0.26) 0%, rgba(19, 223, 129, 0.13) 20.67%, rgba(19, 223, 129, 0) 100%); }
+.rcard_medium:hover  { background: linear-gradient(225.29deg, rgba(240, 192, 67, 0.26) 0%, rgba(240, 192, 67, 0.13) 12.02%, rgba(240, 192, 67, 0) 100%); }
+.rcard_high:hover    { background: linear-gradient(263.51deg, rgba(227, 76, 83, 0.17) 2.8%, rgba(227, 76, 83, 0.09) 14.96%, rgba(227, 76, 83, 0) 75.01%); }
+.rcard_unknown:hover { background: linear-gradient(225.29deg, rgba(150, 150, 150, 0.18) 0%, rgba(150, 150, 150, 0.09) 20.67%, rgba(150, 150, 150, 0) 100%); }
 
 .rcardTitle {
   position: absolute;
   left: 16px;
   top: 8px;
-  font-family: $font-simplon;
+  font-family: $font-roboto;
   font-size: 16px;
   font-weight: 500;
-  color: $bergbluetint2;
+  color: $primary-600;
   line-height: 24px;
   letter-spacing: 0.5px;
 }
@@ -756,7 +768,7 @@ $primary-800: #01556F;
 .rcardLbl {
   position: absolute;
   left: 16px;
-  font-family: $font-simplon;
+  font-family: $font-roboto;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -771,7 +783,7 @@ $primary-800: #01556F;
 .rcardVal {
   position: absolute;
   right: 16px;
-  font-family: $font-simplon;
+  font-family: $font-roboto;
   font-size: 13px;
   color: $gray-900;
   text-align: right;
@@ -784,6 +796,9 @@ $primary-800: #01556F;
   position: absolute;
   top: 43px;
   right: 16px;
+}
+.rcardBadge :global(.badge) {
+  font-family: $font-roboto;
 }
 
 /* ── Table Cards ── */
@@ -844,7 +859,7 @@ $primary-800: #01556F;
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: $font-simplon;
+  font-family: $font-roboto;
   font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
@@ -872,17 +887,12 @@ $primary-800: #01556F;
 
 /* ── Screening table: all data cols Simplon Norm except Category (col 6) ── */
 .screeningTable tbody td:not(:nth-child(6)) {
-  font-family: $font-simplon;
+  font-family: $font-roboto;
   font-size: 13px;
   font-weight: 400;
 }
 
-/* ── Tasks table: data columns use Simplon Norm ── */
-.tasksTable tbody td:not(:first-child) {
-  font-family: $font-simplon;
-  font-size: 13px;
-  font-weight: 400;
-}
+/* ── Tasks table: data columns inherit Roboto from .table tbody td ── */
 
 /* ── Screening ── */
 .matchBadges {
@@ -938,7 +948,7 @@ $primary-800: #01556F;
 
 .documentsCard {
   background: $white;
-  border-top: 3px solid $bergbluetint2;
+  border-top: 3px solid $primary-600;
   padding: 16px;
   min-height: 600px;
 }

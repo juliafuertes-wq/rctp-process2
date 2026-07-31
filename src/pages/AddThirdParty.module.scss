@@ -125,8 +125,25 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
+/* Disabled primary button opacity override (Figma: 0.4) */
+.section :global(.btn-primary:disabled),
+.formFooter :global(.btn-primary:disabled) { opacity: 0.4; }
+
+/* Cancel/outline button override (Figma: border #B1BCC5, text #0C2A31) */
+.section :global(.btn-outline-secondary),
+.formFooter :global(.btn-outline-secondary) {
+  border-color: $neutral-300;
+  color: $gray-900;
+}
+.section :global(.btn-outline-secondary:hover),
+.formFooter :global(.btn-outline-secondary:hover) {
+  border-color: $neutral-300;
+  color: $gray-900;
+  background: $gray-100;
+}
+
 /* Type cards */
-.sectionHeading { font-family: $font-simplon; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: $gray-600; line-height: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid $gray-200; display: flex; align-items: center; justify-content: space-between; }
+.sectionHeading { font-family: $font-roboto; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: $gray-600; line-height: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid $gray-200; display: flex; align-items: center; justify-content: space-between; }
 .typeCards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 12px; }
 .typeError .typeCard { border-color: $danger; }
 .typeCard {
@@ -146,21 +163,21 @@
 .typeIconWrap .material-icons-outlined { font-size: 24px; }
 .typeCard:hover .typeIconWrap,
 .selected .typeIconWrap { background: $bergbluetint1; color: $white; }
-.typeTitle { font-size: 16px; font-weight: 600; color: $gray-900; }
-.typeDesc { font-size: 13px; color: $gray-600; line-height: 1.5; }
+.typeTitle { font-family: $font-roboto; font-size: 16px; font-weight: 600; color: $gray-900; }
+.typeDesc { font-family: $font-roboto; font-size: 13px; font-weight: 400; color: $gray-600; line-height: 1.5; }
 .errorHint { font-size: 11px; color: $danger; margin-top: 8px; }
 
 /* Form fields */
 .editGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; margin-top: 16px; margin-bottom: 24px; }
 .editField { display: flex; flex-direction: column; gap: 8px; }
-.editLabel { font-family: $font-simplon; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; display: flex; align-items: center; gap: 4px; }
+.editLabel { font-family: $font-roboto; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; display: flex; align-items: center; gap: 4px; }
 .editInput {
   height: 34px; border: 1px solid $neutral-300; border-radius: 2px;
   padding: 0 9px; font-size: 14px; font-family: $font-roboto;
   color: $gray-900; background: $white; outline: none;
   transition: border-color 0.15s; width: 100%;
 }
-.editInput::placeholder { color: $gray-500; }
+.editInput::placeholder { color: #757575; }
 .editInput:focus { border-color: $neutral-500; }
 .editInput[readonly] { background: $neutral-25; color: $gray-500; }
 .editInput:disabled { background: $neutral-25; color: $gray-500; cursor: not-allowed; }
@@ -183,7 +200,8 @@
 .tableWrap { overflow-x: auto; margin-bottom: 16px; }
 .dupTable { width: 100%; border-collapse: collapse; font-size: 13px; }
 .dupTable thead th { background: $gray-100; padding: 8px 12px; text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: $gray-600; border: 1px solid $gray-200; white-space: nowrap; }
-.dupTable tbody td { padding: 10px 12px; border: 1px solid $gray-200; color: $gray-600; vertical-align: middle; }
+.dupTable tbody td { font-family: $font-roboto; padding: 14.5px 12.5px; border: 1px solid $gray-200; color: $gray-600; vertical-align: middle; }
+.dupTable :global(.badge) { text-transform: none; letter-spacing: 0; font-size: 11px; font-family: $font-roboto; font-weight: 600; height: 28px; background: $gray-200; border-radius: 2px; }
 .dupTable tbody tr:nth-child(odd) td { background: $primary-08; }
 .dupTable tbody tr { transition: background 100ms ease; }
 .dupTable tbody tr:hover td { background: $row-hover !important; }
@@ -218,9 +236,9 @@
 
 /* Verify table */
 .verifyTable { width: 100%; border-collapse: collapse; font-size: 13px; }
-.verifyTable thead th { background: $gray-100; padding: 8px 10px; text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: $gray-600; border: 1px solid $gray-200; white-space: nowrap; }
+.verifyTable thead th { background: $gray-100; padding: 8px 10px; text-align: left; font-size: 11px; font-family: $font-roboto; font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; color: $gray-600; border: 1px solid $gray-200; white-space: nowrap; }
 .verifyTable thead th:last-child { width: 80px; }
-.verifyTable tbody td { padding: 10px 12px; border: 1px solid $gray-200; color: $gray-600; vertical-align: top; }
+.verifyTable tbody td { padding: 10.5px 12.5px; border: 1px solid $gray-200; color: $gray-600; vertical-align: top; }
 .verifyTable tbody tr:hover td { background: $gray-100; }
 .rowSelected td { background: $primary-08 !important; }
 .verifySelectCell { text-align: center; vertical-align: middle !important; padding: 6px 10px !important; }
@@ -248,7 +266,7 @@
 
 /* Field group */
 .fieldGroup { display: flex; flex-direction: column; gap: 6px; }
-.fieldLabel { font-family: $font-simplon; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; }
+.fieldLabel { font-family: $font-roboto; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; }
 .fieldSelect {
   height: 34px; border: 1px solid $neutral-300; border-radius: 2px;
   padding: 0 36px 0 9px; font-size: 14px; font-family: $font-roboto;
@@ -281,7 +299,7 @@
 /* Onboarding pre-fields (Notes + Language) */
 .obPreFields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; margin-bottom: 16px; }
 .obPreField { display: flex; flex-direction: column; gap: 6px; }
-.obPreLabel { font-family: $font-simplon; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; }
+.obPreLabel { font-family: $font-roboto; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; }
 
 /* Onboarding blocks */
 .obBlocks { display: flex; flex-direction: column; }
@@ -291,8 +309,8 @@
 .obBlock:last-child { border-radius: 0 0 4px 4px; margin-bottom: 0; }
 .obBlock.hasError .obInput { border-color: $danger; }
 .obBlockHead { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
-.obNum { font-size: 14px; font-weight: 700; color: $gray-900; min-width: 22px; }
-.obLabel { font-size: 14px; font-weight: 600; color: $gray-900; }
+.obNum { font-family: $font-roboto; font-size: 14px; font-weight: 700; color: $gray-900; min-width: 22px; }
+.obLabel { font-family: $font-roboto; font-size: 14px; font-weight: 600; color: $gray-900; }
 .obInput { width: 100%; height: 34px; border: 1px solid $neutral-300; border-radius: 2px; padding: 0 9px; font-size: 14px; font-family: $font-roboto; color: $gray-900; background: $white; outline: none; transition: border-color 0.15s; }
 .obInput:focus { border-color: $neutral-500; color: $gray-900; }
 .obInput::placeholder { color: $gray-500; }
@@ -308,7 +326,7 @@
 }
 .obError { font-size: 11px; color: $danger; margin-top: 4px; }
 .obSubGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.obSubLabel { font-family: $font-simplon; font-size: 11px; font-weight: 600; color: $gray-600; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; margin-bottom: 6px; }
+.obSubLabel { font-family: $font-roboto; font-size: 11px; font-weight: 600; color: $gray-600; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; margin-bottom: 6px; }
 
 /* Unknown TP description checkboxes */
 .obCheckboxGroup { display: flex; flex-direction: column; gap: 10px; padding: 4px 0; }

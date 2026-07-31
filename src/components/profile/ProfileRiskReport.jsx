@@ -488,12 +488,7 @@ export default function ProfileRiskReport() {
                     <tbody>
                       {(rr.processSummary || []).map((row, i) => (
                         <tr key={i}>
-                          <td>
-                            {(row.isLink || row.step === 'UBO')
-                              ? <span className={styles.cellLink}>{row.step}</span>
-                              : <span>{row.step}</span>
-                            }
-                          </td>
+                          <td><span className={styles.cellLink}>{row.step}</span></td>
                           <td>{normaliseProcessStatus(row.status)}</td>
                           <td>{row.startDate}</td>
                           <td>{row.date}</td>

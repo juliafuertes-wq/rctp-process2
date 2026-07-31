@@ -1204,7 +1204,7 @@ function LookMorePanel({ onClose, onSelect }) {
                         <td><input type="radio" className={styles.tableRadio} checked={selectedIndex === i} onChange={() => setSelectedIndex(i)} /></td>
                         <td><span className={styles.cellLink}>{r.name}</span></td>
                         <td>{r.idType}</td>
-                        <td style={{ fontFamily: 'monospace', fontSize: 12 }}>{r.idValue}</td>
+                        <td style={{ fontFamily: "'Menlo', monospace", fontSize: 12 }}>{r.idValue}</td>
                         <td>{r.intRef}</td>
                       </tr>
                     ))}

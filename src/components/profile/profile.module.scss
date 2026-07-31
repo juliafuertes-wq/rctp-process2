@@ -409,7 +409,7 @@ $primary-800: #01556F;
   border-radius: 4px;
 }
 .tabActive { color: $gray-900; }
-.tabIndicator { position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: $bergbluetint2; border-radius: 1px; }
+.tabIndicator { position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: $bergbluetint1; border-radius: 1px; }
 
 .tabPanels {
   position: relative;
@@ -653,7 +653,7 @@ $primary-800: #01556F;
 .notesEmpty { font-size: 13px; color: $neutral-300; text-align: center; padding: 40px 0; }
 
 .connectPanelHeader { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid $gray-200; flex-shrink: 0; }
-.connectPanelTitle { font-size: 18px; font-weight: 600; color: $gray-900; }
+.connectPanelTitle { font-family: $font-roboto; font-size: 18px; font-weight: 600; color: $gray-900; }
 .connectPanelBody { flex: 1; overflow-y: auto; padding: 24px 20px; }
 .connectPanelInfo { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid $gray-200; }
 .connectField { display: flex; flex-direction: column; gap: 4px; }
@@ -668,15 +668,15 @@ $primary-800: #01556F;
 /* search form */
 .searchFormGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
 .searchFormField { display: flex; flex-direction: column; gap: 6px; }
-.searchFormLabel { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: $bergbluetint1; }
-.searchFormInput { height: 40px; border: 1px solid $gray-400; border-radius: 4px; padding: 0 10px; font-size: 14px; font-family: inherit; color: $gray-900; background: $white; outline: none; }
+.searchFormLabel { font-family: $font-roboto; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: $bergbluetint1; }
+.searchFormInput { height: 40px; border: 1px solid $gray-400; border-radius: 2px; padding: 0 10px; font-size: 14px; font-family: $font-roboto; color: $gray-900; background: $white; outline: none; }
 .searchFormInput:focus { border-color: $bergbluetint1; }
 .searchFormInput::placeholder { color: $gray-500; }
 .searchFormSelect { height: 40px; border: 1px solid $gray-400; border-radius: 4px; padding: 0 10px; font-size: 14px; font-family: inherit; color: $gray-900; background: $white; outline: none; appearance: auto; }
 .searchInlineRow { display: flex; align-items: center; gap: 8px; }
 .searchInlineRow .searchFormInput { flex: 1; min-width: 0; }
 .searchSuggestedHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-.searchSuggestedTitle { font-size: 15px; font-weight: 600; color: $gray-900; }
+.searchSuggestedTitle { font-family: $font-roboto; font-size: 15px; font-weight: 600; color: $gray-900; }
 .searchResultsHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; font-size: 12px; color: $gray-600; padding-top: 4px; }
 .searchResultsCount { font-weight: 600; color: $gray-900; }
 
@@ -1000,13 +1000,13 @@ $primary-800: #01556F;
   background: $white;
   border-top: 4px solid $bergbluetint1;
   box-shadow: 0 1px 2px rgba(0,0,0,0.07);
-  padding: 16px;
+  padding: 20px 16px 0;
 }
 .rlrRow1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 16px;
+  padding-bottom: 8px;
 }
 .rlrMetaRow {
   display: flex;
@@ -1020,11 +1020,13 @@ $primary-800: #01556F;
   gap: 8px;
 }
 .rlrMetaLabel {
+  font-family: $font-roboto;
   font-size: 13px;
   font-weight: 500;
   color: $gray-600;
 }
 .rlrRiskScore {
+  font-family: $font-roboto;
   font-size: 20px;
   font-weight: 700;
   color: $gray-900;
@@ -1049,10 +1051,10 @@ $primary-800: #01556F;
   margin-right: auto;
 }
 .riskCategoryTitle {
+  font-family: $font-simplon;
   font-size: 16px;
   font-weight: 500;
   color: $gray-900;
-  font-family: inherit;
   letter-spacing: 0.5px;
   margin-bottom: 14px;
 }
@@ -1063,32 +1065,31 @@ $primary-800: #01556F;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 40px;
-  padding: 0 8px;
+  height: 48px;
+  padding: 0 13px;
   background: $gray-300;
   cursor: pointer;
   user-select: none;
   transition: background 0.2s ease;
-  border-top: 1px solid $gray-400;
-  border-bottom: 1px solid $gray-400;
-  border-radius: 0;
+  border: 1px solid $gray-400;
+  border-radius: 2px 2px 0 0;
 }
 .accordionHeader:hover { background: $gray-400; }
 .levelLow {
-  background: linear-gradient(201.532deg, rgba(19, 223, 129, 0.20) 0%, rgba(19, 223, 129, 0.10) 20.673%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(264.79deg, rgba(19, 223, 129, 0.20) 0%, rgba(19, 223, 129, 0.10) 20.67%, rgba(19, 223, 129, 0) 100%);
   border-color: $level-low-border;
 }
-.levelLow:hover { background: linear-gradient(201.532deg, rgba(19, 223, 129, 0.30) 0%, rgba(19, 223, 129, 0.15) 20.673%, rgba(255, 255, 255, 0) 100%); }
+.levelLow:hover { background: linear-gradient(264.79deg, rgba(19, 223, 129, 0.30) 0%, rgba(19, 223, 129, 0.15) 20.67%, rgba(19, 223, 129, 0) 100%); }
 .levelMedium {
-  background: linear-gradient(201.532deg, rgba(240, 192, 67, 0.20) 0%, rgba(240, 192, 67, 0.10) 12.019%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(264.79deg, rgba(240, 192, 67, 0.20) 0%, rgba(240, 192, 67, 0.10) 12.02%, rgba(240, 192, 67, 0) 100%);
   border-color: $level-medium-border;
 }
-.levelMedium:hover { background: linear-gradient(201.532deg, rgba(240, 192, 67, 0.30) 0%, rgba(240, 192, 67, 0.15) 12.019%, rgba(255, 255, 255, 0) 100%); }
+.levelMedium:hover { background: linear-gradient(264.79deg, rgba(240, 192, 67, 0.30) 0%, rgba(240, 192, 67, 0.15) 12.02%, rgba(240, 192, 67, 0) 100%); }
 .levelHigh {
-  background: linear-gradient(253.768deg, rgba(227, 76, 83, 0.12) 2.805%, rgba(227, 76, 83, 0.06) 14.955%, rgba(227, 76, 83, 0) 75.008%);
+  background: linear-gradient(269.4deg, rgba(227, 76, 83, 0.12) 2.8%, rgba(227, 76, 83, 0.06) 14.96%, rgba(227, 76, 83, 0) 75.01%);
   border-color: $level-high-border;
 }
-.levelHigh:hover { background: linear-gradient(253.768deg, rgba(227, 76, 83, 0.20) 2.805%, rgba(227, 76, 83, 0.10) 14.955%, rgba(227, 76, 83, 0) 75.008%); }
+.levelHigh:hover { background: linear-gradient(269.4deg, rgba(227, 76, 83, 0.20) 2.8%, rgba(227, 76, 83, 0.10) 14.96%, rgba(227, 76, 83, 0) 75.01%); }
 .accordionHeaderLeft {
   display: flex;
   align-items: center;
@@ -1099,8 +1100,8 @@ $primary-800: #01556F;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-  color: #000000;
-  letter-spacing: 0;
+  color: $gray-900;
+  letter-spacing: 0.1px;
 }
 .accordionFactorCount {
   font-size: 11px;
@@ -1117,7 +1118,9 @@ $primary-800: #01556F;
   gap: 12px;
 }
 .accordionScoreStat {
+  font-family: $font-roboto;
   font-size: 12px;
+  font-weight: 400;
   color: $gray-600;
   letter-spacing: 0.2px;
   padding-right: 12px;
@@ -1140,16 +1143,19 @@ $primary-800: #01556F;
   overflow: hidden;
   border: 1px solid $gray-200;
   border-top: none;
+  border-radius: 0 0 2px 2px;
 }
 .accordionBodyInner {
   padding: 16px 20px 20px;
   background: $white;
 }
 .noRiskMessage {
+  font-family: $font-roboto;
   text-align: center;
   color: $gray-600;
   font-size: 13px;
   font-style: italic;
+  font-weight: 400;
   padding: 24px 0;
 }
 
@@ -1163,11 +1169,11 @@ $primary-800: #01556F;
 .riskTable thead th {
   background: $gray-100;
   border: 1px solid $gray-200;
-  padding: 8px 28px 8px 8px;
+  padding: 8px 28px 8px 8.5px;
   text-align: left;
   font-family: $font-roboto;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1183,7 +1189,7 @@ $primary-800: #01556F;
 }
 .riskTable tbody td {
   border: 1px solid $gray-200;
-  padding: 10px 12px;
+  padding: 12px 12.5px;
   color: $gray-600;
   vertical-align: middle;
   font-family: $font-roboto;
@@ -1192,9 +1198,10 @@ $primary-800: #01556F;
 }
 .riskScoreCol {
   text-align: right;
+  font-family: $font-roboto;
   font-weight: 700;
   color: $gray-900 !important;
-  font-size: 14px;
+  font-size: 13px;
   font-variant-numeric: tabular-nums;
 }
 .riskTable tbody tr:nth-child(odd) td  { background: rgba($bergbluetint1,0.08); }
@@ -1233,11 +1240,11 @@ $primary-800: #01556F;
 .genericTable thead th {
   background: $gray-100;
   border: 1px solid $gray-200;
-  padding: 8px 28px 8px 8px;
+  padding: 8px 28px 8px 8.5px;
   text-align: left;
   font-family: $font-roboto;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1253,14 +1260,14 @@ $primary-800: #01556F;
 }
 .genericTable tbody td {
   border: 1px solid $gray-200;
-  padding: 8px;
+  padding: 10px 8.5px;
   color: $gray-600;
   vertical-align: middle;
   font-family: $font-roboto;
   font-size: 13px;
   font-weight: 400;
 }
-.genericTable tbody tr:nth-child(odd) td  { background: rgba($bergbluetint1,0.08); }
+.genericTable tbody tr:nth-child(odd) td  { background: $primary-08; }
 .genericTable tbody tr:nth-child(even) td { background: $white; }
 .genericTable tbody tr td { transition: background 100ms ease; }
 .genericTable tbody tr:hover td { background: $row-hover !important; }
@@ -1355,15 +1362,17 @@ $primary-800: #01556F;
   margin-right: auto;
 }
 .redFlagsTitle {
+  font-family: $font-simplon;
   font-size: 16px;
   font-weight: 500;
   color: $gray-900;
-  font-family: inherit;
   letter-spacing: 0.5px;
   margin-bottom: 4px;
 }
 .redFlagsSubtitle {
+  font-family: $font-roboto;
   font-size: 13px;
+  font-weight: 400;
   color: $gray-600;
   margin-bottom: 12px;
   line-height: 1.5;
@@ -1372,7 +1381,7 @@ $primary-800: #01556F;
 /* ── Process Summary ── */
 .processSummaryCard {
   background: $white;
-  padding: 24px 16px;
+  padding: 24px 28px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 .processSummaryInner {

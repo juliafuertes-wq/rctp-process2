@@ -550,8 +550,8 @@ export default function AddThirdParty() {
                     <tbody>
                       {filteredVerify.map((r, i) => (
                         <tr key={i} className={selectedVerify === r.duns ? styles.rowSelected : ''}>
-                          <td className="text-body" style={{ fontWeight: 500 }}>{r.name}</td>
-                          <td style={{ fontFamily: 'monospace', fontSize: 12 }}>{r.duns}</td>
+                          <td style={{ fontWeight: 500, color: '#0C2A31' }}>{r.name}</td>
+                          <td style={{ fontFamily: "'Menlo', monospace", fontSize: 12 }}>{r.duns}</td>
                           <td style={{ fontSize: 12, maxWidth: 240 }}>{r.address}</td>
                           <td>{r.country}</td>
                           <td className={styles.uboCell}><span className={`material-icons-outlined ${r.ubo ? styles.uboOk : styles.uboFail}`}>{r.ubo ? 'check_circle' : 'cancel'}</span></td>

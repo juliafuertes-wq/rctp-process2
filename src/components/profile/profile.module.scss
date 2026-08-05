@@ -828,9 +828,10 @@ $primary-800: #01556F;
 }
 
 .tableEmptyRow {
-  padding: 32px 16px;
+  padding: 11px 16px;
   text-align: center;
   font-size: 13px;
+  line-height: 20px;
   color: $gray-600;
 }
 

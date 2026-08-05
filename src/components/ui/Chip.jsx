@@ -21,7 +21,7 @@ export default function Chip({
       <span>{label}</span>
 
       {count != null && (
-        <span className="badge badge-count">{count}</span>
+        <span className="chip-count">{count}</span>
       )}
 
       {!selected && showClose && count == null && (

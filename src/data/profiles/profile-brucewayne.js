@@ -5,30 +5,30 @@ export default {
   entityType: 'person',
   verifiedText: 'Identity Verified',
   currentStatus: { label: 'Pending Approval' },
-  riskLevel: { label: 'Low', icon: 'check_circle_outline', level: 'low' },
+  riskLevel: { label: 'Unknown', icon: 'help_outline', level: 'unknown' },
 
   embedded: true,
   deleteModal: false,
   alertBanners: false,
 
   sidebarSteps: [
-    { label: 'Risk Assessment', dot: 'green', path: 'risk-assessment', subSteps: [
-      { label: 'Risk Assessment 1', dot: 'green', path: 'risk-assessment/questionnaire' },
-      { label: 'Risk Assessment 2', dot: 'green', path: 'risk-assessment/questionnaire' },
+    { label: 'Risk Assessment', dot: 'red', path: 'risk-assessment', subSteps: [
+      { label: 'Risk Assessment 1', dot: 'red', path: 'risk-assessment/questionnaire' },
+      { label: 'Risk Assessment 2', dot: 'red', path: 'risk-assessment/questionnaire' },
     ]},
-    { label: 'Integrity Check', dot: 'amber', partner: 'integrity', tooltip: 'Powered by Xapiens', newTag: true, path: 'integrity-check'},
-    { label: 'Due Diligence', dot: 'amber', path: 'due-diligence', subSteps: [
-      { label: 'Internal Due Diligence', dot: 'amber', path: 'due-diligence/internal' },
+    { label: 'Integrity Check', dot: 'grey', partner: 'integrity', tooltip: 'Powered by Xapiens', newTag: true, path: 'integrity-check'},
+    { label: 'Due Diligence', dot: 'black', path: 'due-diligence', subSteps: [
+      { label: 'Internal Due Diligence', dot: 'red', path: 'due-diligence/internal' },
       { label: 'External Due Diligence', dot: 'red' },
     ]},
     { label: 'Enhanced Due Diligence Reports', dot: 'grey', path: 'enhanced-due-diligence' },
-    { label: 'UBO', dot: 'green', partner: 'ubo', tooltip: 'Powered by Duns & Bradstreet' , path: 'ubo'},
-    { label: 'Risk Mitigation', dot: 'grey' , path: 'risk-mitigation'},
-    { label: 'Approval', dot: 'amber', path: 'approval', subSteps: [
-      { label: 'Approval 1', dot: 'amber' },
+    { label: 'UBO', dot: 'grey', partner: 'ubo', tooltip: 'Powered by Duns & Bradstreet' , path: 'ubo'},
+    { label: 'Risk Mitigation', dot: 'green', path: 'risk-mitigation'},
+    { label: 'Approval', dot: 'red', path: 'approval', subSteps: [
+      { label: 'Approval 1', dot: 'red' },
       { label: 'Approval 2', dot: 'red' },
     ]},
-    { label: 'Screening & Monitoring', dot: 'grey', path: 'screening-monitoring' },
+    { label: 'Screening & Monitoring', dot: 'amber', path: 'screening-monitoring' },
   ],
   sidebarSections: [
     { label: 'Properties', path: 'properties' },
@@ -65,37 +65,33 @@ export default {
   ],
 
   riskCards: [
-    { title: 'Country Risk', level: 'low', flags: 0, score: 0 },
-    { title: 'Bribery & Corruption', level: 'low', flags: 0, score: 0 },
-    { title: 'Environmental', level: 'low', flags: 0, score: 0 },
-    { title: 'Human Rights', level: 'low', flags: 0, score: 0 },
-    { title: 'General', level: 'low', flags: 0, score: 2 },
-    { title: 'Screening & Monitoring', level: 'low', flags: 0, score: 1 },
-    { title: 'Cyber', level: 'low', flags: 0, score: 0 },
+    { title: 'Country Risk', level: 'unknown', flags: 0, score: 0 },
+    { title: 'Bribery & Corruption', level: 'unknown', flags: 0, score: 0 },
+    { title: 'Environmental', level: 'unknown', flags: 0, score: 0 },
+    { title: 'Human Rights', level: 'unknown', flags: 0, score: 0 },
+    { title: 'General', level: 'unknown', flags: 0, score: 0 },
+    { title: 'Cyber', level: 'unknown', flags: 0, score: 0 },
+    { title: 'Screening & Monitoring', level: 'unknown', flags: 0, score: 0 },
   ],
 
-  openTasks: [
-    { type: 'Questionnaire', icon: 'iconInactiveOrder', name: 'Integrity Check — Dual Identity Verification', status: 'In Progress', owner: 'Alfred Pennyworth', dateCreated: '01 Dec 2025', age: '29 Days' },
-    { type: 'Approval Task', icon: 'iconFactCheck', name: 'Approval Stage 1 — Pending Background Clearance', status: 'Not Started', owner: 'Lucius Fox', dateCreated: '15 Dec 2025', age: '14 Days' },
-  ],
+  openTasks: [],
 
   screeningRows: [
     {
-      name: 'Bruce Thomas Wayne',
+      name: 'Gringotts Wizarding Bank',
       matches: [
-        { bg: '#13DF81', color: 'var(--text-normal)', val: '2' },
         { bg: '#13DF81', color: 'var(--text-normal)', val: '1' },
+        { bg: '#13DF81', color: 'var(--text-normal)', val: '0' },
         { bg: '#014155', color: '#fff', val: '0' },
         { bg: '#f89406', color: '#fff', val: '0' },
-        { bg: '#F0C043', color: 'var(--text-normal)', val: '1' },
+        { bg: '#F0C043', color: 'var(--text-normal)', val: '0' },
       ],
-      updated: '15 Jan 2025',
+      updated: '01 May 2026',
       type: 'Primary Entity',
-      statusDot: 'var(--success-500)',
-      statusLabel: 'No Action Required',
-      categories: [{ label: 'AM', bg: '#edd500', color: 'var(--neutral-900)' }],
-      categoryIcon: 'check_circle_outline',
-      entityType: 'Person',
+      statusDot: '#516267',
+      statusLabel: 'Queued',
+      categories: [],
+      entityType: 'Entity',
     },
   ],
 

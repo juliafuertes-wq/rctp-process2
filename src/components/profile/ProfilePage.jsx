@@ -190,7 +190,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
               <h1>{profile.name}</h1>
               <span className="ph-verified">
                 <span className="material-icons-outlined">verified</span>
-                {profile.verifiedText}
+                <span className="ph-verified-text">{profile.verifiedText}</span>
               </span>
             </div>
             <div className="ph-badges">
@@ -612,7 +612,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   </tr>
                 </thead>
                 <tbody>
-                  {profileLoading ? (
+                  {profileLoading && profile.entityType !== 'person' ? (
                     <tr key="queued-loading">
                       <td><span className={styles.cellLink}>{profile.name ? profile.name.split(' ').slice(0,3).join(' ') : 'New Entity'}</span></td>
                       <td><div className={styles.matchBadges}><Badge label="1" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /><Badge label="0" bgColor="#9FACB7" textColor="#fff" size="large" shape="square" /></div></td>
@@ -622,7 +622,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                       <td></td>
                       <td>Entity</td>
                     </tr>
-                  ) : !screeningReady ? (
+                  ) : profileLoading || !screeningReady ? (
                     <tr><td colSpan={7} className={styles.tableEmptyRow}>No monitored associations found for this third party.</td></tr>
                   ) : profile.screeningRows.map((r, i) => (
                     <tr key={i}>
@@ -654,10 +654,14 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   ))}
                 </tbody>
               </table>
-              <div className={styles.tablePagination}>
-                <select><option>20</option></select>
-                <span>Showing results 1 - {profileLoading ? 1 : profile.screeningRows.length} of {profileLoading ? 1 : profile.screeningRows.length}</span>
-              </div>
+              {profileLoading || profile.entityType === 'unknown' ? (
+                <div style={{ height: 62 }} />
+              ) : (
+                <div className={styles.tablePagination}>
+                  <select><option>20</option></select>
+                  <span>Showing results 1 - {profile.screeningRows.length} of {profile.screeningRows.length}</span>
+                </div>
+              )}
             </div>
               </motion.div>
             )}

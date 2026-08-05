@@ -26,11 +26,10 @@ $slateblue:     #3D8CBC;
 $bergbluetint1: #028FBB;
 $bergbluetint2: #017295;
 $bergbluetint3: #014155;
-$postive:       #13DF81;
+$positive:       #13DF81;
 $negative:      #E34C53;
 $warning:       #F0C043;
-$white:         #FFF;
-$black:         #000;
+// $white and $black defined above in Bootstrap gray scale
 
 // New UX Enhancement colours
 $newbergblue: #0289B3;
@@ -86,7 +85,7 @@ $alert-900: #521B1E;     // --alert-900
 $success-50:  #BDF6DC;   // --success-50
 $success-100: #AAF3D2;   // --success-100
 $success-300: #5FE9A9;   // --success-300
-// $success-500 = $postive (#13DF81)
+// $success-500 = $positive (#13DF81)
 $success-700: #0D9858;   // --success-700
 $success-900: #07502E;   // --success-900
 
@@ -110,7 +109,7 @@ $font-mono: 'Source Code Pro', monospace;
 // Override Bootstrap default colours with DJ values
 $primary:   $bergblue  !default;
 $secondary: $darkgrey  !default;
-$success:   $postive   !default;
+$success:   $positive   !default;
 $info:      $tahitiblue !default;
 $warning:   $warning   !default;
 $danger:    $negative  !default;
@@ -136,7 +135,7 @@ $input-focus-border-color: $neutral-500;  // neutral/500 #8D9CA9 (active state)
 $input-color:              $gray-900;       // active text #0C2A31
 $input-bg:                 $white;
 $input-disabled-bg:        $neutral-25;   // #EFEFEF
-$input-placeholder-color:  $gray-500;     // placeholder #9FACB7
+$input-placeholder-color:  #757575;       // placeholder
 $input-font-family:        $font-roboto;
 $input-font-size:          0.875rem;      // 14px
 $input-padding-y:          0.4375rem;     // 7px → (34-20)/2

@@ -72,9 +72,10 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     }
 
     &:disabled, &.disabled {
-        background-color: $primary-200;  // primary/200 #7BCFE9
-        border-color: $primary-200;
-        color: $gray-100;
+        background-color: $bergbluetint1;
+        border-color: $bergbluetint1;
+        color: $white;
+        opacity: 0.4;
         cursor: not-allowed;
         pointer-events: none;
     }
@@ -222,17 +223,17 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     text-transform: uppercase;
     letter-spacing: 0.5px;
     white-space: nowrap;
-    border-radius: $border-radius-sm;
+    border-radius: $radius-xs;
     padding: 4px 8px;
-    line-height: 1;
+    line-height: 20px;
 }
 
 // Risk level badges
 .badge-high    { background: lighten($danger, 30%);   color: darken($danger, 22%); }
 .badge-medium  { background: lighten($warning, 28%);  color: darken($warning, 40%); }
 .badge-low     { background: lighten($success, 36%);  color: darken($success, 28%); }
-.badge-unknown { background: $gray-300;               color: $darkcharc; }
-.badge-pending { background: $gray-300;               color: $darkcharc; }
+.badge-unknown { background: $gray-200; color: $darkcharc; font-family: $font-roboto; font-size: 12px; font-weight: 500; }
+.badge-pending { background: $gray-200; color: $darkcharc; font-family: $font-roboto; font-size: 12px; font-weight: 500; }
 
 // Status badges
 .badge-approved     { background: lighten($success, 30%);  color: darken($success, 28%); }
@@ -343,7 +344,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 .badge-count-no-action       { background: $gray-600;   color: $white; }
 .badge-count-incomplete      { background: $warning;    color: $gray-900; }
 .badge-count-not-initiated   { background: $gray-400;   color: $gray-900; }
-.badge-count-completed       { background: $postive;    color: $gray-900; }
+.badge-count-completed       { background: $positive;   color: $gray-900; }
 .badge-count-confirmed       { background: $alert-700;  color: $white; }
 .badge-count-cleared         { background: $primary-700; color: $white; }
 
@@ -408,8 +409,8 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     letter-spacing: 0.4px;
 }
 
-// Count badge (small pill used in Chip component)
-.badge-count {
+// Count badge (small red pill used in Chip component)
+.chip-count {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -610,11 +611,12 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     display: inline-flex;
     align-items: center;
     padding: 2px 8px;
-    border-radius: $border-radius-sm;
+    border-radius: $radius-xs;
     background: $gray-300;
     color: $darkcharc;
     font-size: 11px;
     font-weight: $font-weight-medium;
+    line-height: 20px;
     white-space: nowrap;
 }
 
@@ -1230,7 +1232,11 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 .tooltip {
     pointer-events: none;
 }
-.tooltip-inner {
+
+// Opt-in modifier: use on tooltips that should never wrap
+// Usage: add tooltip-nowrap to the tooltip's className/customClass
+.tooltip-nowrap .tooltip-inner,
+.tooltip-riskSearch .tooltip-inner {
     white-space: nowrap;
     max-width: none;
 }
@@ -1958,7 +1964,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
   position: relative;
   width: 96px;
   height: 32px;
-  border-radius: $border-radius-sm;
+  border-radius: $radius-xs;
   overflow: hidden;
   border: 1px solid $success;
   background: $success;
@@ -1992,7 +1998,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: $font-simplon;
+  font-family: $font-roboto;
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
@@ -2170,29 +2176,29 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 }
 .ph-strip-unknown {
   background-image:
-    linear-gradient(to left, rgba($gray-500, 0.08) 0%, rgba($white, 0) 25%),
-    linear-gradient(182.718deg, rgba($gray-500, 0.1) 0%, rgba($gray-500, 0.04) 50%, transparent 100%);
+    linear-gradient(to left, rgba($neutral-500, 0.1) 0%, rgba($white, 0) 25%),
+    linear-gradient(217.49deg, rgba($neutral-500, 0.12) 0%, rgba($neutral-500, 0.06) 50%, transparent 100%);
 }
 .ph-strip-unknown::after {
   content: '';
   position: absolute;
   top: 0; right: 0;
   width: 4px; height: 100%;
-  background: linear-gradient(180deg, $gray-500 0%, $gray-300 100%);
-  box-shadow: -2px 0 8px 0 rgba($gray-500, 0.2);
+  background: linear-gradient(180deg, $neutral-500 0%, $neutral-300 100%);
+  box-shadow: -2px 0 8px 0 rgba($neutral-500, 0.3);
 }
 .ph-strip-pending {
   background-image:
-    linear-gradient(to left, rgba($gray-500, 0.08) 0%, rgba($white, 0) 25%),
-    linear-gradient(182.718deg, rgba($gray-500, 0.1) 0%, rgba($gray-500, 0.04) 50%, transparent 100%);
+    linear-gradient(to left, rgba($neutral-500, 0.1) 0%, rgba($white, 0) 25%),
+    linear-gradient(217.49deg, rgba($neutral-500, 0.12) 0%, rgba($neutral-500, 0.06) 50%, transparent 100%);
 }
 .ph-strip-pending::after {
   content: '';
   position: absolute;
   top: 0; right: 0;
   width: 4px; height: 100%;
-  background: linear-gradient(180deg, $gray-500 0%, $gray-300 100%);
-  box-shadow: -2px 0 8px 0 rgba($gray-500, 0.2);
+  background: linear-gradient(180deg, $neutral-500 0%, $neutral-300 100%);
+  box-shadow: -2px 0 8px 0 rgba($neutral-500, 0.3);
 }
 .ph-strip-scrolled {
   box-shadow: 0 2px 8px rgba($black, 0.08);
@@ -2218,7 +2224,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
   gap: 2px;
   font-size: 11px;
   font-weight: $font-weight-medium;
-  color: $primary;
+  color: $bergbluetint1;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   cursor: pointer;
@@ -2226,8 +2232,8 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
   text-decoration: none;
   transition: color 0.2s ease, padding 0.35s cubic-bezier(0.32, 0.72, 0, 1);
 }
-.ph-back:hover { color: darken($primary, 8%); }
-.ph-back .material-icons-outlined { font-size: 18px; }
+.ph-back:hover { color: darken($bergbluetint1, 8%); }
+.ph-back .material-icons-outlined { font-size: 24px; }
 .ph-strip-scrolled .ph-back { line-height: 1; }
 .ph-title-row {
   display: flex;
@@ -2253,14 +2259,17 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 .ph-verified {
   display: inline-flex;
   align-items: center;
+  align-self: center;
   gap: 3px;
   font-size: 11px;
   font-weight: $font-weight-medium;
   color: $gray-600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  padding-bottom: 8px;
 }
-.ph-verified .material-icons-outlined { font-size: 16px; color: darken($success, 15%); }
+.ph-verified .material-icons-outlined { font-size: 22px; width: 22px; height: 21px; color: #516267; }
+.ph-verified-text { padding-top: 4px; }
 .ph-badges {
   display: flex;
   gap: 16px;
@@ -2279,7 +2288,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 .ph-badge-label {
   font-size: 11px;
   font-weight: $font-weight-medium;
-  color: $gray-600;
+  color: $text-light-alt;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }

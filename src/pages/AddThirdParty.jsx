@@ -829,10 +829,7 @@ export default function AddThirdParty() {
           {tpType === 'entity' && entityVerified && (
             <div className={styles.obWarningIntro}>
               <span className="material-icons-outlined">warning_amber</span>
-              <div>
-                <strong>Entity Verification data available.</strong>
-                <div>The fields below have been pre-populated with the verified information. Modifying these details will override the verified data and the Entity Verification label will be lost.</div>
-              </div>
+              <span><strong>Entity Verification data available.</strong> The fields below have been pre-populated with the verified information. Modifying these details will override the verified data and the Entity Verification label will be lost.</span>
             </div>
           )}
 
@@ -893,7 +890,7 @@ export default function AddThirdParty() {
           {/* Person form */}
           {tpType === 'person' && (
             <>
-              <div className={styles.obBlocks}>
+              <div className={`${styles.obBlocks} ${styles.obBlocksPerson}`}>
                 <div className={styles.obBlock}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>1.</span><span className={styles.obLabel}>Legal Name of the Third Party</span><span className={styles.req}>*</span></div>
                   <input className={styles.obInput} type="text" value={obPerson.legalName} onChange={e => updateObP('legalName', e.target.value)} placeholder="Enter the full legal name" />
@@ -947,7 +944,7 @@ export default function AddThirdParty() {
           {/* Unknown form */}
           {tpType === 'unknown' && (
             <>
-              <div className={styles.obBlocks}>
+              <div className={`${styles.obBlocks} ${styles.obBlocksUnknown}`}>
                 <div className={styles.obBlock}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>1.</span><span className={styles.obLabel}>Legal Name of the Third Party</span><span className={styles.req}>*</span></div>
                   <input className={styles.obInput} type="text" value={obUnknown.legalName} onChange={e => updateObU('legalName', e.target.value)} placeholder="Enter the full legal name" />

@@ -5,15 +5,15 @@ export default {
   entityType: 'unknown',
   verifiedText: 'Identity Unverified',
   currentStatus: { label: 'Pending Approval' },
-  riskLevel: { label: 'Medium', icon: 'warning_amber', level: 'medium' },
+  riskLevel: { label: 'Unknown', icon: 'help_outline', level: 'unknown' },
 
   embedded: true,
   deleteModal: false,
   alertBanners: false,
 
   sidebarSteps: [
-    { label: 'Risk Assessment', dot: 'amber', path: 'risk-assessment', subSteps: [
-      { label: 'Risk Assessment 1', dot: 'amber', path: 'risk-assessment/questionnaire' },
+    { label: 'Risk Assessment', dot: 'red', path: 'risk-assessment', subSteps: [
+      { label: 'Risk Assessment 1', dot: 'red', path: 'risk-assessment/questionnaire' },
       { label: 'Risk Assessment 2', dot: 'red', path: 'risk-assessment/questionnaire' },
     ]},
     { label: 'Due Diligence', dot: 'red', path: 'due-diligence', subSteps: [
@@ -65,60 +65,32 @@ export default {
   ],
 
   riskCards: [
-    { title: 'Country Risk', level: 'low', flags: 0, score: 1 },
-    { title: 'Bribery & Corruption', level: 'medium', flags: 1, score: 5 },
-    { title: 'Environmental', level: 'medium', flags: 1, score: 4 },
-    { title: 'Human Rights', level: 'high', flags: 2, score: 14 },
-    { title: 'General', level: 'medium', flags: 2, score: 9 },
-    { title: 'Screening & Monitoring', level: 'medium', flags: 1, score: 6 },
-    { title: 'Cyber', level: 'low', flags: 0, score: 1 },
+    { title: 'Country Risk', level: 'unknown', flags: 0, score: 0 },
+    { title: 'Bribery & Corruption', level: 'unknown', flags: 0, score: 0 },
+    { title: 'Environmental', level: 'unknown', flags: 0, score: 0 },
+    { title: 'Human Rights', level: 'unknown', flags: 0, score: 0 },
+    { title: 'General', level: 'unknown', flags: 0, score: 0 },
+    { title: 'Screening & Monitoring', level: 'unknown', flags: 0, score: 0 },
+    { title: 'Cyber', level: 'unknown', flags: 0, score: 0 },
   ],
 
-  openTasks: [
-    { type: 'Red Flag', icon: 'iconFlag', name: 'Child Labour Concerns — Factory Workforce (Oompa Loompas)', status: 'In Progress', owner: 'Compliance Group', dateCreated: '10 Jan 2026', age: '19 Days' },
-    { type: 'Red Flag', icon: 'iconFlag', name: 'Undisclosed Identity — No Public Company Registration', status: 'Not Started', owner: 'Compliance Group', dateCreated: '10 Jan 2026', age: '19 Days' },
-    { type: 'Questionnaire', icon: 'iconInactiveOrder', name: 'Risk Assessment', status: 'In Progress', owner: 'Charlie Bucket', dateCreated: '12 Jan 2026', age: '17 Days' },
-    { type: 'Approval Task', icon: 'iconFactCheck', name: 'Approval Stage 1 — Pending Identity Verification', status: 'Not Started', owner: 'Sustainability Team', dateCreated: '15 Jan 2026', age: '14 Days' },
-  ],
+  openTasks: [],
 
   screeningRows: [
     {
-      name: 'Willy Wonka',
+      name: 'Gringotts Wizarding Bank',
       matches: [
-        { bg: '#E34C53', color: '#fff', val: '4' },
         { bg: '#13DF81', color: 'var(--text-normal)', val: '1' },
-        { bg: '#014155', color: '#fff', val: '0' },
-        { bg: '#f89406', color: '#fff', val: '1' },
-        { bg: '#F0C043', color: 'var(--text-normal)', val: '3' },
-      ],
-      updated: '20 Jan 2026',
-      type: 'Primary — Unknown',
-      statusDot: 'var(--warning-500)',
-      statusLabel: 'Requires Review',
-      categories: [
-        { label: 'AM', bg: '#edd500', color: 'var(--neutral-900)' },
-        { label: 'PEP', bg: 'var(--warning-100)', color: 'var(--warning-900)' },
-      ],
-      categoryIcon: 'error_outline',
-      entityType: 'Unknown',
-    },
-    {
-      name: 'Wonka Chocolate Factory Ltd.',
-      matches: [
-        { bg: '#E34C53', color: '#fff', val: '2' },
         { bg: '#13DF81', color: 'var(--text-normal)', val: '0' },
         { bg: '#014155', color: '#fff', val: '0' },
         { bg: '#f89406', color: '#fff', val: '0' },
-        { bg: '#F0C043', color: 'var(--text-normal)', val: '2' },
+        { bg: '#F0C043', color: 'var(--text-normal)', val: '0' },
       ],
-      updated: '20 Jan 2026',
-      type: 'Associated Entity',
-      statusDot: 'var(--warning-500)',
-      statusLabel: 'Requires Review',
-      categories: [
-        { label: 'AM', bg: '#edd500', color: 'var(--neutral-900)' },
-      ],
-      categoryIcon: 'error_outline',
+      updated: '01 May 2026',
+      type: 'Primary Entity',
+      statusDot: '#516267',
+      statusLabel: 'Queued',
+      categories: [],
       entityType: 'Entity',
     },
   ],

@@ -147,9 +147,10 @@
 .typeCards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 12px; }
 .typeError .typeCard { border-color: $danger; }
 .typeCard {
-  border: 2px solid $gray-200; border-radius: 4px; padding: 20px 16px 18px;
+  border: 2px solid $gray-200; border-radius: 4px; padding: 22px 18px 18px;
   cursor: pointer; position: relative; transition: border-color 0.2s, background 0.2s;
   display: flex; flex-direction: column; gap: 10px; user-select: none;
+  min-height: 149px;
 }
 .typeCard:hover { border-color: $primary-200; background: $primary-08; }
 .typeCard.selected { border: 2px solid $bergbluetint1; background: $primary-08; box-shadow: 0px 2px 16px rgba(2, 163, 213, 0.18); }
@@ -169,7 +170,7 @@
 
 /* Form fields */
 .editGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; margin-top: 16px; margin-bottom: 24px; }
-.editField { display: flex; flex-direction: column; gap: 8px; }
+.editField { display: flex; flex-direction: column; gap: 6px; }
 .editLabel { font-family: $font-roboto; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; display: flex; align-items: center; gap: 4px; }
 .editInput {
   height: 34px; border: 1px solid $neutral-300; border-radius: 2px;
@@ -181,12 +182,13 @@
 .editInput:focus { border-color: $neutral-500; }
 .editInput[readonly] { background: $neutral-25; color: $gray-500; }
 .editInput:disabled { background: $neutral-25; color: $gray-500; cursor: not-allowed; }
+.editInput:disabled::placeholder { color: #757575; }
 .hasError .editInput, .hasError select.editInput { border-color: $danger; }
 .hasError .dropdownTrigger { border-color: $danger; }
 .hasError .tagSelectTrigger { border-color: $danger; }
 .fieldError { font-size: 11px; color: $danger; }
 .typeWarning { display: flex; align-items: center; gap: 6px; margin-top: 6px; padding: 8px 12px; background: $warning-50; border: 1px solid $warning-300; border-radius: 4px; font-size: 12px; color: $gray-900; }
-.summaryPrepopNote { display: flex; align-items: center; gap: 8px; padding: 13px 16px; background: $primary-08; border: 1px solid $primary-200; border-radius: 4px; font-family: $font-roboto; font-size: 12px; font-weight: 400; color: $gray-600; line-height: 18px; margin-bottom: 20px; }
+.summaryPrepopNote { display: flex; align-items: center; gap: 8px; padding: 11px 16px; background: $primary-08; border: 1px solid $primary-200; border-radius: 4px; font-family: $font-roboto; font-size: 12px; font-weight: 400; color: $gray-600; line-height: 18px; margin-bottom: 20px; }
 .req { color: $danger; }
 
 /* Step footer */
@@ -194,15 +196,17 @@
 .acFooterRight { display: flex; align-items: center; gap: 8px; }
 
 /* Dup banner */
-.dupBanner { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: $warning-50; border: 1px solid $warning; border-radius: 4px; margin-bottom: 24px; font-size: 13px; color: $warning-900; line-height: 1.5; }
+.dupBanner { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: $warning-50; border: 1px solid $warning; border-radius: 4px; margin-bottom: 24px; font-size: 13px; color: $warning-900; line-height: 1.5; }
+.dupBanner .material-icons-outlined { font-size: 24px; color: $warning-900; flex-shrink: 0; }
 
 /* Dup table */
 .tableWrap { overflow-x: auto; margin-bottom: 16px; }
 .dupTable { width: 100%; border-collapse: collapse; font-size: 13px; }
-.dupTable thead th { background: $gray-100; padding: 8px 12px; text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: $gray-600; border: 1px solid $gray-200; white-space: nowrap; }
-.dupTable tbody td { font-family: $font-roboto; padding: 14.5px 12.5px; border: 1px solid $gray-200; color: $gray-600; vertical-align: middle; }
+.dupTable thead th { background: $gray-100; padding: 8px 12.5px; text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: $gray-600; border: 1px solid $gray-200; white-space: nowrap; }
+.dupTable tbody td { font-family: $font-roboto; padding: 17px 12.5px; border: 1px solid $gray-200; color: $gray-600; vertical-align: middle; }
 .dupTable :global(.badge) { text-transform: none; letter-spacing: 0; font-size: 11px; font-family: $font-roboto; font-weight: 600; height: 28px; background: $gray-200; border-radius: 2px; }
 .dupTable tbody tr:nth-child(odd) td { background: $primary-08; }
+.dupTable tbody tr:nth-child(even) td { background: $row-hover; }
 .dupTable tbody tr { transition: background 100ms ease; }
 .dupTable tbody tr:hover td { background: $row-hover !important; }
 .cellLink { color: $primary-600; font-weight: 500; cursor: pointer; }
@@ -288,10 +292,10 @@
   line-height: 1.6;
   margin-bottom: 20px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
 }
-.obWarningIntro .material-icons-outlined { font-size: 18px; color: $warning-900; flex-shrink: 0; margin-top: 1px; }
+.obWarningIntro .material-icons-outlined { font-size: 24px; color: $warning-900; flex-shrink: 0; }
 
 /* Onboarding section label */
 .obSectionLabel { font-size: 15px; font-weight: 700; color: $bergbluetint1; padding: 20px 0 14px; letter-spacing: 0.3px; }
@@ -316,7 +320,7 @@
 .obInput::placeholder { color: $gray-500; }
 .obInput[readonly] { background: $neutral-25; color: $text-light-alt; cursor: default; }
 .obInput:disabled { background: $neutral-25; color: $text-light-alt; cursor: not-allowed; }
-.obTextarea { height: auto; min-height: 80px; padding: 10px 9px; resize: vertical; line-height: 20px; }
+.obTextarea { height: 64px; padding: 9px 9px; resize: none; line-height: 21px; }
 .obSelect {
   appearance: none; -webkit-appearance: none; cursor: pointer;
   padding-right: 36px;
@@ -345,10 +349,10 @@
   justify-content: center;
   gap: 16px;
 }
-.creatingProgressWrap { width: 320px; height: 4px; background: $gray-300; border-radius: 4px; overflow: hidden; }
-.creatingProgressBar { height: 100%; width: 0%; background: $bergbluetint1; border-radius: 4px; transition: width 0.4s ease; }
-.creatingLabel { font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 1px; }
-.creatingSublabel { font-size: 12px; font-weight: 700; color: $gray-900; text-transform: uppercase; letter-spacing: 0.8px; }
+.creatingProgressWrap { width: 320px; height: 4px; background: $gray-300; border-radius: 2px; overflow: hidden; }
+.creatingProgressBar { height: 100%; width: 0%; background: $bergbluetint1; border-radius: 2px; transition: width 0.4s ease; }
+.creatingLabel { font-size: 12px; font-weight: 500; font-family: $font-roboto; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 1px; line-height: 20px; }
+.creatingSublabel { font-size: 12px; font-weight: 700; font-family: $font-roboto; color: $gray-900; text-transform: uppercase; letter-spacing: 0.8px; line-height: 20px; }
 
 /* ── Notes side panel ── */
 /* ── Language side panel ── */

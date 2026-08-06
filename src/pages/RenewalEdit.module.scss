@@ -81,25 +81,8 @@
 }
 
 .select {
-  height: 36px;
-  padding: 0 28px 0 12px;
-  border: 1px solid $gray-400;
-  background: $white;
-  font-family: inherit;
-  font-size: 14px;
-  color: $gray-900;
-  outline: none;
-  border-radius: $radius-xs;
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%238D9CA9'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 6px center;
-  transition: border-color 0.15s;
-}
-
-.select:focus {
-  border-color: $bergbluetint1;
+  @include native-select;
+  width: auto;
 }
 
 .inputPair {
@@ -494,26 +477,10 @@
 }
 
 .periodSelect {
+  @include native-select;
   flex: 1;
-  height: 34px;
   min-width: 0;
-  padding: 0 24px 0 8px;
-  border: 1px solid $gray-400;
-  border-radius: $radius-xs;
-  font-family: inherit;
   font-size: 13px;
-  color: $gray-900;
-  outline: none;
-  background: $white;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%238D9CA9'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 4px center;
-  cursor: pointer;
-}
-
-.periodSelect:focus {
-  border-color: $bergbluetint1;
 }
 
 .detailsColActions {

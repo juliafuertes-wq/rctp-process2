@@ -29,25 +29,17 @@
 
 /* ── Properties side panel ── */
 .propsPanel { position: fixed; top: 0; right: 0; width: 960px; max-width: 100vw; height: 100vh; background: $white; border-top: 4px solid $bergbluetint1; border-left: 1px solid $gray-200; box-shadow: -4px 0 20px rgba(0,0,0,0.1); z-index: var(--z-panel); display: flex; flex-direction: column; overflow: hidden; }
-.propsPanelHeader { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; flex-shrink: 0; border-bottom: 1px solid $gray-200; }
-.propsPanelTitle { font-size: 18px; font-weight: 600; color: $gray-900; }
+.propsPanelHeader { display: flex; align-items: center; justify-content: space-between; padding: 22px 20px; flex-shrink: 0; border-bottom: 1px solid $gray-200; }
+.propsPanelTitle { font-family: $font-roboto; font-size: 18px; font-weight: 600; color: $gray-900; }
 .propsPanelFilters { padding: 16px 20px; border-bottom: 1px solid $gray-200; flex-shrink: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .filterLabel { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; color: $bergbluetint1; margin-bottom: 6px; }
-.filterInput { width: 100%; height: 32px; border: 1px solid $neutral-300; border-radius: 4px; padding: 0 9px; font-size: 14px; font-family: inherit; color: $gray-900; outline: none; }
+.filterInput { width: 100%; height: 32px; border: 1px solid $neutral-300; border-radius: 2px; padding: 0 9px; font-size: 14px; font-family: inherit; color: $gray-900; outline: none; }
 .filterInput:focus { border-color: $bergbluetint1; }
-.filterSelect {
-  width: 100%; height: 34px; border: 1px solid $neutral-300; border-radius: 2px;
-  padding: 0 36px 0 9px; font-size: 14px; font-family: $font-roboto;
-  color: $text-light-alt; background: $white; outline: none; cursor: pointer;
-  appearance: none; -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='%230C2A31'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 10px center;
-}
-.filterSelect:focus { border-color: $neutral-500; }
+.filterSelect { @include native-select; }
 .propsPanelContent { flex: 1; overflow-y: auto; padding: 0 20px 20px; }
 .propsTable { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 16px; }
-.propsTable thead th { background: $gray-100; padding: 8px 12px; text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: $gray-600; border: 1px solid $gray-200; position: sticky; top: 0; }
-.propsTable tbody td { padding: 9px 12px; border: 1px solid $gray-200; vertical-align: middle; font-size: 13px; }
+.propsTable thead th { @include table-header; letter-spacing: 0.8px; position: sticky; top: 0; }
+.propsTable tbody td { @include table-cell; padding-top: 9px; padding-bottom: 9px; }
 .propsTable tbody tr:nth-child(odd) td { background: $primary-08; }
 .propsTable tbody tr { transition: background 100ms ease; }
 .propsTable tbody tr:hover td { background: $row-hover !important; }
@@ -181,7 +173,7 @@
 .editInput::placeholder { color: #757575; }
 .editInput:focus { border-color: $neutral-500; }
 .editInput[readonly] { background: $neutral-25; color: $gray-500; }
-.editInput:disabled { background: $neutral-25; color: $gray-500; cursor: not-allowed; }
+.editInput:disabled { background: $gray-100; color: $gray-500; cursor: not-allowed; }
 .editInput:disabled::placeholder { color: #757575; }
 .hasError .editInput, .hasError select.editInput { border-color: $danger; }
 .hasError .dropdownTrigger { border-color: $danger; }
@@ -202,8 +194,8 @@
 /* Dup table */
 .tableWrap { overflow-x: auto; margin-bottom: 16px; }
 .dupTable { width: 100%; border-collapse: collapse; font-size: 13px; }
-.dupTable thead th { background: $gray-100; padding: 8px 12.5px; text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: $gray-600; border: 1px solid $gray-200; white-space: nowrap; }
-.dupTable tbody td { font-family: $font-roboto; padding: 17px 12.5px; border: 1px solid $gray-200; color: $gray-600; vertical-align: middle; }
+.dupTable thead th { @include table-header; letter-spacing: 0.6px; }
+.dupTable tbody td { @include table-cell; padding-top: 17px; padding-bottom: 17px; }
 .dupTable :global(.badge) { text-transform: none; letter-spacing: 0; font-size: 11px; font-family: $font-roboto; font-weight: 600; height: 28px; background: $gray-200; border-radius: 2px; }
 .dupTable tbody tr:nth-child(odd) td { background: $primary-08; }
 .dupTable tbody tr:nth-child(even) td { background: $row-hover; }
@@ -240,7 +232,7 @@
 
 /* Verify table */
 .verifyTable { width: 100%; border-collapse: collapse; font-size: 13px; }
-.verifyTable thead th { background: $gray-100; padding: 8px 10px; text-align: left; font-size: 11px; font-family: $font-roboto; font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; color: $gray-600; border: 1px solid $gray-200; white-space: nowrap; }
+.verifyTable thead th { @include table-header; letter-spacing: 0.6px; }
 .verifyTable thead th:last-child { width: 80px; }
 .verifyTable tbody td { padding: 10.5px 12.5px; border: 1px solid $gray-200; color: $gray-600; vertical-align: top; }
 .verifyTable tbody tr:hover td { background: $gray-100; }
@@ -271,15 +263,8 @@
 /* Field group */
 .fieldGroup { display: flex; flex-direction: column; gap: 6px; }
 .fieldLabel { font-family: $font-roboto; font-size: 12px; font-weight: 500; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; }
-.fieldSelect {
-  height: 34px; border: 1px solid $neutral-300; border-radius: 2px;
-  padding: 0 36px 0 9px; font-size: 14px; font-family: $font-roboto;
-  color: $gray-900; background: $white; width: 100%;
-  appearance: none; -webkit-appearance: none; outline: none; cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='%230C2A31'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 10px center;
-}
-.fieldSelect:focus { border-color: $neutral-500; }
+.fieldSelect { @include native-select; }
+.hasError .fieldSelect { border-color: $danger; }
 
 /* Onboarding warning intro */
 .obWarningIntro {
@@ -321,13 +306,7 @@
 .obInput[readonly] { background: $neutral-25; color: $text-light-alt; cursor: default; }
 .obInput:disabled { background: $neutral-25; color: $text-light-alt; cursor: not-allowed; }
 .obTextarea { height: 64px; padding: 9px 9px; resize: none; line-height: 21px; }
-.obSelect {
-  appearance: none; -webkit-appearance: none; cursor: pointer;
-  padding-right: 36px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='%23516267'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 10px center;
-  background-color: $white;
-}
+.obSelect { @include native-select; }
 .obError { font-size: 11px; color: $danger; margin-top: 4px; }
 .obSubGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .obSubLabel { font-family: $font-roboto; font-size: 11px; font-weight: 600; color: $gray-600; text-transform: uppercase; letter-spacing: 0.5px; line-height: 20px; margin-bottom: 6px; }

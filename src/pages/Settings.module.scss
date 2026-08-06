@@ -295,26 +295,8 @@
 }
 
 .fieldSelect {
-  height: 34px;
-  padding: 0 24px 0 8px;
-  border: 1px solid $gray-400;
-  border-radius: $radius-xs;
-  background: $white;
-  font-size: 13px;
-  color: $gray-900;
-  font-family: inherit;
+  @include native-select;
   width: 155px;
-  box-sizing: border-box;
-  outline: none;
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%238D9CA9'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 4px center;
-}
-
-.fieldSelect:focus {
-  border-color: $bergbluetint1;
 }
 
 .fieldSelectNotification {
@@ -368,34 +350,13 @@
   color: $gray-900;
 }
 
-.table thead th {
-  background: $gray-100;
-  font-family: $font-roboto;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: $gray-600;
-  padding: 0 12px;
-  height: 38px;
-  text-align: left;
-  border: 1px solid $gray-200;
-  white-space: nowrap;
-}
+.table thead th { @include table-header; }
 
 .thCenter {
   text-align: center !important;
 }
 
-.table tbody td {
-  padding: 0 12px;
-  height: 40px;
-  border: 1px solid $gray-200;
-  color: $gray-900;
-  font-family: $font-roboto;
-  font-size: 13px;
-  font-weight: 400;
-}
+.table tbody td { @include table-cell; }
 
 .tdCenter {
   text-align: center;
@@ -636,17 +597,7 @@
   min-width: 700px;
 }
 
-.stagesTable thead th {
-  background: $gray-100;
-  border: 1px solid $gray-200;
-  padding: 10px 12px;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: $gray-600;
-  white-space: nowrap;
-}
+.stagesTable thead th { @include table-header; }
 
 .stagesThName {
   text-align: left;
@@ -663,11 +614,7 @@
 .stagesTable tbody tr { transition: background 100ms ease; }
 .stagesTable tbody tr:hover { background: $row-hover; }
 
-.stagesTable tbody td {
-  border: 1px solid $gray-200;
-  padding: 10px 12px;
-  vertical-align: middle;
-}
+.stagesTable tbody td { @include table-cell; }
 
 .stagesRowIndent td:first-child {
   padding-left: 32px;

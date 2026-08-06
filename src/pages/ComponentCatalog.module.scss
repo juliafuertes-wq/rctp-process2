@@ -316,17 +316,8 @@ $rcard-high-end:      #ffcdd2;
 }
 
 .specimenTable thead th {
-  background: $gray-100;
-  border: 1px solid $gray-200;
-  border-bottom: 1px solid $gray-300;
-  padding: 10px 28px 10px 12px;
-  text-align: left;
-  font-size: 11px;
-  font-weight: 600;
-  color: $gray-600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
+  @include table-header;
+  padding-right: 28px;
   position: relative;
 }
 
@@ -344,10 +335,7 @@ $rcard-high-end:      #ffcdd2;
 .specimenTable tbody tr:hover { background: $row-hover; }
 
 .specimenTable tbody td {
-  padding: 10px 12px;
-  vertical-align: middle;
-  color: $gray-600;
-  border: 1px solid $gray-200;
+  @include table-cell;
 }
 
 .cellLink {

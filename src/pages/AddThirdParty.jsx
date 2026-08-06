@@ -415,7 +415,7 @@ export default function AddThirdParty() {
         {/* ── Continue row ── */}
         {!continued && (
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 12, marginTop: 16 }}>
-            {!tpType && <p className={styles.helperText} style={{ margin: 0 }}>Please select a Third Party Type and name before continue.</p>}
+            {!tpType && <p className={styles.helperText} style={{ margin: 0 }}>Please select a Third Party Type and name before you continue.</p>}
             <button
               className="btn btn-primary"
               disabled={!tpType || !tpName.trim()}
@@ -1298,9 +1298,7 @@ function PropertiesPanel({ name, onClose }) {
                   <td className={styles.propIndicator}>
                     {p.value
                       ? (
-                        <span data-toggle="tooltip" data-placement="left" title="High Risk Factors">
-                          <span className="material-icons-outlined text-primary-600" style={{ fontSize: 16, display: 'block' }}>warning</span>
-                        </span>
+                        <span className="material-icons-outlined" style={{ fontSize: 16, display: 'block', color: '#028FBB' }}>open_in_new</span>
                       )
                       : <span className={styles.propDot} />
                     }

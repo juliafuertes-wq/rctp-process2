@@ -27,20 +27,10 @@
 }
 
 .filterSelect {
+  @include native-select;
   height: 32px;
-  padding: 0 10px;
-  border: 1px solid $gray-300;
-  border-radius: 4px;
   font-size: 13px;
-  font-family: inherit;
-  color: $gray-900;
-  background: $white;
-  cursor: pointer;
   min-width: 120px;
-}
-.filterSelect:focus {
-  outline: none;
-  border-color: $primary;
 }
 
 .filterInput {

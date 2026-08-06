@@ -234,17 +234,8 @@ $primary-800: #01556F;
 }
 
 .table thead th {
-  background: $gray-100;
-  border: 1px solid $gray-200;
-  padding: 8px 28px 8px 8px;
-  text-align: left;
-  font-family: $font-roboto;
-  font-size: 11px;
-  font-weight: 500;
-  color: $gray-600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
+  @include table-header;
+  padding-right: 28px;
   position: relative;
 }
 .table thead th span[class*="material-icons"] {
@@ -256,13 +247,7 @@ $primary-800: #01556F;
 }
 
 .table tbody td {
-  border: 1px solid $gray-200;
-  padding: 8px;
-  color: $gray-600;
-  vertical-align: middle;
-  font-family: $font-roboto;
-  font-size: 13px;
-  font-weight: 400;
+  @include table-cell;
 }
 
 .table tbody tr:nth-child(odd) td {
@@ -1168,17 +1153,8 @@ $primary-800: #01556F;
   margin-bottom: 0;
 }
 .riskTable thead th {
-  background: $gray-100;
-  border: 1px solid $gray-200;
-  padding: 8px 28px 8px 8.5px;
-  text-align: left;
-  font-family: $font-roboto;
-  font-size: 11px;
-  font-weight: 500;
-  color: $gray-600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
+  @include table-header;
+  padding-right: 28px;
   position: relative;
 }
 .riskTable thead th span[class*="material-icons"] {
@@ -1189,13 +1165,7 @@ $primary-800: #01556F;
   line-height: 1;
 }
 .riskTable tbody td {
-  border: 1px solid $gray-200;
-  padding: 12px 12.5px;
-  color: $gray-600;
-  vertical-align: middle;
-  font-family: $font-roboto;
-  font-size: 13px;
-  font-weight: 400;
+  @include table-cell;
 }
 .riskScoreCol {
   text-align: right;
@@ -1239,17 +1209,8 @@ $primary-800: #01556F;
   font-size: 13px;
 }
 .genericTable thead th {
-  background: $gray-100;
-  border: 1px solid $gray-200;
-  padding: 8px 28px 8px 8.5px;
-  text-align: left;
-  font-family: $font-roboto;
-  font-size: 11px;
-  font-weight: 500;
-  color: $gray-600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
+  @include table-header;
+  padding-right: 28px;
   position: relative;
 }
 .genericTable thead th span[class*="material-icons"] {
@@ -1260,13 +1221,7 @@ $primary-800: #01556F;
   line-height: 1;
 }
 .genericTable tbody td {
-  border: 1px solid $gray-200;
-  padding: 10px 8.5px;
-  color: $gray-600;
-  vertical-align: middle;
-  font-family: $font-roboto;
-  font-size: 13px;
-  font-weight: 400;
+  @include table-cell;
 }
 .genericTable tbody tr:nth-child(odd) td  { background: $primary-08; }
 .genericTable tbody tr:nth-child(even) td { background: $white; }
@@ -1294,16 +1249,8 @@ $primary-800: #01556F;
   font-size: 13px;
 }
 .screeningTable thead th {
-  background: $gray-100;
-  border: 1px solid $gray-200;
-  padding: 8px 28px 8px 8px;
-  text-align: left;
-  font-size: 11px;
-  font-weight: 500;
-  color: $gray-600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
+  @include table-header;
+  padding-right: 28px;
   position: relative;
 }
 .screeningTable thead th span[class*="material-icons"] {

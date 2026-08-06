@@ -685,21 +685,12 @@
 }
 
 .pickerTable thead th {
+  @include table-header;
   position: sticky;
   top: 0;
-  background: $gray-100;
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: $gray-600;
-  padding: 10px 16px;
-  text-align: left;
-  border-bottom: 1px solid $gray-300;
   border-right: 1px solid $gray-300;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .pickerTable thead th:last-child { border-right: none; }

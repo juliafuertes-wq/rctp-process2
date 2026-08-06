@@ -7,6 +7,7 @@ import Breadcrumb from '../components/layout/Breadcrumb';
 import ProfilePage from '../components/profile/ProfilePage';
 import { piedpiper, brucewayne, willywonka } from '../data/profiles';
 import Checkbox from '../components/ui/Checkbox';
+import Combobox from '../components/ui/Combobox';
 import styles from './AddThirdParty.module.scss';
 
 /* ─────────────────────── Static data ─────────────────────── */
@@ -402,7 +403,7 @@ export default function AddThirdParty() {
             >
               <div className={styles.nameField}>
                 <div className={styles.sectionHeading} style={{ marginBottom: 8, paddingBottom: 0, borderBottom: 'none' }}>Country / Territory</div>
-                <ObSelect value={tpCountry} onChange={v => setTpCountry(v)} options={COUNTRIES} placeholder="Select a country" />
+                <Combobox value={tpCountry} onChange={v => setTpCountry(v)} options={COUNTRIES} placeholder="Select a country" />
               </div>
               <div className={styles.nameField}>
                 <div className={styles.sectionHeading} style={{ marginBottom: 8, paddingBottom: 0, borderBottom: 'none' }}>DUNS Number</div>
@@ -535,7 +536,7 @@ export default function AddThirdParty() {
             >
               <div className={styles.fieldGroup} style={{ maxWidth: 320, marginBottom: 16 }}>
                 <label className={styles.fieldLabel}>Country / Territory</label>
-                <ObSelect value={verifyCountry} onChange={setVerifyCountry} options={['All countries', 'Australia', 'United States']} placeholder="All countries" />
+                <Combobox value={verifyCountry} onChange={setVerifyCountry} options={['All countries', 'Australia', 'United States']} placeholder="All countries" />
               </div>
               <div className={styles.resultsHeader}>
                 <span><strong>{filteredVerify.length}</strong> {filteredVerify.length === 1 ? 'result' : 'results'} found</span>
@@ -855,7 +856,7 @@ export default function AddThirdParty() {
                 </div>
                 <div className={`${styles.obBlock} ${errors.country ? styles.hasError : ''}`}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>5.</span><span className={styles.obLabel}>Registered Country / Territory</span><span className={styles.req}>*</span></div>
-                  <ObSelect value={ob.country} onChange={v => { updateOb('country', v); setErrors(prev => ({ ...prev, country: false })); }} options={COUNTRIES} placeholder="Choose…" hasError={!!errors.country} />
+                  <Combobox value={ob.country} onChange={v => { updateOb('country', v); setErrors(prev => ({ ...prev, country: false })); }} options={COUNTRIES} placeholder="Choose…" hasError={!!errors.country} />
                   {errors.country && <div className={styles.obError}>Registered country is required.</div>}
                 </div>
                 <div className={styles.obBlock}>
@@ -864,14 +865,14 @@ export default function AddThirdParty() {
                 </div>
                 <div className={styles.obBlock}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>7.</span><span className={styles.obLabel}>Industry / Sector</span></div>
-                  <ObSelect value={ob.industry} onChange={v => updateOb('industry', v)} options={INDUSTRIES} placeholder="Select an industry" />
+                  <Combobox value={ob.industry} onChange={v => updateOb('industry', v)} options={INDUSTRIES} placeholder="Select an industry" />
                 </div>
                 <div className={styles.obBlock}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>8.</span><span className={styles.obLabel}>Identification</span></div>
                   <div className={styles.obSubGrid}>
                     <div>
                       <div className={styles.obSubLabel}>ID Type</div>
-                      <ObSelect value={ob.idType} onChange={v => updateOb('idType', v)} options={['DUNS Number','LEI','BVD ID','VAT Number','Tax Code','Trade Licence']} placeholder="Select ID type" />
+                      <Combobox value={ob.idType} onChange={v => updateOb('idType', v)} options={['DUNS Number','LEI','BVD ID','VAT Number','Tax Code','Trade Licence']} placeholder="Select ID type" />
                     </div>
                     <div>
                       <div className={styles.obSubLabel}>ID Value</div>
@@ -905,27 +906,27 @@ export default function AddThirdParty() {
                 </div>
                 <div className={`${styles.obBlock} ${errors.country ? styles.hasError : ''}`}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>4.</span><span className={styles.obLabel}>Country/Territory of Residence</span><span className={styles.req}>*</span></div>
-                  <ObSelect value={obPerson.country} onChange={v => { updateObP('country', v); setErrors(prev => ({ ...prev, country: false })); }} options={COUNTRIES} placeholder="Please select" hasError={!!errors.country} />
+                  <Combobox value={obPerson.country} onChange={v => { updateObP('country', v); setErrors(prev => ({ ...prev, country: false })); }} options={COUNTRIES} placeholder="Please select" hasError={!!errors.country} />
                   {errors.country && <div className={styles.obError}>Country/Territory of Residence is required.</div>}
                 </div>
                 <div className={styles.obBlock}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>5.</span><span className={styles.obLabel}>Year of Birth</span></div>
-                  <ObSelect value={obPerson.yob} onChange={v => updateObP('yob', v)} options={['2005','2000','1995','1990','1985','1980','1975','1970','1965','1960','1955','1950','1945','1940','1935','1930','1925','1920']} placeholder="Please select" />
+                  <Combobox value={obPerson.yob} onChange={v => updateObP('yob', v)} options={['2005','2000','1995','1990','1985','1980','1975','1970','1965','1960','1955','1950','1945','1940','1935','1930','1925','1920']} placeholder="Please select" />
                 </div>
                 <div className={styles.obBlock}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>6.</span><span className={styles.obLabel}>Gender</span></div>
-                  <ObSelect value={obPerson.gender} onChange={v => updateObP('gender', v)} options={['Female','Male','Non-binary','Prefer not to say','Other']} placeholder="Please select" />
+                  <Combobox value={obPerson.gender} onChange={v => updateObP('gender', v)} options={['Female','Male','Non-binary','Prefer not to say','Other']} placeholder="Please select" />
                 </div>
                 <div className={styles.obBlock}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>7.</span><span className={styles.obLabel}>Industry/Sector</span></div>
-                  <ObSelect value={obPerson.industry} onChange={v => updateObP('industry', v)} options={INDUSTRIES} placeholder="Please select" />
+                  <Combobox value={obPerson.industry} onChange={v => updateObP('industry', v)} options={INDUSTRIES} placeholder="Please select" />
                 </div>
                 <div className={styles.obBlock}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>8.</span><span className={styles.obLabel}>Identification</span></div>
                   <div className={styles.obSubGrid}>
                     <div>
                       <div className={styles.obSubLabel}>ID Type</div>
-                      <ObSelect value={obPerson.idType} onChange={v => updateObP('idType', v)} options={['Passport','National ID','Driver\'s Licence','Tax Code','VAT Number','Social Security Number']} placeholder="Please select" />
+                      <Combobox value={obPerson.idType} onChange={v => updateObP('idType', v)} options={['Passport','National ID','Driver\'s Licence','Tax Code','VAT Number','Social Security Number']} placeholder="Please select" />
                     </div>
                     <div>
                       <div className={styles.obSubLabel}>ID Value</div>
@@ -974,19 +975,19 @@ export default function AddThirdParty() {
                 </div>
                 <div className={`${styles.obBlock} ${errors.country ? styles.hasError : ''}`}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>5.</span><span className={styles.obLabel}>Registered Country/Territory</span><span className={styles.req}>*</span></div>
-                  <ObSelect value={obUnknown.country} onChange={v => { updateObU('country', v); setErrors(prev => ({ ...prev, country: false })); }} options={COUNTRIES} placeholder="Please select" hasError={!!errors.country} />
+                  <Combobox value={obUnknown.country} onChange={v => { updateObU('country', v); setErrors(prev => ({ ...prev, country: false })); }} options={COUNTRIES} placeholder="Please select" hasError={!!errors.country} />
                   {errors.country && <div className={styles.obError}>Registered Country/Territory is required.</div>}
                 </div>
                 <div className={styles.obBlock}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>6.</span><span className={styles.obLabel}>Industry/Sector</span></div>
-                  <ObSelect value={obUnknown.industry} onChange={v => updateObU('industry', v)} options={INDUSTRIES} placeholder="Please select" />
+                  <Combobox value={obUnknown.industry} onChange={v => updateObU('industry', v)} options={INDUSTRIES} placeholder="Please select" />
                 </div>
                 <div className={styles.obBlock}>
                   <div className={styles.obBlockHead}><span className={styles.obNum}>7.</span><span className={styles.obLabel}>Identification</span></div>
                   <div className={styles.obSubGrid}>
                     <div>
                       <div className={styles.obSubLabel}>ID Type</div>
-                      <ObSelect value={obUnknown.idType} onChange={v => updateObU('idType', v)} options={['DUNS Number','LEI','BVD ID','VAT Number','Tax Code','Trade Licence']} placeholder="Please select" />
+                      <Combobox value={obUnknown.idType} onChange={v => updateObU('idType', v)} options={['DUNS Number','LEI','BVD ID','VAT Number','Tax Code','Trade Licence']} placeholder="Please select" />
                     </div>
                     <div>
                       <div className={styles.obSubLabel}>ID Value</div>

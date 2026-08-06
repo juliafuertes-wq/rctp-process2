@@ -1803,7 +1803,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     background: $white;
     border: 1px solid $gray-200;
     border-radius: $radius-xs;
-    box-shadow: $shadow-sm;
+    box-shadow: $shadow-xs;
     max-height: 220px;
     overflow-y: auto;
     z-index: 200;

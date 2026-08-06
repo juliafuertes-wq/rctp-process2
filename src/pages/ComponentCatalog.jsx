@@ -86,13 +86,12 @@ const PROPS = {
     { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the input.' },
   ],
   nativeSelect: [
-    { name: 'label', type: 'string', default: 'undefined', description: 'Label shown above the select.' },
-    { name: 'value', type: 'string', default: null, required: true, description: 'Controlled select value.' },
-    { name: 'onChange', type: '(e) => void', default: null, required: true, description: 'Change event handler.' },
-    { name: 'options', type: 'string[] | {value, label}[]', default: '[]', description: 'Options array — plain strings or value/label objects.' },
-    { name: 'placeholder', type: 'string', default: 'undefined', description: 'Placeholder option (disabled, first item).' },
-    { name: 'error', type: 'boolean', default: 'false', description: 'Error state.' },
-    { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the select.' },
+    { name: '@include native-select', type: 'SCSS mixin', default: '_variables.scss', description: 'Apply to any .mySelect class to get the standard look: 34px height, neutral-300 border, custom chevron caret, Roboto 14px, full width.' },
+    { name: 'width override', type: 'CSS', default: '100%', description: 'Override width when the select should not fill its container (e.g. width: 142px for compact pickers).' },
+    { name: 'height override', type: 'CSS', default: '34px', description: 'Override height for tighter or taller contexts.' },
+    { name: 'font-size override', type: 'CSS', default: '14px', description: 'Override font-size (e.g. 13px for dense toolbars).' },
+    { name: 'error state', type: 'CSS', default: 'none', description: 'Apply border-color: $danger on the select class (or via a .hasError parent) for validation errors.' },
+    { name: ':disabled', type: 'HTML attr', default: 'false', description: 'Native disabled attribute — mixin handles background-color: $neutral-300 and cursor: not-allowed automatically.' },
   ],
   combobox: [
     { name: 'value', type: 'string', default: null, required: true, description: 'Currently selected value.' },
@@ -762,16 +761,38 @@ export default function ComponentCatalog() {
               <Entry
                 id="nativeselect"
                 title="NativeSelect"
-                description="Labeled native <select> with consistent styling, custom caret, error state, and disabled state."
+                description="Native <select> styled via @mixin native-select in _variables.scss. All instances across the app use this mixin — add @include native-select to any module's select class to get the standard look. Override width, height, or font-size as needed."
                 demo={
                   <div className={styles.demoStageColumn}>
                     <div className={styles.demoRow}>
-                      <NativeSelect label="Default" value={selValue} onChange={v => setSelValue(v)} placeholder="Choose a country…" options={COUNTRIES} style={{ width: 220 }} />
-                      <NativeSelect label="With value" value="France" onChange={() => {}} options={COUNTRIES} style={{ width: 220 }} />
+                      <div className={styles.catalogSelectWrap}>
+                        <span className={styles.catalogSelectLabel}>Default</span>
+                        <select className={styles.catalogSelect} value={selValue} onChange={e => setSelValue(e.target.value)}>
+                          <option value="">Choose a country…</option>
+                          {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
+                        </select>
+                      </div>
+                      <div className={styles.catalogSelectWrap}>
+                        <span className={styles.catalogSelectLabel}>With value</span>
+                        <select className={styles.catalogSelect} value="France" onChange={() => {}}>
+                          {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
+                        </select>
+                      </div>
                     </div>
                     <div className={styles.demoRow}>
-                      <NativeSelect label="Error state" value="" onChange={() => {}} placeholder="Required field" options={COUNTRIES} error style={{ width: 220 }} />
-                      <NativeSelect label="Disabled" value="Germany" onChange={() => {}} options={COUNTRIES} disabled style={{ width: 220 }} />
+                      <div className={styles.catalogSelectWrap}>
+                        <span className={styles.catalogSelectLabel}>Error state</span>
+                        <select className={styles.catalogSelectError} value="" onChange={() => {}}>
+                          <option value="">Required field</option>
+                          {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
+                        </select>
+                      </div>
+                      <div className={styles.catalogSelectWrap}>
+                        <span className={styles.catalogSelectLabel}>Disabled</span>
+                        <select className={styles.catalogSelect} value="Germany" onChange={() => {}} disabled>
+                          {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
+                        </select>
+                      </div>
                     </div>
                   </div>
                 }

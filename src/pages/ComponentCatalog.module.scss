@@ -1500,4 +1500,22 @@ $rcard-high-end:      #ffcdd2;
 /* ── New patterns (form modal, file upload) ── */
 /* ════════════════════════════════════════════════════════════════════════ */
 
+/* ── NativeSelect demo ── */
+.catalogSelect { @include native-select; }
+.catalogSelectError { @include native-select; border-color: $danger; }
+.catalogSelectWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 220px;
+}
+.catalogSelectLabel {
+  font-family: $font-simplon;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: $bergbluetint1;
+}
+
 

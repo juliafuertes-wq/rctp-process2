@@ -881,9 +881,10 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 }
 
 .modal-label {
+    font-family: $font-simplon;
     font-size: 11px;
-    font-weight: $font-weight-bold;
-    color: $primary;
+    font-weight: 500;
+    color: $bergbluetint1;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     display: flex;
@@ -894,36 +895,36 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 .modal-required { color: $danger; }
 
 .modal-input {
-    height: 36px;
-    border: 1px solid $input-border-color;
-    border-radius: $border-radius-sm;
+    height: 34px;
+    border: 1px solid $neutral-300;
+    border-radius: $radius-xs;
     padding: 0 10px;
-    font-size: $font-size-sm;
-    font-family: inherit;
-    color: $darkcharc;
+    font-size: 14px;
+    font-family: $font-roboto;
+    color: $gray-900;
     background: $white;
     outline: none;
     transition: border-color 0.15s;
     width: 100%;
     box-sizing: border-box;
-    &:focus { border-color: $primary; }
+    &:focus { border-color: $neutral-500; }
     &::placeholder { color: $gray-500; }
 }
 
 .modal-select {
-    height: 36px;
-    border: 1px solid $input-border-color;
-    border-radius: $border-radius-sm;
+    height: 34px;
+    border: 1px solid $neutral-300;
+    border-radius: $radius-xs;
     padding: 0 10px;
-    font-size: $font-size-sm;
-    font-family: inherit;
-    color: $darkcharc;
+    font-size: 14px;
+    font-family: $font-roboto;
+    color: $gray-900;
     background: $white;
     outline: none;
     width: 100%;
     cursor: pointer;
     appearance: auto;
-    &:focus { border-color: $primary; }
+    &:focus { border-color: $neutral-500; }
 }
 
 // Confirm link button (used in cancel modal footer)
@@ -2540,13 +2541,13 @@ h6, .h6 { line-height: calc(32 / 18); }
 
 .paginator-size-select {
   width: 70px;
-  height: 32px;
+  height: 34px;
   padding: 0 13px;
-  border: 1px solid $gray-400;
+  border: 1px solid $neutral-300;
   border-radius: $radius-xs;
   font-size: 14px;
   font-family: $font-roboto;
-  color: $text-light-alt;
+  color: $gray-900;
   background: $white;
   appearance: none;
   -webkit-appearance: none;
@@ -2555,7 +2556,7 @@ h6, .h6 { line-height: calc(32 / 18); }
 }
 .paginator-size-select:focus {
   outline: none;
-  border-color: $primary;
+  border-color: $neutral-500;
 }
 
 .paginator-count {
@@ -2600,9 +2601,9 @@ h6, .h6 { line-height: calc(32 / 18); }
 
 .paginator-input {
   width: 40px;
-  height: 30px;
-  border: 1px solid $gray-200;
-  border-radius: 0;
+  height: 32px;
+  border: 1px solid $neutral-300;
+  border-radius: $radius-xs;
   text-align: center;
   font-size: 14px;
   font-family: $font-roboto;
@@ -2613,7 +2614,7 @@ h6, .h6 { line-height: calc(32 / 18); }
 }
 .paginator-input::-webkit-inner-spin-button,
 .paginator-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-.paginator-input:focus { outline: none; border-color: $primary; }
+.paginator-input:focus { outline: none; border-color: $neutral-500; }
 
 /* ── SlotCell dropdown panel ── */
 .dd-panel {

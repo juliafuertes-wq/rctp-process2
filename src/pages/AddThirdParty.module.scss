@@ -237,7 +237,6 @@
 .verifyTable tbody td { padding: 10.5px 12.5px; border: 1px solid $gray-200; color: $gray-600; vertical-align: top; }
 .verifyTable tbody tr:hover td { background: $gray-100; }
 .rowSelected td { background: $primary-08 !important; }
-.verifySelectCell { text-align: center; vertical-align: middle !important; padding: 6px 10px !important; } // kept for legacy; prefer td-action
 .verifySelectBtn { display: inline-flex; align-items: center; justify-content: center; height: 28px; padding: 0 8px; font-size: 13px; font-weight: 500; font-family: inherit; background: none; color: $bergbluetint1; border: none; border-radius: 4px; cursor: pointer; white-space: nowrap; transition: color 0.15s; }
 .verifySelectBtn:hover:not(:disabled) { color: $bergbluetint2; text-decoration: underline; }
 .verifySelectBtn:disabled { color: $gray-600; cursor: default; }

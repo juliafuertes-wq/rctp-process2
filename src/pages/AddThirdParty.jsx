@@ -556,7 +556,7 @@ export default function AddThirdParty() {
                           <td className="td-sm" style={{ maxWidth: 240 }}>{r.address}</td>
                           <td className="td-country">{r.country}</td>
                           <td className={styles.uboCell}><span className={`material-icons-outlined ${r.ubo ? styles.uboOk : styles.uboFail}`}>{r.ubo ? 'check_circle' : 'cancel'}</span></td>
-                          <td className="td-action">
+                          <td className="td-action" onClick={e => e.stopPropagation()}>
                             {selectedVerify === r.duns ? (
                               <button
                                 className={`${styles.verifySelectBtn} ${styles.verifyUnselectBtn}`}

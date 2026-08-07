@@ -539,7 +539,7 @@ export default function AddThirdParty() {
                 <Combobox value={verifyCountry} onChange={setVerifyCountry} options={['All countries', 'Australia', 'United States']} placeholder="All countries" />
               </div>
               <div className={styles.resultsHeader}>
-                <span><strong>{filteredVerify.length}</strong> {filteredVerify.length === 1 ? 'result' : 'results'} found</span>
+                <span className="paginator-count">Showing results 1 – {filteredVerify.length} of {filteredVerify.length}</span>
                 <span className="badge badge-source"><span className="material-icons-outlined" style={{ fontSize: 12 }}>verified</span> Dun &amp; Bradstreet</span>
               </div>
               {filteredVerify.length === 0 ? (

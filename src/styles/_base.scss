@@ -2632,10 +2632,10 @@ h6, .h6 { line-height: calc(32 / 18); }
 
 // ── Verify table column modifiers ────────────────────────────────────────────
 // Applied to <td> in entity-verification results table
-.td-name    { font-weight: 500; color: $gray-900; font-size: 13px; font-family: $font-roboto; }
+.td-name    { font-family: $font-roboto; font-size: 13px; font-weight: 500; color: $gray-900; }
 .td-mono    { font-family: $font-mono; font-size: 12px; color: $gray-600; }
-.td-sm      { font-size: 12px; color: $gray-600; }
-.td-country { font-size: 13px; color: $gray-600; }
+.td-sm      { font-family: $font-roboto; font-size: 12px; color: $gray-600; }
+.td-country { font-family: $font-roboto; font-size: 13px; color: $gray-600; }
 .td-action  { text-align: center; vertical-align: middle !important; padding: 6px 10px !important; }
 
 /* ── SlotCell dropdown panel ── */

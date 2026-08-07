@@ -590,7 +590,7 @@ export default function AddThirdParty() {
 
               <div className={styles.verifyPagination}>
                 <select className={styles.verifyPageSize}><option>20</option><option>50</option><option>100</option></select>
-                <span>Showing results 1 – {filteredVerify.length} of {filteredVerify.length}</span>
+                <span className="paginator-count">Showing results 1 – {filteredVerify.length} of {filteredVerify.length}</span>
               </div>
             </motion.div>
           )}

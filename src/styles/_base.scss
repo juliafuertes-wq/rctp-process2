@@ -2573,6 +2573,8 @@ h6, .h6 { line-height: calc(32 / 18); }
 
 .paginator-count {
   font-size: 13px;
+  font-family: $font-roboto;
+  font-weight: 400;
   color: $gray-600;
   white-space: nowrap;
 }

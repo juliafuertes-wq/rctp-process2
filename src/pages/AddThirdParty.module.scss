@@ -237,7 +237,7 @@
 .verifyTable tbody td { padding: 10.5px 12.5px; border: 1px solid $gray-200; color: $gray-600; vertical-align: top; }
 .verifyTable tbody tr:hover td { background: $gray-100; }
 .rowSelected td { background: $primary-08 !important; }
-.verifySelectCell { text-align: center; vertical-align: middle !important; padding: 6px 10px !important; }
+.verifySelectCell { text-align: center; vertical-align: middle !important; padding: 6px 10px !important; } // kept for legacy; prefer td-action
 .verifySelectBtn { display: inline-flex; align-items: center; justify-content: center; height: 28px; padding: 0 8px; font-size: 13px; font-weight: 500; font-family: inherit; background: none; color: $bergbluetint1; border: none; border-radius: 4px; cursor: pointer; white-space: nowrap; transition: color 0.15s; }
 .verifySelectBtn:hover:not(:disabled) { color: $bergbluetint2; text-decoration: underline; }
 .verifySelectBtn:disabled { color: $gray-600; cursor: default; }
@@ -251,14 +251,8 @@
 .skipOption input[type="checkbox"] { accent-color: $bergbluetint1; }
 
 /* Verify pagination */
-.verifyPagination { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding: 10px 0 6px; font-size: 13px; color: $gray-600; }
-.verifyPaginationLeft { display: flex; align-items: center; gap: 8px; }
-.verifyPaginationRight { display: flex; align-items: center; gap: 4px; }
-.verifyPageSize { height: 28px; border: 1px solid $gray-400; border-radius: 4px; padding: 0 20px 0 8px; font-size: 13px; font-family: inherit; color: $gray-900; background: $white; appearance: auto; cursor: pointer; }
-.verifyPageBtn { width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; border: none; background: none; color: $gray-600; cursor: pointer; font-size: 18px; transition: background 0.15s; }
-.verifyPageBtn:hover:not(:disabled) { background: $gray-200; color: $gray-900; }
-.verifyPageBtn:disabled { opacity: 0.3; cursor: not-allowed; }
-.verifyPageInput { width: 36px; height: 28px; border: 1px solid $gray-400; border-radius: 4px; text-align: center; font-size: 13px; font-family: inherit; color: $gray-900; }
+.verifyPagination { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding: 10px 0 6px; font-size: 13px; font-family: $font-roboto; font-weight: 400; color: $gray-600; }
+.verifyPageSize { width: 72px; height: 28px; border: 1px solid $gray-400; border-radius: $radius-xs; padding: 0 8px; font-size: 13px; font-family: $font-roboto; color: $gray-900; background: $white; appearance: none; -webkit-appearance: none; cursor: pointer; }
 
 /* Field group */
 .fieldGroup { display: flex; flex-direction: column; gap: 6px; }

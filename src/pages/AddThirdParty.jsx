@@ -551,12 +551,12 @@ export default function AddThirdParty() {
                     <tbody>
                       {filteredVerify.map((r, i) => (
                         <tr key={i} className={selectedVerify === r.duns ? styles.rowSelected : ''}>
-                          <td style={{ fontWeight: 500, color: '#0C2A31' }}>{r.name}</td>
-                          <td style={{ fontFamily: "'Menlo', monospace", fontSize: 12 }}>{r.duns}</td>
-                          <td style={{ fontSize: 12, maxWidth: 240 }}>{r.address}</td>
-                          <td>{r.country}</td>
+                          <td className="td-name">{r.name}</td>
+                          <td className="td-mono">{r.duns}</td>
+                          <td className="td-sm" style={{ maxWidth: 240 }}>{r.address}</td>
+                          <td className="td-country">{r.country}</td>
                           <td className={styles.uboCell}><span className={`material-icons-outlined ${r.ubo ? styles.uboOk : styles.uboFail}`}>{r.ubo ? 'check_circle' : 'cancel'}</span></td>
-                          <td className={styles.verifySelectCell}>
+                          <td className="td-action">
                             {selectedVerify === r.duns ? (
                               <button
                                 className={`${styles.verifySelectBtn} ${styles.verifyUnselectBtn}`}
@@ -589,19 +589,8 @@ export default function AddThirdParty() {
               )}
 
               <div className={styles.verifyPagination}>
-                <div className={styles.verifyPaginationLeft}>
-                  <select className={styles.verifyPageSize}><option>20</option><option>50</option><option>100</option></select>
-                  <span>Showing results 1 – 10 of 265</span>
-                </div>
-                <div className={styles.verifyPaginationRight}>
-                  <button className={styles.verifyPageBtn} disabled title="First page"><span className="material-icons-outlined" style={{ fontSize: 16 }}>first_page</span></button>
-                  <button className={styles.verifyPageBtn} disabled title="Previous page"><span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_left</span></button>
-                  <span>Page</span>
-                  <input className={styles.verifyPageInput} type="number" defaultValue={1} min={1} max={14} />
-                  <span>of 14</span>
-                  <button className={styles.verifyPageBtn} title="Next page"><span className="material-icons-outlined" style={{ fontSize: 16 }}>chevron_right</span></button>
-                  <button className={styles.verifyPageBtn} title="Last page"><span className="material-icons-outlined" style={{ fontSize: 16 }}>last_page</span></button>
-                </div>
+                <select className={styles.verifyPageSize}><option>20</option><option>50</option><option>100</option></select>
+                <span>Showing results 1 – {filteredVerify.length} of {filteredVerify.length}</span>
               </div>
             </motion.div>
           )}

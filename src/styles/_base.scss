@@ -1425,6 +1425,53 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     display: none !important;
 }
 
+// ── Full-screen "loading new profile" overlay (Finalising… progress screen) ──
+.creating-overlay {
+    position: fixed;
+    inset: 0;
+    background: $white;
+    z-index: var(--z-creating);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+.creating-progress-wrap {
+    width: 320px;
+    height: 4px;
+    background: $gray-300;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+.creating-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: $bergbluetint1;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+.creating-label {
+    font-size: 12px;
+    font-weight: 500;
+    font-family: $font-roboto;
+    color: $bergbluetint1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 20px;
+    margin-bottom: 16px;
+}
+.creating-sublabel {
+    font-size: 12px;
+    font-weight: 700;
+    font-family: $font-roboto;
+    color: $gray-900;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    line-height: 20px;
+}
+
 .sort-active {
     color: #02a3d5 !important;
     margin-top: 0px !important;

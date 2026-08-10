@@ -1068,12 +1068,12 @@ export default function AddThirdParty() {
 
       {/* Creating state overlay */}
       {creating && (
-        <div className={styles.creatingOverlay}>
-          <div className={styles.creatingProgressWrap}>
-            <div className={styles.creatingProgressBar} style={{ width: creatingProgress + '%' }} />
+        <div className="creating-overlay">
+          <div className="creating-progress-wrap">
+            <div className="creating-progress-bar" style={{ width: creatingProgress + '%' }} />
           </div>
-          <div className={styles.creatingLabel}>{creatingLabel}</div>
-          <div className={styles.creatingSublabel}>RISKCENTER | THIRD PARTY</div>
+          <div className="creating-label">{creatingLabel}</div>
+          <div className="creating-sublabel">RISKCENTER | THIRD PARTY</div>
         </div>
       )}
     </PageLayout>

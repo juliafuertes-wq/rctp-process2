@@ -296,21 +296,7 @@
 .obCheckboxItem input[type="checkbox"] { width: 16px; height: 16px; accent-color: $bergbluetint1; cursor: pointer; flex-shrink: 0; margin: 0; }
 .obCheckboxItem:hover { color: $gray-900; }
 
-/* ── Creating state overlay ── */
-.creatingOverlay {
-  position: fixed; inset: 0;
-  background: $white;
-  z-index: var(--z-creating);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-.creatingProgressWrap { width: 320px; height: 4px; background: $gray-300; border-radius: 2px; overflow: hidden; }
-.creatingProgressBar { height: 100%; width: 0%; background: $bergbluetint1; border-radius: 2px; transition: width 0.4s ease; }
-.creatingLabel { font-size: 12px; font-weight: 500; font-family: $font-roboto; color: $bergbluetint1; text-transform: uppercase; letter-spacing: 1px; line-height: 20px; }
-.creatingSublabel { font-size: 12px; font-weight: 700; font-family: $font-roboto; color: $gray-900; text-transform: uppercase; letter-spacing: 0.8px; line-height: 20px; }
+/* Creating-state overlay styles now live in _base.scss (.creating-overlay et al.) */
 
 /* ── Notes side panel ── */
 /* ── Language side panel ── */

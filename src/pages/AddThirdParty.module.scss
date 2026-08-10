@@ -121,19 +121,6 @@
 .section :global(.btn-primary:disabled),
 .formFooter :global(.btn-primary:disabled) { opacity: 0.4; }
 
-/* Cancel/outline button override (Figma: border #B1BCC5, text #0C2A31) */
-.section :global(.btn-outline-secondary),
-.formFooter :global(.btn-outline-secondary) {
-  border-color: $neutral-300;
-  color: $gray-900;
-}
-.section :global(.btn-outline-secondary:hover),
-.formFooter :global(.btn-outline-secondary:hover) {
-  border-color: $neutral-300;
-  color: $gray-900;
-  background: $gray-100;
-}
-
 /* Type cards */
 .sectionHeading { font-family: $font-roboto; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: $gray-600; line-height: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid $gray-200; display: flex; align-items: center; justify-content: space-between; }
 .typeCards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 12px; }
@@ -196,7 +183,6 @@
 .dupTable { width: 100%; border-collapse: collapse; font-size: 13px; }
 .dupTable thead th { @include table-header; letter-spacing: 0.6px; }
 .dupTable tbody td { @include table-cell; padding-top: 17px; padding-bottom: 17px; }
-.dupTable :global(.badge) { text-transform: none; letter-spacing: 0; font-size: 11px; font-family: $font-roboto; font-weight: 600; height: 28px; background: $gray-200; border-radius: 2px; }
 .dupTable tbody tr:nth-child(odd) td { background: $primary-08; }
 .dupTable tbody tr:nth-child(even) td { background: $row-hover; }
 .dupTable tbody tr { transition: background 100ms ease; }

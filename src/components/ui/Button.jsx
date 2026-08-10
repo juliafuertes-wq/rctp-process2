@@ -11,6 +11,7 @@ export default function Button({ variant = 'outline', size = 'md', children, ico
   const sizeClass = {
     sm: 'btn-sm',
     lg: 'btn-lg',
+    row40: 'btn-40',
     md: '',
   }[size] ?? '';
 

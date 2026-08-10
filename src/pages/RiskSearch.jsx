@@ -52,7 +52,7 @@ export default function RiskSearch() {
               {ENTITY_TYPES.map(t => (
                 <button
                   key={t}
-                  className={`btn ${entityType === t ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  className={`btn btn-40 ${entityType === t ? 'btn-primary' : 'btn-outline-secondary'}`}
                   onClick={() => setEntityType(t)}
                 >
                   {t}
@@ -89,7 +89,8 @@ export default function RiskSearch() {
           {/* Search button */}
           <Button
             variant="filled"
-            style={{ alignSelf: 'flex-end', height: 40 }}
+            size="row40"
+            style={{ alignSelf: 'flex-end' }}
             onClick={handleSearch}
           >
             Search

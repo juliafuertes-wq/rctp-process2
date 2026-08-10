@@ -465,7 +465,7 @@ export default function AddThirdParty() {
                     <td>{r.owner}</td>
                     <td>{r.bu}</td>
                     <td>{r.process}</td>
-                    <td><span className="badge badge-pending">{r.status}</span></td>
+                    <td><span className="badge badge-pending badge-plain">{r.status}</span></td>
                     <td>{r.ref}</td>
                     <td>{r.active}</td>
                     <td><button className={styles.moreBtn} onClick={() => setPropsPanel(r.name)}>View properties</button></td>

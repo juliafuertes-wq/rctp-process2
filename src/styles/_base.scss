@@ -45,6 +45,12 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
         letter-spacing: 0.1px;
     }
 
+    // Row-height — 40px, keeps default text; for buttons aligned to a 40px input/control row
+    &.btn-40 {
+        height: 40px;
+        padding: 0 12px;
+    }
+
     // Reset icon font rendering — text-transform:uppercase breaks Material Icons ligatures
     .material-icons-outlined, .material-icons {
         text-transform: none;
@@ -261,6 +267,16 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 .badge-completed       { background: $success;          color: $darkcharc; }
 .badge-confirmed       { background: darken($danger, 22%); color: $white; }
 .badge-cleared         { background: darken($primary, 10%); color: $white; }
+
+// Plain (data-style) badge: lowercase Roboto, used in dense data tables (e.g. duplicate-check)
+.badge-plain {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 11px;
+    font-family: $font-roboto;
+    font-weight: 600;
+    height: 28px;
+}
 
 // Size variants
 .badge-lg {

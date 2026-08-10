@@ -242,8 +242,6 @@
 .table tbody td.tdMedium   { font-family: $font-roboto; font-weight: 500; }
 .table tbody td.tdRegular  { font-family: $font-roboto; font-weight: 400; }
 .table tbody td.tdSemibold { font-family: $font-roboto; font-weight: 600; }
-.tdMedium  :global(.badge-type) { font-weight: 500; }
-.tdRegular :global(.badge)      { font-weight: 400; }
 .tdSemibold :global(.chip-risk) { font-weight: 600; }
 
 .typeIcon {

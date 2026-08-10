@@ -2009,9 +2009,9 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 }
 .checkbox:not(.checkbox-disabled):hover .checkbox-box-empty { border-color: $primary; }
 
-// Selected / indeterminate enabled — primary/500 fill
+// Selected / indeterminate enabled — bergblue tint 1 fill
 .checkbox-box-checked {
-    background: $bergblue;        // primary/500 #02A3D5
+    background: $bergbluetint1;   // #028FBB
     border: 2px solid transparent;
 }
 .checkbox:not(.checkbox-disabled):hover .checkbox-box-checked { background: $primary-600; }

@@ -274,13 +274,13 @@
 }
 
 .accordionGroupTitle {
-  font-family: $font-roboto;
-  font-size: 14px;
-  font-weight: 500;
+  font-family: $font-simplon;
+  font-size: 13px;
+  font-weight: 700;
   line-height: 20px;
   color: #000000;
-  letter-spacing: 0;
-  text-transform: none;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .accordionGroupBody {
@@ -324,7 +324,7 @@
   justify-content: space-between;
   height: 40px;
   padding: 0 8px 0 28px;
-  background: $gray-200;
+  background: $gray-100;
   cursor: pointer;
   user-select: none;
   border-top: 1px solid $gray-400;
@@ -332,17 +332,17 @@
 }
 
 .accordionHeader:hover {
-  background: $gray-300;
+  background: $gray-200;
 }
 
 .accordionTitle {
-  font-family: $font-roboto;
-  font-size: 14px;
-  font-weight: 500;
+  font-family: $font-simplon;
+  font-size: 12px;
+  font-weight: 700;
   line-height: 20px;
-  color: #000000;
-  letter-spacing: 0;
-  text-transform: none;
+  color: $bergbluetint1;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .accordionChevron {
@@ -363,6 +363,7 @@
 .subAccordionRow {
   background: $gray-100;
   cursor: pointer;
+  height: 45px;
 }
 
 .subAccordionRow:hover {

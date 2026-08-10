@@ -28,3 +28,6 @@ storybook-static
 
 # Never commit auth tokens
 .npmrc
+
+# Embedded nested working copy — never commit
+/rctp-process2/

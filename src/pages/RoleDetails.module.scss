@@ -311,11 +311,7 @@
 
 /* Section inside a group */
 .accordionSection {
-  border-bottom: 1px solid $gray-200;
-}
-
-.accordionSection:last-child {
-  border-bottom: none;
+  /* no border — the header's bottom border is the single separator */
 }
 
 .accordionHeader {
@@ -327,8 +323,11 @@
   background: $gray-100;
   cursor: pointer;
   user-select: none;
-  border-top: 1px solid $gray-400;
   border-bottom: 1px solid $gray-400;
+}
+
+.accordionSection:last-child .accordionHeader {
+  border-bottom: none;
 }
 
 .accordionHeader:hover {
@@ -346,14 +345,13 @@
 }
 
 .accordionChevron {
-  font-size: 24px;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
   color: $gray-600;
-  transition: transform 0.2s ease;
-  transform: rotate(0deg);
-}
-
-.accordionChevronOpen {
-  transform: rotate(-180deg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tdNameIndent {

@@ -368,8 +368,8 @@ export default function RoleDetails() {
                         {group.children.every(s => openSections[s.title]) ? 'Collapse All' : 'Expand All'}
                       </span>
                     )}
-                    <span className={`material-icons-outlined ${styles.accordionChevron}${groupOpen ? ' ' + styles.accordionChevronOpen : ''}`}>
-                      expand_more
+                    <span className={`material-icons-outlined ${styles.accordionChevron}`}>
+                      {groupOpen ? 'expand_more' : 'expand_less'}
                     </span>
                   </div>
                 </div>
@@ -381,8 +381,8 @@ export default function RoleDetails() {
                         <div key={section.title} className={styles.accordionSection}>
                           <div className={styles.accordionHeader} onClick={() => toggleSection(section.title)}>
                             <span className={styles.accordionTitle}>{section.title}</span>
-                            <span className={`material-icons-outlined ${styles.accordionChevron}${isOpen ? ' ' + styles.accordionChevronOpen : ''}`}>
-                              expand_more
+                            <span className={`material-icons-outlined ${styles.accordionChevron}`}>
+                              {isOpen ? 'expand_more' : 'chevron_right'}
                             </span>
                           </div>
                           {isOpen && (
@@ -426,7 +426,7 @@ export default function RoleDetails() {
                                               <div className={styles.subAccordionHeader}>
                                                 {r.name}
                                                 <span className={`material-icons-outlined ${styles.rowInfoIcon}`}>info</span>
-                                                <span className={`material-icons-outlined ${styles.accordionChevron}${openDueDiligence ? ' ' + styles.accordionChevronOpen : ''}`} style={{ marginLeft: 'auto' }}>expand_more</span>
+                                                <span className={`material-icons-outlined ${styles.accordionChevron}`} style={{ marginLeft: 'auto' }}>{openDueDiligence ? 'expand_more' : 'chevron_right'}</span>
                                               </div>
                                             </td>
                                           </tr>,

@@ -87,19 +87,11 @@
 
 /* ── Country select ── */
 .countrySelect {
-  height: 40px;
+  @include native-select;
+  width: auto;
   min-width: 200px;
-  padding: 0 28px 0 12px;
-  border: 1px solid $gray-400;
-  border-radius: $radius-xs;
-  font-size: 13px;
-  font-family: inherit;
-  color: $gray-900;
-  background: $white;
-  cursor: pointer;
-  appearance: auto;
 }
-.countrySelect:focus { outline: none; border-color: $bergbluetint1; }
+.countrySelect:focus { border-color: $bergbluetint1; }
 
 /* ── Results card ── */
 .resultsCard {

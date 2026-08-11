@@ -949,19 +949,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 }
 
 .modal-select {
-    height: 34px;
-    border: 1px solid $neutral-300;
-    border-radius: $radius-xs;
-    padding: 0 10px;
-    font-size: 14px;
-    font-family: $font-roboto;
-    color: $gray-900;
-    background: $white;
-    outline: none;
-    width: 100%;
-    cursor: pointer;
-    appearance: auto;
-    &:focus { border-color: $neutral-500; }
+    @include native-select;
 }
 
 // Confirm link button (used in cancel modal footer)
@@ -2627,22 +2615,9 @@ h6, .h6 { line-height: calc(32 / 18); }
 }
 
 .paginator-size-select {
+  @include native-select-compact;
   width: 70px;
-  height: 28px;
-  padding: 0 8px;
-  border: 1px solid $neutral-300;
-  border-radius: $radius-xs;
-  font-size: 13px;
-  font-family: $font-roboto;
-  color: $gray-900;
-  background: $white;
-  appearance: auto;
-  cursor: pointer;
   box-sizing: border-box;
-}
-.paginator-size-select:focus {
-  outline: none;
-  border-color: $neutral-500;
 }
 
 .paginator-count {

@@ -296,18 +296,9 @@
 .smtCategoryKey:hover { text-decoration: underline; }
 
 .smtSelect {
-  height: 30px;
-  padding: 0 28px 0 10px;
-  border: 1px solid $gray-400;
-  border-radius: $radius-xs;
-  font-size: 13px;
-  font-family: inherit;
-  color: $gray-900;
-  background: $white;
-  cursor: pointer;
-  appearance: auto;
+  @include native-select;
+  width: auto;
 }
-.smtSelect:focus { outline: none; border-color: $primary; }
 
 .smtFilterBtn {
   width: 30px;

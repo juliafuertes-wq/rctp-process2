@@ -237,7 +237,7 @@
 
 /* Verify pagination */
 .verifyPagination { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding: 10px 0 6px; font-size: 13px; font-family: $font-roboto; font-weight: 400; color: $gray-600; }
-.verifyPageSize { width: 72px; height: 28px; border: 1px solid $gray-400; border-radius: $radius-xs; padding: 0 8px; font-size: 13px; font-family: $font-roboto; color: $gray-900; background: $white; appearance: none; -webkit-appearance: none; cursor: pointer; }
+.verifyPageSize { @include native-select-compact; width: 72px; }
 
 /* Field group */
 .fieldGroup { display: flex; flex-direction: column; gap: 6px; }

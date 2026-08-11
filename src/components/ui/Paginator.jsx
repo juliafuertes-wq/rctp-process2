@@ -18,6 +18,7 @@ export default function Paginator({
 
   const atFirst = page <= 1;
   const atLast  = page >= totalPages;
+  const showNav = !hideNav && totalPages > 1;
 
   return (
     <div className="paginator">
@@ -36,7 +37,7 @@ export default function Paginator({
         </span>
       </div>
 
-      {!hideNav && (
+      {showNav && (
         <div className="paginator-nav">
           <button
             className={`paginator-nav-btn${atFirst ? '' : ' active'}`}

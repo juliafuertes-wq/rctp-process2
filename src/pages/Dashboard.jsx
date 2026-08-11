@@ -23,13 +23,6 @@ const TASK_TYPE_CONFIG = {
   'CANCEL RED FLAG':               { icon: TASK_ICONS.iconFrame9 },
 };
 
-const STATUS_CONFIG = {
-  'Not Started':     { cls: 'badge-not-started' },
-  'In Progress':     { cls: 'badge-in-progress' },
-  'Completed':       { cls: 'badge-completed-status' },
-  'Action Required': { cls: 'badge-action-required-status' },
-};
-
 // ── Actions tab data ────────────────────────────────────────────────────────
 // dueNow: overdue / urgent (12 rows); upcoming: due within ~30 days (9 rows)
 const ACTIONS_ROWS = [
@@ -107,11 +100,6 @@ function TaskTypeBadge({ type }) {
   );
 }
 
-function StatusBadge({ status }) {
-  const cfg = STATUS_CONFIG[status] || STATUS_CONFIG['Not Started'];
-  return <span className={`badge ${cfg.cls}`}>{status}</span>;
-}
-
 function RiskChip({ risk }) {
   if (!risk) return <span className="chip-risk chip-risk-unknown">UNKNOWN <span className="material-icons-outlined" style={{ fontSize: 13 }}>help_outline</span></span>;
   const map    = { high: 'chip-risk-high', medium: 'chip-risk-medium', low: 'chip-risk-low' };
@@ -186,7 +174,7 @@ function UpcomingTable({ rows, search, selected, onSelect }) {
                     ? <Link to={`/profile/${row.tpId}`} className={styles.cellLink}>{row.tp}</Link>
                     : <span className={styles.cellLink}>{row.tp}</span>}
                 </td>
-                <td className={styles.tdRegular}><StatusBadge status={row.status} /></td>
+                <td className={styles.tdRegular}>{row.status}</td>
                 <td className={styles.tdSemibold}><RiskChip risk={row.risk} /></td>
                 <td className={styles.tdRegular}>{row.owner}</td>
                 <td>{row.dueDate}</td>
@@ -473,7 +461,7 @@ function SMTContent({ rows }) {
                         ? <Link to={`/profile/${row.tpId}`} className={styles.cellLink}>{row.tp}</Link>
                         : <span className={styles.cellLink}>{row.tp}</span>}
                     </td>
-                    <td className={styles.tdRegular}><StatusBadge status={row.status} /></td>
+                    <td className={styles.tdRegular}>{row.status}</td>
                     <td className={styles.tdSemibold}><RiskChip risk={row.risk} /></td>
                     <td className={styles.tdRegular}>{row.owner}</td>
                     <td className={styles.tdRegular}>{row.date}</td>
@@ -683,11 +671,14 @@ export default function Dashboard() {
     : isEDD ? EDD_TABLE_ROWS
     : ACTIONS_ROWS;
 
-  // chip sub-tab filtering only applies on Actions tab
+  // chip sub-tab filtering only applies on Actions tab.
+  // Note: "Actions Due Now" surfaces the rows carrying a due date (r.upcoming),
+  // and "Upcoming Actions" surfaces the created/aged rows (r.dueNow) — the flag
+  // names predate the final chip semantics.
   const chipFiltered = (activeTab === 'Actions' && activeChip === 'dueNow')
-    ? baseRows.filter(r => r.dueNow)
-    : (activeTab === 'Actions' && activeChip === 'upcoming')
     ? baseRows.filter(r => r.upcoming)
+    : (activeTab === 'Actions' && activeChip === 'upcoming')
+    ? baseRows.filter(r => r.dueNow)
     : baseRows;
 
   const currentRows = chipFiltered;
@@ -772,13 +763,13 @@ export default function Dashboard() {
               <Chip
                 label="Actions Due Now"
                 selected={activeChip === 'dueNow'}
-                count={ACTIONS_ROWS.filter(r => r.dueNow).length}
+                count={ACTIONS_ROWS.filter(r => r.upcoming).length}
                 onClick={() => { setActiveChip(v => v === 'dueNow' ? null : 'dueNow'); setSelectedIndices(new Set()); }}
               />
               <Chip
                 label="Upcoming Actions"
                 selected={activeChip === 'upcoming'}
-                count={ACTIONS_ROWS.filter(r => r.upcoming).length}
+                count={ACTIONS_ROWS.filter(r => r.dueNow).length}
                 onClick={() => { setActiveChip(v => v === 'upcoming' ? null : 'upcoming'); setSelectedIndices(new Set()); }}
               />
               <div style={{ flex: 1 }} />

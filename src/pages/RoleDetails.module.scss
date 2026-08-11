@@ -42,6 +42,13 @@
   gap: 8px;
 }
 
+/* Header buttons: Roboto medium 12px (Figma spec) */
+.headerActions :global(.btn) {
+  font-family: $font-roboto;
+  font-size: 12px;
+  font-weight: 500;
+}
+
 
 /* ── Fields row ── */
 .fieldsRow {

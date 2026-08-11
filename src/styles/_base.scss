@@ -19,6 +19,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     gap: 4px;
     white-space: nowrap;
     cursor: pointer;

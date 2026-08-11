@@ -172,7 +172,7 @@
   font-size: 18px;
   font-weight: 500;
   color: $gray-900;
-  font-family: inherit;
+  font-family: $font-simplon;
   margin: 0;
 }
 
@@ -225,7 +225,7 @@
   font-size: 16px;
   font-weight: 500;
   color: $gray-900;
-  font-family: inherit;
+  font-family: $font-simplon;
   margin: 0 0 16px;
 }
 
@@ -249,12 +249,12 @@
 }
 
 .fieldLabel {
-  font-family: $font-simplon;
+  font-family: $font-roboto;
   font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  line-height: 16px;
+  letter-spacing: 1px;
+  line-height: 20px;
   color: $bergbluetint1;
   display: flex;
   align-items: center;
@@ -297,6 +297,9 @@
 .fieldSelect {
   @include native-select;
   width: 155px;
+  border-color: $gray-400; /* #C4CCD2 — Figma spec */
+
+  &:focus { border-color: $bergbluetint1; }
 }
 
 .fieldSelectNotification {
@@ -323,7 +326,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   cursor: pointer;
-  font-family: inherit;
+  font-family: $font-roboto;
   transition: background 0.2s;
   white-space: nowrap;
 }
@@ -356,7 +359,7 @@
   text-align: center !important;
 }
 
-.table tbody td { @include table-cell; }
+.table tbody td { @include table-cell; color: $gray-900; /* #0C2A31 — Figma spec */ }
 
 .tdCenter {
   text-align: center;

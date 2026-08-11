@@ -77,6 +77,9 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     background-color: $bergbluetint1;  // #028FBB
     border-color: $bergbluetint1;
     color: $white;
+    font-family: $font-roboto;  // Figma: primary buttons use Roboto 500 12px
+    font-size: 12px;
+    letter-spacing: 0.5px;
 
     &:hover:not(:disabled), &:focus:not(:disabled) {
         background-color: $bergbluetint2;  // #017295
@@ -179,12 +182,12 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 .btn-soft {
     background-color: $primary-08;
     border: 1px solid $primary-200;
-    color: $primary-800;
+    color: $bergbluetint2;  // Figma: #017295
 
     &:hover:not(:disabled) {
         background-color: $primary-50;
         border-color: $primary-300;
-        color: $primary-800;
+        color: $bergbluetint2;
     }
 
     &:disabled, &.disabled {
@@ -247,10 +250,10 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     line-height: 20px;
 }
 
-// Risk level badges
-.badge-high    { background: lighten($danger, 30%);   color: darken($danger, 22%); }
-.badge-medium  { background: lighten($warning, 28%);  color: darken($warning, 40%); }
-.badge-low     { background: lighten($success, 36%);  color: darken($success, 28%); }
+// Risk level badges — Roboto, Figma spec tokens
+.badge-high    { background: $alert-50;    color: $alert-700;    font-family: $font-roboto; }
+.badge-medium  { background: $warning-50;  color: $warning-900;  font-family: $font-roboto; }
+.badge-low     { background: $success-50;  color: $success-900;  font-family: $font-roboto; }
 .badge-unknown { background: $gray-200; color: $darkcharc; font-family: $font-roboto; font-size: 12px; font-weight: 500; }
 .badge-pending { background: $gray-200; color: $darkcharc; font-family: $font-roboto; font-size: 12px; font-weight: 500; }
 

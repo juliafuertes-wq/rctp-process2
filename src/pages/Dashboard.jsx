@@ -8,6 +8,7 @@ import Badge from '../components/ui/Badge';
 import Flag from '../components/ui/Flag';
 import Chip from '../components/ui/Chip';
 import Checkbox from '../components/ui/Checkbox';
+import Button from '../components/ui/Button';
 import { RiskLevelIcon, TASK_ICONS } from '../components/profile/profileAssets';
 import styles from './Dashboard.module.scss';
 
@@ -520,6 +521,16 @@ function EDDStatusBadge({ status }) {
   );
 }
 
+const EDD_TYPE_LABELS = {
+  level1:  'Level 1',
+  redflag: 'Red Flag',
+};
+
+function EDDTypeTag({ type }) {
+  const label = EDD_TYPE_LABELS[type] || type;
+  return <span className={styles.eddTypeTag}>{label}</span>;
+}
+
 function EDDContent({ rows }) {
   const [search, setSearch] = useState('');
   const [view, setView] = useState('Standard');
@@ -574,12 +585,9 @@ function EDDContent({ rows }) {
           </span>
         </div>
         <div className={styles.smtToolbarRight}>
-          <button className={styles.smtExportBtn}>
-            Export
-            <span className="material-icons-outlined text-neutral-300" style={{ fontSize: 16 }}>download</span>
-          </button>
-          <button className={styles.smtSaveBtn}>Save</button>
-          <button className={styles.smtSaveBtn}>Save As</button>
+          <Button variant="outline" icon="file_download">Export</Button>
+          <Button variant="soft">Save</Button>
+          <Button variant="soft">Save As</Button>
         </div>
       </div>
 
@@ -620,7 +628,7 @@ function EDDContent({ rows }) {
                         : <span className={styles.cellLink}>{row.subject}</span>}
                     </td>
                     <td>{row.bu}</td>
-                    <td>{row.type}</td>
+                    <td><EDDTypeTag type={row.type} /></td>
                     <td>{row.date}</td>
                     <td><EDDStatusBadge status={row.status} /></td>
                     <td>{row.owner}</td>

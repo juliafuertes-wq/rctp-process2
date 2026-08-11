@@ -289,6 +289,7 @@
 }
 
 .ruleRowNum {
+  font-family: $font-roboto;
   font-size: 11px;
   color: $gray-600;
   font-variant-numeric: tabular-nums;
@@ -361,7 +362,7 @@
   height: 100%;
   border: none;
   background: none;
-  font-family: inherit;
+  font-family: $font-roboto;
   font-size: 13px;
   color: $neutral-500;
   padding: 0 8px;
@@ -380,7 +381,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-family: inherit;
+  font-family: $font-roboto;
   font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
@@ -388,6 +389,17 @@
   color: $bergbluetint1;
   padding: 0;
   transition: color 0.15s;
+}
+
+.addRulesBtn :global(.material-icons-outlined) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 16px !important;
+  line-height: 1;
+  margin-top: -2px;
 }
 
 .addRulesBtn:hover {
@@ -465,7 +477,7 @@
   padding: 0 8px;
   border: 1px solid $gray-400;
   border-radius: $radius-xs;
-  font-family: inherit;
+  font-family: $font-roboto;
   font-size: 14px;
   color: $gray-900;
   outline: none;

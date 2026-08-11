@@ -200,7 +200,7 @@
 .cardSettings {
   background: $white;
   border: 1px solid $gray-300;
-  padding: 16px;
+  padding: 17px; /* 17 + 96 (content) + 17 = 130px card — Figma spec */
 }
 
 .settingsRow {
@@ -280,7 +280,7 @@
   background: $white;
   font-size: 14px;
   color: $gray-900;
-  font-family: inherit;
+  font-family: $font-roboto;
   width: 193px;
   box-sizing: border-box;
   outline: none;

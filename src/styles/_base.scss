@@ -2617,8 +2617,11 @@ h6, .h6 { line-height: calc(32 / 18); }
 .paginator-size-select {
   @include native-select-compact;
   width: 70px;
+  padding: 0 8px;
   box-sizing: border-box;
+  background-image: none; /* no dropdown arrow on the paginator page-size picker */
 }
+.paginator-size-select:disabled { background-image: none; }
 
 .paginator-count {
   font-size: 13px;

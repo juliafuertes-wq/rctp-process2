@@ -763,13 +763,13 @@ export default function Dashboard() {
               <Chip
                 label="Actions Due Now"
                 selected={activeChip === 'dueNow'}
-                count={ACTIONS_ROWS.filter(r => r.upcoming).length}
+                count={ACTIONS_ROWS.filter(r => r.dueNow).length}
                 onClick={() => { setActiveChip(v => v === 'dueNow' ? null : 'dueNow'); setSelectedIndices(new Set()); }}
               />
               <Chip
                 label="Upcoming Actions"
                 selected={activeChip === 'upcoming'}
-                count={ACTIONS_ROWS.filter(r => r.dueNow).length}
+                count={ACTIONS_ROWS.filter(r => r.upcoming).length}
                 onClick={() => { setActiveChip(v => v === 'upcoming' ? null : 'upcoming'); setSelectedIndices(new Set()); }}
               />
               <div style={{ flex: 1 }} />

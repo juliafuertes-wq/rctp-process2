@@ -746,7 +746,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 .modal-card-overlay {
     position: fixed;
     inset: 0;
-    background: rgba($black, 0.45);
+    background: rgba($black, 0.4);  // Figma: rgba(0,0,0,.4)
     display: flex;
     align-items: center;
     justify-content: center;
@@ -756,10 +756,10 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 // Compact confirmation card
 .modal-card {
     background: $white;
-    border-radius: 4px;
-    width: 529px;
+    border-radius: 8px;  // Figma spec
+    width: 460px;        // Figma spec
     max-width: calc(100vw - 32px);
-    box-shadow: $shadow-lg;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);  // Figma spec
     overflow: hidden;
 }
 
@@ -767,17 +767,17 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 4px 8px 8px;
-    height: 40px;
+    padding: 0 16px 0 20px;  // Figma: title inset 20px
+    height: 57px;            // Figma spec
     box-sizing: border-box;
-    border-bottom: 1px solid $gray-300;  // #D6DBE0 ≈ #D3D3D3
+    border-bottom: 1px solid $gray-200;  // Figma: #DFE3E7
 }
 
 .modal-card-title {
-    font-family: $font-simplon;
-    font-size: 20px;
+    font-family: $font-roboto;  // Figma: Roboto 500 16px
+    font-size: 16px;
     font-weight: 500;
-    line-height: 32px;
+    line-height: 20px;
     color: $darkcharc;
 }
 
@@ -789,8 +789,8 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     font-size: 20px;
     line-height: 1;
     padding: 0;
-    width: 32px;
-    height: 32px;
+    width: 24px;   // Figma spec
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -800,7 +800,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 }
 
 .modal-card-body {
-    padding: 34px 12px;
+    padding: 21px 20px;  // Figma: 20px inset, ~21px top
 }
 
 .modal-card-question {
@@ -816,8 +816,8 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     font-family: $font-roboto;
     font-size: 14px;
     font-weight: 400;
-    color: $darkcharc;
-    line-height: 18px;
+    color: $gray-600;  // Figma: #516267
+    line-height: 20px;
 }
 
 .modal-card-name {
@@ -832,8 +832,13 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
     justify-content: flex-end;
     align-items: center;
     gap: 8px;
-    padding: 8px 8px 8px 16px;
-    border-top: 1px solid $neutral-300;
+    padding: 16px 20px;  // Figma: 69px footer with 36px buttons
+    border-top: 1px solid $gray-200;  // Figma: #DFE3E7
+}
+
+// Match Cancel to Continue: Roboto centers correctly in the flex box (Simplon sits off-center)
+.modal-card-footer .btn-outline-secondary {
+    font-family: $font-roboto;
 }
 
 // Full form modal (overlay + card, used in ComponentCatalog demo and profile panels)

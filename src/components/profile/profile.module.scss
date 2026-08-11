@@ -1586,6 +1586,20 @@ $primary-800: #01556F;
   flex-shrink: 0;
 }
 
+/* Figma: footer buttons are Roboto 600 12px, outlined #B1BCC5 border / #516267 text */
+.statusPanelFooter :global(.btn) {
+  font-family: $font-roboto;
+  font-size: 12px;
+  font-weight: 600;
+}
+.statusPanelFooter :global(.btn-outline-secondary) {
+  border-color: $neutral-300; // #B1BCC5
+  color: $gray-600;           // #516267
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) { color: $gray-600; } // keep #516267 across states
+}
+
 /* ── Status panel renewal section ── */
 .statusPanelRenewal {
   border-top: 1px solid $gray-200;

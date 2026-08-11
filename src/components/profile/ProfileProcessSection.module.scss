@@ -4,7 +4,7 @@
 
 .card {
   background: $white;
-  border-top: 3px solid $bergbluetint2;
+  border-top: 3px solid $process-accent;
   padding: 16px;
   min-height: 600px;
 }
@@ -68,7 +68,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: $bergbluetint2;
+  color: $process-accent;
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -842,7 +842,7 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                   else if (profile.id === 'initech') { setCurrentStatus('Approved*'); }
                   setCancelRenewalModalOpen(false);
                 }}
-              >Confirm</button>
+              >Continue</button>
             </div>
           </motion.div>
         </motion.div>
@@ -1398,7 +1398,10 @@ function StatusPanel({ currentStatus, renewalDate, canRenew, renewalInProgress, 
               ? <button className={"btn btn-outline-danger"} onClick={onCancelRenewal}>Cancel Renewal</button>
               : <button className={"btn btn-outline-secondary"} onClick={onRenewal}>Start Renewal</button>
           )}
-          <button className={"btn btn-primary"} onClick={onDecline}>Decline</button>
+          {/* Figma: Decline is filled blue once renewal is in progress; outlined otherwise */}
+          {renewalInProgress || systemRenewalRequired
+            ? <button className={"btn btn-primary"} onClick={onDecline}>Decline</button>
+            : <button className={"btn btn-outline-secondary"} onClick={onDecline}>Decline</button>}
         </div>
       </motion.div>
     </>

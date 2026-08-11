@@ -7,6 +7,13 @@ export default {
   currentStatus: { label: 'Approved' },
   riskLevel: { label: 'Medium', icon: 'error_outline', level: 'medium' },
 
+  riskAssessment: {
+    rows: [
+      { name: 'Risk Assessment 1', required: true, owner: 'Claudio Merino', startDate: '5 Mar 2026', completedDate: '8 Mar 2026',  cancelledDate: '' },
+      { name: 'Risk Assessment 2', required: true, owner: 'Claudio Merino', startDate: '9 Mar 2026', completedDate: '12 Mar 2026', cancelledDate: '' },
+    ],
+  },
+
   embedded: false,
   deleteModal: false,
   alertBanners: false,

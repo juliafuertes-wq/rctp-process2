@@ -426,8 +426,8 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 }
 
 // Stages badge (Settings — Approval Auto Start toggle)
-.badge-stages-active   { background: $success;              color: $white;     height: 32px; padding: 0 14px; font-size: 12px; font-weight: $font-weight-medium; }
-.badge-stages-inactive { background: rgba($danger, 0.65);   color: $white;     height: 32px; padding: 0 14px; font-size: 12px; font-weight: $font-weight-medium; }
+.badge-stages-active   { background: $success;              color: $white;     height: 32px; padding: 0 14px; font-size: 12px; font-weight: $font-weight-medium; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-stages-inactive { background: rgba($danger, 0.65);   color: $white;     height: 32px; padding: 0 14px; font-size: 12px; font-weight: $font-weight-medium; text-transform: uppercase; letter-spacing: 0.5px; }
 
 // Dev badge (ComponentCatalog only)
 .badge-dev {

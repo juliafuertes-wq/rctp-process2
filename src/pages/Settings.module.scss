@@ -583,6 +583,13 @@
   padding: 16px 20px;
 }
 
+/* Edit button: Figma uses #028FBB (bergbluetint1), not the default $primary-600 */
+.stagesHeader :global(.btn-primary) {
+  background: $bergbluetint1;
+
+  &:hover { background: $primary-600; }
+}
+
 .contentActions {
   display: flex;
   gap: 8px;
@@ -600,7 +607,7 @@
   min-width: 700px;
 }
 
-.stagesTable thead th { @include table-header; }
+.stagesTable thead th { @include table-header; letter-spacing: 0.5px; /* Figma spec */ }
 
 .stagesThName {
   text-align: left;

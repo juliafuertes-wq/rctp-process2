@@ -2516,3 +2516,46 @@ $primary-800: #01556F;
   font-size: 11px;
 }
 
+/* ── Current-status badge hover tooltip (Figma: dark box) ── */
+.statusTipWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.statusTip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 6px 10px;
+  background: $gray-900;   // #0C2A31
+  color: $white;
+  border-radius: 4px;
+  font-family: $font-roboto;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: $shadow-sm;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 1000;
+}
+.statusTip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: $gray-900;
+}
+.statusTipWrap:hover .statusTip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+

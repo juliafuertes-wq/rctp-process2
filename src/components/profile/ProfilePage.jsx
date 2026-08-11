@@ -210,8 +210,9 @@ export default function ProfilePage({ profile: profileProp, embedded = false }) 
                     </div>
                   );
                   return tip ? (
-                    <div data-toggle="tooltip" title={tip}>
+                    <div className={styles.statusTipWrap}>
                       {badge}
+                      <span className={styles.statusTip}>{tip}</span>
                     </div>
                   ) : badge;
                 })()}

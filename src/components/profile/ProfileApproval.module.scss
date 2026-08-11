@@ -3,7 +3,7 @@
 /* ── Card ── */
 .card {
   background: $white;
-  border-top: 3px solid $bergbluetint2;
+  border-top: 3px solid $process-accent;
   padding: 16px;
   min-height: 600px;
 }
@@ -65,7 +65,7 @@
 }
 
 .blockerLink {
-  color: $bergbluetint2;
+  color: $process-accent;
   font-weight: 600;
   text-decoration: none;
 }

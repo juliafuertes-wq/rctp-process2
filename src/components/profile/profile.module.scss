@@ -106,7 +106,7 @@ $primary-800: #01556F;
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 500;
-  color: $newgrey;
+  color: $neutral-800; /* Figma: #495158 */
   cursor: pointer;
   transition: background 0.2s ease;
 }
@@ -235,6 +235,7 @@ $primary-800: #01556F;
 
 .table thead th {
   @include table-header;
+  font-weight: 500; /* Figma: profile tables use Roboto 500 headers */
   padding-right: 28px;
   position: relative;
 }
@@ -251,7 +252,7 @@ $primary-800: #01556F;
 }
 
 .table tbody tr:nth-child(odd) td {
-  background: rgba($bergbluetint1,0.08);
+  background: $primary-08; /* Figma: #E8F9FE */
 }
 .table tbody tr:nth-child(even) td {
   background: $white;
@@ -375,7 +376,7 @@ $primary-800: #01556F;
 }
 
 .tab {
-  font-family: $font-simplon;
+  font-family: $font-roboto; /* Figma: Roboto 500 */
   font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
@@ -394,7 +395,7 @@ $primary-800: #01556F;
   border-radius: 4px;
 }
 .tabActive { color: $gray-900; }
-.tabIndicator { position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: $bergbluetint1; border-radius: 1px; }
+.tabIndicator { position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: $primary-600; border-radius: 1px; } /* Figma: #0289B3 */
 
 .tabPanels {
   position: relative;
@@ -444,7 +445,7 @@ $primary-800: #01556F;
 
 
 .detailsCard {
-  border-top: 3px solid $bergbluetint2;
+  border-top: 3px solid $primary-600; /* Figma: #0289B3 */
   padding: 16px;
 }
 
@@ -468,6 +469,19 @@ $primary-800: #01556F;
   gap: 12px;
 }
 
+/* Figma: Third Party Details header buttons are Roboto 600 12px */
+.cardHeaderRight :global(.btn) {
+  font-family: $font-roboto;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Notes button: border #B1BCC5, text #516267 (Figma) */
+.cardHeaderRight :global(.btn-outline-secondary) {
+  border-color: $neutral-300; // #B1BCC5
+  color: $gray-600;           // #516267
+}
+
 .statusInline {
   font-size: 12px;
   font-weight: 500;
@@ -482,7 +496,7 @@ $primary-800: #01556F;
 
 /* ── Field Grid ── */
 .fieldLabel {
-  font-family: $font-simplon;
+  font-family: $font-roboto; /* Figma: Roboto 500 */
   font-size: 11px;
   font-weight: 500;
   color: $bergbluetint1;
@@ -498,7 +512,6 @@ $primary-800: #01556F;
   font-weight: 400;
   color: $gray-900;
   line-height: 24px;
-  letter-spacing: 0.5px;
   overflow-wrap: anywhere;
 }
 
@@ -2279,7 +2292,7 @@ $primary-800: #01556F;
   min-height: 10px;
   border-bottom-left-radius: 0;
 }
-.navStepperConnectorDone { background: $gray-300; }
+.navStepperConnectorDone { background: $success; } /* Figma: #13DF81 */
 .navStepperConnectorNext { background: $gray-300; }
 .navStepperContent {
   display: flex;

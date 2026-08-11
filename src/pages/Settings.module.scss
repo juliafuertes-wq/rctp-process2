@@ -443,10 +443,17 @@
 /* ── Currency & Approval Groups panel ── */
 .cagPanel {
   background: $white;
-  border: 1px solid $gray-300;
-  border-top: 4px solid $bergbluetint1;
+  border: 1px solid $bergbluetint1; /* Figma: all sides #028FBB */
+  border-top-width: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   padding-bottom: 28px;
+}
+
+/* Edit button: Figma uses #028FBB (bergbluetint1), not the default $primary-600 */
+.cagHeader :global(.btn-primary) {
+  background: $bergbluetint1;
+
+  &:hover { background: $primary-600; }
 }
 
 .cagHeader {
@@ -469,7 +476,7 @@
   align-items: stretch;
   height: 34px;
   border: 1px solid $gray-400;
-  border-radius: $radius-xs;
+  border-radius: 3px; /* Figma spec */
   overflow: hidden;
 }
 
@@ -521,7 +528,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: $bergbluetint1;
-  font-family: inherit;
+  font-family: $font-simplon; /* Figma: Simplon Norm 700 */
   display: flex;
   align-items: center;
   gap: 4px;
@@ -547,7 +554,7 @@
 .cagSelect {
   height: 34px;
   padding: 0 10px;
-  border: 1px solid $neutral-300;
+  border: 1px solid $gray-400; /* Figma: #C4CCD2 */
   border-radius: $radius-xs;
   background: $white;
   font-size: 14px;

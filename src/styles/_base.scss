@@ -258,7 +258,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
 .badge-pending { background: $gray-200; color: $darkcharc; font-family: $font-roboto; font-size: 12px; font-weight: 500; }
 
 // Status badges
-.badge-approved     { background: lighten($success, 30%);  color: darken($success, 28%); }
+.badge-approved     { background: $success-100;  color: $success-900; }  // Figma: #AAF3D2 / #07502E
 .badge-not-approved { background: lighten($danger, 28%);   color: darken($danger, 22%); }
 .badge-declined     { background: lighten($danger, 28%);   color: darken($danger, 22%); }
 .badge-expired      { background: lighten($warning, 26%);  color: darken($warning, 40%); }
@@ -2240,7 +2240,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
   overflow: hidden;
   height: var(--tp-header-h);
   border-radius: $radius-sm;
-  box-shadow: $shadow-sm;
+  box-shadow: $shadow-xs;  // Figma: 0 1px 2px rgba(0,0,0,.07)
   transition: box-shadow 0.35s cubic-bezier(0.32, 0.72, 0, 1), height 0.35s cubic-bezier(0.32, 0.72, 0, 1), margin-bottom 0.35s cubic-bezier(0.32, 0.72, 0, 1);
 }
 .ph-strip-high {
@@ -2330,6 +2330,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
   display: inline-flex;
   align-items: center;
   gap: 2px;
+  font-family: $font-roboto;  // Figma: Roboto 500
   font-size: 11px;
   font-weight: $font-weight-medium;
   color: $bergbluetint1;
@@ -2394,6 +2395,7 @@ button:focus, [role="button"]:focus, [tabindex]:focus { outline: none; }
   gap: 4px;
 }
 .ph-badge-label {
+  font-family: $font-roboto;  // Figma: Roboto 500
   font-size: 11px;
   font-weight: $font-weight-medium;
   color: $text-light-alt;

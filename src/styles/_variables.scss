@@ -59,6 +59,7 @@ $neutral-900: #33383D;   // --neutral-900
 $text-disabled:  #A8B2B5; // text-Disabled
 $text-light-alt: #5A6E73; // --text-light-alt
 $text-dark:      #061619;  // --text-dark
+$text-placeholder: #757575; // Figma input placeholder colour
 $row-hover:      #F0F7FA;  // subtle table row hover
 
 // Primary / brand tint scale (maps to globals.css --primary-*)
@@ -138,7 +139,7 @@ $input-focus-border-color: $neutral-500;  // neutral/500 #8D9CA9 (active state)
 $input-color:              $gray-900;       // active text #0C2A31
 $input-bg:                 $white;
 $input-disabled-bg:        $neutral-25;   // #EFEFEF
-$input-placeholder-color:  #757575;       // placeholder
+$input-placeholder-color:  $text-placeholder; // placeholder (Figma)
 $input-font-family:        $font-roboto;
 $input-font-size:          0.875rem;      // 14px
 $input-padding-y:          0.4375rem;     // 7px → (34-20)/2

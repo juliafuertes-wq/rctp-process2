@@ -157,11 +157,11 @@
   color: $gray-900; background: $white; outline: none;
   transition: border-color 0.15s; width: 100%;
 }
-.editInput::placeholder { color: #757575; }
+.editInput::placeholder { color: $text-placeholder; }
 .editInput:focus { border-color: $neutral-500; }
 .editInput[readonly] { background: $neutral-25; color: $gray-500; }
 .editInput:disabled { background: $gray-100; color: $gray-500; cursor: not-allowed; }
-.editInput:disabled::placeholder { color: #757575; }
+.editInput:disabled::placeholder { color: $text-placeholder; }
 .hasError .editInput, .hasError select.editInput { border-color: $danger; }
 .hasError .dropdownTrigger { border-color: $danger; }
 .hasError .tagSelectTrigger { border-color: $danger; }
